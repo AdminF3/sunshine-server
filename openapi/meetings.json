@@ -1,0 +1,178 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Sunshine API"
+    },
+    "tags": [
+        {
+            "name": "Meetings",
+            "description": "Endpoints for manipulating meeting's uploads."
+        }
+    ],
+    "components": {
+        "schemas": {
+        }
+    },
+    "paths": {
+        "/meeting/{uuid}/upload": {
+            "post": {
+                "responses": {
+                    "404": {
+                        "description": "No such meeting with provided id exists"
+                    },
+                    "401": {
+                        "description": "Not logged in as user with access to this meeting"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "parameters": [
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "object"
+                        },
+                        "required": true,
+                        "description": "Meeting ID",
+                        "in": "path",
+                        "name": "uuid"
+                    }
+                ],
+                "summary": "Upload file for that meeting",
+                "tags": [
+                    "Meetings"
+                ]
+            }
+        },
+        "/meeting/{uuid}/{filename}": {
+            "get": {
+                "responses": {
+                    "404": {
+                        "description": "No such meeting with provided id or filename exists"
+                    },
+                    "401": {
+                        "description": "Not logged in as user with access to this meeting"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "parameters": [
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "object"
+                        },
+                        "required": true,
+                        "description": "Meeting ID",
+                        "in": "path",
+                        "name": "uuid"
+                    },
+                    {
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true,
+                        "description": "Filename",
+                        "in": "path",
+                        "name": "filename"
+                    }
+                ],
+                "summary": "Download file for that meeting",
+                "tags": [
+                    "Meetings"
+                ]
+            },
+            "head": {
+                "responses": {
+                    "404": {
+                        "description": "No such meeting with provided id or filename exists"
+                    },
+                    "401": {
+                        "description": "Not logged in as user with access to this meeting"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "parameters": [
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "object"
+                        },
+                        "required": true,
+                        "description": "Meeting ID",
+                        "in": "path",
+                        "name": "uuid"
+                    },
+                    {
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true,
+                        "description": "Filename",
+                        "in": "path",
+                        "name": "filename"
+                    }
+                ],
+                "summary": "Read stats of file for that meeting",
+                "tags": [
+                    "Meetings"
+                ]
+            },
+            "delete": {
+                "responses": {
+                    "404": {
+                        "description": "No such meeting with provided id or filename exists"
+                    },
+                    "401": {
+                        "description": "Not logged in as user with access to this meeting"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "parameters": [
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "object"
+                        },
+                        "required": true,
+                        "description": "Meeting ID",
+                        "in": "path",
+                        "name": "uuid"
+                    },
+                    {
+                        "schema": {
+                            "type": "string"
+                        },
+                        "required": true,
+                        "description": "Filename",
+                        "in": "path",
+                        "name": "filename"
+                    }
+                ],
+                "summary": "Delete file for that meeting",
+                "tags": [
+                    "Meetings"
+                ]
+            }
+        }
+    }
+}

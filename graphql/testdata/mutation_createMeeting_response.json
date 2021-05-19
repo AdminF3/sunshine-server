@@ -1,0 +1,11 @@
+{
+    "createMeeting": {
+        "name": "ads",
+	"topic": "OTHER",
+        "guests": [
+        {
+            "phone": "0888123456"
+        }
+        ]
+    }
+}

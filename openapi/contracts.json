@@ -1,0 +1,2229 @@
+{
+    "tags": [
+        {
+            "name": "Contracts",
+            "description": "Endpoints for manipulating contracts and their tables, annexes, fields and whatnot.."
+        }
+    ],
+    "info": {
+        "version": "1.0.0",
+        "title": "Sunshine Projects API"
+    },
+    "openapi": "3.0.0",
+    "paths": {
+        "/project/{uuid}/markdown": {
+            "get": {
+                "tags": [
+                    "Contracts"
+                ],
+                "summary": "Get custom markdown for project's contract.",
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "text/markdown": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No such project with provided id exists"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "in": "path",
+                        "description": "Project ID",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "format": "uuid"
+                        }
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Contracts"
+                ],
+                "summary": "Set new version of custom markdown for project's contract",
+                "requestBody": {
+                    "content": {
+                        "text/markdown": {
+                            "schema": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request."
+                    },
+                    "404": {
+                        "description": "No such project with provided id exists."
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "in": "path",
+                        "description": "Project ID",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "format": "uuid"
+                        }
+                    }
+                ]
+            }
+        },
+        "/project/{uuid}/annex{n}/{table}": {
+            "get": {
+                "tags": [
+                    "Contracts"
+                ],
+                "summary": "Get table from contract's annex",
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/JSONTable"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No such project, annex or table name"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "in": "path",
+                        "description": "Project ID",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "format": "uuid"
+                        }
+                    },
+                    {
+                        "name": "n",
+                        "in": "path",
+                        "description": "Number of annex (deprecated: The value does not matter)",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "table",
+                        "in": "path",
+                        "description": "Table name regardless of n",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "renovation_overall_budget",
+                                "renovation_financial_plan_a",
+                                "renovation_financial_plan_b",
+                                "renovation_financial_plan_c",
+                                "baseyear_n_2",
+                                "baseyear_n_1",
+                                "baseyear_n",
+                                "baseline",
+                                "periodic_maint_activities_covered_by_contractor",
+                                "mid_term_preventative_activity",
+                                "long_term_provisioned_activities",
+                                "reccomended_maintanance_activity",
+                                "calc_energy_fee",
+                                "balancing_period_fee",
+                                "operation_maintenance_budget",
+                                "operations_maintenance_fee"
+                            ]
+                        }
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Contracts"
+                ],
+                "summary": "Update table in contract's annex",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/JSONTable"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/JSONTable"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No such project, annex or table name"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "in": "path",
+                        "description": "Project ID",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "format": "uuid"
+                        }
+                    },
+                    {
+                        "name": "n",
+                        "in": "path",
+                        "description": "Number of annex (deprecated: The value does not matter)",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "table",
+                        "in": "path",
+                        "description": "Table name regardless of n",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "renovation_overall_budget",
+                                "renovation_financial_plan_a",
+                                "renovation_financial_plan_b",
+                                "renovation_financial_plan_c",
+                                "baseyear_n_2",
+                                "baseyear_n_1",
+                                "baseyear_n",
+                                "baseline",
+                                "periodic_maint_activities_covered_by_contractor",
+                                "mid_term_preventative_activity",
+                                "long_term_provisioned_activities",
+                                "reccomended_maintanance_activity",
+                                "calc_energy_fee",
+                                "balancing_period_fee",
+                                "operation_maintenance_budget",
+                                "operations_maintenance_fee"
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        "/project/{uuid}/download/{language}": {
+            "get": {
+                "tags": [
+                    "Contracts"
+                ],
+                "summary": "Download PDF of contract",
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/pdf": {}
+                        }
+                    },
+                    "404": {
+                        "description": "No such project, annex or table name"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "in": "path",
+                        "description": "Project ID",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "format": "uuid"
+                        }
+                    },
+                    {
+                        "name": "language",
+                        "in": "path",
+                        "description": "Language version to download",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": ["native", "english"]
+                        }
+                    }
+                ]
+            }
+        },
+        "/project/{uuid}/tex/{language}": {
+            "get": {
+                "tags": [
+                    "Contracts"
+                ],
+                "summary": "Download raw TeX file of the contract",
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/x-tex": {}
+                        }
+                    },
+                    "404": {
+                        "description": "No such project, annex or table name"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "in": "path",
+                        "description": "Project ID",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "format": "uuid"
+                        }
+                    },
+                    {
+                        "name": "language",
+                        "in": "path",
+                        "description": "Language version to download",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": ["native", "english"]
+                        }
+                    }
+                ]
+            }
+        },
+        "/project/{uuid}/fields": {
+            "get": {
+                "tags": [
+                    "Contracts"
+                ],
+                "summary": "Get contract fields which are not in any table",
+                "responses": {
+                    "200": {
+                        "description": "flat key-value objects is returned",
+                        "content": {
+                            "application/json": {
+                                "example": {
+                                    "date-of-meeting": "14-02-2018",
+                                    "address-of-building": "End of the world",
+                                    "meeting-opened-by": "John Doe",
+                                    "chair-of-meeting": "John Doe",
+                                    "meeting-recorded-by": "John Doe",
+                                    "measurement-implementer": "John Doe",
+                                    "building-administrator": "John Doe",
+                                    "tab1-for-n": "18",
+                                    "tab1-against-n": "3",
+                                    "tab2-for-n": "18",
+                                    "tab2-against-n": "3",
+                                    "tab3-for-n": "18",
+                                    "tab3-against-n": "3"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No such project, annex or table name"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "in": "path",
+                        "description": "Project ID",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "format": "uuid"
+                        }
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Contracts"
+                ],
+                "summary": "Update contract fields which are not in any table",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "example": {
+                                "date-of-meeting": "14-02-2018",
+                                "address-of-building": "End of the world",
+                                "meeting-opened-by": "John Doe",
+                                "chair-of-meeting": "John Doe",
+                                "meeting-recorded-by": "John Doe",
+                                "measurement-implementer": "John Doe",
+                                "building-administrator": "John Doe",
+                                "tab1-for-n": "18",
+                                "tab1-against-n": "3",
+                                "tab2-for-n": "18",
+                                "tab2-against-n": "3",
+                                "tab3-for-n": "18",
+                                "tab3-against-n": "3"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "flat key-valued object with updated values",
+                        "content": {
+                            "application/json": {
+                                "example": {
+                                    "date-of-meeting": "14-02-2018",
+                                    "address-of-building": "End of the world",
+                                    "meeting-opened-by": "John Doe",
+                                    "chair-of-meeting": "John Doe",
+                                    "meeting-recorded-by": "John Doe",
+                                    "measurement-implementer": "John Doe",
+                                    "building-administrator": "John Doe",
+                                    "tab1-for-n": "18",
+                                    "tab1-against-n": "3",
+                                    "tab2-for-n": "18",
+                                    "tab2-against-n": "3",
+                                    "tab3-for-n": "18",
+                                    "tab3-against-n": "3"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No such project, annex or table name"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "in": "path",
+                        "description": "Project ID",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "format": "uuid"
+                        }
+                    }
+                ]
+            }
+        },
+        "/project/{uuid}/agreement/fields": {
+            "get": {
+                "tags": [
+                    "Contracts"
+                ],
+                "summary": "Get the fields which are not in table",
+                "responses": {
+                    "200": {
+                        "description": "flat key-value objects is returned",
+                        "content": {
+                            "application/json": {
+                                "example": {
+                                    "assignor-address": "titntqva 13",
+                                    "assignor-bank-account-iban": "unicrdeit bank",
+                                    "assignor-bank-account-swift": "swift some shit",
+                                    "assignor-bank-address": "bank address",
+                                    "assignor-bank-name": "bank name",
+                                    "assignor-legal-representative": "ass legal repr",
+                                    "assignor-name": "ass name",
+                                    "assignor-registration": "registrattion",
+                                    "assignors-client-address": "ass client address",
+                                    "assignors-client-name": "client name",
+                                    "ceded-assignors-client": "ceded",
+                                    "cession-assignors-client": "cessions",
+                                    "cession-forfaiting-assignee": "cesiion fa",
+                                    "customer-name": "customer",
+                                    "date-of-energy-contract": "22/22/1990",
+                                    "date-of-forfaiting-agreement": "12/12/2313",
+                                    "energy-efficient-performence": "23",
+                                    "energy-saving-amount": "32",
+                                    "forfaiting-assignee": "FA",
+                                    "forfaiting-assignee-address": "faa tintqva 1315",
+                                    "forfaiting-assignee-name": "fa name",
+                                    "forfaiting-assignee-reg-number": "reg numbert",
+                                    "forfaiting-assignee-representative": "dsda",
+                                    "forfaiting-bank-account-iban": "dsdada",
+                                    "forfaiting-bank-account-swift": "swift",
+                                    "forfaiting-bank-address": "address",
+                                    "forfaiting-bank-name": "bank name",
+                                    "manager-name": "manager name",
+                                    "payment_first_amount": "233",
+                                    "payment_first_date": "13/32/3132",
+                                    "payment-schedule": "2",
+                                    "payment_second_amount": "11",
+                                    "payment_second_date": "1/1/1323",
+                                    "payment_third_amount": "3232",
+                                    "payment_third_date": "323",
+                                    "place-of-forfaiting-agreement": "323",
+                                    "receivable-price": "1111",
+                                    "transfer-assignors-client": "client",
+                                    "transfer-forfaiting-assignee": "assignee",
+                                    "transferred-assignors-client": "client"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "User not logged in as user with any role whatsoever."
+                    },
+                    "404": {
+                        "description": "No such project."
+                    },
+                    "500": {
+                        "description": "Error while getting the contract"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "in": "path",
+                        "description": "Project ID",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "format": "uuid"
+                        }
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Contracts"
+                ],
+                "summary": "Update contract fields which are not in any table",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "example": {
+                                "assignor-address": "titntqva 13",
+                                "assignor-bank-account-iban": "unicrdeit bank",
+                                "assignor-bank-account-swift": "swift some shit",
+                                "assignor-bank-address": "bank address",
+                                "assignor-bank-name": "bank name",
+                                "assignor-legal-representative": "ass legal repr",
+                                "assignor-name": "ass name",
+                                "assignor-registration": "registrattion",
+                                "assignors-client-address": "ass client address",
+                                "assignors-client-name": "client name",
+                                "ceded-assignors-client": "ceded",
+                                "cession-assignors-client": "cessions",
+                                "cession-forfaiting-assignee": "cesiion fa",
+                                "customer-name": "customer",
+                                "date-of-energy-contract": "22/22/1990",
+                                "date-of-forfaiting-agreement": "12/12/2313",
+                                "energy-efficient-performence": "23",
+                                "energy-saving-amount": "32",
+                                "forfaiting-assignee": "FA",
+                                "forfaiting-assignee-address": "faa tintqva 1315",
+                                "forfaiting-assignee-name": "fa name",
+                                "forfaiting-assignee-reg-number": "reg numbert",
+                                "forfaiting-assignee-representative": "dsda",
+                                "forfaiting-bank-account-iban": "dsdada",
+                                "forfaiting-bank-account-swift": "swift",
+                                "forfaiting-bank-address": "address",
+                                "forfaiting-bank-name": "bank name",
+                                "manager-name": "manager name",
+                                "payment_first_amount": "233",
+                                "payment_first_date": "13/32/3132",
+                                "payment-schedule": "2",
+                                "payment_second_amount": "11",
+                                "payment_second_date": "1/1/1323",
+                                "payment_third_amount": "3232",
+                                "payment_third_date": "323",
+                                "place-of-forfaiting-agreement": "323",
+                                "receivable-price": "1111",
+                                "transfer-assignors-client": "client",
+                                "transfer-forfaiting-assignee": "assignee",
+                                "transferred-assignors-client": "client"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "flat key-valued object with updated values",
+                        "content": {
+                            "application/json": {
+                                "example": {
+                                    "_id": "2045a971-46bf-43ef-9fc4-a51735d652f9",
+                                    "type": "contract",
+                                    "data": {
+                                        "project": "c8a6df87-3cf8-4fd5-b1bb-b5c9424be3e1",
+                                        "fields": {},
+                                        "agreement_fields": {
+                                            "assignor-address": "titntqva 13",
+                                            "assignor-bank-account-iban": "unicrdeit bank",
+                                            "assignor-bank-account-swift": "swift some shit",
+                                            "assignor-bank-address": "bank address",
+                                            "assignor-bank-name": "bank name",
+                                            "assignor-legal-representative": "ass legal repr",
+                                            "assignor-name": "ass name",
+                                            "assignor-registration": "registrattion",
+                                            "assignors-client-address": "ass client address",
+                                            "assignors-client-name": "client name",
+                                            "ceded-assignors-client": "ceded",
+                                            "cession-assignors-client": "cessions",
+                                            "cession-forfaiting-assignee": "cesiion fa",
+                                            "customer-name": "customer",
+                                            "date-of-energy-contract": "22/22/1990",
+                                            "date-of-forfaiting-agreement": "12/12/2313",
+                                            "energy-efficient-performence": "23",
+                                            "energy-saving-amount": "32",
+                                            "forfaiting-assignee": "FA",
+                                            "forfaiting-assignee-address": "faa tintqva 1315",
+                                            "forfaiting-assignee-name": "fa name",
+                                            "forfaiting-assignee-reg-number": "reg numbert",
+                                            "forfaiting-assignee-representative": "dsda",
+                                            "forfaiting-bank-account-iban": "dsdada",
+                                            "forfaiting-bank-account-swift": "swift",
+                                            "forfaiting-bank-address": "address",
+                                            "forfaiting-bank-name": "bank name",
+                                            "manager-name": "manager name",
+                                            "payment_first_amount": "233",
+                                            "payment_first_date": "13/32/3132",
+                                            "payment-schedule": "2",
+                                            "payment_second_amount": "11",
+                                            "payment_second_date": "1/1/1323",
+                                            "payment_third_amount": "3232",
+                                            "payment_third_date": "323",
+                                            "place-of-forfaiting-agreement": "323",
+                                            "receivable-price": "1111",
+                                            "transfer-assignors-client": "client",
+                                            "transfer-forfaiting-assignee": "assignee",
+                                            "transferred-assignors-client": "client"
+                                        },
+                                        "annex_1": "{...}",
+                                        "annex_2": "{...}",
+                                        "annex_3": "{...}",
+                                        "annex_4": "{...}",
+                                        "annex_5": "{...}"
+                                    },
+                                    "timestamp": "2018-0307T08:26:03.454858726Z"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Error while decoding the contract"
+                    },
+                    "401": {
+                        "description": "User is not logged in as user with any role whatsoever."
+                    },
+                    "404": {
+                        "description": "No such project"
+                    },
+                    "500": {
+                        "description": "Error while getting the contract."
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "in": "path",
+                        "description": "Project ID",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "format": "uuid"
+                        }
+                    }
+                ]
+            }
+
+        },
+        "/project/{uuid}/agreement/download": {
+            "get": {
+                "tags": [
+                    "Contracts"
+                ],
+                "summary": "Download PDF of contract",
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/pdf": {}
+                        }
+                    },
+                    "404": {
+                        "description": "No such project, annex or table name"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "in": "path",
+                        "description": "Project ID",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "format": "uuid"
+                        }
+                    }
+                ]
+            }
+        },
+        "/project/{uuid}/agreement/tex": {
+            "get": {
+                "tags": [
+                    "Contracts"
+                ],
+                "summary": "Download raw TeX file of the agreement",
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/pdf": {}
+                        }
+                    },
+                    "404": {
+                        "description": "No such project, annex or table name"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "in": "path",
+                        "description": "Project ID",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "format": "uuid"
+                        }
+                    }
+                ]
+            }
+        },
+        "/project/{uuid}/indoorclima": {
+            "get": {
+                "tags": [
+                    "Contracts"
+                ],
+                "summary": "Get indorclima fields for the project ",
+                "responses": {
+                    "200": {
+                        "description": "Json object with all of the information for indorclima",
+                        "content": {
+                            "application/json": {
+                                "example": {
+                                    "_id": "fa40a860-1d3a-4ccc-b0a8-030e621bab88",
+                                    "type": "indoorclima",
+                                    "data": {
+                                        "project": "fd423879-3797-466b-9e38-7c5c7535ae8f",
+                                        "attic": {
+                                            "zone1": {
+                                                "area": 289.1279,
+                                                "uvalue": 769.0881,
+                                                "outdoor_temp": {
+                                                    "baseyear_n": 65.10820,
+                                                    "baseyear_n_1": 378.7457,
+                                                    "baseyear_n_2": 2345
+                                                },
+                                                "tempdiff": {
+                                                    "baseyear_n": 261.6159,
+                                                    "baseyear_n_1": 27.14273,
+                                                    "baseyear_n_2": 6866
+                                                },
+                                                "heat_loss_coeff": 956.7037
+                                            },
+                                            "zone2": {
+                                                "area": 289.1279,
+                                                "uvalue": 769.0881,
+                                                "outdoor_temp": {
+                                                    "baseyear_n": 65.10820,
+                                                    "baseyear_n_1": 378.7457,
+                                                    "baseyear_n_2": 2345
+                                                },
+                                                "tempdiff": {
+                                                    "baseyear_n": 261.6159,
+                                                    "baseyear_n_1": 27.14273,
+                                                    "baseyear_n_2": 6866
+                                                },
+                                                "heat_loss_coeff": 956.7037
+                                            }
+                                        },
+                                        "basement_ceiling": {
+                                            "zone1": {
+                                                "area": 289.1279,
+                                                "uvalue": 769.0881,
+                                                "outdoor_temp": {
+                                                    "baseyear_n": 65.10820,
+                                                    "baseyear_n_1": 378.7457,
+                                                    "baseyear_n_2": 2345
+                                                },
+                                                "tempdiff": {
+                                                    "baseyear_n": 261.6159,
+                                                    "baseyear_n_1": 27.14273,
+                                                    "baseyear_n_2": 6866
+                                                },
+                                                "heat_loss_coeff": 956.7037
+                                            },
+                                            "zone2": {
+                                                "area": 289.1279,
+                                                "uvalue": 769.0881,
+                                                "outdoor_temp": {
+                                                    "baseyear_n": 65.10820,
+                                                    "baseyear_n_1": 378.7457,
+                                                    "baseyear_n_2": 2345
+                                                },
+                                                "tempdiff": {
+                                                    "baseyear_n": 261.6159,
+                                                    "baseyear_n_1": 27.14273,
+                                                    "baseyear_n_2": 6866
+                                                },
+                                                "heat_loss_coeff": 956.7037
+                                            }
+                                        },
+                                        "external_door": {
+                                            "num1": {
+                                                "zone1": {
+                                                    "area": 289.1279,
+                                                    "uvalue": 769.0881,
+                                                    "outdoor_temp": {
+                                                        "baseyear_n": 65.10820,
+                                                        "baseyear_n_1": 378.7457,
+                                                        "baseyear_n_2": 2345
+                                                    },
+                                                    "tempdiff": {
+                                                        "baseyear_n": 261.6159,
+                                                        "baseyear_n_1": 27.14273,
+                                                        "baseyear_n_2": 6866
+                                                    },
+                                                    "heat_loss_coeff": 956.7037
+                                                },
+                                                "zone2": {
+                                                    "area": 289.1279,
+                                                    "uvalue": 769.0881,
+                                                    "outdoor_temp": {
+                                                        "baseyear_n": 65.10820,
+                                                        "baseyear_n_1": 378.7457,
+                                                        "baseyear_n_2": 2345
+                                                    },
+                                                    "tempdiff": {
+                                                        "baseyear_n": 261.6159,
+                                                        "baseyear_n_1": 27.14273,
+                                                        "baseyear_n_2": 6866
+                                                    },
+                                                    "heat_loss_coeff": 956.7037
+                                                }
+                                            },
+                                            "num2": {
+                                                "zone1": {
+                                                    "area": 289.1279,
+                                                    "uvalue": 769.0881,
+                                                    "outdoor_temp": {
+                                                        "baseyear_n": 65.10820,
+                                                        "baseyear_n_1": 378.7457,
+                                                        "baseyear_n_2": 2345
+                                                    },
+                                                    "tempdiff": {
+                                                        "baseyear_n": 261.6159,
+                                                        "baseyear_n_1": 27.14273,
+                                                        "baseyear_n_2": 6866
+                                                    },
+                                                    "heat_loss_coeff": 956.7037
+                                                },
+                                                "zone2": {
+                                                    "area": 289.1279,
+                                                    "uvalue": 769.0881,
+                                                    "outdoor_temp": {
+                                                        "baseyear_n": 65.10820,
+                                                        "baseyear_n_1": 378.7457,
+                                                        "baseyear_n_2": 2345
+                                                    },
+                                                    "tempdiff": {
+                                                        "baseyear_n": 261.6159,
+                                                        "baseyear_n_1": 27.14273,
+                                                        "baseyear_n_2": 6866
+                                                    },
+                                                    "heat_loss_coeff": 956.7037
+                                                }
+                                            }
+                                        },
+                                        "external_wall": {
+                                            "num1": {
+                                                "zone1": {
+                                                    "area": 289.1279,
+                                                    "uvalue": 769.0881,
+                                                    "outdoor_temp": {
+                                                        "baseyear_n": 65.10820,
+                                                        "baseyear_n_1": 378.7457,
+                                                        "baseyear_n_2": 2345
+                                                    },
+                                                    "tempdiff": {
+                                                        "baseyear_n": 261.6159,
+                                                        "baseyear_n_1": 27.14273,
+                                                        "baseyear_n_2": 6866
+                                                    },
+                                                    "heat_loss_coeff": 956.7037
+                                                },
+                                                "zone2": {
+                                                    "area": 289.1279,
+                                                    "uvalue": 769.0881,
+                                                    "outdoor_temp": {
+                                                        "baseyear_n": 65.10820,
+                                                        "baseyear_n_1": 378.7457,
+                                                        "baseyear_n_2": 2345
+                                                    },
+                                                    "tempdiff": {
+                                                        "baseyear_n": 261.6159,
+                                                        "baseyear_n_1": 27.14273,
+                                                        "baseyear_n_2": 6866
+                                                    },
+                                                    "heat_loss_coeff": 956.7037
+                                                }
+                                            },
+                                            "num2": {
+                                                "zone1": {
+                                                    "area": 289.1279,
+                                                    "uvalue": 769.0881,
+                                                    "outdoor_temp": {
+                                                        "baseyear_n": 65.10820,
+                                                        "baseyear_n_1": 378.7457,
+                                                        "baseyear_n_2": 2345
+                                                    },
+                                                    "tempdiff": {
+                                                        "baseyear_n": 261.6159,
+                                                        "baseyear_n_1": 27.14273,
+                                                        "baseyear_n_2": 6866
+                                                    },
+                                                    "heat_loss_coeff": 956.7037
+                                                },
+                                                "zone2": {
+                                                    "area": 289.1279,
+                                                    "uvalue": 769.0881,
+                                                    "outdoor_temp": {
+                                                        "baseyear_n": 65.10820,
+                                                        "baseyear_n_1": 378.7457,
+                                                        "baseyear_n_2": 2345
+                                                    },
+                                                    "tempdiff": {
+                                                        "baseyear_n": 261.6159,
+                                                        "baseyear_n_1": 27.14273,
+                                                        "baseyear_n_2": 6866
+                                                    },
+                                                    "heat_loss_coeff": 956.7037
+                                                }
+                                            }
+                                        },
+                                        "window": {
+                                            "num1": {
+                                                "zone1": {
+                                                    "area": 289.1279,
+                                                    "uvalue": 769.0881,
+                                                    "outdoor_temp": {
+                                                        "baseyear_n": 65.10820,
+                                                        "baseyear_n_1": 378.7457,
+                                                        "baseyear_n_2": 2345
+                                                    },
+                                                    "tempdiff": {
+                                                        "baseyear_n": 261.6159,
+                                                        "baseyear_n_1": 27.14273,
+                                                        "baseyear_n_2": 6866
+                                                    },
+                                                    "heat_loss_coeff": 956.7037
+                                                },
+                                                "zone2": {
+                                                    "area": 289.1279,
+                                                    "uvalue": 769.0881,
+                                                    "outdoor_temp": {
+                                                        "baseyear_n": 65.10820,
+                                                        "baseyear_n_1": 378.7457,
+                                                        "baseyear_n_2": 2345
+                                                    },
+                                                    "tempdiff": {
+                                                        "baseyear_n": 261.6159,
+                                                        "baseyear_n_1": 27.14273,
+                                                        "baseyear_n_2": 6866
+                                                    },
+                                                    "heat_loss_coeff": 956.7037
+                                                }
+                                            },
+                                            "num2": {
+                                                "zone1": {
+                                                    "area": 289.1279,
+                                                    "uvalue": 769.0881,
+                                                    "outdoor_temp": {
+                                                        "baseyear_n": 65.10820,
+                                                        "baseyear_n_1": 378.7457,
+                                                        "baseyear_n_2": 2345
+                                                    },
+                                                    "tempdiff": {
+                                                        "baseyear_n": 261.6159,
+                                                        "baseyear_n_1": 27.14273,
+                                                        "baseyear_n_2": 6866
+                                                    },
+                                                    "heat_loss_coeff": 956.7037
+                                                },
+                                                "zone2": {
+                                                    "area": 289.1279,
+                                                    "uvalue": 769.0881,
+                                                    "outdoor_temp": {
+                                                        "baseyear_n": 65.10820,
+                                                        "baseyear_n_1": 378.7457,
+                                                        "baseyear_n_2": 2345
+                                                    },
+                                                    "tempdiff": {
+                                                        "baseyear_n": 261.6159,
+                                                        "baseyear_n_1": 27.14273,
+                                                        "baseyear_n_2": 6866
+                                                    },
+                                                    "heat_loss_coeff": 956.7037
+                                                }
+                                            }
+                                        },
+                                        "ground": {
+                                            "zone1": {
+                                                "area": 289.1279,
+                                                "uvalue": 769.0881,
+                                                "outdoor_temp": {
+                                                    "baseyear_n": 65.10820,
+                                                    "baseyear_n_1": 378.7457,
+                                                    "baseyear_n_2": 2345
+                                                },
+                                                "tempdiff": {
+                                                    "baseyear_n": 261.6159,
+                                                    "baseyear_n_1": 27.14273,
+                                                    "baseyear_n_2": 6866
+                                                },
+                                                "heat_loss_coeff": 956.7037
+                                            },
+                                            "zone2": {
+                                                "area": 289.1279,
+                                                "uvalue": 769.0881,
+                                                "outdoor_temp": {
+                                                    "baseyear_n": 65.10820,
+                                                    "baseyear_n_1": 378.7457,
+                                                    "baseyear_n_2": 2345
+                                                },
+                                                "tempdiff": {
+                                                    "baseyear_n": 261.6159,
+                                                    "baseyear_n_1": 27.14273,
+                                                    "baseyear_n_2": 6866
+                                                },
+                                                "heat_loss_coeff": 956.7037
+                                            }
+                                        },
+                                        "roof": {
+                                            "zone1": {
+                                                "area": 289.1279,
+                                                "uvalue": 769.0881,
+                                                "outdoor_temp": {
+                                                    "baseyear_n": 65.10820,
+                                                    "baseyear_n_1": 378.7457,
+                                                    "baseyear_n_2": 2345
+                                                },
+                                                "tempdiff": {
+                                                    "baseyear_n": 261.6159,
+                                                    "baseyear_n_1": 27.14273,
+                                                    "baseyear_n_2": 6866
+                                                },
+                                                "heat_loss_coeff": 956.7037
+                                            },
+                                            "zone2": {
+                                                "area": 289.1279,
+                                                "uvalue": 769.0881,
+                                                "outdoor_temp": {
+                                                    "baseyear_n": 65.10820,
+                                                    "baseyear_n_1": 378.7457,
+                                                    "baseyear_n_2": 2345
+                                                },
+                                                "tempdiff": {
+                                                    "baseyear_n": 261.6159,
+                                                    "baseyear_n_1": 27.14273,
+                                                    "baseyear_n_2": 6866
+                                                },
+                                                "heat_loss_coeff": 956.7037
+                                            }
+                                        },
+                                        "base_wall": {
+                                            "zone1": {
+                                                "area": 289.1279,
+                                                "uvalue": 769.0881,
+                                                "outdoor_temp": {
+                                                    "baseyear_n": 65.10820,
+                                                    "baseyear_n_1": 378.7457,
+                                                    "baseyear_n_2": 2345
+                                                },
+                                                "tempdiff": {
+                                                    "baseyear_n": 261.6159,
+                                                    "baseyear_n_1": 27.14273,
+                                                    "baseyear_n_2": 6866
+                                                },
+                                                "heat_loss_coeff": 956.7037
+                                            },
+                                            "zone2": {
+                                                "area": 289.1279,
+                                                "uvalue": 769.0881,
+                                                "outdoor_temp": {
+                                                    "baseyear_n": 65.10820,
+                                                    "baseyear_n_1": 378.7457,
+                                                    "baseyear_n_2": 2345
+                                                },
+                                                "tempdiff": {
+                                                    "baseyear_n": 261.6159,
+                                                    "baseyear_n_1": 27.14273,
+                                                    "baseyear_n_2": 6866
+                                                },
+                                                "heat_loss_coeff": 956.7037
+                                            }
+                                        },
+                                        "basement_pipes": [
+                                            {
+                                                "quality": 1,
+                                                "installed_length": 88.00,
+                                                "diameter": 25.00,
+                                                "heat_loss_unit": 0.003,
+                                                "heat_loss_year": 2.31
+                                            },
+                                            {
+                                                "quality": 1,
+                                                "installed_length": 88.00,
+                                                "diameter": 25.00,
+                                                "heat_loss_unit": 0.003,
+                                                "heat_loss_year": 2.31
+                                            },
+                                            {
+                                                "quality": 1,
+                                                "installed_length": 88.00,
+                                                "diameter": 25.00,
+                                                "heat_loss_unit": 0.003,
+                                                "heat_loss_year": 2.31
+                                            }
+                                        ],
+                                        "attic_pipes": [
+                                            {
+                                                "quality": 1,
+                                                "installed_length": 88.00,
+                                                "diameter": 25.00,
+                                                "heat_loss_unit": 0.003,
+                                                "heat_loss_year": 2.31
+                                            },
+                                            {
+                                                "quality": 1,
+                                                "installed_length": 88.00,
+                                                "diameter": 25.00,
+                                                "heat_loss_unit": 0.003,
+                                                "heat_loss_year": 2.31
+                                            },
+                                            {
+                                                "quality": 1,
+                                                "installed_length": 88.00,
+                                                "diameter": 25.00,
+                                                "heat_loss_unit": 0.003,
+                                                "heat_loss_year": 2.31
+                                            }
+                                        ],
+                                        "total_ht": 687.3493,
+                                        "total_ht_zone1": 43.434,
+                                        "total_ht_zone2": 32.3247,
+                                        "heatgains_internal": 428.0159,
+                                        "heatgains_solar": 104.7249,
+                                        "airex_windows": 622.4159,
+                                        "airex_building": 747.7910,
+                                        "airex_total": 92.90280,
+                                        "heated_volume_building": 123.321,
+                                        "total_energy_consumption": {
+                                            "baseyear_n": 147.1796,
+                                            "baseyear_n_1": 230.6866,
+                                            "baseyear_n_2": 14393
+                                        },
+                                        "total_energy_consumption_circulation": {
+                                            "baseyear_n": 422.7609,
+                                            "baseyear_n_1": 547.3801,
+                                            "baseyear_n_2": 15711
+                                        },
+                                        "circulation_losses": {
+                                            "baseyear_n": 651.7738,
+                                            "baseyear_n_1": 920.0178,
+                                            "baseyear_n_2": 25941
+                                        },
+                                        "distribution_losses_basement": 564.7780,
+                                        "distribution_losses_attic": 924.3247,
+                                        "total_measured": {
+                                            "baseyear_n": 478.5712,
+                                            "baseyear_n_1": 384.4333,
+                                            "baseyear_n_2": 8673
+                                        },
+                                        "total_calculated": {
+                                            "baseyear_n": 112.4529,
+                                            "baseyear_n_1": 172.8725,
+                                            "baseyear_n_2": 15695
+                                        },
+                                        "indoor_temp": {
+                                            "baseyear_n": 691.4322,
+                                            "baseyear_n_1": 167.7427,
+                                            "baseyear_n_2": 6557
+                                        }
+                                    },
+                                    "timestamp": "2018-03-26T11:48:21.062793122Z"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": " No such project with provided id exists."
+                    },
+                    "401": {
+                        "description": "Not logged in as user with a role in given project."
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "in": "path",
+                        "description": "Project ID",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "format": "uuid"
+                        }
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Contracts"
+                ],
+                "summary": "Update existing IndoorClima.",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "example": {
+                                "_id": "fa40a860-1d3a-4ccc-b0a8-030e621bab88",
+                                "type": "indoorclima",
+                                "data": {
+                                    "project": "fd423879-3797-466b-9e38-7c5c7535ae8f",
+                                    "attic": {
+                                        "zone1": {
+                                            "area": 289.1279,
+                                            "uvalue": 769.0881,
+                                            "outdoor_temp": {
+                                                "baseyear_n": 65.10820,
+                                                "baseyear_n_1": 378.7457,
+                                                "baseyear_n_2": 2345
+                                            },
+                                            "tempdiff": {
+                                                "baseyear_n": 261.6159,
+                                                "baseyear_n_1": 27.14273,
+                                                "baseyear_n_2": 6866
+                                            },
+                                            "heat_loss_coeff": 956.7037
+                                        },
+                                        "zone2": {
+                                            "area": 289.1279,
+                                            "uvalue": 769.0881,
+                                            "outdoor_temp": {
+                                                "baseyear_n": 65.10820,
+                                                "baseyear_n_1": 378.7457,
+                                                "baseyear_n_2": 2345
+                                            },
+                                            "tempdiff": {
+                                                "baseyear_n": 261.6159,
+                                                "baseyear_n_1": 27.14273,
+                                                "baseyear_n_2": 6866
+                                            },
+                                            "heat_loss_coeff": 956.7037
+                                        }
+                                    },
+                                    "basement_ceiling": {
+                                        "zone1": {
+                                            "area": 289.1279,
+                                            "uvalue": 769.0881,
+                                            "outdoor_temp": {
+                                                "baseyear_n": 65.10820,
+                                                "baseyear_n_1": 378.7457,
+                                                "baseyear_n_2": 2345
+                                            },
+                                            "tempdiff": {
+                                                "baseyear_n": 261.6159,
+                                                "baseyear_n_1": 27.14273,
+                                                "baseyear_n_2": 6866
+                                            },
+                                            "heat_loss_coeff": 956.7037
+                                        },
+                                        "zone2": {
+                                            "area": 289.1279,
+                                            "uvalue": 769.0881,
+                                            "outdoor_temp": {
+                                                "baseyear_n": 65.10820,
+                                                "baseyear_n_1": 378.7457,
+                                                "baseyear_n_2": 2345
+                                            },
+                                            "tempdiff": {
+                                                "baseyear_n": 261.6159,
+                                                "baseyear_n_1": 27.14273,
+                                                "baseyear_n_2": 6866
+                                            },
+                                            "heat_loss_coeff": 956.7037
+                                        }
+                                    },
+                                    "external_door": {
+                                        "num1": {
+                                            "zone1": {
+                                                "area": 289.1279,
+                                                "uvalue": 769.0881,
+                                                "outdoor_temp": {
+                                                    "baseyear_n": 65.10820,
+                                                    "baseyear_n_1": 378.7457,
+                                                    "baseyear_n_2": 2345
+                                                },
+                                                "tempdiff": {
+                                                    "baseyear_n": 261.6159,
+                                                    "baseyear_n_1": 27.14273,
+                                                    "baseyear_n_2": 6866
+                                                },
+                                                "heat_loss_coeff": 956.7037
+                                            },
+                                            "zone2": {
+                                                "area": 289.1279,
+                                                "uvalue": 769.0881,
+                                                "outdoor_temp": {
+                                                    "baseyear_n": 65.10820,
+                                                    "baseyear_n_1": 378.7457,
+                                                    "baseyear_n_2": 2345
+                                                },
+                                                "tempdiff": {
+                                                    "baseyear_n": 261.6159,
+                                                    "baseyear_n_1": 27.14273,
+                                                    "baseyear_n_2": 6866
+                                                },
+                                                "heat_loss_coeff": 956.7037
+                                            }
+                                        },
+                                        "num2": {
+                                            "zone1": {
+                                                "area": 289.1279,
+                                                "uvalue": 769.0881,
+                                                "outdoor_temp": {
+                                                    "baseyear_n": 65.10820,
+                                                    "baseyear_n_1": 378.7457,
+                                                    "baseyear_n_2": 2345
+                                                },
+                                                "tempdiff": {
+                                                    "baseyear_n": 261.6159,
+                                                    "baseyear_n_1": 27.14273,
+                                                    "baseyear_n_2": 6866
+                                                },
+                                                "heat_loss_coeff": 956.7037
+                                            },
+                                            "zone2": {
+                                                "area": 289.1279,
+                                                "uvalue": 769.0881,
+                                                "outdoor_temp": {
+                                                    "baseyear_n": 65.10820,
+                                                    "baseyear_n_1": 378.7457,
+                                                    "baseyear_n_2": 2345
+                                                },
+                                                "tempdiff": {
+                                                    "baseyear_n": 261.6159,
+                                                    "baseyear_n_1": 27.14273,
+                                                    "baseyear_n_2": 6866
+                                                },
+                                                "heat_loss_coeff": 956.7037
+                                            }
+                                        }
+                                    },
+                                    "external_wall": {
+                                        "num1": {
+                                            "zone1": {
+                                                "area": 289.1279,
+                                                "uvalue": 769.0881,
+                                                "outdoor_temp": {
+                                                    "baseyear_n": 65.10820,
+                                                    "baseyear_n_1": 378.7457,
+                                                    "baseyear_n_2": 2345
+                                                },
+                                                "tempdiff": {
+                                                    "baseyear_n": 261.6159,
+                                                    "baseyear_n_1": 27.14273,
+                                                    "baseyear_n_2": 6866
+                                                },
+                                                "heat_loss_coeff": 956.7037
+                                            },
+                                            "zone2": {
+                                                "area": 289.1279,
+                                                "uvalue": 769.0881,
+                                                "outdoor_temp": {
+                                                    "baseyear_n": 65.10820,
+                                                    "baseyear_n_1": 378.7457,
+                                                    "baseyear_n_2": 2345
+                                                },
+                                                "tempdiff": {
+                                                    "baseyear_n": 261.6159,
+                                                    "baseyear_n_1": 27.14273,
+                                                    "baseyear_n_2": 6866
+                                                },
+                                                "heat_loss_coeff": 956.7037
+                                            }
+                                        },
+                                        "num2": {
+                                            "zone1": {
+                                                "area": 289.1279,
+                                                "uvalue": 769.0881,
+                                                "outdoor_temp": {
+                                                    "baseyear_n": 65.10820,
+                                                    "baseyear_n_1": 378.7457,
+                                                    "baseyear_n_2": 2345
+                                                },
+                                                "tempdiff": {
+                                                    "baseyear_n": 261.6159,
+                                                    "baseyear_n_1": 27.14273,
+                                                    "baseyear_n_2": 6866
+                                                },
+                                                "heat_loss_coeff": 956.7037
+                                            },
+                                            "zone2": {
+                                                "area": 289.1279,
+                                                "uvalue": 769.0881,
+                                                "outdoor_temp": {
+                                                    "baseyear_n": 65.10820,
+                                                    "baseyear_n_1": 378.7457,
+                                                    "baseyear_n_2": 2345
+                                                },
+                                                "tempdiff": {
+                                                    "baseyear_n": 261.6159,
+                                                    "baseyear_n_1": 27.14273,
+                                                    "baseyear_n_2": 6866
+                                                },
+                                                "heat_loss_coeff": 956.7037
+                                            }
+                                        }
+                                    },
+                                    "window": {
+                                        "num1": {
+                                            "zone1": {
+                                                "area": 289.1279,
+                                                "uvalue": 769.0881,
+                                                "outdoor_temp": {
+                                                    "baseyear_n": 65.10820,
+                                                    "baseyear_n_1": 378.7457,
+                                                    "baseyear_n_2": 2345
+                                                },
+                                                "tempdiff": {
+                                                    "baseyear_n": 261.6159,
+                                                    "baseyear_n_1": 27.14273,
+                                                    "baseyear_n_2": 6866
+                                                },
+                                                "heat_loss_coeff": 956.7037
+                                            },
+                                            "zone2": {
+                                                "area": 289.1279,
+                                                "uvalue": 769.0881,
+                                                "outdoor_temp": {
+                                                    "baseyear_n": 65.10820,
+                                                    "baseyear_n_1": 378.7457,
+                                                    "baseyear_n_2": 2345
+                                                },
+                                                "tempdiff": {
+                                                    "baseyear_n": 261.6159,
+                                                    "baseyear_n_1": 27.14273,
+                                                    "baseyear_n_2": 6866
+                                                },
+                                                "heat_loss_coeff": 956.7037
+                                            }
+                                        },
+                                        "num2": {
+                                            "zone1": {
+                                                "area": 289.1279,
+                                                "uvalue": 769.0881,
+                                                "outdoor_temp": {
+                                                    "baseyear_n": 65.10820,
+                                                    "baseyear_n_1": 378.7457,
+                                                    "baseyear_n_2": 2345
+                                                },
+                                                "tempdiff": {
+                                                    "baseyear_n": 261.6159,
+                                                    "baseyear_n_1": 27.14273,
+                                                    "baseyear_n_2": 6866
+                                                },
+                                                "heat_loss_coeff": 956.7037
+                                            },
+                                            "zone2": {
+                                                "area": 289.1279,
+                                                "uvalue": 769.0881,
+                                                "outdoor_temp": {
+                                                    "baseyear_n": 65.10820,
+                                                    "baseyear_n_1": 378.7457,
+                                                    "baseyear_n_2": 2345
+                                                },
+                                                "tempdiff": {
+                                                    "baseyear_n": 261.6159,
+                                                    "baseyear_n_1": 27.14273,
+                                                    "baseyear_n_2": 6866
+                                                },
+                                                "heat_loss_coeff": 956.7037
+                                            }
+                                        }
+                                    },
+                                    "ground": {
+                                        "zone1": {
+                                            "area": 289.1279,
+                                            "uvalue": 769.0881,
+                                            "outdoor_temp": {
+                                                "baseyear_n": 65.10820,
+                                                "baseyear_n_1": 378.7457,
+                                                "baseyear_n_2": 2345
+                                            },
+                                            "tempdiff": {
+                                                "baseyear_n": 261.6159,
+                                                "baseyear_n_1": 27.14273,
+                                                "baseyear_n_2": 6866
+                                            },
+                                            "heat_loss_coeff": 956.7037
+                                        },
+                                        "zone2": {
+                                            "area": 289.1279,
+                                            "uvalue": 769.0881,
+                                            "outdoor_temp": {
+                                                "baseyear_n": 65.10820,
+                                                "baseyear_n_1": 378.7457,
+                                                "baseyear_n_2": 2345
+                                            },
+                                            "tempdiff": {
+                                                "baseyear_n": 261.6159,
+                                                "baseyear_n_1": 27.14273,
+                                                "baseyear_n_2": 6866
+                                            },
+                                            "heat_loss_coeff": 956.7037
+                                        }
+                                    },
+                                    "roof": {
+                                        "zone1": {
+                                            "area": 289.1279,
+                                            "uvalue": 769.0881,
+                                            "outdoor_temp": {
+                                                "baseyear_n": 65.10820,
+                                                "baseyear_n_1": 378.7457,
+                                                "baseyear_n_2": 2345
+                                            },
+                                            "tempdiff": {
+                                                "baseyear_n": 261.6159,
+                                                "baseyear_n_1": 27.14273,
+                                                "baseyear_n_2": 6866
+                                            },
+                                            "heat_loss_coeff": 956.7037
+                                        },
+                                        "zone2": {
+                                            "area": 289.1279,
+                                            "uvalue": 769.0881,
+                                            "outdoor_temp": {
+                                                "baseyear_n": 65.10820,
+                                                "baseyear_n_1": 378.7457,
+                                                "baseyear_n_2": 2345
+                                            },
+                                            "tempdiff": {
+                                                "baseyear_n": 261.6159,
+                                                "baseyear_n_1": 27.14273,
+                                                "baseyear_n_2": 6866
+                                            },
+                                            "heat_loss_coeff": 956.7037
+                                        }
+                                    },
+                                    "base_wall": {
+                                        "zone1": {
+                                            "area": 289.1279,
+                                            "uvalue": 769.0881,
+                                            "outdoor_temp": {
+                                                "baseyear_n": 65.10820,
+                                                "baseyear_n_1": 378.7457,
+                                                "baseyear_n_2": 2345
+                                            },
+                                            "tempdiff": {
+                                                "baseyear_n": 261.6159,
+                                                "baseyear_n_1": 27.14273,
+                                                "baseyear_n_2": 6866
+                                            },
+                                            "heat_loss_coeff": 956.7037
+                                        },
+                                        "zone2": {
+                                            "area": 289.1279,
+                                            "uvalue": 769.0881,
+                                            "outdoor_temp": {
+                                                "baseyear_n": 65.10820,
+                                                "baseyear_n_1": 378.7457,
+                                                "baseyear_n_2": 2345
+                                            },
+                                            "tempdiff": {
+                                                "baseyear_n": 261.6159,
+                                                "baseyear_n_1": 27.14273,
+                                                "baseyear_n_2": 6866
+                                            },
+                                            "heat_loss_coeff": 956.7037
+                                        }
+                                    },
+                                    "basement_pipes": [
+                                        {
+                                            "quality": 1,
+                                            "installed_length": 88.00,
+                                            "diameter": 25.00,
+                                            "heat_loss_unit": 0.003,
+                                            "heat_loss_year": 2.31
+                                        },
+                                        {
+                                            "quality": 1,
+                                            "installed_length": 88.00,
+                                            "diameter": 25.00,
+                                            "heat_loss_unit": 0.003,
+                                            "heat_loss_year": 2.31
+                                        },
+                                        {
+                                            "quality": 1,
+                                            "installed_length": 88.00,
+                                            "diameter": 25.00,
+                                            "heat_loss_unit": 0.003,
+                                            "heat_loss_year": 2.31
+                                        }
+                                    ],
+                                    "attic_pipes": [
+                                        {
+                                            "quality": 1,
+                                            "installed_length": 88.00,
+                                            "diameter": 25.00,
+                                            "heat_loss_unit": 0.003,
+                                            "heat_loss_year": 2.31
+                                        },
+                                        {
+                                            "quality": 1,
+                                            "installed_length": 88.00,
+                                            "diameter": 25.00,
+                                            "heat_loss_unit": 0.003,
+                                            "heat_loss_year": 2.31
+                                        },
+                                        {
+                                            "quality": 1,
+                                            "installed_length": 88.00,
+                                            "diameter": 25.00,
+                                            "heat_loss_unit": 0.003,
+                                            "heat_loss_year": 2.31
+                                        }
+                                    ],
+                                    "total_ht": 687.3493,
+                                    "total_ht_zone1": 43.434,
+                                    "total_ht_zone2": 32.3247,
+                                    "heatgains_internal": 428.0159,
+                                    "heatgains_solar": 104.7249,
+                                    "airex_windows": 622.4159,
+                                    "airex_building": 747.7910,
+                                    "airex_total": 92.90280,
+                                    "heated_volume_building": 123.321,
+                                    "total_energy_consumption": {
+                                        "baseyear_n": 147.1796,
+                                        "baseyear_n_1": 230.6866,
+                                        "baseyear_n_2": 14393
+                                    },
+                                    "total_energy_consumption_circulation": {
+                                        "baseyear_n": 422.7609,
+                                        "baseyear_n_1": 547.3801,
+                                        "baseyear_n_2": 15711
+                                    },
+                                    "circulation_losses": {
+                                        "baseyear_n": 651.7738,
+                                        "baseyear_n_1": 920.0178,
+                                        "baseyear_n_2": 25941
+                                    },
+                                    "distribution_losses_basement": 564.7780,
+                                    "distribution_losses_attic": 924.3247,
+                                    "total_measured": {
+                                        "baseyear_n": 478.5712,
+                                        "baseyear_n_1": 384.4333,
+                                        "baseyear_n_2": 8673
+                                    },
+                                    "total_calculated": {
+                                        "baseyear_n": 112.4529,
+                                        "baseyear_n_1": 172.8725,
+                                        "baseyear_n_2": 15695
+                                    },
+                                    "indoor_temp": {
+                                        "baseyear_n": 691.4322,
+                                        "baseyear_n_1": 167.7427,
+                                        "baseyear_n_2": 6557
+                                    }
+                                },
+                                "timestamp": "2018-03-26T11:48:21.062793122Z"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "flat key-valued object with updated values",
+                        "content": {
+                            "application/json": {
+                                "example": {
+                                    "_id": "fa40a860-1d3a-4ccc-b0a8-030e621bab88",
+                                    "type": "indoorclima",
+                                    "data": {
+                                        "project": "fd423879-3797-466b-9e38-7c5c7535ae8f",
+                                        "attic": {
+                                            "zone1": {
+                                                "area": 289.1279,
+                                                "uvalue": 769.0881,
+                                                "outdoor_temp": {
+                                                    "baseyear_n": 65.10820,
+                                                    "baseyear_n_1": 378.7457,
+                                                    "baseyear_n_2": 2345
+                                                },
+                                                "tempdiff": {
+                                                    "baseyear_n": 261.6159,
+                                                    "baseyear_n_1": 27.14273,
+                                                    "baseyear_n_2": 6866
+                                                },
+                                                "heat_loss_coeff": 956.7037
+                                            },
+                                            "zone2": {
+                                                "area": 289.1279,
+                                                "uvalue": 769.0881,
+                                                "outdoor_temp": {
+                                                    "baseyear_n": 65.10820,
+                                                    "baseyear_n_1": 378.7457,
+                                                    "baseyear_n_2": 2345
+                                                },
+                                                "tempdiff": {
+                                                    "baseyear_n": 261.6159,
+                                                    "baseyear_n_1": 27.14273,
+                                                    "baseyear_n_2": 6866
+                                                },
+                                                "heat_loss_coeff": 956.7037
+                                            }
+                                        },
+                                        "basement_ceiling": {
+                                            "zone1": {
+                                                "area": 289.1279,
+                                                "uvalue": 769.0881,
+                                                "outdoor_temp": {
+                                                    "baseyear_n": 65.10820,
+                                                    "baseyear_n_1": 378.7457,
+                                                    "baseyear_n_2": 2345
+                                                },
+                                                "tempdiff": {
+                                                    "baseyear_n": 261.6159,
+                                                    "baseyear_n_1": 27.14273,
+                                                    "baseyear_n_2": 6866
+                                                },
+                                                "heat_loss_coeff": 956.7037
+                                            },
+                                            "zone2": {
+                                                "area": 289.1279,
+                                                "uvalue": 769.0881,
+                                                "outdoor_temp": {
+                                                    "baseyear_n": 65.10820,
+                                                    "baseyear_n_1": 378.7457,
+                                                    "baseyear_n_2": 2345
+                                                },
+                                                "tempdiff": {
+                                                    "baseyear_n": 261.6159,
+                                                    "baseyear_n_1": 27.14273,
+                                                    "baseyear_n_2": 6866
+                                                },
+                                                "heat_loss_coeff": 956.7037
+                                            }
+                                        },
+                                        "external_door": {
+                                            "num1": {
+                                                "zone1": {
+                                                    "area": 289.1279,
+                                                    "uvalue": 769.0881,
+                                                    "outdoor_temp": {
+                                                        "baseyear_n": 65.10820,
+                                                        "baseyear_n_1": 378.7457,
+                                                        "baseyear_n_2": 2345
+                                                    },
+                                                    "tempdiff": {
+                                                        "baseyear_n": 261.6159,
+                                                        "baseyear_n_1": 27.14273,
+                                                        "baseyear_n_2": 6866
+                                                    },
+                                                    "heat_loss_coeff": 956.7037
+                                                },
+                                                "zone2": {
+                                                    "area": 289.1279,
+                                                    "uvalue": 769.0881,
+                                                    "outdoor_temp": {
+                                                        "baseyear_n": 65.10820,
+                                                        "baseyear_n_1": 378.7457,
+                                                        "baseyear_n_2": 2345
+                                                    },
+                                                    "tempdiff": {
+                                                        "baseyear_n": 261.6159,
+                                                        "baseyear_n_1": 27.14273,
+                                                        "baseyear_n_2": 6866
+                                                    },
+                                                    "heat_loss_coeff": 956.7037
+                                                }
+                                            },
+                                            "num2": {
+                                                "zone1": {
+                                                    "area": 289.1279,
+                                                    "uvalue": 769.0881,
+                                                    "outdoor_temp": {
+                                                        "baseyear_n": 65.10820,
+                                                        "baseyear_n_1": 378.7457,
+                                                        "baseyear_n_2": 2345
+                                                    },
+                                                    "tempdiff": {
+                                                        "baseyear_n": 261.6159,
+                                                        "baseyear_n_1": 27.14273,
+                                                        "baseyear_n_2": 6866
+                                                    },
+                                                    "heat_loss_coeff": 956.7037
+                                                },
+                                                "zone2": {
+                                                    "area": 289.1279,
+                                                    "uvalue": 769.0881,
+                                                    "outdoor_temp": {
+                                                        "baseyear_n": 65.10820,
+                                                        "baseyear_n_1": 378.7457,
+                                                        "baseyear_n_2": 2345
+                                                    },
+                                                    "tempdiff": {
+                                                        "baseyear_n": 261.6159,
+                                                        "baseyear_n_1": 27.14273,
+                                                        "baseyear_n_2": 6866
+                                                    },
+                                                    "heat_loss_coeff": 956.7037
+                                                }
+                                            }
+                                        },
+                                        "external_wall": {
+                                            "num1": {
+                                                "zone1": {
+                                                    "area": 289.1279,
+                                                    "uvalue": 769.0881,
+                                                    "outdoor_temp": {
+                                                        "baseyear_n": 65.10820,
+                                                        "baseyear_n_1": 378.7457,
+                                                        "baseyear_n_2": 2345
+                                                    },
+                                                    "tempdiff": {
+                                                        "baseyear_n": 261.6159,
+                                                        "baseyear_n_1": 27.14273,
+                                                        "baseyear_n_2": 6866
+                                                    },
+                                                    "heat_loss_coeff": 956.7037
+                                                },
+                                                "zone2": {
+                                                    "area": 289.1279,
+                                                    "uvalue": 769.0881,
+                                                    "outdoor_temp": {
+                                                        "baseyear_n": 65.10820,
+                                                        "baseyear_n_1": 378.7457,
+                                                        "baseyear_n_2": 2345
+                                                    },
+                                                    "tempdiff": {
+                                                        "baseyear_n": 261.6159,
+                                                        "baseyear_n_1": 27.14273,
+                                                        "baseyear_n_2": 6866
+                                                    },
+                                                    "heat_loss_coeff": 956.7037
+                                                }
+                                            },
+                                            "num2": {
+                                                "zone1": {
+                                                    "area": 289.1279,
+                                                    "uvalue": 769.0881,
+                                                    "outdoor_temp": {
+                                                        "baseyear_n": 65.10820,
+                                                        "baseyear_n_1": 378.7457,
+                                                        "baseyear_n_2": 2345
+                                                    },
+                                                    "tempdiff": {
+                                                        "baseyear_n": 261.6159,
+                                                        "baseyear_n_1": 27.14273,
+                                                        "baseyear_n_2": 6866
+                                                    },
+                                                    "heat_loss_coeff": 956.7037
+                                                },
+                                                "zone2": {
+                                                    "area": 289.1279,
+                                                    "uvalue": 769.0881,
+                                                    "outdoor_temp": {
+                                                        "baseyear_n": 65.10820,
+                                                        "baseyear_n_1": 378.7457,
+                                                        "baseyear_n_2": 2345
+                                                    },
+                                                    "tempdiff": {
+                                                        "baseyear_n": 261.6159,
+                                                        "baseyear_n_1": 27.14273,
+                                                        "baseyear_n_2": 6866
+                                                    },
+                                                    "heat_loss_coeff": 956.7037
+                                                }
+                                            }
+                                        },
+                                        "window": {
+                                            "num1": {
+                                                "zone1": {
+                                                    "area": 289.1279,
+                                                    "uvalue": 769.0881,
+                                                    "outdoor_temp": {
+                                                        "baseyear_n": 65.10820,
+                                                        "baseyear_n_1": 378.7457,
+                                                        "baseyear_n_2": 2345
+                                                    },
+                                                    "tempdiff": {
+                                                        "baseyear_n": 261.6159,
+                                                        "baseyear_n_1": 27.14273,
+                                                        "baseyear_n_2": 6866
+                                                    },
+                                                    "heat_loss_coeff": 956.7037
+                                                },
+                                                "zone2": {
+                                                    "area": 289.1279,
+                                                    "uvalue": 769.0881,
+                                                    "outdoor_temp": {
+                                                        "baseyear_n": 65.10820,
+                                                        "baseyear_n_1": 378.7457,
+                                                        "baseyear_n_2": 2345
+                                                    },
+                                                    "tempdiff": {
+                                                        "baseyear_n": 261.6159,
+                                                        "baseyear_n_1": 27.14273,
+                                                        "baseyear_n_2": 6866
+                                                    },
+                                                    "heat_loss_coeff": 956.7037
+                                                }
+                                            },
+                                            "num2": {
+                                                "zone1": {
+                                                    "area": 289.1279,
+                                                    "uvalue": 769.0881,
+                                                    "outdoor_temp": {
+                                                        "baseyear_n": 65.10820,
+                                                        "baseyear_n_1": 378.7457,
+                                                        "baseyear_n_2": 2345
+                                                    },
+                                                    "tempdiff": {
+                                                        "baseyear_n": 261.6159,
+                                                        "baseyear_n_1": 27.14273,
+                                                        "baseyear_n_2": 6866
+                                                    },
+                                                    "heat_loss_coeff": 956.7037
+                                                },
+                                                "zone2": {
+                                                    "area": 289.1279,
+                                                    "uvalue": 769.0881,
+                                                    "outdoor_temp": {
+                                                        "baseyear_n": 65.10820,
+                                                        "baseyear_n_1": 378.7457,
+                                                        "baseyear_n_2": 2345
+                                                    },
+                                                    "tempdiff": {
+                                                        "baseyear_n": 261.6159,
+                                                        "baseyear_n_1": 27.14273,
+                                                        "baseyear_n_2": 6866
+                                                    },
+                                                    "heat_loss_coeff": 956.7037
+                                                }
+                                            }
+                                        },
+                                        "ground": {
+                                            "zone1": {
+                                                "area": 289.1279,
+                                                "uvalue": 769.0881,
+                                                "outdoor_temp": {
+                                                    "baseyear_n": 65.10820,
+                                                    "baseyear_n_1": 378.7457,
+                                                    "baseyear_n_2": 2345
+                                                },
+                                                "tempdiff": {
+                                                    "baseyear_n": 261.6159,
+                                                    "baseyear_n_1": 27.14273,
+                                                    "baseyear_n_2": 6866
+                                                },
+                                                "heat_loss_coeff": 956.7037
+                                            },
+                                            "zone2": {
+                                                "area": 289.1279,
+                                                "uvalue": 769.0881,
+                                                "outdoor_temp": {
+                                                    "baseyear_n": 65.10820,
+                                                    "baseyear_n_1": 378.7457,
+                                                    "baseyear_n_2": 2345
+                                                },
+                                                "tempdiff": {
+                                                    "baseyear_n": 261.6159,
+                                                    "baseyear_n_1": 27.14273,
+                                                    "baseyear_n_2": 6866
+                                                },
+                                                "heat_loss_coeff": 956.7037
+                                            }
+                                        },
+                                        "roof": {
+                                            "zone1": {
+                                                "area": 289.1279,
+                                                "uvalue": 769.0881,
+                                                "outdoor_temp": {
+                                                    "baseyear_n": 65.10820,
+                                                    "baseyear_n_1": 378.7457,
+                                                    "baseyear_n_2": 2345
+                                                },
+                                                "tempdiff": {
+                                                    "baseyear_n": 261.6159,
+                                                    "baseyear_n_1": 27.14273,
+                                                    "baseyear_n_2": 6866
+                                                },
+                                                "heat_loss_coeff": 956.7037
+                                            },
+                                            "zone2": {
+                                                "area": 289.1279,
+                                                "uvalue": 769.0881,
+                                                "outdoor_temp": {
+                                                    "baseyear_n": 65.10820,
+                                                    "baseyear_n_1": 378.7457,
+                                                    "baseyear_n_2": 2345
+                                                },
+                                                "tempdiff": {
+                                                    "baseyear_n": 261.6159,
+                                                    "baseyear_n_1": 27.14273,
+                                                    "baseyear_n_2": 6866
+                                                },
+                                                "heat_loss_coeff": 956.7037
+                                            }
+                                        },
+                                        "base_wall": {
+                                            "zone1": {
+                                                "area": 289.1279,
+                                                "uvalue": 769.0881,
+                                                "outdoor_temp": {
+                                                    "baseyear_n": 65.10820,
+                                                    "baseyear_n_1": 378.7457,
+                                                    "baseyear_n_2": 2345
+                                                },
+                                                "tempdiff": {
+                                                    "baseyear_n": 261.6159,
+                                                    "baseyear_n_1": 27.14273,
+                                                    "baseyear_n_2": 6866
+                                                },
+                                                "heat_loss_coeff": 956.7037
+                                            },
+                                            "zone2": {
+                                                "area": 289.1279,
+                                                "uvalue": 769.0881,
+                                                "outdoor_temp": {
+                                                    "baseyear_n": 65.10820,
+                                                    "baseyear_n_1": 378.7457,
+                                                    "baseyear_n_2": 2345
+                                                },
+                                                "tempdiff": {
+                                                    "baseyear_n": 261.6159,
+                                                    "baseyear_n_1": 27.14273,
+                                                    "baseyear_n_2": 6866
+                                                },
+                                                "heat_loss_coeff": 956.7037
+                                            }
+                                        },
+                                        "basement_pipes": [
+                                            {
+                                                "quality": 1,
+                                                "installed_length": 88.00,
+                                                "diameter": 25.00,
+                                                "heat_loss_unit": 0.003,
+                                                "heat_loss_year": 2.31
+                                            },
+                                            {
+                                                "quality": 1,
+                                                "installed_length": 88.00,
+                                                "diameter": 25.00,
+                                                "heat_loss_unit": 0.003,
+                                                "heat_loss_year": 2.31
+                                            },
+                                            {
+                                                "quality": 1,
+                                                "installed_length": 88.00,
+                                                "diameter": 25.00,
+                                                "heat_loss_unit": 0.003,
+                                                "heat_loss_year": 2.31
+                                            }
+                                        ],
+                                        "attic_pipes": [
+                                            {
+                                                "quality": 1,
+                                                "installed_length": 88.00,
+                                                "diameter": 25.00,
+                                                "heat_loss_unit": 0.003,
+                                                "heat_loss_year": 2.31
+                                            },
+                                            {
+                                                "quality": 1,
+                                                "installed_length": 88.00,
+                                                "diameter": 25.00,
+                                                "heat_loss_unit": 0.003,
+                                                "heat_loss_year": 2.31
+                                            },
+                                            {
+                                                "quality": 1,
+                                                "installed_length": 88.00,
+                                                "diameter": 25.00,
+                                                "heat_loss_unit": 0.003,
+                                                "heat_loss_year": 2.31
+                                            }
+                                        ],
+                                        "total_ht": 687.3493,
+                                        "total_ht_zone1": 43.434,
+                                        "total_ht_zone2": 32.3247,
+                                        "heatgains_internal": 428.0159,
+                                        "heatgains_solar": 104.7249,
+                                        "airex_windows": 622.4159,
+                                        "airex_building": 747.7910,
+                                        "airex_total": 92.90280,
+                                        "heated_volume_building": 123.321,
+                                        "total_energy_consumption": {
+                                            "baseyear_n": 147.1796,
+                                            "baseyear_n_1": 230.6866,
+                                            "baseyear_n_2": 14393
+                                        },
+                                        "total_energy_consumption_circulation": {
+                                            "baseyear_n": 422.7609,
+                                            "baseyear_n_1": 547.3801,
+                                            "baseyear_n_2": 15711
+                                        },
+                                        "circulation_losses": {
+                                            "baseyear_n": 651.7738,
+                                            "baseyear_n_1": 920.0178,
+                                            "baseyear_n_2": 25941
+                                        },
+                                        "distribution_losses_basement": 564.7780,
+                                        "distribution_losses_attic": 924.3247,
+                                        "total_measured": {
+                                            "baseyear_n": 478.5712,
+                                            "baseyear_n_1": 384.4333,
+                                            "baseyear_n_2": 8673
+                                        },
+                                        "total_calculated": {
+                                            "baseyear_n": 112.4529,
+                                            "baseyear_n_1": 172.8725,
+                                            "baseyear_n_2": 15695
+                                        },
+                                        "indoor_temp": {
+                                            "baseyear_n": 691.4322,
+                                            "baseyear_n_1": 167.7427,
+                                            "baseyear_n_2": 6557
+                                        }
+                                    },
+                                    "timestamp": "2018-03-26T11:48:21.062793122Z"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid body."
+                    },
+                    "401": {
+                        "description": " No such project with provided id exists."
+                    },
+                    "404": {
+                        "description": " Not logged in as user with a role in given project."
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "in": "path",
+                        "description": "Project ID",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "format": "uuid"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Column": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "example": "Budget"
+                    },
+                    "kind": {
+                        "type": "integer",
+                        "enum": [
+                            "String(0)",
+                            "Name(1)",
+                            "Decimal(2)",
+                            "Money(3)",
+                            "Temperature(4)",
+                            "Count(5)",
+                            "Volume(6)",
+                            "Energy(7)",
+                            "Area(8)",
+                            "Percent(9)"
+                        ],
+                        "description": "Represents the specific kind of value that a cell holds"
+                    },
+                    "headers": {
+                        "type": "array",
+                        "description": "plain-text information to be displayed in a row below the column and above the actual data.",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "x-go-type": {
+                    "ignore": false,
+                    "id": "stageai.tech/sunshine/sunshine/contract.Column"
+                }
+            },
+            "JSONTable": {
+                "type": "object",
+                "properties": {
+                    "columns": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Column"
+                        }
+                    },
+                    "rows": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "title": {
+                        "type": "string"
+                    }
+                },
+                "x-go-type": {
+                    "ignore": false,
+                    "id": "stageai.tech/sunshine/sunshine/contract.JSONTable"
+                }
+            }
+        }
+    }
+}

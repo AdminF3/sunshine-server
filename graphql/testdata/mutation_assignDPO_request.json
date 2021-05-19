@@ -1,0 +1,1 @@
+mutation {addPortfolioRole(userID: %q, country: %q, role: DPO) {message}}

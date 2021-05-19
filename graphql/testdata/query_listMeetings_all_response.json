@@ -1,0 +1,37 @@
+{
+    "listMeetings": [
+        {
+            "name": "init meeting",
+            "host": {
+                "ID": "%s"
+            },
+            "attachments": [
+                {
+                    "name": "new-attachment"
+                }
+            ]
+        },
+        {
+            "name": "init meeting",
+            "host": {
+                "ID": "%s"
+            },
+            "attachments": [
+                {
+                    "name": "new-attachment"
+                }
+            ]
+        },
+        {
+            "name": "init meeting",
+            "host": {
+                "ID": "%s"
+            },
+            "attachments": [
+                {
+                    "name": "new-attachment"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,1125 @@
+scalar Time
+scalar JSONZone
+scalar JSONPipe
+scalar Upload
+
+"""
+GQL Directives
+This part is fairly necessary and is described in the gql documentation
+https://gqlgen.com/config/
+"""
+directive @goModel(model: String, models: [String!]) on OBJECT
+| INPUT_OBJECT
+| SCALAR
+| ENUM
+| INTERFACE
+| UNION
+
+directive @goField(forceResolver: Boolean, name: String) on INPUT_FIELD_DEFINITION
+| FIELD_DEFINITION
+
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+type Mutation {
+  "Marks notification as seen"
+  seeNotification(notificationID: ID!): Message
+
+  "Creates new meeting."
+  createMeeting(meeting: CreateMeeting!): Meeting
+
+  "Updates only passed fields of a meeting with given meeting.ID."
+  updateMeeting(meeting: UpdateMeeting!): Meeting
+
+  "Deletes a meeting."
+  deleteMeeting(id: ID!): Message
+
+  "Updates IndoorClima (IC) of project. Returns the updated IC."
+  updateIndoorClima(projectID: ID!, values: IndoorClimaInput!): IndoorClima!
+
+  "Assigns all given users as PMs in a project."
+  assignPM(projectID: ID!, pms: [ID!]!): Message
+
+  "Update contract table of a project and returns its updated state."
+  updateTable(projectID: ID!, annexN: Int, tableName: String!, table: UpdateTable): Table!
+
+  """
+  Sends a request and notification to data protection officer when a someone, requests given
+  his action(get/delete) about his or someone elses data according to GDPR laws.
+  """
+  sendGDPRRequest(request: CreateGDPRRequest! ): GDPRRequest!
+
+  "Resend activation email for user with `email`."
+  resendActivationEmail(email: String!): Message
+
+  """
+  Request permission for project creation for `assetID` by a member of
+  the guest organization `orgID`(e.g. lear of the guest organization).
+  The person who will create the project must make this request (a
+  token will be created for the person who make the request).
+  """
+  requestProjectCreation(assetID: ID!, orgID: ID!): Message
+
+  """
+   The host organization process a project creation for `assetID`
+   requested by guest organization for that `userID`. Implicitly it
+   may creates token for that purpose. If the request is denied - it
+   mutates nothing and returns appropriate message.
+   """
+  processProjectCreation(userID: ID!, assetID: ID!, approve: Boolean!): Message
+
+  "Adds user to specific organization role"
+  addOrganizationRole(org: ID!, user: ID!, role: OrganizationRole!): Message
+
+  "Removes user from specific organization role"
+  removeOrganizationRole(org: ID!, user: ID!, role: OrganizationRole!): Message
+
+  """
+  Adds user to specific project role apart from PLSign and PM.
+  They should be assinged through corresponding mutations.
+  """
+  addProjectRole(project: ID!, user: ID!, role: ProjectRole!): Message
+
+  """
+  Removes user from specific project role apart from PLSign -
+  he can only be re-assigned thus replacing current one.
+  """
+  removeProjectRole(project: ID!, user: ID!, role: ProjectRole!): Message
+
+  "Assigns given user at given portfolio role for the given country"
+  addPortfolioRole(userID: ID!, country:String!, role: PortfolioRole!): Message
+
+  "Removes given user from given portfolio role in given country"
+  removePortfolioRole(userID: ID!, country:String!, role: PortfolioRole!): Message
+
+  "Assigns given user as country admin for given country"
+  addCountryAdmin(uid: ID!, country: String!): Message
+
+  "Removes given user from given country from his country admin role"
+  removeCountryAdmin(uid: ID!, country: String!): Message
+
+  "Assigns given user as network admin manager"
+  addAdminNetworkManager(uid: ID!): Message
+
+  "Removes given user from network admin manager role"
+  removeAdminNetworkManager(uid: ID!): Message
+
+  "Validates given asset"
+  validateAsset(assetID: ID!, status: ValidationStatus!, comment: String): Message
+
+  "Validates given organization"
+  validateOrganization(orgID: ID!, status: ValidationStatus!, comment: String): Message
+
+  "Validates given user"
+  validateUser(userID: ID!, status: ValidationStatus!, comment: String): Message
+
+  """
+  Sends notification with a request to join an
+  organization to its LEAR to approve
+  """
+  requestOrganizationMembership(organizationID: ID!): Message
+
+  claimAssetResidency(assetID: ID!): Message
+
+  "Create Forfaiting Application with given values."
+  createForfaitingApplication(fa: CreateForfaitingApplication!): ForfaitingApplication
+
+  """
+  Submit review of a Forfaiting Application. Optionally, the reviewer is
+  allowed to submit a comment as well.
+  """
+  reviewForfaitingApplication(ID: ID!, review: UpdateFAReview!): Message
+
+  "Advances a project from initial milestones phase to work phase ones"
+  advanceProjectToWorkPhase(pid: ID!): WorkPhase
+
+  "Advances a project from work phase milestones to monitoring phase ones"
+  advanceProjectToMonitoringPhase(pid: ID!): MonitoringPhase
+
+ "Leaves a comment on a project, with optional topic"
+  commentProject(id: ID!, comment: String!, topic: String): Project
+
+  "Updates existing forfaiting application by ID."
+  updateForfaitingApplication(id: ID!, fa: UpdateForfaitingApplication!): ForfaitingApplication
+
+  """
+  Submit review of a Work Phase. Optionally, the reviewer is
+  allowed to submit a comment as well.
+  """
+  reviewWorkPhase(ID: ID!, review: UpdateWPReview!): Message
+
+  """
+  Submit review of a Monitoring Phase. Optionally, the reviewer is
+  allowed to submit a comment as well.
+  """
+  reviewMonitoringPhase(ID: ID!, review: UpdateMPReview!): Message
+
+  advanceToMilestone(projectID: ID!, nextMilestone: Milestone!): Message
+
+  "Called by a organization's lear to accept his successor."
+  acceptLEARApplication(userID: ID!, organizationID: ID!, comment: String!, filename: String!, approved: Boolean!): Message
+
+  "Creates new forfaiting payment for a given project from given transfer value and currency"
+  createForfaitingPayment(transferValue: Int!, currency: Currency!, pid: ID!, transferDate: Time): ForfaitingPayment
+
+  "Updates a forfaiting payment for a given project with given data"
+  updateForfaitingPayment(faid: ID!, pid: ID!, transferValue: Int, currency: Currency, transferDate: Time): ForfaitingPayment
+
+  addEUROBOR(value: Float!): Message!
+
+  "Updates a given country's VAT"
+  setVat(country: String!, vat: Int!): Country
+ }
+
+type Query {
+  "Fetches IndoorClima of a project."
+  getIndoorClima(projectID: ID!): IndoorClima
+
+  "Fetches a notification with given ID."
+  getNotification(notificationID: ID!): Notification
+
+  "Fetches all unseen notifications."
+  listNotifications(action: UserAction): [Notification!]
+
+  """
+  notificationListing implements the cursor connection spec for notifications.
+  Passing both first with after and last with before is discorouaged even
+  though the server will try to return meaningful result via intersection if
+  possible.
+  """
+  notificationListing(
+    first: Int
+    after: String
+
+    last: Int
+    before: String
+
+    targetKey: String
+    targetType: EntityType
+
+    action: [UserAction!]!
+    userID: ID
+    targetID: ID
+    seen: Boolean
+    country: String
+  ): NotificationConnection!
+
+  "Fetches a meeting."
+  getMeeting(mID: ID!): Meeting
+
+  "Fetches meetings of id: organization or project."
+  listMeetings(id: ID): [Meeting]!
+
+  "Fetches a table with given project ID, annex number and table name."
+  getTable(projectID: ID!, annexN: Int, tableName: String!): Table!
+
+  "List fetches all GDPR requests "
+  listGDPRRequests(
+    "First N elements to populate."
+    first: Int
+    "Offset says to skip that many elements."
+    offset: Int
+  ): PaginatedList!
+
+  "Fetches a single GDPR request by its ID"
+  getGDPRRequest(rID: ID!): GDPRRequest
+
+  # "TODO: add monitoring phase"
+  "List reports for all organization. If the logged user is Portfolio Director, the results are filtered by his country."
+  listOrganizationReports(
+    first: Int,
+    offset: Int,
+  ): PaginatedList!
+
+  """
+  List all assets with basic pagination.
+  """
+  listAssets(
+    "filterMine defines if response should include user assets only."
+    filterMine: Boolean
+
+    "First N elements to populate."
+    first: Int
+
+    "Offset says to skip that many elements."
+    offset: Int
+
+    "The order. By default it is descending."
+    ascending: Boolean
+  ): PaginatedList!
+
+	"""
+	List all asset reports
+	"""
+	listAssetReports(
+    "First N elements to populate."
+    first: Int
+    "Offset says to skip that many elements."
+    offset: Int
+
+    "The order. By default it is descending."
+    ascending: Boolean
+  ): PaginatedList!
+
+  """
+  List all admin users with basic pagination.
+  """
+  listAdmins(
+    "First N elements to populate."
+    first: Int
+    "Offset says to skip that many elements."
+    offset: Int
+  ): PaginatedList!
+
+  "Fetches Forfaiting Applications in given set of countries"
+  listForfaitingApplications(countries: [String!]): [ForfaitingApplication!]
+
+  "Fetches Forfaiting Application with ID."
+  getForfaitingApplication(id: ID!): ForfaitingApplication!
+
+  "Fetches Forfaiting Application by project ID."
+  getForfaitingApplicationByProject(project: ID!): ForfaitingApplication
+
+  "Retrieves a work phase by its id."
+  getWorkPhase(wpid: ID!): WorkPhase
+
+  "Retrieves a monitoring phase by its id."
+  getMonitoringPhase(mpid: ID!): MonitoringPhase
+
+  "Retrieves a forfaiting payment by its id and project id"
+  getForfaitingPayment(fpid: ID!, pid: ID!): ForfaitingPayment
+
+  "Retrieves all DPOs for a given country"
+  getDPOs(country: String):[User!]!
+
+  "Retrieves all info for a Country"
+  getCountry(country: String!): Country
+}
+
+
+input UpdateTable {
+  columns: [ColumnInput]
+  rows: [[String]!]
+}
+
+input ColumnInput{
+  name: String!
+  kind: ColumnKind!
+  headers: [String!]
+}
+
+type Table {
+  columns: [Column!]
+  rows: [[String]!]
+}
+
+type Column{
+  name: String!
+  kind: ColumnKind!
+  headers: [String!]
+}
+
+enum ColumnKind{
+  String
+  Name
+  Decimal
+  Money
+  Temperature
+  Count
+  Volume
+  Energy
+  Area
+  Percent
+}
+
+enum Milestone {
+  ZERO
+  ACQUISITION_MEETING
+  FEASIBILITY_STUDY
+  COMMITMENT_STUDY
+  PROJECT_DESIGN
+  PROJECT_PREPARATION
+  KICK_OFF_MEETING
+  WORK_PHASE
+  MONITORING_PHASE
+  COMMISSIONING
+  FORFAITING_PAYMENT
+}
+
+enum BuildingType {
+  CZECH_PROJECT
+  TYPE_103
+  TYPE_104
+  TYPE_119
+  TYPE_316
+  TYPE_318
+  TYPE_464
+  TYPE_467
+  TYPE_602
+  OTHER
+}
+
+type Attachment {
+  ID: ID!
+  name: String!
+  content_type: String!
+  created_at: Time!
+  size: Int!
+}
+
+type Meeting {
+  ID: ID!
+  name: String
+  host: Organization
+  location: String
+  date: Time
+  objective: String
+  stakeholder: LegalForm
+  stage: String
+  actions_taken: String
+  next_contact: Time
+  notes: String
+  attachments: [Attachment]
+  project: Project
+  topic: MeetingType
+  guests: [MeetingGuest]
+  internalProject: String
+}
+
+type MeetingGuest {
+  ID: ID
+  meeting_id: ID!
+  name: String!
+  type: StakeholdersType
+  email: String
+  phone: String
+	organization: String
+}
+
+input UpdateMeeting{
+  ID: ID!
+  name: String
+  host: ID
+  date: Time
+  objective: String
+  stakeholder: LegalForm
+  location: String
+  stage: String
+  actions_taken: String
+  next_contact: Time
+  notes: String
+  project: ID
+  topic: MeetingType
+  guests: [UpdateMeetingGuest]
+  internalProject: String
+}
+
+input CreateMeeting {
+  name: String!
+  host: ID!
+  date: Time!
+  objective: String
+  stakeholder: LegalForm
+  location: String!
+  stage: String
+  actions_taken: String
+  next_contact: Time
+  notes: String
+  project: ID
+  topic: MeetingType
+  guests: [CreateMeetingGuest]
+  internalProject: String
+}
+
+input UpdateMeetingGuest {
+  name: String
+  type: StakeholdersType
+  email: String
+  phone: String
+	organization: String
+}
+
+input CreateMeetingGuest {
+  name: String!
+  type: StakeholdersType
+  email: String
+  phone: String
+	organization: String
+}
+
+type Organization @goModel(model: "stageai.tech/sunshine/sunshine/models.Organization") {
+  ID: ID!
+  name: String!
+  email: String!
+  website: String!
+  country: String!
+  registrationNumber: String
+}
+
+type Message {
+  message: String!
+}
+
+type Notification {
+  ID: ID!
+  action: UserAction!
+  "ID of the user who performed the action."
+  userID: ID!
+  "Human-readable representation of a user's identity."
+  userKey: String!
+  "ID of the entity affected by the taken action."
+  targetID: ID!
+  "Human-readable representation of the target."
+  targetKey: String!
+  targetType: EntityType!
+  "Value in the target prior the taken action."
+  old: String
+  "Value in the target that has been changed by the taken action."
+  new: String
+  "Has the recipient acknowledged this notification."
+  seen: Boolean!
+  "When the action has been taken."
+  date: Time!
+  "Country of the target entity."
+  country: String!
+  comment: String
+}
+
+type GDPRRequest implements Entity{
+  ID: ID!
+  action: GDPRType!
+  requesterName:  String!
+  requesterPhone: String!
+  requesterEmail: String!
+  requesterAddress: String!
+  name: String!
+  phone: String!
+  email: String!
+  address: String!
+  reason: String!
+  information: String!
+  attachments: [Attachment]
+}
+
+input CreateGDPRRequest {
+  action: GDPRType!
+  requesterName:  String!
+  requesterPhone: String!
+  requesterEmail: String!
+  requesterAddress: String!
+  name: String!
+  phone: String!
+  email: String!
+  address: String!
+  files: [Upload!]
+  reason: String!
+  information: String!
+}
+
+enum GDPRType {
+  GET
+  DELETE
+}
+
+type IndoorClima {
+  ID: ID!
+  projectID: ID!
+
+  """
+  Zone must be valid JSON object of type:
+  {
+   'key': {// zone fields}
+   'key': {// zone fields}
+    ...
+  }
+
+  for example:
+  {
+    'attic_num1_zone1:{'area':12, 'uvalue': 10, 'tempdiff': 12, 'heat_loss_coeff': 1}
+    'attic_num1_zone2:{'area':12, 'uvalue': 10, 'tempdiff': 12, 'heat_loss_coeff': 1}
+    'roof_num1_zone1:{'area':12, 'uvalue': 10, 'tempdiff': 12, 'heat_loss_coeff': 1}
+  }
+
+  key must be in format : `<subtype>_num[1-9]_zone[1-2]`
+  zone fields:
+    - 'area', float, input;
+    - 'uvalue', float, input;
+    - 'tempdiff', Period, calculable;
+    - 'heat_loss_coef', float, calculable;
+
+  Notes:
+    - subtype is finite  list of values: (attic, basement_ceiling, ground, roof, basewall, external_door, window, external_wall);
+    - numN: N can be any real number. It does not really matter for calculation;
+    - zoneN: N must one of [1,2], because there are only two zones for each subtype_num. if one zone is missing - it will affect end result;
+    - the subtype 'window' is needed for HeatGainSolar which is needed for totalCalculated field (which is the end result).
+      Currently there is no validation if the subtype is missing;
+  """
+  zones: JSONZone
+
+  airexWindows: Period
+  airexTotal: Period
+  totalEnergyConsumption: Period
+  totalEConsumptionCircLosses: Period
+  indoorTemp: Period
+  outdoorAirTemp: Period
+
+  """
+  Both pipes are with exact same structure.
+  Expected type is list of JSON object (pipe)
+
+  for example:
+  {[
+  {'quality': 1, 'installed_length': 12, 'diameter': 12, 'heat_loss_unit': 1, 'heat_loss_year': 1},
+  {'quality': 1, 'installed_length': 12, 'diameter': 12, 'heat_loss_unit': 1, 'heat_loss_year': 1},
+  // ...
+  ]}
+
+  Every Pipe has:
+    - 'quality', int, input;
+    - 'installed_length', float, input;
+    - 'diameter', float, input;
+    - 'heat_loss_unit', float, calculable;
+    - 'heat_loss_year', float, calculable;
+
+  Quality of isolation is enum:
+    - 1 (Good)
+    - 2 (Poor)
+    - 3 (No)
+  """
+  basementPipes: JSONPipe
+  atticPipes: JSONPipe
+
+  totalHT: Float
+  heatGainsInternal: Float
+  heatGainsSolar: Float
+  airexBuilding: Period
+  heatedVolumeBuilding: Float
+  circulationLosses: Period
+  distributionLossesBasement: Float
+  distributionLossesAttic: Float
+  totalMeasured: Period
+  totalCalculated: Period
+}
+
+type OrganizationProjectsReport {
+  "Total count of all projects of that organization."
+  totalCount: Int
+  "Still ongoing projects."
+  ongoingCount: Int
+  "On monitoring phase projects."
+  monitoringPhaseCount: Int
+  "Total projects approved for forfaiting."
+  approvedForfaitingCount: Int
+}
+
+type OrganizationReport implements Entity{
+  "ID of the organization."
+  ID: ID!
+  "Name of the organization."
+  name: String!
+  "VAT of the organization."
+	vat: String!
+  "Address of the organization."
+	address: String!
+  "Telephone of the organization."
+	telephone: String
+  "Website of the organization."
+	website: String
+  "Legal form of the organization."
+	legalForm: LegalForm
+  "Registration date of the organization."
+	registered: Time!
+  "Valid status of the organization."
+	valid: ValidationStatus!
+  "Email of the organization."
+	email: String!
+  "Country of the organization."
+  country: String!
+  "Report of all projects the organization owns and also owns its assets."
+  ownProjects: OrganizationProjectsReport!
+
+  """
+  Report of all projects the organization participate in (excluding
+  the ones it owns). It may own the asset but not the projects or
+  vice versa.
+  """
+  relatedProjects: OrganizationProjectsReport!
+
+  "Total users that have a role assigned to the organization."
+  usersCount: Int
+
+  learEmail: String
+  learName: String
+
+  registrationNumber: String
+}
+
+type Asset implements Entity {
+  ID: ID!
+
+  address: String
+  cadastre: String!
+  ownerID: ID!
+  ownerName: String
+  escoID: ID!
+  coords: String!
+  area: Int!
+  heatedArea: Int!
+  billingArea: Int!
+  commonPartsArea: Int!
+  flats: Int!
+  floors: Int!
+  stairCases: Int!
+  buildingType: BuildingType!
+  heatingType: HeatingType!
+  status: ValidationStatus!
+  country: String!
+  category: String!
+  createdAt: Time!
+
+  residentsCount: Int!
+  projects: [Project]
+}
+
+type AssetSnapshot {
+  ownerID: ID!
+  escoID: ID!
+  area: Int!
+  heatedArea: Int!
+  billingArea: Int!
+  flats: Int!
+  floors: Int!
+  stairCases: Int!
+  buildingType: BuildingType!
+  heatingType: HeatingType!
+  cadastre: String!
+}
+
+
+type Project {
+  ID: ID!
+  name: String!
+  ownerID: ID!
+  assetID: ID!
+  consortiumOrgs: [ID!]
+  status: ProjectStatus!
+  airTemperature: Float!
+  flatAirTemperature: Float!
+  waterTemperature: Float!
+  guaranteedSavings: Float!
+  constructionFrom: Time!
+  constructionTo: Time!
+  contractTerm: Int!
+  firstYear: Int!
+  country: String!
+  portfolioDirectorID: ID!
+  fundManagerID: ID
+  milestone: Milestone!
+  createdAt: Time!
+  comments: [ProjectComment]
+  commissioningDate: Time!
+
+  assetSnapshot: AssetSnapshot!
+  isFAApproved: Boolean
+  monitoringPhase: MonitoringPhase
+  workPhase: WorkPhase
+}
+
+type ProjectComment{
+  author: User!
+  content: String!
+  createdAt: Time!
+  topic: String
+}
+
+type Period {
+  n: Float
+  n1: Float
+  n2: Float
+}
+
+type PageInfo {
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String!
+  endCursor: String!
+}
+
+type NotificationConnection {
+  edges: [NotificationEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type NotificationEdge {
+  node: Notification!
+  cursor: String!
+}
+
+type ForfaitingApplication {
+  ID: ID!
+
+  project: Project!
+  reviews: [FAReview!]
+  bankAccount: BankAccount!
+  privateBond: Boolean!
+  finance: Finance!
+  manager: User!
+  financialStatements: [Attachment]!
+  bankConfirmation: [Attachment]!
+
+  created_at: Time!
+  updated_at: Time!
+}
+
+input UpdateForfaitingApplication {
+  bankAccount: UpdateBankAccount
+  privateBond: Boolean
+  finance: Finance
+  manager: ID
+}
+
+input UpdateBankAccount {
+  beneficiaryName: String
+  bankNameAddress: String
+  IBAN: String
+}
+
+input CreateForfaitingApplication {
+  forfaitingManager: ID!
+  finance: Finance!
+  privateBond: Boolean!
+  bankAccount: CreateBankAccount!
+  projectID: ID!
+}
+
+input UpdateFAReview {
+  ID: ID!
+  approved: Boolean!
+  comment: String
+  type: FAReviewType!
+}
+
+type FAReview {
+  ID: ID!
+  author: User!
+  approved: Boolean!
+  comment: String
+  type: FAReviewType!
+  created_at: Time!
+}
+
+type WorkPhase{
+  ID: ID!
+  project: ID!
+  reviews: [WPReview!]
+  createdAt: Time!
+  updatedAt: Time!
+}
+
+input UpdateWPReview {
+  ID: ID!
+  approved: Boolean!
+  comment: String
+  type: WPReviewType!
+}
+
+type WPReview {
+  ID: ID!
+  author: User!
+  approved: Boolean!
+  comment: String
+  type: WPReviewType!
+  created_at: Time!
+}
+
+type MonitoringPhase{
+  ID: ID!
+  project: ID!
+  reviews: [MPReview!]
+  createdAt: Time!
+  updatedAt: Time!
+}
+
+input UpdateMPReview {
+  ID: ID!
+  approved: Boolean!
+  comment: String
+  type: MPReviewType!
+}
+
+type MPReview {
+  ID: ID!
+  author: User!
+  approved: Boolean!
+  comment: String
+  type: MPReviewType!
+  created_at: Time!
+}
+
+type User implements Entity {
+  ID: ID!
+
+  name: String
+  email: String
+  address: String
+  avatar: String
+  identity: String
+  telephone: String
+  superUser: Boolean
+  platformManager: Boolean
+  adminNwManager: Boolean
+  country: String
+  isActive: Boolean
+
+  status: ValidationStatus
+  countryRoles: [CountryRole!]
+}
+
+type CountryRole {
+  ID: ID!
+  country: String!
+  user: ID!
+  role: PortfolioRole!
+}
+
+
+enum Quality {
+  GOOD
+  POOR
+  NO
+}
+
+enum LegalForm {
+  FINANCIAL_INSTITUTION
+  SERVICE_COMPANY
+  PUBLIC_ORGANIZATION
+  RESIDENTS_COMMUNITY
+  NGO
+  NATURAL_PERSON
+  SUPPLIER
+  HOUSING_ASSOCIATION
+}
+
+enum StakeholdersType {
+	FINANCIAL_INSTITUTION
+	SERVICE_COMPANY
+	CENTRAL_GOVERNMENT
+	MUNICIPALITY
+	AGENCY
+	MINISTRY
+	RESIDENT
+	NATURAL_PERSON
+	NGO
+	SUPPLIER
+	HOUSING_ASSOCIATION
+	OTHER
+}
+
+enum EntityType {
+  USER
+  ORGANIZATION
+  ASSET
+  PROJECT
+  INDOOR_CLIMA
+  MEETING
+}
+
+enum UserAction {
+  CREATE
+  UPDATE
+  UPLOAD
+  ASSIGN
+  GDPR
+  REQUEST_MEMBERSHIP
+  LEAR_APPLY
+  REQUEST_PROJECT_CREATION
+  CLAIM_RESIDENCY
+  ACCEPT_LEAR_APPLICATION
+  REMOVE
+  REJECT
+  FORFAITING_APPLICATION
+  REJECT_LEAR_APPLICATION
+  APPROVE_FORFAITING_APPLICATION
+  APPROVE_FORFAITING_PAYMENT
+}
+
+enum OrganizationRole {
+  LEAR
+  LSIGNS
+  LEAAS
+  MEMBERS
+}
+
+enum ProjectRole {
+  PM
+  PLSIGN
+  PACO
+  TAMA
+  TEME
+}
+
+enum PortfolioRole {
+  PD
+  DPO
+  CA
+  FM
+  INVESTOR
+}
+
+enum ValidationStatus {
+  REGISTERED
+  VALID
+  DECLINED
+  PENDING
+}
+
+enum MeetingType {
+	INTERNAL_MEETING
+  CONFERENCE
+  WORKSHOP
+  EVENT
+  TRAINING
+  EU_PROJECT_ACTIVITY
+  EU_PROJECT_MEETING
+
+  ACQUISITION
+  ACQUISITION_COMMITMENT
+  ACQUISITION_KICK_OFF
+  WORKS_KICK_OFF
+  WORKS_INITIAL_INFORMATION
+  WORKS_WEEKLY_REPORT
+  WORKS_RENOVATION_INFORMATIVE
+  WORKS_COMMUNICATION
+  WORKS_CONSTRUCTION_MANAGERS_FINAL
+  WORKS_FINAL_INFORMATION
+
+	OTHER
+}
+
+enum HeatingType {
+  DISTRICT
+  BUILDING
+}
+
+enum ProjectStatus {
+  PLANNING
+  IN_PROGRESS
+  FINISHED
+  ABANDONED
+}
+
+enum Finance {
+  EQUITY
+  BANK_FUNDING
+  OTHER
+}
+
+type BankAccount {
+  ID: ID!
+
+  beneficiaryName: String
+  bankNameAddress: String
+  IBAN: String
+	SWIFT: String
+}
+
+input CreateBankAccount {
+  beneficiaryName: String!
+  bankNameAddress: String
+  IBAN: String
+	SWIFT: String
+}
+
+enum FAReviewType {
+  FINANCIAL
+  TECHNICAL
+  GUIDELINES
+  EXECUTIVE
+}
+
+enum WPReviewType {
+  FINANCIAL
+  TECHNICAL
+  BANK_ACCOUNT
+  EXECUTIVE
+  MAINTENANCE
+}
+
+enum MPReviewType {
+  FORFAITING
+}
+
+input IndoorClimaInput {
+  zones: JSONZone
+
+  basementPipes: JSONPipe
+  atticPipes: JSONPipe
+
+  heatedVolumeBuilding: Float
+  airexWindows: PeriodInput
+  outdoorAirTemp: PeriodInput
+}
+
+input PeriodInput {
+  n: Float
+  n1: Float
+  n2: Float
+}
+
+interface Entity {
+  ID: ID!
+}
+
+type PaginatedList {
+  totalCount: Int!
+  entities: [Entity!]!
+}
+
+enum Currency {
+  EUR
+  ALL
+  AMD
+  BYN
+  BAM
+  BGN
+  HRK
+  CZK
+  DKK
+  GEL
+  HUF
+  ISK
+  CHF
+  MDL
+  MKD
+  NOK
+  PLN
+  RON
+  RUB
+  RSD
+  SEK
+  TRY
+  UAH
+  GBP
+}
+
+type ForfaitingPayment {
+  ID: ID!
+
+  transferValue: Int!
+  currency: Currency!
+  project: Project!
+  transferDate: Time
+
+  created_at: Time!
+  updated_at: Time!
+}
+
+type Country {
+  ID: ID!
+
+  vat: Int!
+  country: String!
+}

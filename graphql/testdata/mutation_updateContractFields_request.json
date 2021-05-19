@@ -1,0 +1,8 @@
+mutation
+{updateContractFields(projectID: "%s", fields: {
+    dateOfMeeting: "%s"
+    }) { 
+        addressOfBuilding
+        dateOfMeeting
+    }
+}

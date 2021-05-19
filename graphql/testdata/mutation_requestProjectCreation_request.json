@@ -1,0 +1,3 @@
+mutation {
+    requestProjectCreation(assetID: %q, orgID: %q) {message}
+}

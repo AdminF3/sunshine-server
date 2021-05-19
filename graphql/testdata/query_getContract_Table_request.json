@@ -1,0 +1,8 @@
+{getTable(projectID: "%s",tableName: "baseyear_n_1") {
+    columns{
+        name
+        kind
+        headers
+        }
+    }
+}

@@ -1,0 +1,535 @@
+{
+    "tags": [
+        {
+            "name": "Projects",
+            "description": "Endpoints for manipulating projects and relative data."
+        }
+    ],
+    "info": {
+        "version": "1.0.0",
+        "title": "Sunshine Projects API"
+    },
+    "openapi": "3.0.0",
+    "paths": {
+        "/project": {
+            "get": {
+                "tags": [
+                    "Projects"
+                ],
+                "summary": "List all existing Projects",
+                "description": "Returns list of projects. By default at most 25 results are being served in reversed chronological order. Query values can be used in order to get next pages",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 25
+                        },
+                        "description": "Number of records to be listed in total"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 0
+                        },
+                        "description": "From which record to start listing starting from 0"
+                    },
+                    {
+                        "in": "query",
+                        "name": "asc",
+                        "schema": {
+                            "type": "string",
+                            "default": false,
+                            "enum": [
+                                true,
+                                false
+                            ]
+                        },
+                        "description": "Boolean value for listing records in ascending chronological order"
+                    },
+                    {
+                        "in": "query",
+                        "name": "search",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "String parameter for name. Expects one or more words divided with spaces"
+                    },
+                    {
+                        "in": "query",
+                        "name": "country",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "name": "status",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "enum": [
+                                "Planning(1)",
+                                "InProgress(2)",
+                                "Finished(3)",
+                                "Abandoned(4)"
+                            ]
+                        },
+                        "description": "Project status"
+                    },
+                    {
+                        "in": "query",
+                        "name": "owner",
+                        "schema": {
+                            "type": "object",
+                            "format": "uuid"
+                        },
+                        "description": "Owner ID"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Projects"
+                                }
+                            }
+                        },
+                        "headers": {
+                            "X-Document-Count": {
+                                "schema": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                },
+                                "description": "Numbers of all documents exists in the DB after filter"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Projects"
+                ],
+                "summary": "Create new project",
+                "description": "Creates new project according the passed values",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Project"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Project"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request or project already exists"
+                    }
+                }
+            }
+        },
+        "/project/{uuid}": {
+            "get": {
+                "tags": [
+                    "Projects"
+                ],
+                "summary": "Get existing project",
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProjectResp"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No such project with provided id exists"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "in": "path",
+                        "description": "Project ID",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "format": "uuid"
+                        }
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Projects"
+                ],
+                "summary": "Update existing project",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Project"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProjectResp"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request."
+                    },
+                    "404": {
+                        "description": "No such project with provided id exists."
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "in": "path",
+                        "description": "Project ID",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "format": "uuid"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "ProjectResp": {
+                "type": "object",
+                "properties": {
+                    "_id": {
+                        "type": "string",
+                        "example": "0f465c3f-1263-47c2-a497-48978c154e0f",
+                        "description": "The ID of the project"
+                    },
+                    "type": {
+                        "type": "string",
+                        "example": "asset",
+                        "description": "The type of the entity"
+                    },
+                    "data": {
+                        "type": "object",
+                        "$ref": "#/components/schemas/Project"
+                    },
+                    "timestamp": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Last updated at",
+                        "example": "2019-03-11T12:59:05.259Z"
+                    }
+                },
+                "x-go-type": {
+                    "id": "ProjectResp",
+                    "ignore": true
+                }
+            },
+            "Projects": {
+                "type": "object",
+                "properties": {
+                    "documents": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Project"
+                        }
+                    }
+                },
+                "x-go-type": {
+                    "id": "Projects",
+                    "ignore": true
+                }
+            },
+            "ProjRoles": {
+                "type": "object",
+                "properties": {
+                    "paco": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "example": "0f465c3f-1263-47c2-a497-48978c154e0f",
+                            "description": "Participant Contract"
+                        }
+                    },
+                    "pm": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "example": "0f465c3f-1263-47c2-a497-48978c154e0f",
+                            "description": "Project manager"
+                        }
+                    },
+                    "plsign": {
+                        "type": "array",
+                        "items": {
+                            "example": "0f465c3f-1263-47c2-a497-48978c154e0f",
+                            "description": "Project Legal Signatories"
+                        }
+                    },
+                    "tama": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "example": "0f465c3f-1263-47c2-a497-48978c154e0f",
+                            "description": "Task Manager"
+                        }
+                    },
+                    "teme": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "example": "0f465c3f-1263-47c2-a497-48978c154e0f",
+                            "description": "Team Manager"
+                        }
+                    }
+                },
+                "x-go-type": {
+                    "id": "stageai.tech/sunshine/sunshine/models.ProjRoles",
+                    "ignore": false
+                }
+            },
+            "Project": {
+                "type": "object",
+                "properties": {
+                    "country": {
+                        "type": "string",
+                        "example": "Bulgaria",
+                        "description": "The country where this project is running"
+                    },
+                    "name": {
+                        "type": "string",
+                        "example": "GoGo Project",
+                        "description": "The name of the project"
+                    },
+                    "owner": {
+                        "type": "string",
+                        "example": "0f465c3f-1263-47c2-a497-48978c154e0f",
+                        "description": "Id of the organization of the project as uuid v4"
+                    },
+                    "consortium_organizations": {
+                        "items": {
+                            "example": "0f465c3f-1263-47c2-a497-48978c154e0f",
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "asset": {
+                        "type": "string",
+                        "example": "0f465c3f-1263-47c2-a497-48978c154e0f",
+                        "description": "Id of the asset of the project as uuid v4"
+                    },
+                    "roles": {
+                        "type": "ProjRoles",
+                        "$ref": "#/components/schemas/ProjRoles"
+                    },
+                    "status": {
+                        "type": "integer",
+                        "example": 1,
+                        "description": "Status of the project",
+                        "format": "int32",
+                        "enum": [
+                            "Planning(1)",
+                            "InProgress(2)",
+                            "Finished(3)",
+                            "Abandoned(4)"
+                        ]
+                    },
+                    "milestone": {
+                        "type": "string",
+                        "example": "acquisition_meeting",
+                        "description": "Current milestone of the project",
+                        "enum": [
+                            "Zero (zero)",
+                            "AcquisitionMeeting (acquisition_meeting)",
+                            "FeasibilityStudy (feasibility_study)",
+                            "CommitmentStudy (commitment_study)",
+                            "ProjectDesign (project_design)",
+                            "ProjectPreparation (project_preparation)",
+                            "KickOffMeeting (kick_off_meeting)",
+                            "Commissioning (commissioning)"
+                       ]
+                    },
+                    "airtemp": {
+                        "type": "number",
+                        "example": 23.214,
+                        "format": "float"
+                    },
+                    "flat_airtemp": {
+                        "type": "number",
+                        "example": 23.214,
+                        "format": "float"
+                    },
+                    "watertemp": {
+                        "type": "number",
+                        "example": 17.5,
+                        "format": "float"
+                    },
+                    "savings": {
+                        "type": "number",
+                        "format": "float",
+                        "example": 1234.5
+                    },
+                    "portfolio_director": {
+                        "type": "string",
+                        "example": "a265a9ee-1a5d-4e8e-b492-5e96b1154237",
+                        "description": "The ID of the portfolio director"
+                    },
+                    "fund_manager": {
+                        "type": "string",
+                        "example": "a265a9ee-1a5d-4e8e-b492-5e96b1154237",
+                        "description": "The ID of the Fund manager"
+                    },
+                    "construction_from": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2019-03-11T12:59:05.259Z"
+                    },
+                    "construction_to": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2019-03-11T12:59:05.259Z"
+                    },
+                    "contract_term": {
+                        "type": "integer",
+                        "format": "int32",
+                        "example": 5
+                    },
+                    "first_year": {
+                        "type": "integer",
+                        "format": "int32",
+                        "example": 2
+                    },
+                    "asset_snapshot": {
+                        "type": "object",
+                        "properties": {
+                            "owner": {
+                                "type": "string",
+                                "example": "0f465c3f-1263-47c2-a497-48978c154e0f",
+                                "format": "uuid",
+                                "description": "The owner of the asset - uuid of an organization"
+                            },
+                            "esco": {
+                                "type": "string",
+                                "example": "0f465c3f-1263-47c2-a497-48978c154e0f",
+                                "format": "uuid",
+                                "description": "The uuid of an ESCO organization which got this asset registered"
+                            },
+                            "area": {
+                                "type": "integer",
+                                "format": "int32",
+                                "example": 9000
+                            },
+                            "heated_area": {
+                                "type": "integer",
+                                "format": "int32",
+                                "example": 9000
+                            },
+                            "billing_area": {
+                                "type": "integer",
+                                "format": "int32",
+                                "example": 9000
+                            },
+                            "flats": {
+                                "type": "integer",
+                                "format": "int32",
+                                "example": 10
+                            },
+                            "floors": {
+                                "type": "integer",
+                                "format": "int32",
+                                "example": 4
+                            },
+                            "stair_cases": {
+                                "type": "integer",
+                                "format": "int32",
+                                "example": 6
+                            },
+                            "building_type": {
+                                "type": "integer",
+                                "example": 1,
+                                "description": "Building type of the asset",
+                                "format": "int32",
+                                "enum": [
+                                    "CzechProject(1)",
+                                    "Type103(2)",
+                                    "Type104(3)",
+                                    "Type119(4)",
+                                    "Type316(5)",
+                                    "Type318(6)",
+                                    "Type464(7)",
+                                    "Type467(8)",
+                                    "Type602(9)",
+                                    "Other(10)"
+                                ]
+                            },
+                            "heating_type": {
+                                "type": "integer",
+                                "example": 1,
+                                "format": "int32",
+                                "enum": [
+                                    "District Heating(1)",
+                                    "Building Heating(2)"
+                                ]
+                            },
+                            "cadastre": {
+                                "type": "string"
+                            }
+                        },
+                        "x-go-type": {
+                            "ignore": false,
+                            "id": "stageai.tech/sunshine/sunshine/models.AssetSnapshot"
+                        }
+                    }
+                },
+                "x-go-type": {
+                    "id": "stageai.tech/sunshine/sunshine/models.Project",
+                    "ignore": false
+                },
+                "required": [
+                    "name",
+                    "organization",
+                    "status",
+                    "airtemp",
+                    "watertemp",
+                    "country",
+                    "portfolio_director"
+                ]
+            }
+        }
+    }
+}

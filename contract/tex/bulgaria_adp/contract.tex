@@ -1,0 +1,243 @@
+{{template "preamble.tex"}} % chktex 18
+\begin{document}
+
+\begin{center}
+	\begin{tabu}{|X[2]|X|}\tabucline{}
+		Contract number: {{.Contract.ID}} & Date: {{index .Contract.Fields "date"}} \\\tabucline{} %chktex 26
+	\end{tabu}
+\end{center}
+
+\section{ДОГОВОР С ГАРАНТИРАН РЕЗУЛТАТ}
+
+\textbf{Клиент}:
+
+\begin{center}
+	\begin{tabu}{|X|X[2]|}\tabucline{}
+		Име & {{.Contract.Fields.client_name}} \iffalse input fields.client_name value="{{.Contract.Fields.client_name}}" \fi \\\tabucline{}
+		ЕИК / ЕГН & {{.Contract.Fields.client_id}} \iffalse input fields.client_id value="{{.Contract.Fields.client_id}}" \fi \\\tabucline{}
+		Адрес & {{.Contract.Fields.client_address}} \iffalse input fields.client_address value="{{.Contract.Fields.client_address}}" \fi \\\tabucline{}
+	\end{tabu}
+\end{center}
+
+\textbf{Изпълнител}:
+
+\begin{center}
+	\begin{tabu}{|X|X[2]|}\tabucline{}
+		Име & {{.ESCo.Name}} \\\tabucline{}
+		ЕИК & {{.ESCo.VAT}} \\\tabucline{}
+		Адрес & {{.LEAR.Name}} \\\tabucline{}
+    Упълномощено лице & {{index .Contract.Fields "legal-representative"}} \\\tabucline{}
+	\end{tabu}
+\end{center}
+
+Сключиха настоящия договор с гарантиран резултат.
+
+\section{SPECIAL CONDITIONS}
+\subsection{SUBJECT}
+\begin{enumerate}
+\item The Client shall assign, and the Contractor shall accept to
+  implement for the multifamily residential building, located at the
+  address: {{.Asset.Address}}, cadastre identifier:
+  {{.Asset.Cadastre}} the following activities:
+  \begin{enumerate}[label=\arabic*.]
+  \item Implementation (design and implementation of construction and
+    installation works) of energy-saving measures in compliance with
+    the report on implemented energy efficiency audit, Annex 1 {–}
+    Report and Summary on Building EE Audit (see Annex 1) to this
+    contract within scope, under Annex 2 {–} Scope of the measures and
+    BOQ (see art. (1) and (2) ) to this contract;
+  \item Servicing and maintenance of the implemented energy-saving
+    measures for the entire period of the contract and monitoring of
+    the energy-saving, for the purpose of accounting the
+    energy-savings and achievement of the guaranteed result.
+  \end{enumerate}
+\item The Contractor is obliged to implement all ESM, in consequence
+  of which, the Building shall have a specific energy consumption,
+  which shall cover the requirements for energy consumption class
+  “[●]”.
+\item The energy-savings and achievement of the guaranteed result
+  shall be accounted, according to the Method of guaranteed result
+  evaluation, Annex 4 {–} Method of guaranteed result evaluation (see
+  Annex 4). The Method is developed by the Contractor.
+\item The detailed scope of the repair works and related to them
+  measures are described in Annex 2 {–} Scope of the measures and BOQ
+  (see art. (1) and (2) ) to the contract.
+\end{enumerate}
+
+\subsection{GUARANTEED RESULT}
+\begin{enumerate}
+\item The Parties on the contract shall negotiate the following
+  numeric values of BAEC, GAEC and their respective GAES and the
+  ecological equivalent of the saved energy:
+  \begin{enumerate}
+  \item BAEC: [●] kWh/m2, including: (а) thermal energy {-} [●] kWh/year
+    and (b) electric energy {-} [●] kWh/year
+  \item GAEC: [●] kWh/m2 and [●] kWh/year, including thermal energy -
+    [●] kWh/year, electric energy {-} [●] kWh/year,
+  \item GAES: [●] kWh/year, including thermal energy {-} [●] kWh/year,
+    electric energy {-} [●] kWh/year,
+  \item The ecological equivalent of GAES of the Building: [●] tons of
+    carbon dioxide/year.
+  \item Price of thermal energy by the date of signing the contract
+    [●].
+  \item Price of electric energy by the date of signing the contract
+    [●]. When accounting the VAGES and VAAEC for the entire period of
+    the contract, shall be applied to the prices of the energy
+    resources under art. (5) and (6) (see Annex 4).
+  \end{enumerate}
+
+\item The numeric values of the energy consumption, mentioned in
+  art. 186, are determined pursuant to the report on implemented
+  energy audit, and the information provided by the Client, as well as
+  in conformity with the condition of the Building construction
+  outdoor elements, features of the building installation, operation,
+  number of occupants and installed energy consumers and the data
+  collected by the Contractor during the Building audit, in
+  environmental factors specific for Climatic zone No. [●], according
+  to Regulation No. E{-}RD{-}04{-}2/22.01.2016 on the energy consumption
+  indicators and the energy features of the Buildings.
+\item The Contractor, for the monitoring period, shall guarantee the
+  comfort standards, described in Annex 3 – Comfort Standards (see
+  Annex 3).
+\item The Contractor, for the monitoring period, shall implement
+  servicing and maintenance of the measures in compliance with the
+  provisions, described in detail in Annex 5 {-} Operation and
+  Maintenance Manual (see Annex 5).
+\end{enumerate}
+
+\subsection{СРОК НА ДОГОВОРА}
+\begin{enumerate}
+\item This contract enters in force from the date it is being signed
+  by the Parties. The term for implementation of the Contract is [●]
+  years /months/ and includes the time for execution of Stage 1 and
+  Stage 2 below.
+\item Stage 1 shall start from the signing of this contract and
+  include the time necessary for the design of the measures and the
+  construction period and finishes upon commissioning of the measures.
+  \begin{enumerate}
+  \item The construction period is [●] months.
+  \item The term for implementation of Stage 1 is [●] months.
+  \end{enumerate}
+\item Stage 2 starts from the date of commissioning and includes the
+  monitoring period. The monitoring period is [●]
+\end{enumerate}
+
+\subsection{PRICE}
+\begin{enumerate}
+\item The Client shall pay to the Contractor a price for the
+  implementation of ESM, a fee for servicing and maintenance, and a
+  price for monitoring for the entire period of the Contract, as
+  follows:
+  \begin{enumerate}
+  \item Price for implementation of ESM {-} [●] BGN, VAT excluded, and
+    [●] BGN, VAT included. On the price for the performance of ESM
+    shall be calculated interest in line with Annex 7 {-} Amortisation
+    plan and rules of determination of the sums due by every owner of
+    individual apartment (see 1.1 and 1.2)
+  \item Price for servicing and maintenance {-} [●] BGN, VAT excluded,
+    and [●] BGN, VAT included, due every month for every month, as
+    from commissioning until the expiry of the contract term.
+  \item Price for monitoring {-} [●] BGN, VAT excluded, and [●] BGN,
+    VAT included, due monthly for every month, as from commissioning
+    until the expiry of the contract term.
+  \item The prices under subart. (ii) and (iii) are subject of
+    annual indexation under Annex 8 {-} Rules of indexation of the
+    price for servicing and maintenance, and the price for monitoring
+    (see art. (4) and (5) ).
+  \end{enumerate}
+\item The sums under art. 1 subart. (ii) and (iii) shall be
+  paid within {{.Contract.Fields.invoiced_days}} days after issuing of the respective invoices.
+\item The specific distribution of the obligations of the individual
+  owners in the Building and its mode of calculation set out in Annex
+  7 {-} Amortisation plan and rules of determination of the sums due
+  by every owner of individual apartment (see art.(1) ).
+\end{enumerate}
+
+\begin{center}
+  \begin{tabu}{|X|X|X|X|}\tabucline{}\rowfont[c]\bfseries
+    {{with .Contract.Tables.summary}} % chktex 26
+    {{.Columns | column}} \\\tabucline{} {{range .Rows}} % chktex 26
+    {{.|row}} \\\tabucline{} {{end}} \bfseries {{total .}}
+    \\\tabucline{} % chktex 26
+    {{end}}
+  \end{tabu}
+\end{center}
+
+\subsection{OTHER PROVISIONS}
+\begin{enumerate}
+\item This contract shall include the General terms and conditions {-}
+  Annex 11 {-} General terms and conditions (see 1.1)., the specific
+  terms and the Annexes to the specific terms.
+\item The Client grants its explicit consent to the Contractor to
+  transfer and/or assign for collection to a third person all
+  receivables, arising from this contract, or a part of them.
+\item An integral part of this contract are the following Annexes,
+  signed by the Client, by affixing his signature below, the Client
+  shall declare that he has also received a copy of the Annexes,
+  including the general terms and conditions:
+  \begin{enumerate}
+  \item Annex 1 {-} Report and Summary on Building EE Audit;
+  \item Annex 2 {-} Scope of the measures and BOQ;
+  \item Annex 3 {-} Comfort Standards;
+  \item Annex 4 {-} Method of guaranteed result evaluation;
+  \item Annex 5 {-} Operation and Maintenance Manual;
+  \item Annex 6 {-} Rules of determination of the balance payment
+    after measuring and evaluation of the result;
+  \item Annex 7 {-} Amortisation plan and rules of determination of
+    the sums due by every owner of individual apartment;
+  \item Annex 8 {-} Rules of indexation of the price for servicing and
+    maintenance, and the price for monitoring;
+  \item Annex 9 {-} Determination of the contact persons under this
+    contract;
+  \item Annex 10 {-} Minutes of Condominium General Meetings regarding
+    decisions on conclusion and implementation of this contract, as
+    well as all other minutes of decisions under this contract,
+    including such held after its signing;
+  \item Annex 11 {-} General terms and conditions.
+  \end{enumerate}
+\end{enumerate}
+
+\vspace{2cm}
+{{template "sign.tex"}} % chktex 18
+
+{{template "annex1.tex" .}} % chktex 18
+{{template "sign.tex"}} % chktex 18
+
+%% TODO Fix when template is provided
+%%template "annex2.tex" .}} % chktex 18 chktex 26
+{{template "sign.tex"}} % chktex 18
+
+{{template "annex3.tex" .}} % chktex 18 chktex 26
+{{template "sign.tex"}} % chktex 18
+
+{{template "annex4.tex" .}} % chktex 18 chktex 26
+{{template "sign.tex"}} % chktex 18
+
+{{template "annex5.tex" .Contract.Tables}} % chktex 18 chktex 26
+{{template "sign.tex"}} % chktex 18
+
+{{template "annex6.tex" .}} % chktex 18 chktex 26
+{{template "sign.tex"}} % chktex 18
+
+{{template "annex7.tex" .}} % chktex 18 chktex 26
+{{template "sign.tex"}} % chktex 18
+
+{{template "annex8.tex" .}} % chktex 18 chktex 26
+{{template "sign.tex"}} % chktex 18
+
+{{template "annex9.tex" .Contract.Fields}} % chktex 18 chktex 26
+{{template "sign.tex"}} % chktex 18
+
+\pagebreak
+\section{Annex 10 {-} Minutes of Condominium General Meetings regarding decisions on conclusion and implementation of this contract, as well as all other minutes of decisions under this contract, including such held after its signing}
+
+Shall be applied the minutes of the owners’ general meetings in reference to the renovation of the Building and conclusion of this contract, payment of the remuneration due to the Contractor, as well as comments of the owners on other essential terms of the contract, authorisation of the Manager to carry out certain activities, and others. The decisions shall be taken in compliance with all rules of the Condominium ownership management act and unanimously by all owners. The minutes have to have notarized signature.
+
+\vspace{2cm}
+{{read .Markdown}} % chktex 26
+{{template "en_sign.tex"}} % chktex 18
+\FloatBarrier{}\mbox{}\vfill\pagebreak % make sure no floats (e.g. images) go past here.
+
+{{template "terms.tex"}} % chktex 18
+{{template "sign.tex"}} % chktex 18
+\end{document}

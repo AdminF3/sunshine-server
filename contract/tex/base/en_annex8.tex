@@ -1,0 +1,54 @@
+{{- $vt := .VAT -}}
+
+\section{ANNEX №8 {–} OPERATIONAL AND MAINTENANCE FEE}
+
+\begin{enumerate}[label=\arabic*.]
+	\item	The Client shall pay to the Contractor the Operational and Maintenance Fee for the Services rendered under this Agreement during the Service Period.
+  \item	For the first year of the Service Period of this Agreement, the Operational and Maintenance Fee corresponds to an annual Fee of $OM_1={{.Contract.Fields.calculations_om1}}EUR/year$ excluding VAT.\@  The breakdown of the operational and maintenance costs is as follows:
+
+% table: operation_maintenance_budget
+
+\begin{center}
+\begin{tabu}{|X[10]|X|} \tabucline{} \rowfont[c]\bfseries
+{{with $t := translate "en" .Contract.Tables.operation_maintenance_budget}} % chktex 25
+	{{$t.Columns | column}} \\\tabucline{}
+	{{range $t.Rows}} % chktex 26
+	{{rowfmt $t .}} \\\tabucline{}
+	{{end}}
+
+	 \bfseries
+	{{total_excl_vat $t}} \\\tabucline{}\bfseries
+	{{vat $t $vt}} \\\tabucline{}\bfseries
+	{{total_incl_vat $t $vt}} \\\tabucline{}
+{{end}}
+\end{tabu}
+\end{center}
+
+	\item For each subsequent year of the Service Period the Operation and Maintenance Fee shall be subject to a revision based on the \iffalse input fields.country_adj value="{{.Contract.Fields.country_adj}}" \fi {{.Contract.Fields.country_adj}} Consumer Price Index, published by the \iffalse input fields.country_issuer value="{{.Contract.Fields.country_issuer}}" \fi {{.Contract.Fields.country_issuer}} to reflect the following general principle:
+
+\[ OM_y = OM_{y-1} + (OM_{y-1} \times CPI_{y-1}) \]
+
+Where:
+\begin{itemize}
+	\item $y$ is the year number from the beginning of the Service Period, whereas y=2 is the second year of the Service Period of the Agreement and y={{div .Project.ContractTerm 12}} is the last year of Service Period %chktex 26
+	\item $OM_y$ is the Operation and Maintenance Fee for the “y” Settlement Year
+	\item $OM_{y-1}$ is the Operation and Maintenance Fee of the previous Settlement Year
+\end{itemize}
+
+	\item The Contractor at the end of each Settlement Period shall notify to the Manager of the Client the calculation of the Operation and Maintenance Fee for the next Settlement Period based on the following table:
+
+% table: operations_maintenance_fee
+
+\begin{center}
+\begin{tabu}{|X|X|X|X|X|X|} \tabucline{}
+{{with $t := translate "en" .Contract.Tables.operations_maintenance_fee}} %chktex 26
+	{{$t.Columns | column}} \\\tabucline{}
+	{{range $t.Headers}} {{.|row}} \\\tabucline{} {{end}} %chktex 26
+	{{range $t.Rows}} {{.|row}} \\\tabucline{} {{end}} %chktex 26
+{{end}}
+\end{tabu}
+\end{center}
+
+	\item The Contractor on monthly basis will invoice the Manager of the Client for the total monthly Operational and Maintenance Fee (OMm). The Manager will invoice each separate Apartment Owners on a square meter pro rata basis.
+
+\end{enumerate}

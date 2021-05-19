@@ -1,0 +1,75 @@
+\section{ANEXA NR. 5 - MANUAL DE OPERAȚIE ȘI ÎNTREȚINERE}
+
+\begin{enumerate}
+
+\item Activități de întreținere periodică acoperite de contractant ca parte a prezentului acord:
+
+% table: periodic_maint_activities_covered_by_contractor
+
+        \begin{center}
+		\begin{tabu}{|X[3]|X|X|X|X|} \tabucline{} \rowfont[c]\bfseries
+			{{with $t := translate "ro" .periodic_maint_activities_covered_by_contractor}} % chktex 26
+			{{.Columns | column}} \\\tabucline{}
+			{{range .Rows}} % chktex 26
+			{{rowfmt $t .}} \\\tabucline{}
+			{{end}}
+			{{end}}
+		\end{tabu}
+	\end{center}
+
+\item Activitate de întreținere preventivă la jumătatea perioadei
+
+% table: mid_term_preventative_activity
+
+	\begin{center}
+		\begin{tabu}{|X[3]|X|X|X|X|} \tabucline{} \rowfont[c]\bfseries
+			{{with $t := translate "ro" .mid_term_preventative_activity}} % chktex 26
+			{{$t.Columns | column}} \\\tabucline{}
+			{{range $t.Rows}} % chktex 26
+			{{rowfmt $t .}} \\\tabucline{}
+			{{end}}
+			{{end}}
+		\end{tabu}
+	\end{center}
+
+\item Activități de întreținere provizionate pe termen lung care fac obiectul contractului ca parte a prezentului acord:
+
+% table: long_term_provisioned_activities
+
+		\begin{center}
+			\begin{tabu}{|X[3]|X|X|X|X|} \tabucline{} \rowfont[c]\bfseries
+				{{with $t := translate "ro" .long_term_provisioned_activities}} % chktex 26
+				{{$t.Columns | column}} \\\tabucline{}
+				{{range $t.Rows}} % chktex 26
+				{{rowfmt $t .}} \\\tabucline{}
+				{{end}}
+				{{end}}
+			\end{tabu}
+		\end{center}
+
+\item Cheltuieli operaționale acoperite de contractant ca parte a prezentului acord:
+
+\begin{enumerate}
+	\item Costuri de administrare pentru organizarea activităților de întreținere și a sarcinilor care fac parte din prezentul acord
+	\item Răspundeţi şi acţionaţi la apeluri de urgenţă
+	\item Consumul de energie electrică pentru încărcările electrice noi instalate ca parte a prezentului acord
+\end{enumerate}
+
+\item Activitare de întreţinere recomandată
+
+Contractantul recomandă clientului să efectueze următoarele activități de întreținere pe termen lung, care nu fac parte din prezentul Acord:
+
+% table: reccomended_maintanance_activity
+
+               \begin{center}
+			\begin{tabu}{|X[3]|X|X|X|X|} \tabucline{} \rowfont[c]\bfseries
+				{{with $t := translate "ro" .reccomended_maintanance_activity}} %chktex 26
+				{{$t.Columns | column}} \\\tabucline{}
+				{{range $t.Rows}} %chktex 26
+				{{rowfmt $t .}} \\\tabucline{}
+				{{end}}
+				{{end}}
+			\end{tabu}
+		\end{center}
+
+\end{enumerate}

@@ -1,0 +1,14 @@
+mutation{updateTable(projectID: "%s",tableName: "project_measurements_table",table: {
+    rows: [
+           [
+             "1",
+             "",
+             "",
+             "34",
+             ""
+         ]
+]
+    }) {
+    rows
+    }
+}

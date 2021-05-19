@@ -1,0 +1,5 @@
+mutation {
+    processProjectCreation(userID: %q, assetID: %q, approve: true) {
+        message
+    }
+}

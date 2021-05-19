@@ -1,0 +1,190 @@
+\section{ANEXA NR. 6 - TAXE RELATATE CU ENERGIA, APA CALDĂ DOMESTICĂ , MĂSURAREA ȘI VERIFICAREA}
+
+\begin{enumerate}
+
+\item Determinarea consumului de energie termică plană
+
+  \begin{enumerate}
+  \item Taxa pentru încălzire se calculează pentru perioada de decontare și se împarte în 12 (doisprezece) părți egale. Astfel, clientul efectuează plăți pentru aceeași cantitate de energie termică în fiecare lună (într-o perioadă de 12 luni).
+  \item  Taxa lunară de energie termică se calculează pe  baza garanţiei de consum de energie, a tarifului actual pentru  energie termică şi a zonei de facturare a clădirii în felul următor pentru fiecare lună din perioada de decontare:
+
+\[ Q^{m}_{Apk,cz,G} = \frac{Q_{Apk,cz,G}}{12} \]
+\[ E^{m}_{F,G} = Q^{m}_{Apk,cz,G} \times HT^m \]
+\[ Ap^m = \frac{E^{m}_{F,G} }{A_{Apk}} \]
+
+Unde:
+\begin{itemize}[label={}]
+  \item $Q^{m}_{Apk,cz, G}$ \quad este consumul lunar de energie termică plată atribuibil pierderilor de încălzire și circulație spațială ale clădirii pe baza garanției de consum de energie, $MWh/lună$
+  \item $Q_{Apk,cz, G}$ \quad reprezintă garanția consumului de energie pentru încălzirea spațiului și   pierderile de circulație, astfel cum se calculează în anexa nr. 5 la prezentul acord, $MWh/an$
+  \item $E^{M}_{F, G}$ \quad reprezintă taxa totală lunară de energie termică pentru clădire,
+  \item $H_{T}^{m}$ \quad este Tariful la energie termică aplicabil la luna de facturare relativă, $EUR/MWh$
+  \item $A_{Apk}$ \quad este zona de facturare a clădirii utilizate în scopuri de facturare, $mp$
+$A_{p}^{m}$ este taxa de energie termică lunară pe metru pătrat folosită de manager pentru întocmirea facturilor lunare către client, $EUR/m^{2}month$
+\end{itemize}
+
+  \item Contractantul în fiecare lună completează următorul table pentru calculul tarifului lunar pentru energie termică:
+
+% table: calc_energy_fee
+
+\begin{center}
+\begin{tabu}{|X|X|X|X|X|X|} \tabucline{}
+{{with translate "ro" .Contract.Tables.calc_energy_fee}} %chktex 26
+	{{.Columns | column}} \\\tabucline{}
+	{{range .Headers}} {{.|row}} \\\tabucline{} {{end}} %chktex 26
+	{{range .Rows}} {{.|row}} \\\tabucline{} {{end}} %chktex 26
+	\bfseries {{total .}} \\\tabucline{} %chktex 26
+{{end}}
+\end{tabu}
+\end{center}
+
+\item Contractantul lunar va factura administratorului clientului taxa totală lunară pentru energia termică ($"E" _ "F, G" ^ "m"$). Administratorul va factura pe fiecare proprietar de apartamente pe o bază pro rata a unui metru pătrat.
+
+  \end{enumerate}
+
+\item Echilibrarea consumului de energie termică plană la sfârșitul perioadei de decontare
+
+  \begin{enumerate}
+
+  \item La sfârșitul fiecărei perioade de decontare, contractantul va calcula soldul pentru echilibrarea celor 12 (douăsprezece) taxe de energie termică percepute de client pe baza consumului de energie termică plană contra plății datorate, luând în considerare consumul de energie termică contorizat. Suma de decontare se calculează astfel:
+
+    \[ B_F = E_{F,S,T} - E_{F,G,T} \]
+
+Unde:
+\begin{itemize}[label={}]    
+\item $E_{F, S, T}$ \quad \quad este taxa totală anuală de energie pe baza datelor energetice contorizate, calculată ca suma lunară $„E” _ „F, S” ^ m$ în perioada de decontare de 12 luni, $EUR$
+\item $E_{F, G, T}$ \quad \quad este vorba despre taxoni totale de energie pe bază de energie pentru a putea contoriza energie, calculată ca suma lunară $„E” _ „F, S” ^ m$ în timpul decontarei de 12 luni, $EUR$
+\end{itemize}
+
+\item Contractantul la sfârșitul fiecărei perioade de decontare completează următorul tabel pentru calculul soldului:
+
+% table: balancing_period_fee
+
+\begin{center}
+\begin{tabu}{|X|X|X|X|X|X|X|} \tabucline{}
+{{with translate "ro" .Contract.Tables.balancing_period_fee}} %chktex 26
+	{{.Columns | column}} \\\tabucline{}
+	{{range .Headers}} {{.|row}} \\\tabucline{} {{end}} %chktex 26
+	{{range .Rows}} {{.|row}} \\\tabucline{} {{end}} %chktex 26
+{{end}}
+\end{tabu}
+\end{center}
+
+Unde:
+\begin{itemize}[label={}]
+\item $Q_{Apk,cz, G}^{m}$ \quad este consumul lunar de energie termică plat atribuit clădirii pentru încălzirea spațiului și pierderile de circulație pe baza garanției de consum de energie, $MWh / lună$
+\item $H_{T}^{m}$ \quad este tariful la energie termică aplicabil la luna de facturare relativă, $EUR / MWh$
+\item $Q_{Apk,cz, S}^{m}$ \quad este consumul lunar de energie pentru încălzirea spațiului și pierderile de circulație supuse măsurării și verificării
+\item $E_{F, G}^{m}$ \quad este taxa totală de energie lunară pentru clădire calculată în fiecare lună ca fiind $Q_{Apk,cz, G}^{m} x E_{T}^{m}$,
+\end{itemize}
+
+\item Dacă diferenţa este negativă (BF este un număr negativ), părțile vor deconta diferența fie printr-o plată unică a soldului de la Antreprenor către client, fie scăzând soldul restant în sume egale de la plata cuvenită a clientului către contractant, distribuită în perioada următoare de decontare. Pentru perioada de decontare după care se încheie acordul, soldul este decontat printr-o plată unică
+\item Dacă diferenţa este pozitivă (BF este un număr pozitiv) părţile soluţionează diferenţa prin:
+
+  \begin{enumerate}
+    \item o plată unică a soldului de către client către contractant, sau
+    \item prin împărțirea soldului restant în sume egale la numărul de plăți datorate în următoarea perioadă de decontare și adăugarea unei fracțiuni egale la plata datorată de către client contractantului în perioada următoare de decontare.
+    \item Pentru ultima perioadă de decontare a acordului, părțile trebuie să deconteze soldul printr-o plată unică.
+  \end{enumerate}
+
+  \item Clientul recunoaște că taxa de energie termică va reflecta imediat toate modificările sau modificările aduse tarifului de energie termică ($H_{T}^{m}$) la intrarea sa în vigoare.
+
+  \end{enumerate}
+
+\item Măsurarea și verificarea garanției de economii de energie
+
+  \begin{enumerate}
+  \item La sfârșitul fiecărei perioade de decontare, părțile verifică dacă garanția de economii de energie în cadrul prezentului acord este îndeplinită. Părțile convin să verifice astfel:
+
+    \begin{enumerate}
+
+    \item Reglajele meteo sunt făcute pentru a compara condițiile din timpul furnizării serviciilor de eficiență energetică cu condițiile de bază. Ajustarea este calculată folosind următoarea formulă:
+
+      \[ Q^{Adj}_{Apk,CZ,S} = Q_{Apk,S} \times \left( \frac{GDD_{Ref}}{GDD_S}\right) + Q_{CZ,S} \]
+
+      Unde:
+      \begin{itemize}[label={}]
+	\item $Q_{Apk,cz,S}^{Adj}$ \quad Consumul de energie ajustat la vreme pentru încălzirea spațiului și pierderile de circulație în anul de contabilitate, $MWh$
+	\item $Q_{Apk,S}$ \quad Consumul de energie real pentru încălzirea spațiului în anul de decontare contabil, $MWh$
+        \item $Q_{cz,S}$ \quad Consumul de energie real pentru pierderi de circulație în anul de decontare contabil, $MWh$
+        \item $G_{DDRef}$ \quad Zile ce necesită  încălzire în perioada de bază
+        \item $G_{DDS}$ \quad Zile ce necesită încălzire în anul în care se face cont pentru decontare, calculat în conformitate cu termenii și condițiile generale ale acordului pentru măsurare și verificare
+\end{itemize}
+
+    \item La sfârșitul fiecărei perioade de decontare, contractantul va oferi o evaluare a dacă serviciile au fost prestate astfel încât să îndeplinească garanția de economisire a energiei după cum urmează:
+\[ Q_{iet,S} = Q_{Apk,cz,ref} - Q^{Adj}_{Apk,cz,S} \]
+\[ BH_{iet} = Q_{iet,S} - Q_{iet,G} \]
+
+Unde:
+\begin{itemize}[label={}]
+  \item $Q_{Apk,cz,ref}$ \quad De referință consumul de energie pentru încălzirea spațiului și pierderile de circulație, $MWh/an$
+  \item $Q_{Apk,cz,S}^{Adj}$ \quad  Consumul de energie ajustat la vreme pentru încălzirea spațiului și pierderile de circulație în perioada de decontare, $MWh/an$
+  \item $Q_{iet,S}$ \quad \quad Economii de energie pentru încălzirea spațiului și pierderi de circulație pentru perioada de decontare, $MWh/an$
+  \item $Q_{iet,G}$ \quad \quad Garanție de economii de energie pentru încălzirea spațiului și pierderi de circulație, $MWh$
+  \item $BH_{iet}$ \quad \quad Soldul de economii de energie pentru perioada de decontare, $MWh$
+\end{itemize}
+
+\begin{enumerate}
+\item Îndeplinirea garanției de economii de energie: Dacă soldul este egal cu BHiet = 0,0 MWh, atunci contactantul a îndeplinit garanția de economii energetice pentru perioada de decontare respectivă. În acest caz, contractantul nu deține o rambursare către client.
+
+  Neîndeplinirea garanției de economii de energie: Dacă soldul este negativ (BHiet este un număr negativ) atunci cotractantul a ratat garanția de economii energetice pentru perioada de decontare respectivă și va restitui clientului soldul negativ calculat după cum urmează:
+
+\[ C_G = B_{iet} \times \bar{HT_S} \]
+
+Unde:
+\begin{itemize}[label={}]
+\item $C_{G}$ \quad \quad compensație pentru neîndeplinirea garanției de economii de energie pentru perioada de decontare, $EUR$ (fără TVA)
+\item $BH_{iet}$ \quad \quad Soldul de economii de energie pentru perioada de decontare, $MWh$
+\item $\bar{HT_{S}}$ \quad \quad Tariful mediu pentru energie termică în perioada de decontare calculat ca suma tarifelor lunare pentru energie termică din perioada de decontare divizată la numărul de luni din perioada de decontare respectivă, $EUR/MWh$ (fără TVA)
+\end{itemize}
+
+Părțile vor deconta plata compensației (CG) fie printr-o plată unică de la contractant către client, fie scăzând compensația în sume egale din plata datorată a clientului către contractant distribuită în perioada următoare de decontare. Contactantul are dreptul să selecteze opțiunea preferată; cu toate acestea, pentru ultima perioadă de decontare, după care se încheie acordul, părțile se decontează printr-o plată unică.
+\end{enumerate}
+
+Performanță suplimentară: dacă soldul este pozitiv ($BH_{iet}$ este un număr pozitiv), atunci contractantul și-a îndeplinit garanția de economii energetice și va avea dreptul să păstreze toate plățile în locul acesteia. Performanța suplimentară se calculează ca:
+
+\[ P_G = BH_{iet} \times ET_S \]
+
+Unde:
+\begin{itemize}[label={}]
+  \item $P_G$ \quad \quad performanță suplimentară în perioada de decontare, $EUR$ (fără TVA)
+  \item $BH_{iet}$ \quad \quad Soldul de economii de energie pentru perioada de decontare, $MWh$
+  \item $\bar{HT_S}$ \quad Tariful mediu pentru energie termică în perioada de decontare calculat ca suma tarifelor lunare pentru energie termică din perioada de decontare divizată la numărul de luni din perioada de decontare respectivă, $EUR/MWh$ (fără TVA)
+\end{itemize}
+
+Părțile vor deconta plata pentru performanța suplimentară ($P_G$) fie printr-o plată unică a soldului de la client către contractant sau adăugând soldul restant în sume egale cu plata datorată a clientului către contractant distribuit în perioada următoare de decontare. Clientul are dreptul de a selecta opțiunea preferată, cu toate acestea, pentru ultima perioada de decontare după care reziliază acord, părțile se stabilească printr-o singură plată unică.
+
+    \end{enumerate}
+  \item Pentru determinarea garanției de economii de energie și determinarea îndeplinirii garanției de economii de energie datele de intrare sunt determinate în conformitate cu termenii și condițiile generale ale acordului de măsurare și verificare.
+
+  \end{enumerate}
+
+\item Taxa de apă caldă menajeră
+
+  \begin{enumerate}
+
+  \item Plata pentru apa caldă menajeră se bazează pe consumul real suportat de fiecare proprietar de apartament și înregistrat în mod corespunzător prin contoarele calibrate separate instalate pentru fiecare apartament
+    \item Plata pentru apa caldă menajeră se calculează lunar pe baza următoarei formule:
+
+          \[ Q^{m}_{ku} = \frac{V_m \times \rho_{ku} \times c_u \times \left(\theta_{ku} - \theta_{u,pieg}\right)}{3600} \times HT^m \]
+
+Unde:
+\begin{itemize}[label={}]
+  \item $V_m$ \quad \quad Consumul volumic lunar de apă caldă menajeră contorizat la stație, $m^3$
+  \item $\rho_{kū}$ \quad \quad Densitatea apei corespunzătoare la 985 $kg/m^3$
+  \item $c_ū$ \quad \quad Capacitatea specifică de căldură a apei corespunzătoare la 4.1868 x 10-3 $J/kg ^oC$
+  \item $θ_{ū,pieg}$ \quad \quad Temperatura apei reci de la compania de aprovizionare cu apă, $^oC$ 
+  \item $θ_{kū}$ \quad \quad Temperatura furnizată de apă caldă la stația de căldură a clădirii, $^oC$
+  \item $HT^m$:    este tariful la energie termică aplicabil pentru luna de facturare relativă, EUR/MWh
+\end{itemize}
+
+\item Măsurare și verificare: temperatura furnizată de apă rece și apă caldă sunt determinate în conformitate cu termenii și condițiile generale ale acordului pentru măsurare și verificare.
+
+\item Clientul recunoaște în mod corespunzător că toate modificările sau modificările tarifului pentru energie sunt aplicabile tarifului pentru apa caldă imediat după adoptarea lor de către autoritatea de reglementare sau aplicabilă în fața autorității de caz și se aplică de la data ratificării și intrării în vigoare a modul în care sunt executate calculele taxei pentru încălzire.
+
+\item Contractantul va factura administratorului clientului pentru taxa totală lunară de apă caldă menajeră. Administratorul va factura fiecare proprietar de apartamente pe baza consumului individual de apă.
+
+
+  \end{enumerate}
+  
+  
+\end{enumerate}

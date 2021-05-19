@@ -1,0 +1,69 @@
+{{- $vt := .VAT -}}
+
+\section{Annex 8 {-} Rules of indexation of the price for service and maintenance and the price for the monitoring}
+
+\begin{enumerate}[label=\arabic*.]
+
+	\item The Client shall pay to the Contractor a price for servicing and maintenance for the services, provided under this agreement, and a price for monitoring in the monitoring period.
+	\item For the first year of the monitoring period, the price for servicing and maintenance and the price for monitoring are as follows:
+
+% table: operation_maintenance_budget
+
+\begin{center}
+\begin{tabu}{|X[10]|X|} \tabucline{} \rowfont[c]\bfseries
+{{with $t := .Contract.Tables.operation_maintenance_budget}} % chktex 25
+	{{.Columns | column}} \\\tabucline{}
+	{{range .Rows}} % chktex 26
+	{{.|row}} \\\tabucline{}
+	{{end}}
+
+	 \bfseries
+	{{total_excl_vat $t}} \\\tabucline{}\bfseries
+	{{vat $t $vt}} \\\tabucline{}\bfseries
+	{{total_incl_vat $t $vt}} \\\tabucline{}
+{{end}}
+\end{tabu}
+\end{center}
+
+	\item For every following year of the monitoring period, the price for servicing and maintenance and the price for monitoring are subject of indexation and revision on the base of the general (concerning all goods) index of the consumers’ costs, published by the Bulgarian National Institute of Statistics (BGHICP).
+	\item The following formula is applied for indexation of the price for servicing and maintenance:
+
+        \[ OM_y = OM_{y-1} + (OM_{y-1} \times CPI_{y-1}) \]
+
+Where:
+\begin{itemize}
+	\item $y$ is the number of the year from the beginning of the monitoring period, y = 2 is the second year of the monitoring period, and y = [20] is the last year of the monitoring period; %chktex 26
+	\item $OM_y$ is the price for servicing and maintenance for year \"y\";
+	\item $OM_{y-1}$ is the price for servicing and maintenance for the preceding year.
+\end{itemize}
+
+	\item The following formula is applied for indexation of the monitoring price:
+
+          \[ OM_y = OM_{y-1} + (OM_{y-1} \times CPI_{y-1}) \]
+
+where:
+\begin{itemize}
+	\item $y$ is the number of the year from the beginning of the monitoring period, y = 2 is the second year of the monitoring period, and y = [20] is the last year of the monitoring period; %chktex 26
+	\item $OM_y$ is the monitoring price for year \"y\";
+	\item $OM_{y-1}$ is the monitoring price for the previous year.
+\end{itemize}
+
+
+    \item The Contractor shall notify the Client about the price recalculation for servicing and maintenance and the monitoring price for the following year of the monitoring period under following table:
+
+% table: operations_maintenance_fee
+
+\begin{center}
+\begin{tabu}{|X|X|X|X|X|X|} \tabucline{}
+{{with .Contract.Tables.operations_maintenance_fee}} %chktex 26
+	{{.Columns | column}} \\\tabucline{}
+	{{range .Headers}} {{.|row}} \\\tabucline{} {{end}} %chktex 26
+	{{range .Rows}} {{.|row}} \\\tabucline{} {{end}} %chktex 26
+{{end}}
+\end{tabu}
+\end{center}
+
+    \item If at the payment of the monthly price for servicing and maintenance or the monthly monitoring price BGHICP is unknown for the respective calendar year, the price for servicing and maintenance and the monitoring price shall be paid at the amount, fixed by the moment, after being known BGHICP for the respective calendar year, the sums due shall be recalculated and the Client shall pay the future price increase along with the next payment.
+    \item In order avoid any doubts, the Parties shall agree, that if the indexed price for servicing and maintenance and/or the indexed monitoring price is lower in comparison with the price for servicing and maintenance and/or the monitoring price before the indexation, shall not be made adjustment and indexation.
+
+\end{enumerate}

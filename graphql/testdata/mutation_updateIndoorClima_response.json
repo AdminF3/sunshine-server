@@ -1,0 +1,23 @@
+{
+    "updateIndoorClima": {
+        "atticPipes": null,
+            "basementPipes": [
+              {
+                "diameter": 10,
+                "heat_loss_unit": 0.033,
+                "heat_loss_year": 0.165,
+                "installed_length": 5,
+                "quality": 2
+              },
+              {
+                "diameter": 11,
+                "heat_loss_unit": 0.026,
+                "heat_loss_year": 0.156,
+                "installed_length": 6,
+                "quality": 1
+              }
+            ],
+        "projectID": "%s",
+        "heatedVolumeBuilding": %d
+    }
+}

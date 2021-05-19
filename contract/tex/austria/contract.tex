@@ -1,0 +1,148 @@
+{{template "preamble.tex"}} % chktex 18
+\begin{document}
+
+\begin{center}
+	\begin{tabu}{|X[2]|X|}\tabucline{}
+		Vertragsnummer: {{.Contract.ID}} & Datum: \iffalse input fields.date value="{{.Contract.Fields.date}}" type="date" \fi {{.Contract.Fields.date}} \\\tabucline{} %chktex 26
+	\end{tabu}
+\end{center}
+
+\section{ENERGIEEINSPARUNGSVERTRAG}
+
+\textbf{Der Auftraggeber:}
+\begin{center}
+	\begin{tabu}{|X|X[2]|}\tabucline{}
+		Vorname, Nachname & {{.Contract.Fields.client_name}} \iffalse input fields.client_name value="{{.Contract.Fields.client_name}}" \fi \\\tabucline{}
+		Registrierungsnummer / persönliche Identifikationsnummer & {{.Contract.Fields.client_id}} \iffalse input fields.client_id value="{{.Contract.Fields.client_id}}" \fi \\\tabucline{}
+		Adresse & {{.Contract.Fields.client_address}} \iffalse input fields.client_address value="{{.Asset.Address}}" \fi \\\tabucline{}
+	\end{tabu}
+\end{center}
+
+\textbf{Der Auftragnehmer:}
+\begin{center}
+	\begin{tabu}{|X|X[2]|}\tabucline{}
+		Name                    		& {{.ESCo.Name}} \\\tabucline{}
+		Registrierungsnummer    		& {{.ESCo.VAT}} \\\tabucline{}
+		Umsatzsteuer-Identifikationsnummer 	& {{.ESCo.VAT}} \\\tabucline{}
+		Firmenanschrift     			& {{.ESCo.Address}} \\\tabucline{}
+    		Gesetzlicher Vertreter			& \iffalse input fields.contractor_representative_name value="{{.Contract.Fields.contractor_representative_name}}" \fi {{.Contract.Fields.contractor_representative_name}} \\\tabucline{}
+	\end{tabu}
+\end{center}
+haben diesen Energieeinsparungsvertrag, im Folgenden als Vertrag bezeichnet, abgeschlossen.
+
+\section{BESONDERE BEDINGUNGEN}
+\subsection{VERTRAGSGEGENSTAND}
+\begin{enumerate}
+  \item Der Gegenstand des Vertrages ist die Durchführung von Sanierungsarbeiten und die Erbringung von Energieeffizienzdienstleistungen, die zu Energieeinsparungen im Gebäude an der folgenden Adresse führen: {{asset_address .Asset.Address}} mit der Katasternummer {{.Asset.Cadastre}}.
+  \item Der Baubereich dieses Vertrages und dessen Zustand vor den Sanierungsarbeiten sind in Anhang 1 des Vertrages beschrieben.
+  \item Der detaillierte Umfang der Sanierungsarbeiten und der damit verbundenen Maßnahmen ist in Anhang 2 des Vertrages beschrieben.
+\end{enumerate}
+
+\subsection{DIENSTLEISTUNGEN}
+\begin{enumerate}
+  \item Der Auftragnehmer verpflichtet sich, für die Durchführung der Maßnahmen im Gebäude in Bezug auf die Sanierungsarbeiten die technische Planung, Beschaffung, Lieferung, Installation, Abnahme, Inbetriebnahme und Finanzierung zu veranlassen.
+  \item Der Auftragnehmer garantiert für die Leistungsperiode des Vertrages die im Anhang 3 des Vertrages beschriebenen Komfortstandards.
+  \item Der Auftragnehmer verpflichtet sich, für die Leistungsperiode des Vertrages eine Energieeinsparungsgarantie von {{.Project.GuaranteedSavings}}\% zu garantieren, was {{.Contract.Fields.calculations_qietg}}MWh  gegenüber der in Anhang 4 enthaltenen Baseline entspricht.
+  \item Der Auftragnehmer verpflichtet sich, für die Leistungsperiode des Vertrages das Gebäude gemäß den Bestimmungen in Anlage 5 dieses Vertrages zu betreiben und zu warten.
+\end{enumerate}
+
+\subsection{VERTRAGSDAUER}
+\begin{enumerate}
+	\item Die Bauzeit beträgt {{date_diff .Project.ConstructionFrom .Project.ConstructionTo}} Tage und ist mit den folgenden Richtdaten vorbehaltlich von Benachrichtigungen vereinbart:
+	\begin{enumerate}
+		\item Anfangsdatum:     	  \iffalse input project.construction_from value="{{.Project.ConstructionFrom}}" type="date" \fi {{.Project.ConstructionFrom}}
+		\item Datum der Inbetriebnahme:   \iffalse input project.construction_to value="{{.Project.ConstructionTo}}" type="date" \fi {{.Project.ConstructionTo}}
+	\end{enumerate}
+	\item Die Leistungsperiode des Vertrages beträgt {{mul 12 .Project.ContractTerm}} Monate, beginnend mit dem Datum der Inbetriebnahme der Maßnahmen.
+	\item Die Zahlungsfrist des Auftraggebers entspricht der Leistungsperiode des Vertrages.
+\end{enumerate}
+
+\subsection{VERRECHNUNG}
+\begin{enumerate}
+	\item Der Auftragnehmer verrechnet dem Auftraggeber während der Leistungsperiode dieses Vertrages monatliche Gebühren bestehend aus:
+	\begin{enumerate}
+		\item Wärmeenergiegebühr und Warmwassergebühr berechnet gemäß Anhang 6;
+		\item Sanierungsgebühr berechnet und indexiert gemäß Anhang 7;
+		\item Betriebs- und Wartungsgebühr berechnet und indexiert gemäß Anhang 8;
+		\item allen bei der Erbringung der Dienstleistungen anfallenden Steuern (z. B. Umsatzsteuer).
+	\end{enumerate}
+	\item Die monatliche Sanierungsgebühr und die Betriebs- und Wartungsgebühr für den ersten Monat der Leistungsperiode werden wie folgt vereinbart:
+
+% table: summary
+
+\begin{center}
+	\begin{tabu}{|X|X|X|X|}\tabucline{}\rowfont[c]\bfseries
+	{{with translate "au" .Contract.Tables.summary}} % chktex 26
+	{{.Columns | column}} \\\tabucline{}
+	{{range .Rows}} % chktex 26
+	{{.|row}} \\\tabucline{}
+	{{end}}
+	\bfseries {{total .}} \\\tabucline{} % chktex 26
+	{{end}}
+	\end{tabu}
+\end{center}
+
+\item Dem Verwalter des Auftraggebers werden die Rechnungen monatlich gestellt. Rechnungen des Auftragnehmers an den Verwalter des Auftraggebers sind innerhalb von \iffalse input fields.invoiced_days value="{{.Contract.Fields.invoiced_days}}" \fi {{.Contract.Fields.invoiced_days}} Tagen nach Erhalt fällig.
+\end{enumerate}
+
+\subsection{SONSTIGE BESTIMMUNGEN}
+\begin{enumerate}
+\item Der Vertrag umfasst die Allgemeinen Geschäftsbedingungen, die Besonderen Bedingungen und die Anhänge zu den Besonderen Bedingungen, die integraler Bestandteil des Vertrages sind.
+\item Mit der Unterzeichnung dieser Besonderen Bedingungen erkennen die Parteien an, dass sie die Besonderen Bedingungen, die Anhänge der Besonderen Bedingungen und die
+  Allgemeinen Geschäftsbedingungen dieses Vertrages gelesen, verstanden und akzeptiert haben und einhalten können.
+\end{enumerate}
+
+\vspace{2cm}
+{{template "sign.tex"}} % chktex 18
+
+{{template "annex1.tex" .}} % chktex 18
+{{template "sign.tex"}} % chktex 18
+
+{{template "annex2.tex" .}} % chktex 18 chktex 26
+{{template "sign.tex"}} % chktex 18
+
+{{template "annex3.tex" .}} % chktex 18 chktex 26
+{{template "sign.tex"}} % chktex 18
+
+{{template "annex4.tex" .}} % chktex 18 chktex 26
+{{template "sign.tex"}} % chktex 18
+
+{{template "annex5.tex" .Contract.Tables}} % chktex 18 chktex 26
+{{template "sign.tex"}} % chktex 18
+
+{{template "annex6.tex" .}} % chktex 18
+{{template "sign.tex"}} % chktex 18
+
+{{template "annex7.tex" .}} % chktex 18 chktex 26
+{{template "sign.tex"}} % chktex 18
+
+{{template "annex8.tex" .}} % chktex 18 chktex 26
+{{template "sign.tex"}} % chktex 18
+
+{{template "annex9.tex" .Contract.Fields}} % chktex 18 chktex 26
+{{template "sign.tex"}} % chktex 18
+
+\pagebreak
+\section{ANNEX №10 {-} PROTOCOLS OF THE GENERAL MEETINGS OF APARTMENT OWNERS OF THE BUILDING}
+
+\begin{center}
+\begin{tabu}{ |X|X| }
+ \hline
+ Aquisition protocol meeting & \url{ {{.Attachments.acquisition_meeting }} } \iffalse attachment value="acquisition meeting" \fi \\
+ \hline
+ Commitment protocol meeting & \url{ {{.Attachments.commitment_meeting }} } \iffalse attachment value="commitment protocol meeting" \fi \\
+ \hline
+ Kickoff protocol meeting & \url{ {{.Attachments.kickoff_meeting }} } \iffalse attachment value="kickoff protocol meeting" \fi \\
+ \hline
+\end{tabu}
+\end{center}
+
+
+\pagebreak
+{{read .Markdown}} % chktex 26
+\FloatBarrier{}\mbox{}\vfill\pagebreak % make sure no floats (e.g. images) go past here.
+
+{{template "terms.tex"}} % chktex 18
+{{template "sign.tex"}} % chktex 18
+
+\end{document}

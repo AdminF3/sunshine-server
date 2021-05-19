@@ -1,0 +1,17 @@
+{
+    "getIndoorClima": {
+        "zones": {
+            "window_env1_zone1": {
+                "uvalue": 1.1,
+                "tempdiff": {
+                    "baseyear_n_2": 0,
+                    "baseyear_n_1": 0,
+                    "baseyear_n": 0
+                },
+                "heat_loss_coeff": 122.10000000000001,
+                "area": 111
+            }
+        },
+        "projectID": "%s"
+    }
+}

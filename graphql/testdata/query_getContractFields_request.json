@@ -1,0 +1,4 @@
+{getContractFields(projectID: "%s") { 
+    dateOfMeeting
+    }
+}

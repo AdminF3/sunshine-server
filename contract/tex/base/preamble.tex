@@ -1,0 +1,48 @@
+\documentclass[a4paper]{article}
+\usepackage{libertine}
+\usepackage{textcomp}
+\usepackage{tabu}
+\usepackage{rotating}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{longtable}
+\usepackage{placeins}
+\usepackage{url}
+\usepackage[
+  margin=1.5cm,
+]{geometry}
+
+\special{papersize=210mm,297mm}
+\setlength{\parindent}{0pt}
+\tabulinesep=3pt
+\pagestyle{plain}
+\graphicspath{%
+  {images/}
+}
+
+\renewcommand\thesection{}
+\renewcommand\thesubsection{\arabic{subsection}}
+\renewcommand\thesubsubsection{\thesubsection.\arabic{subsubsection}.}
+
+% Pandoc directives - BEGIN
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{unicode-math}
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{%
+  hidelinks,
+  pdfcreator={Sunshine}}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}

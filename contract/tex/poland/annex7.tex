@@ -1,0 +1,51 @@
+\section{ANEKS 7: OPŁATA ZA RENOWACJĘ}
+
+\begin{enumerate}[label=\arabic*.]
+	\item Klient zgadza się na Wkład finansowy Wykonawcy, ponieważ wniesienie go jest niezbędne dla:
+	\begin{enumerate}
+		\item udanego wdrożenia Środków,
+		\item wyegzekwowania Gwarancji oszczędności energii udzielanej przez Wykonawcę,
+		\item wyświadczenia Usług poprawy efektywności energetycznej z należytą jakością.
+	\end{enumerate}
+
+	\item Wykonawca zgadza się wnieść na rzecz Klienta Wkład finansowy, który przeznaczony jest do wykorzystania wyłącznie na potrzeby Umowy.
+	\item Klient zwróci Wykonawcy Wkład finansowy wniesiony na mocy niniejszej Umowy w ramach płatności Opłaty za renowację, na następujących warunkach:
+	\begin{enumerate}
+		\item Wkład finansowy Wykonawcy (z VAT): \iffalse input fields.contractor_fin_contribution value="{{.Contract.Fields.contractor_fin_contribution}}" \fi {{.Contract.Fields.contractor_fin_contribution}} EUR
+		\item Zmienna stopa oprocentowania:
+			\begin{itemize}
+				\item obejmująca komponent stały: \iffalse input fields.interest_rate_percent value="{{.Contract.Fields.interest_rate_percent}}" \fi {{.Contract.Fields.interest_rate_percent}} \% {-} kredytowanie oferowane przez spółkę \iffalse input fields.interest_rate_offerter value="{{.Contract.Fields.interest_rate_offerter}}" \fi {{.Contract.Fields.interest_rate_offerter}}
+				\item i komponent zmienny: {{.EUROBOR}} miesięczna stopa EURIBOR
+			\end{itemize}
+		\item Okres spłaty jest równy Okresowi świadczenia usług: {{mul 12 .Project.ContractTerm}} miesięcy.
+	\end{enumerate}
+
+	\item Stała stopa oprocentowania to stopa roczna uzgodniona przez Strony.
+	\item Zmienna stopa oprocentowania obejmuje komponent stały i komponent zmienny:
+	\begin{enumerate}
+		\item Komponent stały jest częścią Stopy oprocentowania będącą roczną stopą oprocentowania uzgodnioną przez Strony, która może zostać zmieniona za pisemnym porozumieniem Stron.
+		\item Komponent zmienny jest oparty na aktualnej stopie procentowej EURIBOR.\@ Stopa procentowa EURIBOR to uśredniona stopa oprocentowania przyjęta przez banki z Eurostrefy dla danego okresu, wyliczana przez „Thomson Reuters” z datą rozliczenia EUR, publikowana na stronie http://www.euribor-ebf.eu.
+	\end{enumerate}
+	\item Komponent zmienny Stopy oprocentowania za pierwszy okres zostanie określona przez Wykonawcę w Dniu zakończenia świadczenia usług poprzez zastosowanie stopy opublikowanej w poprzednim dniu bankowym.
+	\item Komponent zmienny Stopy oprocentowania na kolejny okres zostanie określony przez Wykonawcę w jednym z następujących terminów (z uwzględnieniem tego, który jest najbardziej oddalony od Dnia zakończenia świadczenia usług, przy czym nie późniejszy niż 6 lub 12 miesięcy po upływie Dnia zakończenia świadczenia usług): 15 stycznia lub 15 kwietnia lub 15 lipca lub 15 października, poprzez zastosowanie stopy opublikowanej w poprzednim dniu bankowym.
+	\item Komponent zmienny Stopy oprocentowania na kolejne okresy będzie określony przez Wykonawcę w dniu 15 stycznia i/lub 15 kwietnia i/lub 15 lipca i/lub 15 października, z uwzględnieniem Okresu oprocentowania zmiennego.
+	\item Jeśli komponent zmienny Stopy oprocentowania jest wartością ujemną, to wówczas kwota Zmiennej stopy oprocentowania będzie równa komponentowi stałemu Stopy oprocentowania.
+	\item Jeśli data zamiany (swap date) komponentu zmiennego Stopy oprocentowania przypadnie w dniu wolnym od pracy, to datą zamiany będzie następny dzień roboczy. Po ustaleniu nowego komponentu zmiennego Stopy oprocentowania ‘Wykonawca prześle Zarządcy Klienta wraz z aktualną fakturą zawiadomienie o zmianach w Harmonogramie płatności. Stopy oprocentowania na kolejny okres i Harmonogram płatności zostaną uznane za zmienione począwszy od pierwszego dnia nowego okresu bez zawierania umowy do Umowy.
+	\item Naliczanie odsetek rozpocznie się na początku Okresu świadczenia usług, po podpisaniu oświadczenia o przeniesieniu / przekazaniu.
+	\item Zgodnie z postanowieniami Umowy, Odsetki muszą zostać naliczone za każdy dzień kalendarzowy przy założeniu roku 360-dniowego.
+	\item Harmonogram płatności Opłaty za renowację oparty o Wkład finansowy Wykonawcy i o	warunki obowiązujące w chwili podpisania niniejszej Umowy:
+
+% table: project_measurements_table
+
+\begin{center}
+\begin{longtabu}{|X|X|X|X|X|} \tabucline{}
+{{with $t := translate "pl" .Contract.Tables.project_measurements_table}}
+	{{.Columns | column}} \\\tabucline{}
+	{{range .Rows}} {{rowf $t .}} \\\tabucline{} {{end}} %chktex 26
+{{end}}
+\end{longtabu}
+\end{center}
+
+	\item Wykonawca zawiadomi Zarządcę ze strony Klienta i dostarczy zaktualizowany Harmonogram płatności po każdej zmianie komponentu zmiennego Zmiennej stopy oprocentowania.
+	\item Wykonawca będzie co miesiąc wystawiał Zarządcy ze strony Klienta faktury za miesięczną Opłatę za renowację wyliczoną zgodnie z Harmonogramem płatności. Zarządca będzie wystawiał indywidualne faktury Właścicielom mieszkań w oparciu o zajmowaną powierzchnię.
+\end{enumerate}

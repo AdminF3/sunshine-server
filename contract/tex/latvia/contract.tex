@@ -1,0 +1,141 @@
+{{template "preamble.tex"}} % chktex 18
+\begin{document}
+
+\begin{center}
+	\begin{tabu}{|X[2]|X|}\tabucline{}
+		Līgums Nr.: {{.Contract.ID}} & Datums: \iffalse input fields.date value="{{.Contract.Fields.date}}" type="date" \fi {{.Contract.Fields.date}} \\\tabucline{} %chktex 26
+	\end{tabu}
+\end{center}
+
+\section{ENERGOEFEKTIVITĀTES PAKALPOJUMA LĪGUMS}
+
+\textbf{Pasūtītājs:}
+\begin{center}
+	\begin{tabu}{|X|X[2]|}\tabucline{}
+		Nosaukums / vārds, uzvārds		& \iffalse input fields.client_name value="{{.Contract.Fields.client_name}}" \fi {{.Contract.Fields.client_name}}               \\\tabucline{}
+		Reģistrācijas numurs / personas kods  	& \iffalse input fields.client_id value="{{.Contract.Fields.client_id}}" \fi {{.Contract.Fields.client_id}}                     \\\tabucline{}
+		Adrese              			& \iffalse input fields.client_address value="{{.Contract.Fields.client_address}}" \fi {{.Contract.Fields.client_address}}      \\\tabucline{}
+	\end{tabu}
+\end{center}
+
+\textbf{Izpildītājs:}
+\begin{center}
+	\begin{tabu}{|X|X[2]|}\tabucline{}
+		Nosaukums            	& {{.ESCo.Name}} \\\tabucline{}
+		Reģistrācijas numurs 	& {{.ESCo.RegistrationNumber}} \\\tabucline{}
+		PVN numurs 		& {{.ESCo.VAT}} \\\tabucline{}
+                Tiesiskais pārstāvis 	& {{.ESCo.Address}} \\\tabucline{}
+		Juridiskā adrese     	& \iffalse input fields.contractor_representative_name value="{{.Contract.Fields.contractor_representative_name}}" \fi {{.Contract.Fields.contractor_representative_name}} \\\tabucline{}
+	\end{tabu}
+\end{center}
+noslēdza šo Energoefektivitātes pakalpojuma līgumu – turpmāk tekstā sauktu Līgums.
+
+\section{ĪPAŠIE NOTEIKUMI}
+\subsection{LĪGUMA PRIEKŠMETS}
+\begin{enumerate}
+	\item Līguma priekšmets ir Atjaunošanas darbu īstenošana un Energoefektivitātes pakalpojumu sniegšana, kuru rezultātā Ēkā, kas atrodas šādā adresē: {{asset_address .Asset.Address}} ar kadastra numuru {{.Asset.Cadastre}} tiek panākts Enerģijas ietaupījums.
+	\item Ēka, šā Līguma priekšmets un tā nosacījumi pirms Atjaunošanas darbiem ir aprakstīti Līguma Pielikumā Nr. 1.
+	\item Detalizēts Atjaunošanas darbu apjoms un atbilstošie Pasākumi ir aprakstīti Līguma Pielikumā Nr. 2.
+\end{enumerate}
+
+\subsection{SNIEGTIE PAKALPOJUMI}
+\begin{enumerate}
+	\item Izpildītājs apņemas noorganizēt inženierpakalpojumus, iepirkumu, piegādes, uzstādīšanu, palaišanu, nodošanu ekspluatācijā un finansējumu, sauktus – Atjaunošanas darbi, nolūkā Ēkā īstenot Pasākumus.
+	\item Līgumā noteiktajā Pakalpojumu sniegšanas periodā Izpildītājs garantē Līguma Pielikumā Nr. 3 aprakstītos Komforta standartus.
+	\item Līgumā noteiktajā Pakalpojumu sniegšanas periodā Izpildītājs nodrošina Garantēto enerģijas ietaupījumu {{.Project.GuaranteedSavings}}\% apmērā, kas atbilst {{.Contract.Fields.calculations_qietg}}MWh salīdzinājumā ar Pielikumā Nr. 4 norādīto Bāzlīniju (izejas datiem).
+	\item Līgumā noteiktajā Pakalpojumu sniegšanas periodā Izpildītājs nodrošina Ēkas ekspluatāciju un apkopi saskaņā ar šā Līguma Pielikumā Nr. 5 ietvertajiem noteikumiem.
+\end{enumerate}
+
+\subsection{LĪGUMA TERMIŅŠ}
+\begin{enumerate}
+	\item Būvniecības periods ir {{date_diff .Project.ConstructionFrom .Project.ConstructionTo}} dienas un saskaņots atbilstoši turpmāk norādītajiem provizoriskajiem datumiem, pēc Paziņojuma saņemšanas:
+	\begin{enumerate}
+		\item Sākuma datums:                  \iffalse input project.construction_from value="{{.Project.ConstructionFrom}}" type="date" \fi {{.Project.ConstructionFrom}}
+		\item Nodošanas ekspluatācijā datums: \iffalse input project.construction_to value="{{.Project.ConstructionTo}}" type="date" \fi {{.Project.ConstructionTo}}
+	\end{enumerate}
+	\item Līgumā noteiktais Pakalpojumu sniegšanas periods ir {{mul 12 .Project.ContractTerm}} mēneši, sākot no Pasākumu Nodošanas ekspluatācijā datuma.
+	\item Pasūtītāja maksājumu termiņš atbilst Līgumā noteiktajam Pakalpojumu sniegšanas periodam.
+\end{enumerate}
+
+\subsection{ATLĪDZĪBA}
+\begin{enumerate}
+	\item Izpildītājs šajā Līgumā noteiktajā Pakalpojumu sniegšanas periodā iekasēs no Pasūtītāja ikmēneša Maksājumus, kas ietvers:
+	\begin{enumerate}
+		\item Maksu par siltumenerģiju un mājsaimniecības karsto ūdeni, kas aprēķināta saskaņā ar Pielikumu Nr.  6;
+		\item Maksu par atjaunošanu, ka aprēķināta un indeksēta saskaņā ar Pielikumu Nr.  7;
+		\item Ekspluatācijas un apkopes maksu, kas aprēķināta un indeksēta saskaņā ar Pielikumu Nr.  8;
+		\item jebkādus nodokļus (piemēram, PVN) saistībā ar Pakalpojumu sniegšanu.
+	\end{enumerate}
+	\item Ikmēneša Maksa par atjaunošanu un Ekspluatācijas un apkopes maksa par Pakalpojumu sniegšanas perioda pirmo mēnesi ir nolīgta šādā apmērā:
+
+% table: summary
+
+\begin{center}
+	\begin{tabu}{|X|X|X|X|}\tabucline{}\rowfont[c]\bfseries
+	{{with translate "lv" .Contract.Tables.summary}} % chktex 26
+	{{.Columns | column}} \\\tabucline{}
+	{{range .Rows}} % chktex 26
+	{{.|row}} \\\tabucline{}
+	{{end}}
+	\bfseries {{total .}} \\\tabucline{} % chktex 26
+	{{end}}
+	\end{tabu}
+\end{center}
+
+\item Pasūtītāja Pārvaldniekam katru mēnesi tiks izrakstīts rēķins. Pasūtītāja Pārvaldniekam Izpildītāja iesniegto rēķinu apmaksas termiņš ir \iffalse input fields.invoiced_days value="{{.Contract.Fields.invoiced_days}}" \fi {{.Contract.Fields.invoiced_days}} dienas pēc saņemšanas.
+\end{enumerate}
+
+\vspace{2cm}
+{{template "sign.tex"}} % chktex 18
+
+{{template "annex1.tex" .}} % chktex 18
+{{template "sign.tex"}} % chktex 18
+
+{{template "annex2.tex" .}} % chktex 18 chktex 26
+{{template "sign.tex"}} % chktex 18
+
+{{template "annex3.tex" .}} % chktex 18 chktex 26
+{{template "sign.tex"}} % chktex 18
+
+{{template "annex4.tex" .}} % chktex 18 chktex 26
+{{template "sign.tex"}} % chktex 18
+
+{{template "annex5.tex" .Contract.Tables}} % chktex 18 chktex 26
+{{template "sign.tex"}} % chktex 18
+
+{{template "annex6.tex" .}} % chktex 18 chktex 26
+{{template "sign.tex"}} % chktex 18
+
+{{template "annex7.tex" .}} % chktex 18 chktex 26
+{{template "sign.tex"}} % chktex 18
+
+{{template "annex8.tex" .}} % chktex 18 chktex 26
+{{template "sign.tex"}} % chktex 18
+
+{{template "annex9.tex" .Contract.Fields}} % chktex 18 chktex 26
+{{template "sign.tex"}} % chktex 18
+
+\pagebreak
+\section{PIELIKUMS Nr. 10 {-} ĒKAS DZĪVOKĻU ĪPAŠNIEKU KOPSAPULČU PROTOKOLI}
+
+\begin{center}
+\begin{tabu}{ |X|X| }
+ \hline
+ Tehnisko dokumentāciju saistības & \url{ {{.Attachments.acquisition_meeting }} } \iffalse attachment value="acquisition meeting" \fi \\
+ \hline
+ EPC priekšlīguma saistības & \url{ {{.Attachments.commitment_meeting }} } \iffalse attachment value="commitment protocol meeting" \fi \\
+ \hline
+ EPC saistības & \url{ {{.Attachments.kickoff_meeting }} } \iffalse attachment value="kickoff protocol meeting" \fi \\
+ \hline
+\end{tabu}
+\end{center}
+
+
+{{read .Markdown}} % chktex 26
+{{template "en_sign.tex"}} % chktex 18
+\FloatBarrier{}\mbox{}\vfill\pagebreak % make sure no floats (e.g. images) go past here.
+
+{{template "terms.tex"}} % chktex 18
+{{template "sign.tex"}} % chktex 18
+
+\end{document}

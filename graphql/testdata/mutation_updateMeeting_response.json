@@ -1,0 +1,11 @@
+{
+    "updateMeeting":{ 
+    "attachments": [
+              {
+                "name": "new-attachment"
+              }
+            ],
+        "name": "Final meeting",
+        "internalProject": "Fineergo-Dom"
+    }
+}

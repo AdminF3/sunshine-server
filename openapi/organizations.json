@@ -1,0 +1,428 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Sunshine Organizations API",
+        "version": "1.0.0"
+    },
+    "tags": [
+        {
+            "description": "Endpoints for manipulating organizations and relative data.",
+            "name": "Organizations"
+        }
+    ],
+    "components": {
+        "schemas": {
+            "OrgResp": {
+                "properties": {
+                    "timestamp": {
+                        "example": "2019-03-11T12:59:05.259Z",
+                        "description": "Last updated at",
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/Organization",
+                        "type": "object"
+                    },
+                    "type": {
+                        "description": "The type of the entity",
+                        "example": "asset",
+                        "type": "string"
+                    },
+                    "_id": {
+                        "description": "The ID of the organization",
+                        "example": "0f465c3f-1263-47c2-a497-48978c154e0f",
+                        "type": "string"
+                    }
+                },
+                "x-go-type": {
+                    "ignore": true,
+                    "id": "OrgResp"
+                },
+                "type": "object"
+            },
+            "OrgRoles": {
+                "properties": {
+                    "members": {
+                        "items": {
+                            "description": "Regular oragnization members with no exclusive previliges",
+                            "example": "0f465c3f-1263-47c2-a497-48978c154e0f",
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "leaas": {
+                        "items": {
+                            "description": "Legal Entity Account Administrators",
+                            "example": "0f465c3f-1263-47c2-a497-48978c154e0f",
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "lsigns": {
+                        "items": {
+                            "description": "Legal Signatories of the organization",
+                            "example": "0f465c3f-1263-47c2-a497-48978c154e0f",
+                            "format": "uuid",
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "lear": {
+                        "description": "Legal Entity Appointed Representative of the organization",
+                        "example": "0f465c3f-1263-47c2-a497-48978c154e0f",
+                        "format": "uuid",
+                        "type": "string"
+                    }
+                },
+                "x-go-type": {
+                    "ignore": false,
+                    "id": "stageai.tech/sunshine/sunshine/models.OrgRoles"
+                },
+                "type": "object"
+            },
+            "Organizations": {
+                "properties": {
+                    "documents": {
+                        "items": {
+                            "$ref": "#/components/schemas/Organization"
+                        },
+                        "type": "array"
+                    }
+                },
+                "x-go-type": {
+                    "ignore": true,
+                    "id": "Organizations"
+                },
+                "type": "object"
+            },
+            "Organization": {
+                "required": [
+                    "name",
+                    "vat",
+                    "address",
+                    "legal_form",
+                    "registered",
+                    "roles",
+                    "country",
+                    "email"
+                ],
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "roles": {
+                        "$ref": "#/components/schemas/OrgRoles",
+                        "type": "ProjRoles"
+                    },
+                    "valid": {
+                        "enum": [
+                            "Pending(1)",
+                            "Declined(2)",
+                            "Pending(3)"
+                        ],
+                        "format": "int32",
+                        "description": "Valid status of the organization",
+                        "example": 1,
+                        "type": "integer"
+                    },
+                    "registered": {
+                        "example": "2019-03-11T12:59:05.259Z",
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "registration_number": {
+                        "example": "2019-03-11T12:59:05.259Z",
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "legal_form": {
+                        "enum": [
+                            "FINANCIAL_INSTITUTION (1)",
+                            "ESCO (2)",
+                            "GOVERNMENT (3)",
+                            "PUBLIC_ORGANIZATION (4)",
+                            "PRIVATE_ORGANIZATION (5)",
+                            "RESIDENTS_COMMUNITY (6)"
+                        ],
+                        "format": "int32",
+                        "description": "Legal form of the organization",
+                        "example": 1,
+                        "type": "integer"
+                    },
+                    "logo": {
+                        "type": "string"
+                    },
+                    "website": {
+                        "description": "website URL of the organization",
+                        "example": "go-corp.empl",
+                        "type": "string"
+                    },
+                    "telephone": {
+                        "description": "Telephone number of the organization",
+                        "example": 359889123123,
+                        "type": "string"
+                    },
+                    "address": {
+                        "description": "Address of the organization",
+                        "example": "End of the world",
+                        "type": "string"
+                    },
+                    "vat": {
+                        "description": "VAT number",
+                        "example": "43603000805",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "Organization name",
+                        "example": "Yatrus Analytics",
+                        "type": "string"
+                    },
+                    "country": {
+                        "description": "The country where this organization is registered",
+                        "example": "Bulgaria",
+                        "type": "string"
+                    }
+                },
+                "x-go-type": {
+                    "ignore": false,
+                    "id": "stageai.tech/sunshine/sunshine/models.Organization"
+                },
+                "type": "object"
+            }
+        }
+    },
+    "paths": {
+        "/organization/{uuid}": {
+            "put": {
+                "parameters": [
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "object"
+                        },
+                        "required": true,
+                        "description": "Organization ID",
+                        "in": "path",
+                        "name": "uuid"
+                    }
+                ],
+                "responses": {
+                    "404": {
+                        "description": "No such organization with provided id exists."
+                    },
+                    "400": {
+                        "description": "Bad request."
+                    },
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/OrgResp"
+                                }
+                            }
+                        },
+                        "description": "successful operation"
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Organization"
+                            }
+                        }
+                    }
+                },
+                "summary": "Update existing organization",
+                "tags": [
+                    "Organizations"
+                ]
+            },
+            "get": {
+                "parameters": [
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "object"
+                        },
+                        "required": true,
+                        "description": "Organization ID",
+                        "in": "path",
+                        "name": "uuid"
+                    }
+                ],
+                "responses": {
+                    "404": {
+                        "description": "No such organization with provided id exists"
+                    },
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Organization"
+                                }
+                            }
+                        },
+                        "description": "successful operation"
+                    }
+                },
+                "summary": "Get existing project",
+                "tags": [
+                    "Organizations"
+                ]
+            }
+        },
+        "/organization": {
+            "post": {
+                "responses": {
+                    "400": {
+                        "description": "Bad request or organization already exists"
+                    },
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/OrgResp"
+                                }
+                            }
+                        },
+                        "description": "successful operation"
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Organization"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "description": "Creates new organization according the passed values",
+                "summary": "Create a new organization",
+                "tags": [
+                    "Organizations"
+                ]
+            },
+            "get": {
+                "responses": {
+                    "200": {
+                        "headers": {
+                            "X-Document-Count": {
+                                "description": "Numbers of all documents exists in the DB after filter",
+                                "schema": {
+                                    "format": "int32",
+                                    "type": "integer"
+                                }
+                            }
+                        },
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Organizations"
+                                }
+                            }
+                        },
+                        "description": "successful operation"
+                    }
+                },
+                "parameters": [
+                    {
+                        "description": "Number of records to be listed in total",
+                        "schema": {
+                            "default": 25,
+                            "format": "int32",
+                            "type": "integer"
+                        },
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "description": "From which record to start listing starting from 0",
+                        "schema": {
+                            "default": 0,
+                            "format": "int32",
+                            "type": "integer"
+                        },
+                        "name": "offset",
+                        "in": "query"
+                    },
+                    {
+                        "description": "Boolean value for listing records in ascending chronological order",
+                        "schema": {
+                            "enum": [
+                                true,
+                                false
+                            ],
+                            "default": false,
+                            "type": "string"
+                        },
+                        "name": "asc",
+                        "in": "query"
+                    },
+                    {
+                        "description": "String parameter for name. Expects one or more words divided with spaces",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "name": "search",
+                        "in": "query"
+                    },
+                    {
+                        "description": "Organization status",
+                        "schema": {
+                            "enum": [
+                                "Planning(1)",
+                                "InProgress(2)",
+                                "Finished(3)",
+                                "Abandoned(4)"
+                            ],
+                            "format": "int32",
+                            "type": "integer"
+                        },
+                        "name": "status",
+                        "in": "query"
+                    },
+                    {
+                        "schema": {
+                            "type": "string"
+                        },
+                        "name": "country",
+                        "in": "query"
+                    },
+                    {
+                        "schema": {
+                            "enum": [
+                                "Corporation(1)",
+                                "TradeUnion(2)",
+                                "PublicFunds(3)",
+                                "Association(4)",
+                                "EuropeanCompany(5)",
+                                "IndividualMerchants(6)",
+                                "Foundation(7)",
+                                "ReligiousOrganization(8)",
+                                "LimitedLiabilityCompany(9)",
+                                "PublicOrganization(10)",
+                                "Farmhouse(11)",
+                                "LawFirm(12)"
+                            ],
+                            "format": "int32",
+                            "type": "integer"
+                        },
+                        "name": "legal_form",
+                        "in": "query"
+                    }
+                ],
+                "description": "Returns list of Organization. By default at most 25 results are being served in reversed chronological order. Query values can be used in order to get next pages",
+                "summary": "List all existing Organizations",
+                "tags": [
+                    "Organizations"
+                ]
+            }
+        }
+    }
+}

@@ -1,0 +1,146 @@
+{{template "preamble.tex"}} % chktex 18
+\begin{document}
+
+\begin{center}
+	\begin{tabu}{|X[2]|X|}\tabucline{}
+		Contract number: {{.Contract.ID}} & Date: \iffalse input fields.date value="{{.Contract.Fields.date}}" type="date" \fi {{.Contract.Fields.date}} \\\tabucline{} %chktex 26
+	\end{tabu}
+\end{center}
+
+\section{ENERGY PERFORMANCE CONTRACT}
+
+The \textbf{Client}:
+
+\begin{center}
+	\begin{tabu}{|X|X[2]|}\tabucline{}
+		Name 			& \iffalse input fields.client_name value="{{.Contract.Fields.client_name}}" \fi {{.Contract.Fields.client_name}} 		\\\tabucline{}
+		Registration number 	& \iffalse input fields.client_id value="{{.Contract.Fields.client_id}}" \fi {{.Contract.Fields.client_id}}			\\\tabucline{}
+		Address 		& \iffalse input fields.client_address value="{{.Contract.Fields.client_address}}" \fi {{.Contract.Fields.client_address}}	\\\tabucline{}
+	\end{tabu}
+\end{center}
+
+The \textbf{Contractor}:
+
+\begin{center}
+	\begin{tabu}{|X|X[2]|}\tabucline{}
+		Name                 	& {{.ESCo.Name}} \\\tabucline{}
+		Registration number  	& {{.ESCo.RegistrationNumber}} \\\tabucline{}
+		VAT number  		& {{.ESCo.VAT}} \\\tabucline{}
+		Legal address        	& {{.ESCo.Address}} \\\tabucline{}
+		Legal representative 	& \iffalse input fields.contractor_representative_name value="{{.Contract.Fields.contractor_representative_name}}" \fi {{.Contract.Fields.contractor_representative_name}} \\\tabucline{}
+	\end{tabu}
+\end{center}
+
+Concluded this Energy Performance Contract hereinafter referred to as the Agreement.
+
+\section{SPECIAL CONDITIONS}
+\subsection{SCOPE OF THE AGREEMENT}
+\begin{enumerate}
+	\item	The scope of the Agreement is the implementation of the Renovation Works and the provision of Energy Efficiency Services resulting in Energy Savings in the Building located at the following address: {{asset_address .Asset.Address}} with cadastre number {{.Asset.Cadastre}}.
+	\item	The Building scope of this Agreement and its conditions before the Renovation Works are described in Annex №1 of the Agreement.
+	\item	The detailed scope of the Renovation Works, and related Measures, is described in Annex №2 of the Agreement.
+\end{enumerate}
+
+\subsection{SERVICES PROVIDED}
+\begin{enumerate}
+	\item	The Contractor undertakes to arrange engineering, procurement, supply, installation, start-up, commissioning and financing, referred to the Renovation Works, for the implementation of the Measures in the Building.
+	\item	The Contractor for the Service Period of the Agreement guarantees the Comfort Standards described in Annex №3 of the Agreement.
+  \item	The Contractor for the Service Period of the Agreement gives an Energy Savings Guarantee of {{.Project.GuaranteedSavings}}\%, which corresponds to {{.Contract.Fields.calculations_qietg}}MWh compared to the Baseline included in Annex №4.
+	\item	The Contractor for the Service Period of the Agreement operates and maintains the Building in line with the provision detailed in Annex №5 of this Agreement.
+\end{enumerate}
+
+\subsection{TERM OF AGREEMENT}
+\begin{enumerate}
+	\item	The Construction Period is {{date_diff .Project.ConstructionFrom .Project.ConstructionTo}} days and agreed with the following indicative dates subject to Notification:
+	\begin{enumerate}
+		\item	Commencement Date:    \iffalse input project.construction_from value="{{.Project.ConstructionFrom}}" type="date" \fi {{.Project.ConstructionFrom}}
+		\item	Commissioning Date:   \iffalse input project.construction_to value="{{.Project.ConstructionTo}}" type="date" \fi {{.Project.ConstructionTo}}
+	\end{enumerate}
+\item	The Service Period of the Agreement is {{mul 12 .Project.ContractTerm}} months starting after the Commissioning Date of the Measures.
+	\item	The Client term of payment corresponds to the Service Period of the Agreement.
+\end{enumerate}
+
+\subsection{COMPENSATION}
+\begin{enumerate}
+	\item	The Contractor will charge the Client during the Service Period of this Agreement monthly Fees comprised of:
+	\begin{enumerate}
+		\item	Thermal Energy Fee and Domestic hot water Fee calculated according to Annex № 6;
+		\item	Renovation Fee calculated and indexed according to Annex № 7;
+		\item	Operation and Maintenance Fee calculated and indexed according to Annex № 8;
+		\item	Any taxes due (such as VAT) in delivering the Services.
+
+	\end{enumerate}
+	\item	The monthly Renovation Fee and the Operation and Maintenance Fee for the first month of the Service Period are agreed as:
+\begin{center}
+	\begin{tabu}{|X|X|X|X|}\tabucline{}\rowfont[c]\bfseries
+	{{with translate "en" .Contract.Tables.summary}} %chktex 26
+	{{.Columns | column}} \\\tabucline{}
+	{{range .Rows}} %chktex 26
+	{{.|row}} \\\tabucline{}
+	{{end}}
+	\bfseries {{total .}} \\\tabucline{} %chktex 26
+	{{end}}
+	\end{tabu}
+\end{center}
+
+
+	\item	The Manager of the Client will be invoiced on a monthly basis. Invoices submitted by the Contractor to the Manager of the Client are due within \iffalse input fields.invoiced_days value="{{.Contract.Fields.invoiced_days}}" \fi {{.Contract.Fields.invoiced_days}} days from receipt.
+\end{enumerate}
+
+\subsection{OTHER PROVISIONS}
+\begin{enumerate}
+	\item	The Agreement includes the General Terms and Conditions, the Specific Conditions and the Annexes to the Specific Conditions which are an integral part of the Agreement.
+	\item	By signing these Specific Conditions, the Parties acknowledge that they have read, understood and agreed and can comply with the Specific Conditions, the Annexes of the Specific Conditions and the General Terms and Conditions of this Agreement.
+\end{enumerate}
+{{template "en_sign.tex"}} % chktex 18
+
+{{template "en_annex1.tex" .}} % chktex 18 chktex 26
+{{template "en_sign.tex"}} % chktex 18
+
+{{template "en_annex2.tex" .}} % chktex 18 chktex 26
+{{template "en_sign.tex"}} % chktex 18
+
+{{template "en_annex3.tex" .}} % chktex 18 chktex 26
+{{template "en_sign.tex"}} % chktex 18
+
+{{template "en_annex4.tex" .}} % chktex 18 chktex 26
+{{template "en_sign.tex"}} % chktex 18
+
+{{template "en_annex5.tex" .Contract.Tables}} % chktex 18 chktex 26
+{{template "en_sign.tex"}} % chktex 18
+
+{{template "en_annex6.tex" .}} % chktex 18 chktex 26
+{{template "en_sign.tex"}} % chktex 18
+
+{{template "en_annex7.tex" .}} % chktex 18 chktex 26
+{{template "en_sign.tex"}} % chktex 18
+
+{{template "en_annex8.tex" .}} % chktex 18 chktex 26
+{{template "en_sign.tex"}} % chktex 18
+
+{{template "en_annex9.tex" .Contract.Fields}} % chktex 18 chktex 26
+{{template "en_sign.tex"}} % chktex 18
+
+\pagebreak
+\section{ANNEX №10 {-} PROTOCOLS OF THE GENERAL MEETINGS OF APARTMENT OWNERS OF THE BUILDING}
+
+\begin{center}
+\begin{tabu}{ |X|X| }
+ \hline
+ Technical documentation Commitment & \url{ {{.Attachments.acquisition_meeting }} } \iffalse attachment value="acquisition meeting" \fi \\
+ \hline
+ Pre-EPC Commitment & \url{ {{.Attachments.commitment_meeting }} } \iffalse attachment value="commitment protocol meeting" \fi \\
+ \hline
+ EPC Commitment & \url{ {{.Attachments.kickoff_meeting }} } \iffalse attachment value="kickoff protocol meeting" \fi \\
+ \hline
+\end{tabu}
+\end{center}
+
+{{read .Markdown}} % chktex 26
+{{template "en_sign.tex"}} % chktex 18
+\FloatBarrier{}\mbox{}\vfill\pagebreak % make sure no floats (e.g. images) go past here.
+
+{{template "en_terms.tex"}} % chktex 18
+{{template "sign.tex"}} % chktex 18
+\end{document}
+$u

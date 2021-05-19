@@ -1,0 +1,4 @@
+
+mutation {
+  deleteMeeting(id: %q) {message}
+}

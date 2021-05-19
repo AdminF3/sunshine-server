@@ -1,0 +1,117 @@
+\section{ANEXA NR. 4 - GARANȚIE DE SALVARE A BUNURILOR ȘI A ENERGIEI}
+
+\begin{enumerate}
+
+  \item Perioada de bază include date lunare din an [ $an^{n-2}$, $an^{n-1}$ şi $an^{n}$]
+
+    \begin{enumerate}
+    \item Date energetice pentru perioada de bază:
+
+% table: baseyear
+
+      \begin{center}
+	\begin{tabu}{|X[2]|X|X|X|X|X|X|X|X|X|X|X|X|} \tabucline{} \rowfont[c]\bfseries
+		& \multicolumn{4}{c|}{ {{baseyear "ro" 2}} } & \multicolumn{4}{c|}{ {{baseyear "ro" 1}} } & \multicolumn{4}{c|}{ {{baseyear "ro" 0}} } \\
+		& \multicolumn{4}{c|}{ {{.Contract.Tables.baseyear_n_2.Title}} } & \multicolumn{4}{c|}{ {{.Contract.Tables.baseyear_n_1.Title}} } & \multicolumn{4}{c|}{ {{.Contract.Tables.baseyear_n.Title}} } \\\tabucline{}\rowfont[c]\bfseries
+	  	{{ $tt := join_tables .Contract.Tables.baseyear_n_2 .Contract.Tables.baseyear_n_1 .Contract.Tables.baseyear_n }} %chktex 25
+          	{{with $t := translate "ro" $tt}}
+		{{$t.Columns | column_sideways}} \\\tabucline{} \rowfont[]\bfseries %chktex 25
+		{{range $t.Headers}}
+		{{.|row}} \\\tabucline{}
+		{{end}}
+		{{range $t.Rows}}
+		{{row .}} \\\tabucline{} %chktex 26
+		{{end}}
+
+		\bfseries {{average $t }} \\\tabucline{}
+		\bfseries {{total $t}} \\\tabucline{}
+		{{end}}
+	\end{tabu}
+	\end{center}
+
+    \item Condiții în perioada de bază:
+
+% table: baseconditions
+
+\begin{center}
+\begin{tabu}{|X[2]|X|X|X|X|X|X|X|X|X|X|X|X|} \tabucline{} \rowfont[c]\bfseries
+	& \multicolumn{4}{c|}{ {{baseyear "ro" 2}} } & \multicolumn{4}{c|}{ {{baseyear "ro" 1}} } & \multicolumn{4}{c|}{ {{baseyear "ro" 0}} } \\
+	& \multicolumn{4}{c|}{ {{.Contract.Tables.baseyear_n_2.Title}} } & \multicolumn{4}{c|}{ {{.Contract.Tables.baseyear_n_1.Title}} } & \multicolumn{4}{c|}{ {{.Contract.Tables.baseyear_n.Title}} } \\\tabucline{}\rowfont[c]\bfseries
+	{{$tt := join_tables .Contract.Tables.baseconditions_n_2 .Contract.Tables.baseconditions_n_1 .Contract.Tables.baseconditions_n }} %chktex 25
+	{{with $t := translate "ro" $tt}}
+	{{$t.Columns | column_sideways}} \\\tabucline{} \rowfont[]\bfseries %chktex 25
+	{{range $t.Headers}}
+	{{.|row}} \\\tabucline{}
+	{{end}}
+	{{range $t.Rows}}
+	{{row .}} \\\tabucline{} %chktex 26
+	{{end}}
+
+	\bfseries {{average $t }} \\\tabucline{}
+	\bfseries {{total $t}} \\\tabucline{}
+{{end}}
+\end{tabu}
+\end{center}
+
+      \vspace{1cm}
+
+      Numărul zilelor ce necesită încălzire este stabilit folosind următoarele formule:
+
+      \[GDD = D_{Apk} x (T_1 - T_3)\]
+
+      unde:
+      \begin{itemize}[label={}]
+	\item $GDD$ \quad \quad numărul de zile ce necesită încălzire în perioada de bază
+	\item $D_{Apk}$ \quad \quad numărul de zile de încălzire efectivă în perioada de bază
+	\item $T_{1}$ \quad \quad \quad temperatura interioară în perioada de bază ($^oC$)
+	\item $T_{3}$ \quad \quad \quad temperatura medie exterioară reală în perioada de bază  ($^oC$).
+	\end{itemize}
+
+    \end{enumerate}
+
+  \item Linia de bază
+
+    \begin{enumerate}
+	\item Linia de bază este determinată pe baza datelor și condițiilor energetice din perioada de bază, după cum urmează:
+    \end{enumerate}
+
+% table: baseline
+
+    \begin{center}
+\begin{tabu}{|X[2]|X|X|X|X|X|X|} \tabucline{}
+	{{with $t := translate "ro" .Contract.Tables.baseline}}
+	{{.Columns | column}} \\\tabucline{}
+	{{range .Rows}} {{rowf $t .}} \\\tabucline{} {{end}} %chktex 26
+{{end}}
+\end{tabu}
+\end{center}
+
+  \item Garanţia de economisire a energiei şi garanţia consumului de energie
+
+    \begin{enumerate}
+	\item Contractantul garantează pentru perioada de serviciu a prezentului acord că măsurile implementate și serviciile furnizate vor reduce consumul de energie pentru încălzirea spațiului și pierderile de circulație ($Q_{Apk, cz, ref}$) pe perioada de decontare (un an) cu o cantitate de :\\*
+ $CĂLDURĂ_{ECONOMISITĂ}$ XXXX \%  a consumului de bază pentru încălzirea spaţiului şi pierderile de circulaţie ($Q_{Apk, cz, ref}$)
+	\item Garanţia de economii de energie corespunde:
+
+          \[Q_{iet,G} = Q_{Apk, cz, ref} x CĂLDURĂ_{ECONOMISITĂ} = {{.Contract.Fields.calculations_qietg}} MWh/an\]
+
+          Unde:
+          \begin{itemize}[label={}]
+	\item $Q_{iet, G}$ \quad \quad \quad   Garanţie de economii de energie, MWh/an
+	\item $Q_{Apk, cz, ref}$ \quad Consumul de energie de bază pentru încălzirea spaţiului şi pierderile de circulaţie, MWh/an
+	  \end{itemize}
+
+        \item Garanţia de consum de energie corespunde:
+
+          \[Q_{Apk,cz,G} = Q_{Apk,cz,ref} - Q_{iet,G} = {{.Contract.Fields.calculations_qapkczg}} MWh/an\]
+
+      \end{enumerate}
+
+    Unde:
+    \begin{itemize}[label={}]
+	\item $Q_{Apk, cz, G}$  \quad reprezintă garanția consumului de energie pentru încălzirea spațiului și pierderile de circulație, $MWh/an$
+	\item $Q_{Apk, cz,ref}$ \quad este consumul de energie de bază pentru încălzirea spațiului și pierderile de circulație, $MWh/an$
+	\item $Q_{iet,G}$ \quad \quad este garanția de economisire a energiei, $MWh/an$
+\end{itemize}
+
+\end{enumerate}

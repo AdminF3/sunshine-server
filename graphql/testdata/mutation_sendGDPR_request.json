@@ -1,0 +1,15 @@
+mutation {
+    sendGDPRRequest( request: {
+        action: GET,
+        requesterName: "%s",
+        requesterPhone:"%s",
+        requesterEmail:"%s",
+        requesterAddress:"%s",
+        name:"%s",
+        phone:"%s",
+        email: "%s",
+        address: "%s",
+	reason: "%s",
+	information: "%s",
+})
+  {name}}

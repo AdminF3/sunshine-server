@@ -1,0 +1,15 @@
+query{
+    getMeeting(mID:"%s"){
+        name
+        guests {
+          type
+        }
+        host {
+            email
+            country
+        }
+        project {
+            country
+        }
+    }
+}

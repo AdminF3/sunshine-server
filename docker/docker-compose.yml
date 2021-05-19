@@ -1,0 +1,31 @@
+version: "3"
+services:
+  dev-sunshine-psql:
+    container_name: dev-sunshine-psql
+    image: postgres:11-alpine
+    command: "-c max_connections=1024"
+    volumes:
+      - dev-sunshine-psql:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=sunshine-dev
+      - POSTGRES_USER=sunshine-dev
+      - POSTGRES_PASSWORD=sunshine-dev
+
+  dev-sunshine:
+    container_name: dev-sunshine
+    build:
+      context: .
+    environment:
+      - POSTGRES_HOST=dev-sunshine-psql
+      - POSTGRES_DB=sunshine-dev
+      - POSTGRES_USER=sunshine-dev
+    volumes:
+      - ${HOME}/sunshine-uploads:/home/stageai/sunshine/uploads
+    ports:
+      - 8001:8001
+    depends_on:
+      - dev-sunshine-psql
+    command: ["dev"]
+
+volumes:
+  dev-sunshine-psql:

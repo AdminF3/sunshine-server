@@ -1,0 +1,10 @@
+mutation {
+    reviewMonitoringPhase(ID: %q, review: {
+	ID: "%s",
+        approved: true,
+        comment: "Lorem Ipsum.",
+        type: FORFAITING
+    }) {
+	  message
+  }
+}

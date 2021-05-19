@@ -1,0 +1,6 @@
+query {
+    getCountry(country: "%s") {
+        country
+    	vat
+    }
+}

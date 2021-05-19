@@ -1,0 +1,448 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Sunshine API"
+    },
+    "tags": [
+        {
+            "name": "Assets",
+            "description": "Endpoints for manipulating assets and relative data."
+        }
+    ],
+    "components": {
+        "schemas": {
+            "AssetResp": {
+                "type": "object",
+                "properties": {
+                    "_id": {
+                        "type": "string",
+                        "example": "0f465c3f-1263-47c2-a497-48978c154e0f",
+                        "description": "The ID of the asset"
+                    },
+                    "type": {
+                        "type": "string",
+                        "example": "asset",
+                        "description": "The type of the entity"
+                    },
+                    "data": {
+                        "type": "object",
+                        "$ref": "#/components/schemas/Asset"
+                    },
+                    "timestamp": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Last updated at",
+                        "example": "2019-03-11T12:59:05.259Z"
+                    }
+                },
+                "x-go-type": {
+                    "ignore": true,
+                    "id": "AssetResp"
+                }
+            },
+            "Assets": {
+                "type": "object",
+                "properties": {
+                    "documents": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/AssetResp"
+                        }
+                    }
+                },
+                "x-go-type": {
+                    "ignore": true,
+                    "id": "Assets"
+                }
+            },
+            "Asset": {
+                "type": "object",
+                "properties": {
+                    "owner": {
+                        "type": "string",
+                        "example": "0f465c3f-1263-47c2-a497-48978c154e0f",
+                        "format": "uuid",
+                        "description": "The owner of the asset - uuid of an organization"
+                    },
+                    "esco": {
+                        "type": "string",
+                        "example": "0f465c3f-1263-47c2-a497-48978c154e0f",
+                        "format": "uuid",
+                        "description": "The uuid of an ESCO organization which got this asset registered"
+                    },
+                    "address": {
+                        "type": "string",
+                        "example": "End of the world"
+                    },
+                    "coordinates": {
+                        "type": "object",
+                        "$ref": "#/components/schemas/Coords"
+                    },
+                    "area": {
+                        "type": "integer",
+                        "format": "int32",
+                        "example": 9000
+                    },
+                    "heated_area": {
+                        "type": "integer",
+                        "format": "int32",
+                        "example": 9000
+                    },
+                    "common_parts_area": {
+                        "type": "integer",
+                        "format": "int32",
+                        "example": 9000
+                    },
+                    "billing_area": {
+                        "type": "integer",
+                        "format": "int32",
+                        "example": 9000
+                    },
+                    "flats": {
+                        "type": "integer",
+                        "format": "int32",
+                        "example": 10
+                    },
+                    "floors": {
+                        "type": "integer",
+                        "format": "int32",
+                        "example": 4
+                    },
+                    "stair_cases": {
+                        "type": "integer",
+                        "format": "int32",
+                        "example": 6
+                    },
+                    "building_type": {
+                        "type": "integer",
+                        "example": 1,
+                        "description": "Building type of the asset",
+                        "format": "int32",
+                        "enum": [
+                            "CzechProject(1)",
+                            "Type103(2)",
+                            "Type104(3)",
+                            "Type119(4)",
+                            "Type316(5)",
+                            "Type318(6)",
+                            "Type464(7)",
+                            "Type467(8)",
+                            "Type602(9)",
+                            "Other(10)"
+                        ]
+                    },
+		    "category": {
+			"type": "string",
+			"example": "nonresidential_office_buildings",
+			"enum": [
+				"nonresidential_educational_facilities",
+				"nonresidential_cultural_facilities",
+				"nonresidential_medical_facilities",
+				"nonresidential_sports_facilities",
+				"nonresidential_office_buildings",
+				"nonresidential_transportation_facilities"
+			],
+			"description": "Building category of the asset"
+		    },
+                    "heating_type": {
+                        "type": "integer",
+                        "example": 1,
+                        "format": "int32",
+                        "enum": [
+                            "District Heating(1)",
+                            "Building Heating(2)"
+                        ]
+                    },
+                    "valid": {
+                        "type": "integer",
+                        "example": 1,
+                        "description": "Valid status of the project",
+                        "format": "int32",
+                        "enum": [
+                            "Pending(1)",
+                            "Declined(2)",
+                            "Pending(3)"
+                        ]
+                    },
+                    "cadastre": {
+                        "type": "string"
+                    },
+                    "country": {
+                        "description": "The country where this asset is located",
+                        "example": "Bulgaria",
+                        "type": "string"
+                    }
+                },
+                "x-go-type": {
+                    "ignore": false,
+                    "id": "stageai.tech/sunshine/sunshine/models.Asset"
+                },
+                "required": [
+                    "owner",
+                    "coordinates",
+                    "country",
+                    "area"
+                ]
+            },
+            "Coords": {
+                "type": "object",
+                "properties": {
+                    "lat": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "Latitude",
+                        "example": 24.10836
+                    },
+                    "lng": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "Longitude",
+                        "example": 56.949318
+                    }
+                },
+                "x-go-type": {
+                    "ignore": false,
+                    "id": "stageai.tech/sunshine/sunshine/models.Coords"
+                }
+            }
+        }
+    },
+    "paths": {
+        "/asset": {
+            "get": {
+                "tags": [
+                    "Assets"
+                ],
+                "summary": "List all existing Assets",
+                "description": "Returns list of assets. By default at most 25 results are being served in reversed chronological order. Query values can be used in order to get next pages",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 25
+                        },
+                        "description": "Number of records to be listed in total"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "default": 0
+                        },
+                        "description": "From which record to start listing starting from 0"
+                    },
+                    {
+                        "in": "query",
+                        "name": "asc",
+                        "schema": {
+                            "type": "string",
+                            "default": false,
+                            "enum": [
+                                true,
+                                false
+                            ]
+                        },
+                        "description": "Boolean value for listing records in ascending chronological order"
+                    },
+                    {
+                        "in": "query",
+                        "name": "search",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "String parameter for address. Expects one or more words divided with spaces"
+                    },
+                    {
+                        "in": "query",
+                        "name": "status",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "enum": [
+                                "Planning(1)",
+                                "InProgress(2)",
+                                "Finished(3)",
+                                "Abandoned(4)"
+                            ]
+                        },
+                        "description": "Asset status"
+                    },
+                    {
+                        "schema": {
+                            "type": "string"
+                        },
+                        "name": "country",
+                        "in": "query"
+                    },
+                    {
+                        "in": "query",
+                        "name": "building_type",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32",
+                            "enum": [
+                                "CzechProject(1)",
+                                "Type103(2)",
+                                "Type104(3)",
+                                "Type119(4)",
+                                "Type316(5)",
+                                "Type318(6)",
+                                "Type464(7)",
+                                "Type467(8)",
+                                "Type602(9)",
+                                "Other(10)"
+                            ]
+                        },
+                        "description": "Integer parameter for Building Type"
+                    },
+                    {
+                        "in": "query",
+                        "name": "owner",
+                        "schema": {
+                            "type": "object",
+                            "format": "uuid"
+                        },
+                        "description": "Owner ID"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Assets"
+                                }
+                            }
+                        },
+                        "headers": {
+                            "X-Document-Count": {
+                                "schema": {
+                                    "type": "integer",
+                                    "format": "int32"
+                                },
+                                "description": "Numbers of all documents exists in the DB after filter"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Assets"
+                ],
+                "summary": "Create new asset",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Asset"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AssetResp"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request or asset already exists"
+                    }
+                }
+            }
+        },
+        "/asset/{uuid}": {
+            "get": {
+                "tags": [
+                    "Assets"
+                ],
+                "summary": "Get existing asset",
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AssetResp"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "No such project with provided id exists"
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "in": "path",
+                        "description": "Project ID",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "format": "uuid"
+                        }
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Assets"
+                ],
+                "summary": "Update existing asset",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Asset"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AssetResp"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request."
+                    },
+                    "404": {
+                        "description": "No such asset with provided id exists."
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "in": "path",
+                        "description": "Asset ID",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "format": "uuid"
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

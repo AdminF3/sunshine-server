@@ -1,0 +1,159 @@
+{{- $vt := .VAT -}}
+
+\section{ANEXA NR. 2 - BUGETAR ȘI DOMENIU DE LUCRĂRI DE RENOVARE}
+
+\subsection{Scope of Renovation works}
+2.1 Project development and management
+
+% table: project_development_renovations
+
+\begin{center}
+\begin{tabu}{|X|X[2]|X|} \tabucline{} \rowfont[c]\bfseries
+{{with $t := translate "ro" .Contract.Tables.project_development_renovations}} % chktex 25
+	{{$t.Columns | column}} \\\tabucline{}
+	{{range $t.Rows}}
+	{{rowfmt $t .}} \\\tabucline{}
+	{{end}}
+
+	 \bfseries
+	{{total_excl_vat $t}} \\\tabucline{}\bfseries
+	{{vat $t $vt}} \\\tabucline{}\bfseries
+	{{total_incl_vat $t $vt}} \\\tabucline{}
+{{end}}
+\end{tabu}
+\end{center}
+
+2.2 Construction costs
+
+% table: construction_costs_renovations
+
+\begin{center}
+\begin{tabu}{|X|X[2]|X|} \tabucline{} \rowfont[c]\bfseries
+{{with $t := translate "ro" .Contract.Tables.construction_costs_renovations}} % chktex 25
+	{{$t.Columns | column}} \\\tabucline{}
+	{{range $t.Rows}}
+	{{rowfmt $t .}} \\\tabucline{}
+	{{end}}
+
+	 \bfseries
+	{{total_excl_vat $t}} \\\tabucline{}\bfseries
+	{{vat $t $vt}} \\\tabucline{}\bfseries
+	{{total_incl_vat $t $vt}} \\\tabucline{}
+{{end}}
+\end{tabu}
+\end{center}
+
+2.3 Project supervision
+
+% table: project_supervision
+
+\begin{center}
+\begin{tabu}{|X|X[2]|X|} \tabucline{} \rowfont[c]\bfseries
+{{with $t := translate "ro" .Contract.Tables.project_supervision}} % chktex 25
+	{{$t.Columns | column}} \\\tabucline{}
+	{{range $t.Rows}}
+	{{rowfmt $t .}} \\\tabucline{}
+	{{end}}
+
+	 \bfseries
+	{{total_excl_vat $t}} \\\tabucline{}\bfseries
+	{{vat $t $vt}} \\\tabucline{}\bfseries
+	{{total_incl_vat $t $vt}} \\\tabucline{}
+{{end}}
+\end{tabu}
+\end{center}
+
+2.4 Financial charges
+
+% table: financial_charges
+
+\begin{center}
+\begin{tabu}{|X|X[2]|X|} \tabucline{} \rowfont[c]\bfseries
+{{with $t := translate "ro" .Contract.Tables.financial_charges}} % chktex 25
+	{{$t.Columns | column}} \\\tabucline{}
+	{{range $t.Rows}}
+	{{rowfmt $t .}} \\\tabucline{}
+	{{end}}
+
+	 \bfseries
+	{{total_excl_vat $t}} \\\tabucline{}\bfseries
+	{{vat $t $vt}} \\\tabucline{}\bfseries
+	{{total_incl_vat $t $vt}} \\\tabucline{}
+{{end}}
+\end{tabu}
+\end{center}
+
+\subsection{Bugetul general pentru lucrările de renovare}
+
+% table: renovation_overall_budget
+
+\begin{center}
+\begin{tabu}{|X[10]|X|} \tabucline{} \rowfont[c]\bfseries
+{{with $t := translate "ro" .Contract.Tables.renovation_overall_budget}} % chktex 25
+	{{$t.Columns | column}} \\\tabucline{}
+	{{range $t.Rows}}
+	{{rowfmt $t .}} \\\tabucline{}
+	{{end}}
+
+	 \bfseries
+	{{total_excl_vat $t}} \\\tabucline{}\bfseries
+	{{vat $t $vt}} \\\tabucline{}\bfseries
+	{{total_incl_vat $t $vt}} \\\tabucline{}
+{{end}}
+\end{tabu}
+\end{center}
+
+\subsection{Planul financiar pentru lucrările de renovare}
+
+% table: renovation_financial_plan
+
+\begin{center}
+\begin{tabu}{|X[10]|X|} \tabucline{} \rowfont[c]\bfseries
+{{with $t := translate "ro" .Contract.Tables.renovation_financial_plan}} % chktex 25
+	{{$t.Columns | column}} \\\tabucline{}
+	{{range $t.Rows}}
+	{{rowfmt $t .}} \\\tabucline{}
+	{{end}}
+
+	 \bfseries
+	{{total_excl_vat $t}} \\\tabucline{}\bfseries
+	{{vat $t $vt}} \\\tabucline{}\bfseries
+	{{total_incl_vat $t $vt}} \\\tabucline{}
+{{end}}
+\end{tabu}
+\end{center}
+
+\vspace{1cm}
+
+Unde:
+
+\begin{itemize}[label={}]
+	\item $I_C$ \quad \quad Contribuția financiară oferită de contractant, inclusiv TVA eligibilă utilizată pentru calcularea Taxei de renovare
+	\item $I_T$ \quad \quad costul total de investiții pentru lucrările de renovare, inclusiv TVA
+\end{itemize}
+
+\vspace{1cm}
+
+Porțiunea de costuri de investiții utilizate pentru calcularea taxei de renovare din anexa nr. 7 la prezentul acord este calculată pe baza contribuției financiare furnizate de contractant, corespunzător $I_C$.
+
+\subsection{Măsuri implementate ca parte a lucrărilor de renovare și estimări detaliate ale costurilor}
+
+	\textit{[Vă rugăm să includeţi proiectarea detaliată a proiectului pentru măsurile planificate, duupă caz, în conformitate cu normele şi reglementările relevante ]}
+
+        De exemplu:
+        \begin{itemize}
+		\item Proiectare construcţie  1 – Secţiune generală
+		\item Proiectarea construcţiei  2 – Arhitectură şi DOP
+		\item Proiectarea construcţiei  3 –  Reţele de inginerie şi de încălzire
+		\item Proiectarea construcţiei  4 – Reţele de inginerie şi de protecţie împotriva fulgerelor
+		\item Proiectarea construcţiei  5 – Domeniul de aplicare al lucrărilor de construcţie
+		\item Reconstrucţia lucrărilor de construcţii civile ale clădirii
+		\item Domeniul de aplicare al lucrărilor de construcţie
+		\item Etc.
+	\end{itemize}
+
+<<<<<<< HEAD
+[Vă rugăm să includeţi estimările detaliate ale costurilor pentru măsurile planificate conform regulamentului nr. 239 al cabinetului de ministere, inclusive o defalcare detaliată a costurilor de dezvoltare a proiectelor şi a costurilor de gestionare]
+=======
+[Vă rugăm să includeţi estimările detaliate ale costurilor pentru măsurile planificate conform regulamentului nr. 239 al cabinetului de ministere, inclusive o defalcare detaliată a costurilor de dezvoltare a proiectelor şi a costurilor de gestionare]
+>>>>>>> master

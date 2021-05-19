@@ -1,0 +1,63 @@
+\section{ANHANG 7 – SANIERUNGSGEBÜHR}
+
+\centering{[nur im Falle eines Finanzbeitrags des Auftragnehmers auszufüllen]}
+
+\begin{enumerate}
+
+\item{Der Auftraggeber stimmt dem Finanzbeitrag des Auftragnehmers zu, weil es sich um eine notwendige und unerlässliche Leistung handelt im Zusammenhang mit:}
+
+\begin{enumerate}
+
+	\item der erfolgreichen Umsetzung und Installation der Maßnahmen;
+	\item der Durchsetzung der Energieeinsparungsgarantie des Auftragnehmers;
+	\item der qualitativen Bereitstellung der vereinbarten Energieeffizienzdienstleistungen.
+
+\end{enumerate}
+
+\item{Der Auftragnehmer verpflichtet sich, dem Auftraggeber einen Finanzbeitrag zu leisten, der ausschließlich im Rahmen dieses Vertrages verwendet wird.}
+\item{Der Auftraggeber hat dem Auftragnehmer den im Rahmen dieses Vertrages ausgezahlten Finanzbeitrag mit der Zahlung einer Sanierungsgebühr nach Maßgabe der folgenden Bedingungen zu erstatten:}
+
+\begin{enumerate}
+	\item Finanzbeitrag des Auftragnehmers (einschließlich Umsatzsteuer): \iffalse input fields.contractor_fin_contribution value="{{.Contract.Fields.contractor_fin_contribution}}" \fi {{.Contract.Fields.contractor_fin_contribution}} $EUR$
+	\item Variabler Zinssatz:
+bestehend aus dem festen Anteil:  \iffalse input fields.interest_rate_percent value="{{.Contract.Fields.interest_rate_percent}}" \fi {{.Contract.Fields.interest_rate_percent}} \% – angeboten von \iffalse input fields.interest_rate_offerter value="{{.Contract.Fields.interest_rate_offerter}}" \fi {{.Contract.Fields.interest_rate_offerter}}
+und dem variablen Anteil: {{.EUROBOR}} -Monat-EURIBOR
+	\item Rückzahlungsbedingungen entsprechend der Leistungsperiode: {{mul 12 .Project.ContractTerm}}  Monate
+\end{enumerate}
+
+\item{Der Einheitssatz ist ein fester Zinssatz, ausgedrückt als Jahresprozentsatz, über den sich die Parteien geeinigt haben.}
+
+\item{Der variable Zinssatz ist ein variabler Zinssatz, der aus einem festen und einem variablen Anteil besteht:}
+
+\begin{enumerate}
+
+	\item Der feste Anteil ist ein Teil des Zinssatzes, der als Jahresprozentsatz ausgedrückt wird, über dem die Parteien eine Vereinbarung getroffen haben, die durch schriftliche Vereinbarung zwischen den Parteien geändert werden kann.
+	\item Der variable Anteil ist ein variabler Parameter, der durch den EURIBOR der jeweiligen Periode bestimmt wird. Der EURIBOR-Satz ist der von "Thomson Reuters" berechnete durchschnittliche Zinssatz der jeweiligen Periode der Banken der Eurozone an einem EUR-Stichtag, der auf der Website http://www.euribor-ebf.eu verfügbar ist.
+
+\end{enumerate}
+
+\item{Der variable Anteil des Zinssatzes für die erste Periode ist vom Auftragnehmer am Tag der Fertigstellung der Leistung unter Anwendung des am vorgehenden Bankarbeitstag veröffentlichten Zinssatzes festzulegen.}
+\item{Der variable Anteil des Zinssatzes für die darauffolgende Periode ist vom Auftragnehmer zu einem der folgenden Zeitpunkte festzulegen (unter Berücksichtigung des dem Tag der Fertigstellung der Leistung am entferntesten liegenden Zeitpunkts, jedoch nicht später als 6 oder 12 Monate nach dem Tag der Fertigstellung der Leistung): am 15. Januar oder 15. April oder 15. Juli oder 15. Oktober unter Anwendung des am vorhergehenden Bankarbeitstag veröffentlichten Zinssatzes.}
+\item{Der variable Anteil des Zinssatzes für die Folgeperioden ist vom Auftragnehmer am 15. Januar und/oder 15. April und/oder 15. Juli und/oder 15. Oktober im Hinblick auf die variable Zinsperiode festzulegen.}
+\item{Wenn der variable Anteil des Zinssatzes einen negativen Wert hat, dann entspricht die Höhe des variablen Zinssatzes dem festen Anteil des Zinssatzes.}
+\item{Fällt das Swap-Datum des variablen Anteils des Zinssatzes auf einen anderen Tag als einen Bankarbeitstag, so ist das jeweilige Swap-Datum des variablen Anteils des Zinssatzes der folgende Bankarbeitstag. Nach der Festlegung des neuen variablen Anteils des Zinssatzes ist der Auftragnehmer, mit der aktuellen Rechnung und einer Mitteilung über Änderungen des Zahlungsplans, an den Verwalter des Auftraggebers weiterzuleiten. Die Zinssätze für die Folgeperiode und der entsprechende Zahlungsplan gelten ab dem ersten Tag der neuen Periode als geändert, ohne dass eine Vereinbarung über den Vertrag getroffen wird.}
+\item{Die Berechnung der Zinsen beginnt zu Beginn der Leistungsperiode mit der Unterzeichnung der Übertragungserklärung.}
+\item{Gemäß den Bestimmungen des Vertrages werden die Zinsen an jedem Kalendertag berechnet, unter der Annahme, dass ein Jahr aus 360 Tagen besteht.}
+\item{Der Zahlungsplan für die Sanierungsgebühr, der auf dem Finanzbeitrag des Auftragnehmers und den zum Zeitpunkt der Unterzeichnung dieses Vertrages geltenden Bedingungen basiert, lautet:}
+
+% table: project_measurements_table
+
+\begin{center}
+\begin{longtabu}{|X|X|X|X|X|} \tabucline{}
+{{with $t := translate "au" .Contract.Tables.project_measurements_table}}
+	{{.Columns | column}} \\\tabucline{}
+	{{range .Rows}} {{rowf $t .}} \\\tabucline{} {{end}} %chktex 26
+{{end}}
+\end{longtabu}
+\end{center}
+
+
+\item{Bei Änderungen des variablen Anteils des variablen Zinssatzes hat der Auftragnehmer den Verwalter des Auftraggebers zu benachrichtigen und einen aktualisierten Zahlungsplan zur Verfügung zu stellen.}
+\item{Der Auftragnehmer hat dem Verwalter des Auftraggebers monatlich die nach dem Zahlungsplan berechnete monatliche Sanierungsgebühr in Rechnung zu stellen. Der Verwalter hat den Wohnungseigentümern die Kosten je nach Quadratmeter anteilig in Rechnung zu stellen.}
+
+\end{enumerate}

@@ -1,0 +1,29 @@
+[general]
+name = "Sunshine"
+url = "https://sunshine.stageai.tech"
+logo = "https://sunshine.stageai.tech/static/media/Sunshine-Logo-FB1200x627.c038d9ef.png"
+port = 8000
+
+[paths]
+uploads = "./uploads"
+latex = "./contract/tex"
+migrations = "./models/migrations"
+
+[psql]
+host = "127.0.0.1"
+port = 5432
+name = "sunshine"
+username = "postgres"
+password = "postgres"
+
+[session]
+auth = "C1EOc3fJNxaVOT34snTBpA6iJyrWMWnlsTApj1V3Uv4yD1/kHmkoRrIz0sitO9RBTBhvqGEfQ0TtXexm88EpRQ=="
+encr = "dKdJdGfduc2gEyvl2h0mRSUbYDr+TJMrnSkP0S7qZlg="
+path = "/"
+http_only = false
+secure = false
+
+[mail]
+backend = "file"
+from = "Sunshine <admin@sunshine.stageai.tech>"
+host = "/tmp/sunshine/mails"

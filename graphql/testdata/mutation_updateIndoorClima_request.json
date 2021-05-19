@@ -1,0 +1,12 @@
+mutation {
+    updateIndoorClima(projectID:"%s", values:{
+	heatedVolumeBuilding: %v,
+        zones:"{ \"attic_num1_zone1\": { \"area\": 112, \"uvalue\": 5 } }",
+        basementPipes: "[{\"quality\": 2,\"diameter\":10, \"installed_length\":5}, {\"quality\": 1,\"diameter\":11, \"installed_length\":6}]"
+      }) {
+        projectID
+	heatedVolumeBuilding
+        basementPipes
+        atticPipes
+    }
+}

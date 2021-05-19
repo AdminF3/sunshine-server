@@ -1,0 +1,8 @@
+{
+    listAdmins(%s) {
+        entities{
+            ... on User { name }
+        }
+        totalCount
+    }
+}

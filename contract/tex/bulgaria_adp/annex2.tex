@@ -1,0 +1,51 @@
+{{- $vt := .VAT -}}
+
+\section{Annex 2 {-} Scope of the measures and BOQ}
+
+\subsection{SCOPE OF ESM}
+
+The subject of the contract is the design and implementation of the
+following energy {-} saving measures in line with EE Audit {-} Annex 1 {-}
+Report and Summary on Building EE Audit (see Annex 1) to the contract: \\
+
+ESM 1……………………………………………… \\
+ESM 2……………………………………………… \\
+ESM 3……………………………………………… \\
+ESM 4……………………………………………… \\
+
+\subsection{DESIGN PHASE}
+
+% table: renovation_overall_budget
+
+\begin{center}
+\begin{tabu}{|X[10]|X|X|X|} \tabucline{} \rowfont[c]\bfseries
+{{with $t := .Contract.Tables.renovation_overall_budget}} % chktex 25
+	{{$t.Columns | column}} \\\tabucline{}
+	{{range $t.Rows}}
+	{{rowfmt $t .}} \\\tabucline{}
+	{{end}}
+
+	 \bfseries
+	{{total_excl_vat $t}} \\\tabucline{}\bfseries
+	{{vat $t $vt}} \\\tabucline{}\bfseries
+	{{total_incl_vat $t $vt}} \\\tabucline{}
+{{end}}
+\end{tabu}
+\end{center}
+
+\subsection{BOQ}
+
+% table: renovation_financial_plan
+
+\begin{center}
+\begin{tabu}{|X[10]|X|X|} \tabucline{} \rowfont[c]\bfseries
+{{with $t := .Contract.Tables.renovation_financial_plan}} % chktex 25
+	{{$t.Columns | column}} \\\tabucline{}
+	{{range $t.Rows}}
+	{{rowfmt $t .}} \\\tabucline{}
+	{{end}}
+{{end}}
+\end{tabu}
+\end{center}
+
+\subsection{Total investment costs (I + II), PRICE FOR ESM: [●]XXX VAT excluded [●]XXX VAT included}

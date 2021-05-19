@@ -1,0 +1,52 @@
+\section{PIELIKUMS Nr. 7 {-} MAKSA PAR ATJAUNOŠANU}
+
+\begin{enumerate}[label=\arabic*.]
+	\item Pasūtītājs piekrīt Izpildītāja Finanšu ieguldījumam, jo tas ir nepieciešams un neatsverams pakalpojums, lai:
+	\begin{enumerate}
+		\item veiksmīgi īstenotu un uzstādītu Pasākumus;
+		\item realizētu Izpildītāja Garantēto enerģijas ietaupījumu;
+		\item kvalitatīvi sniegtu nolīgtos Energoefektivitātes pakalpojumus.
+	\end{enumerate}
+
+	\item Izpildītājs piekrīt nodrošināt Pasūtītājam Finanšu ieguldījumu, kas izmantojams vienīgi šā Līguma nolūkiem.
+	\item Pasūtītājs atlīdzina Izpildītājam saskaņā ar šo Līgumu veikto Finanšu ieguldījumu, maksājot Maksu par atjaunošanu, ievērojot turpmāk norādītos nosacījumus:
+	\begin{enumerate}
+		\item Izpildītāja Finanšu ieguldījums (ar PVN): \iffalse input fields.contractor_fin_contribution value="{{.Contract.Fields.contractor_fin_contribution}}" \fi {{.Contract.Fields.contractor_fin_contribution}} EUR
+		\item Mainīga Procentu likme:
+			\begin{itemize}
+				\item kas sastāv no fiksētās daļas: \iffalse input fields.interest_rate_percent value="{{.Contract.Fields.interest_rate_percent}}" \fi {{.Contract.Fields.interest_rate_percent}} \% {-} ko piedāvā \iffalse input fields.interest_rate_offerter value="{{.Contract.Fields.interest_rate_offerter}}" \fi {{.Contract.Fields.interest_rate_offerter}}
+				\item un mainīgās daļas: {{.EUROBOR}} mēnešu EURIBOR
+			\end{itemize}
+		\item Atmaksas noteikumi, kas atbilst Pakalpojumu sniegšanas periodam: {{mul 12 .Project.ContractTerm}} mēneši
+	\end{enumerate}
+
+	\item Vienotā likme ir nemainīga Procentu likme, kas izteikta gada procentos, par kuru Puses ir vienojušās.
+	\item Mainīgā likme ir mainīga Procentu likme, kas sastāv no fiksētās daļas un mainīgās daļas:
+	\begin{enumerate}
+		\item Fiksētā daļa ir Procentu likmes daļa, kas ir izteikta gada procentos, par kuru Puses ir vienojušās, kuru var grozīt uz Pušu rakstveida vienošanās pamata.
+		\item Mainīgā daļa ir mainīgs lielums, un tās noteikšanai piemēros attiecīgā termiņa EURIBOR.\@ EURIBOR likme ir attiecīgā termiņa vidējā Eiro zonas banku procentu likme, kuru katru EUR norēķinu dienu aprēķina ``Thomson Reuters'' un kura ir pieejama interneta vietnē http://www.euribor-ebf.eu
+	\end{enumerate}
+	\item Mainīgo daļu Procentu likmes pirmajam periodam Izpildītājs nosaka Pakalpojumu sniegšanas noslēgšanas dienā, piemērojot iepriekšējā Banku darba dienā publicēto likmi.
+	\item Mainīgo daļu Procentu likmes nākamajam periodam Izpildītājs nosaka vienā no šādiem datumiem (ņemot vērā, kurš ir tālākais Pakalpojumu sniegšanas noslēgšanas datumam, ievērojot, lai tas attiecīgi nebūtu vēlāk par 6 vai 12 mēnešiem pēc Pakalpojumu sniegšanas noslēgšanas datuma): 15. janvārī vai 15. aprīlī vai 15. jūlijā vai 15. oktobrī, piemērojot iepriekšējā Banku darba dienā publicēto likmi.
+	\item Procentu likmes mainīgo daļu turpmākajiem periodiem Izpildītājs nosaka 15.\ janvārī un/vai 15.\ aprīlī, un/vai 15.\ jūlijā, un/ vai 15.\ oktobrī, ievērojot Procentu mainīgās daļas termiņu.
+	\item Gadījumā, ja Procentu likmes mainīgā daļa ir ar negatīvu vērtību, tad mainīgās Procentu likmes apmērs ir vienāds ar Procentu likmes fiksēto daļu.
+	\item Ja Procentu likmes mainīgās daļas maiņas datums iekrīt dienā, kas nav Banku darba diena, tad attiecīgais Procentu likmes mainīgās daļas maiņas datums ir nākamā Banku darba diena. Pēc jaunās Procentu likmes mainīgās daļas noteikšanas Izpildītājs nosūta to Pasūtītāja Pārvaldniekam kopā ar kārtējo rēķinu paziņojumu par izmaiņām Maksājumu grafikā. Procentu likmes nākamajam periodam un tādā gadījumā Maksājuma grafiks ir uzskatāms par grozītu ar jaunā perioda pirmo dienu, neslēdzot vienošanos pie Līguma.
+	\item Procentus sāk aprēķināt Pakalpojumu sniegšanas perioda sākumā Pieņemšanas un nodošanas akta parakstīšanas brīdī.
+	\item Saskaņā ar Līguma noteikumiem, Procentus aprēķina par katru kalendāro dienu, pieņemot, ka gads sastāv no 360 dienām.
+	\item Maksas par atjaunošanu Maksājumu grafiks atbilstoši Izpildītāja Finanšu ieguldījumam un saskaņā ar šā Līguma parakstīšanas brīdī piemērojamajiem nosacījumiem ir šāds:
+
+% table: project_measurements_table
+
+\begin{center}
+\begin{longtabu}{|X|X|X|X|X|} \tabucline{}
+{{with $t := translate "lv" .Contract.Tables.project_measurements_table}}
+	{{.Columns | column}} \\\tabucline{}
+	{{range .Rows}} {{rowf $t .}} \\\tabucline{} {{end}} %chktex 26
+{{end}}
+\end{longtabu}
+\end{center}
+
+
+	\item Izpildītājs informē Pasūtītāja Pārvaldnieku un iesniedz aktualizētu Maksājumu grafiku gadījumā, ja mainās Mainīgās Procentu likmes mainīgā daļa.
+	\item Izpildītājs katru mēnesi izraksta rēķinu Pasūtītāja Pārvaldniekam par ikmēneša Maksu par atjaunošanu, kas aprēķināta saskaņā ar Maksājumu grafiku. Pārvaldnieks iekasēs no katra atsevišķā Dzīvokļa īpašniekam proporcionāli par katru kvadrātmetru.
+\end{enumerate}

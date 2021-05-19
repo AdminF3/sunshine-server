@@ -1,0 +1,20 @@
+{
+  getForfaitingApplication(id: %q) {
+    project {
+      ID
+    }
+    reviews {
+      comment
+    }
+    privateBond
+    manager {
+      ID
+      name
+      email
+    }
+    finance
+    financialStatements {
+      name
+    }
+  }
+}

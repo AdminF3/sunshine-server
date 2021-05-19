@@ -1,0 +1,97 @@
+{{- $tables := .Contract.Tables -}}
+
+\section{PIELIKUMS Nr. 4 {–} BĀZLĪNIJA UN GARANTĒTAIS ENERĢIJAS IETAUPĪJUMS}
+
+\subsection{Bāzlīnijas novērtēšanas periods ietver ikmēneša datus par šādiem gadiem: [$gads^{n-2}$, $gads^{n-1}$ un $gads^n$]}
+Enerģētiskie dati Bāzlīnijas novērtēšanas periodā:
+
+% table: baseyear
+
+\begin{center}
+\begin{tabu}{|X[2]|X|X|X|X|X|X|X|X|X|X|X|X|} \tabucline{} \rowfont[c]\bfseries
+	& \multicolumn{4}{c|}{ {{baseyear "lv" 2}} } & \multicolumn{4}{c|}{ {{baseyear "lv" 1}} } & \multicolumn{4}{c|}{ {{baseyear "lv" 0}} } \\
+	& \multicolumn{4}{c|}{ {{.Contract.Tables.baseyear_n_2.Title}} } & \multicolumn{4}{c|}{ {{.Contract.Tables.baseyear_n_1.Title}} } & \multicolumn{4}{c|}{ {{.Contract.Tables.baseyear_n.Title}} } \\\tabucline{}\rowfont[c]\bfseries
+  	{{$tt := join_tables .Contract.Tables.baseyear_n_2 .Contract.Tables.baseyear_n_1 .Contract.Tables.baseyear_n }} %chktex 25
+  	{{with $t := translate "lv" $tt}}
+	{{$t.Columns | column_sideways}} \\\tabucline{} \rowfont[]\bfseries %chktex 25
+	{{range $t.Headers}}
+	{{.|row}} \\\tabucline{}
+	{{end}}
+	{{range $t.Rows}}
+	{{row .}} \\\tabucline{} %chktex 26
+	{{end}}
+
+	\bfseries {{average $t }} \\\tabucline{}
+	\bfseries {{total $t}} \\\tabucline{}
+{{end}}
+\end{tabu}
+\end{center}
+
+% table: baseconditions
+
+\begin{center}
+\begin{tabu}{|X[2]|X|X|X|X|X|X|X|X|X|X|X|X|} \tabucline{} \rowfont[c]\bfseries
+	& \multicolumn{4}{c|}{ {{baseyear "lv" 2}} } & \multicolumn{4}{c|}{ {{baseyear "lv" 1}} } & \multicolumn{4}{c|}{ {{baseyear "lv" 0}} } \\
+	& \multicolumn{4}{c|}{ {{.Contract.Tables.baseyear_n_2.Title}} } & \multicolumn{4}{c|}{ {{.Contract.Tables.baseyear_n_1.Title}} } & \multicolumn{4}{c|}{ {{.Contract.Tables.baseyear_n.Title}} } \\\tabucline{}\rowfont[c]\bfseries
+  	{{$tt := join_tables .Contract.Tables.baseconditions_n_2 .Contract.Tables.baseconditions_n_1 .Contract.Tables.baseconditions_n }} %chktex 25
+  	{{with $t := translate "lv" $tt}}
+	{{$t.Columns | column_sideways}} \\\tabucline{} \rowfont[]\bfseries %chktex 25
+	{{range $t.Headers}}
+	{{.|row}} \\\tabucline{}
+	{{end}}
+	{{range $t.Rows}}
+	{{row .}} \\\tabucline{} %chktex 26
+	{{end}}
+
+	\bfseries {{average $t }} \\\tabucline{}
+	\bfseries {{total $t}} \\\tabucline{}
+{{end}}
+\end{tabu}
+\end{center}
+
+\subsection{Bāzlīnija (izejas dati)}
+
+Bāzlīnija tiek noteikta, balsoties uz enerģijas datiem un apstākļiem Bāzlīnijas novērtēšanas periodā saskaņā ar turpmāk norādīto:
+
+% table: baseline
+
+\begin{center}
+\begin{tabu}{|X[2]|X|X|X|X|X|X|} \tabucline{}
+{{with $t := translate "lv" .Contract.Tables.baseline}}
+	{{.Columns | column}} \\\tabucline{}
+	{{range .Rows}} {{rowf $t .}} \\\tabucline{} {{end}} %chktex 26
+{{end}}
+\end{tabu}
+\end{center}
+
+\subsection{Garantētais enerģijas ietaupījums un Garantētais enerģijas patēriņš}
+
+\begin{enumerate}
+	\item Izpildītājs attiecībā uz šajā Līgumā noteikto Pakalpojumu sniegšanas periodu garantē, ka īstenotie Pasākumi un sniegtie Pakalpojumi samazinās enerģijas patēriņu telpu apkurei un cirkulācijas zudumus ($Q_{Apk,cz,ref}$) Norēķinu periodā (viens gads) tālāk norādītajā apmērā:
+
+	$IETAUPĪJUMS_{SILTUMENERĢIJA}$ \iffalse input project.savings value="{{.Project.GuaranteedSavings}}" \fi {{.Project.GuaranteedSavings}} \% no Bāzlīnijas patēriņa telpu apkurei un cirkulācijas zudumiem ($Q_{Apk,cz,ref}$).
+
+	\item Garantētais enerģijas ietaupījums atbilst:
+
+\[Q_{iet,G} = Q_{Apk, cz, ref} x IETAUPĪJUMS_{SILTUMENERĢIJA} = {{.Contract.Fields.calculations_qietg}} MWh/gadā\]
+
+
+Kur:
+\begin{itemize}
+	\item $Q_{iet,G}$	Garantētais enerģijas ietaupījums, MWh/gadā
+	\item $Q_{Apk,cz,ref}$	Bāzlīnijas enerģijas patēriņš telpu apkurei un cirkulācijas zudumiem, MWh/gadā
+\end{itemize}
+
+\end{enumerate}
+
+\subsection{Garantētais enerģijas ietaupījums atbilst:}
+
+\[Q_{Apk,cz,G} = Q_{Apk,cz,ref} - Q_{iet,G} = {{.Contract.Fields.calculations_qapkczg}} MWh/gadā\]
+
+Kur:
+
+\begin{itemize}
+	\item $QApk,cz,G$	ir Garantētais enerģijas patēriņš telpu apkurei un cirkulācijas zudumiem, MWh/gadā
+	\item $QApk,cz,ref$	ir Bāzlīnijas enerģijas patēriņš telpu apkurei un cirkulācijas zudumiem, MWh/gadā
+	\item $Qiet,G$	ir Garantētais enerģijas ietaupījums, MWh/gadā
+\end{itemize}

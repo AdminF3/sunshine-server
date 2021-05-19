@@ -1,0 +1,70 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Sunshine Organizations API",
+        "version": "1.0.0"
+    },
+    "tags": [
+        {
+            "description": "Endpoints for stats and metrics.",
+            "name": "Stats"
+        }
+    ],
+    "paths": {
+        "/country_stats": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CountryStats"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    }
+                },
+                "parameters": [
+                    {
+                        "description": "Given country to get stats for",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "name": "country",
+                        "in": "query"
+                    }
+                ],
+                "summary": "Get counts of entities for given country",
+                "tags": [
+                    "Stats"
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "CountryStats": {
+                "properties": {
+                    "assets": {
+                        "type": "number"
+                    },
+                    "projects": {
+                        "type": "number"
+                    },
+                    "organizations": {
+                        "type": "number"
+                    }
+                },
+                "type": "object",
+                "x-go-type": {
+                    "ignore": true,
+                    "id": "CountryStats"
+                }
+            }
+        }
+    }
+}

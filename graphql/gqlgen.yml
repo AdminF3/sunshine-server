@@ -1,0 +1,171 @@
+omit_slice_element_pointers: true
+schema:
+- schema.graphql
+exec:
+  filename: exec_gen.go
+resolver:
+  filename: resolver.go
+  type: Resolver
+model:
+  filename: models_gen.go
+models:
+  ID:
+    model: stageai.tech/sunshine/sunshine/graphql.UUID
+  Attachment:
+    model: stageai.tech/sunshine/sunshine/models.Attachment
+  IndoorClima:
+    model: stageai.tech/sunshine/sunshine/contract.IndoorClima
+    fields:
+      projectID:
+        fieldName: Project
+  ICZone:
+    model: stageai.tech/sunshine/sunshine/contract.ZoneModel
+  Period:
+    model: stageai.tech/sunshine/sunshine/contract.Period
+  Notification:
+    model: stageai.tech/sunshine/sunshine/models.Notification
+    fields:
+      date:
+        fieldName: CreatedAt
+  Meeting:
+    model: stageai.tech/sunshine/sunshine/graphql.Meeting
+  CreateMeeting:
+    model: stageai.tech/sunshine/sunshine/graphql.Meeting
+  UpdateMeeting:
+    model: stageai.tech/sunshine/sunshine/graphql.Meeting
+  PeriodInput:
+    model: stageai.tech/sunshine/sunshine/contract.Period
+  ICZoneInput:
+    model: stageai.tech/sunshine/sunshine/contract.ZoneModel
+  IndoorClimaInput:
+    model: stageai.tech/sunshine/sunshine/contract.IndoorClima
+    fields:
+      projectID:
+        fieldName: Project
+  Table:
+    model: stageai.tech/sunshine/sunshine/contract.Table
+  Column:
+    model: stageai.tech/sunshine/sunshine/contract.Column
+  InputTable:
+    model: stageai.tech/sunshine/sunshine/contract.Table
+  ColumnInput:
+    model: stageai.tech/sunshine/sunshine/contract.Column
+  JSONZone:
+    model: stageai.tech/sunshine/sunshine/contract.JSONZone
+  JSONPipe:
+    model: stageai.tech/sunshine/sunshine/contract.JSONPipe
+
+  GDPRRequest:
+    model: stageai.tech/sunshine/sunshine/graphql.GDPRRequest
+  CreateGDPRRequest:
+    model: stageai.tech/sunshine/sunshine/graphql.GDPRRequest
+  GDPRAction:
+    model: stageai.tech/sunshine/sunshine/models.GDPRType
+
+  Asset:
+    model: stageai.tech/sunshine/sunshine/models.Asset
+    fields:
+      ownerID:
+        fieldName: Owner
+      escoID:
+        fieldName: ESCO
+      status:
+        fieldName: Valid
+  AssetSnapshot:
+    model: stageai.tech/sunshine/sunshine/models.AssetSnapshot
+    fields:
+      ownerID:
+        fieldName: Owner
+      escoID:
+        fieldName: ESCO
+  Project:
+    model: stageai.tech/sunshine/sunshine/models.Project
+    fields:
+      ownerID:
+        fieldName: Owner
+      assetID:
+        fieldName: Asset
+      portfolioDirectorID:
+        fieldName: PortfolioDirector
+      fundManagerID:
+        fieldName: FundManager
+  ProjectComment:
+    model: stageai.tech/sunshine/sunshine/models.ProjectComment
+    fields:
+      author_id:
+        fieldName: Author
+
+  OrganizationProjectsReport:
+    model: stageai.tech/sunshine/sunshine/models.OrganizationProjectsReport
+  OrganizationReport:
+    model: stageai.tech/sunshine/sunshine/models.OrganizationReport
+
+  ForfaitingApplication:
+    model: stageai.tech/sunshine/sunshine/models.ForfaitingApplication
+    fields:
+      manager:
+        fieldName: ManagerID
+      project:
+        resolver: true
+      reviews:
+        resolver: true
+  FAReview:
+    model: stageai.tech/sunshine/sunshine/models.FAReview
+  UpdateFAReview:
+    model: stageai.tech/sunshine/sunshine/models.FAReview
+  CreateForfaitingApplication:
+    model: stageai.tech/sunshine/sunshine/models.ForfaitingApplication
+    fields:
+      forfaitingManager:
+        fieldName: ManagerID
+      projectID:
+        fieldName: Project
+  ForfaitingPayment:
+    model: stageai.tech/sunshine/sunshine/models.ForfaitingPayment
+
+
+  WorkPhase:
+    model: stageai.tech/sunshine/sunshine/graphql.WorkPhase
+  WPReview:
+    model: stageai.tech/sunshine/sunshine/models.WPReview
+  UpdateWPReview:
+    model: stageai.tech/sunshine/sunshine/models.WPReview
+
+  MonitoringPhase:
+    model: stageai.tech/sunshine/sunshine/graphql.MonitoringPhase
+  MPReview:
+    model: stageai.tech/sunshine/sunshine/models.MPReview
+  UpdateMPReview:
+    model: stageai.tech/sunshine/sunshine/models.MPReview
+
+  MeetingGuest:
+    model: stageai.tech/sunshine/sunshine/models.MeetingGuest
+  UpdateMeetingGuest:
+    model: stageai.tech/sunshine/sunshine/models.MeetingGuest
+  CreateMeetingGuest:
+    model: stageai.tech/sunshine/sunshine/models.MeetingGuest
+
+  User:
+    model: stageai.tech/sunshine/sunshine/models.User
+    fields:
+      status:
+        fieldName: Valid
+  CountryRole:
+    model: stageai.tech/sunshine/sunshine/models.CountryRole
+    fields:
+      user:
+        fieldName: UserID
+  Country:
+    model: stageai.tech/sunshine/sunshine/models.CountryVat
+
+  BankAccount:
+    model: stageai.tech/sunshine/sunshine/models.BankAccount
+  CreateBankAccount:
+    model: stageai.tech/sunshine/sunshine/models.BankAccount
+  UpdateBankAccount:
+    model: stageai.tech/sunshine/sunshine/models.BankAccount
+  UpdateForfaitingApplication:
+    model: stageai.tech/sunshine/sunshine/models.ForfaitingApplication
+    fields:
+      manager:
+        fieldName: ManagerID

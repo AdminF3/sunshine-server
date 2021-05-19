@@ -1,0 +1,1 @@
+mutation {advanceProjectToMonitoringPhase(pid: "%s") {project}}

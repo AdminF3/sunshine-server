@@ -1,0 +1,20 @@
+{
+    "getMeeting": {
+        "name": "init meeting",
+        "guests": [
+            {
+                "type": "NGO"
+            },
+            {
+                "type": "NGO"
+            }
+        ],
+        "host": {
+            "country": "Latvia",
+            "email": "notfakeorg@real.com"
+        },
+        "project": {
+            "country": "Latvia"
+        }
+    }
+}

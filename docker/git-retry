@@ -1,0 +1,15 @@
+#!/bin/bash
+
+#Simple script to retry git clone in case of failure
+	
+REALGIT=/usr/bin/git
+	
+for i in 1 2 3 4 0
+  do
+    $REALGIT "$@"
+    if [ $? -eq 0 ]; then
+      break
+    fi
+    sleep $i
+  done
+

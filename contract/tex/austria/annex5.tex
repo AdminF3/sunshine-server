@@ -1,0 +1,70 @@
+\section{ANHANG 5 - BETRIEBS- UND WARTUNGSANLEITUNG}
+	\begin{enumerate}
+	\item{Regelmäßige Wartungsarbeiten, die vom Auftragnehmer im Rahmen dieses Vertrages abgedeckt werden:}
+
+% table: periodic_maint_activities_covered_by_contractor
+
+        \begin{center}
+		\begin{tabu}{|X[3]|X|X|X|X|} \tabucline{} \rowfont[c]\bfseries
+			{{with .periodic_maint_activities_covered_by_contractor}} % chktex 26
+			{{.Columns | column}} \\\tabucline{}
+			{{range .Rows}} % chktex 26
+			{{.|row}} \\\tabucline{}
+			{{end}}
+			{{end}}
+		\end{tabu}
+	\end{center}
+
+% table: mid_term_preventative_activity
+
+        \item{Mittelfristige Wartungsarbeiten}
+	\begin{center}
+		\begin{tabu}{|X[3]|X|X|X|X|} \tabucline{} \rowfont[c]\bfseries
+			{{with .mid_term_preventative_activity}} % chktex 26
+			{{.Columns | column}} \\\tabucline{}
+			{{range .Rows}} % chktex 26
+			{{.|row}} \\\tabucline{}
+			{{end}}
+			{{end}}
+		\end{tabu}
+	\end{center}
+
+% table: long_term_provisioned_activities
+
+        \item{Langfristige Wartungsarbeiten, die vom Auftragnehmer im Rahmen dieses Vertrages abgedeckt werden:}
+        
+		\begin{center}
+			\begin{tabu}{|X[3]|X|X|X|X|} \tabucline{} \rowfont[c]\bfseries
+				{{with .long_term_provisioned_activities}} % chktex 26
+				{{.Columns | column}} \\\tabucline{}
+				{{range .Rows}} % chktex 26
+				{{.|row}} \\\tabucline{}
+				{{end}}
+				{{end}}
+			\end{tabu}
+		\end{center}
+
+	\item{Betriebskosten, die der Auftragnehmer im Rahmen dieses Vertrages abdeckt:}
+		\begin{enumerate}
+        		\item Verwaltungskosten für die Organisation von Wartungsarbeiten im Rahmen dieses Vertrages
+			\item Annahme von und Reaktion bei Notrufen
+			\item Stromverbrauch von neuen elektrischen Verbraucher, die im Rahmen dieses Vertrages installiert wurden
+		\end{enumerate}
+
+	\item{Empfohlene Wartungsarbeiten}
+		Der Auftragnehmer empfiehlt dem Auftraggeber, die folgenden langfristigen Wartungsarbeiten durchzuführen, die nicht Bestandteil dieses Vertrages sind:
+
+% table: reccomended_maintanance_activity
+
+                \begin{center}
+			\begin{tabu}{|X[3]|X|X|X|X|} \tabucline{} \rowfont[c]\bfseries
+				{{with .reccomended_maintanance_activity}} %chktex 26
+				{{.Columns | column}} \\\tabucline{}
+				{{range .Rows}} %chktex 26
+				{{.|row}} \\\tabucline{}
+				{{end}}
+				{{end}}
+			\end{tabu}
+		\end{center}
+
+                \end{enumerate}

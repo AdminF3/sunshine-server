@@ -1,0 +1,136 @@
+\section{ANNEX №2 {–} BUDGET AND SCOPE OF RENOVATION WORKS}
+
+
+\subsection{Scope of Renovation works}
+2.1 Project development and management
+
+% table: project_development_renovations
+
+\begin{center}
+\begin{tabu}{|X|X[2]|X|} \tabucline{} \rowfont[c]\bfseries
+{{with $t := translate "en" .project_development_renovations}} % chktex 25
+	{{$t.Columns | column}} \\\tabucline{}
+	{{range $t.Rows}}
+	{{rowfmt $t .}} \\\tabucline{}
+	{{end}}
+
+	 \bfseries
+	{{total_excl_vat $t}} \\\tabucline{}\bfseries
+	{{vat $t}} \\\tabucline{}\bfseries
+	{{total_incl_vat $t}} \\\tabucline{}
+{{end}}
+\end{tabu}
+\end{center}
+
+2.2 Construction costs
+
+% table: construction_costs_renovations
+
+\begin{center}
+\begin{tabu}{|X|X[2]|X|} \tabucline{} \rowfont[c]\bfseries
+{{with $t := translate "en" .construction_costs_renovations}} % chktex 25
+	{{$t.Columns | column}} \\\tabucline{}
+	{{range $t.Rows}}
+	{{rowfmt $t .}} \\\tabucline{}
+	{{end}}
+
+	 \bfseries
+	{{total_excl_vat $t}} \\\tabucline{}\bfseries
+	{{vat $t}} \\\tabucline{}\bfseries
+	{{total_incl_vat $t}} \\\tabucline{}
+{{end}}
+\end{tabu}
+\end{center}
+
+2.3 Project supervision
+
+% table: project_supervision
+
+\begin{center}
+\begin{tabu}{|X|X[2]|X|} \tabucline{} \rowfont[c]\bfseries
+{{with $t := translate "en" .project_supervision}} % chktex 25
+	{{$t.Columns | column}} \\\tabucline{}
+	{{range $t.Rows}}
+	{{rowfmt $t .}} \\\tabucline{}
+	{{end}}
+
+	 \bfseries
+	{{total_excl_vat $t}} \\\tabucline{}\bfseries
+	{{vat $t}} \\\tabucline{}\bfseries
+	{{total_incl_vat $t}} \\\tabucline{}
+{{end}}
+\end{tabu}
+\end{center}
+
+2.4 Financial charges
+
+% table: financial_charges
+
+\begin{center}
+\begin{tabu}{|X|X[2]|X|} \tabucline{} \rowfont[c]\bfseries
+{{with $t := translate "en" .financial_charges}} % chktex 25
+	{{$t.Columns | column}} \\\tabucline{}
+	{{range $t.Rows}}
+	{{rowfmt $t .}} \\\tabucline{}
+	{{end}}
+
+	 \bfseries
+	{{total_excl_vat $t}} \\\tabucline{}\bfseries
+	{{vat $t}} \\\tabucline{}\bfseries
+	{{total_incl_vat $t}} \\\tabucline{}
+{{end}}
+\end{tabu}
+\end{center}
+
+\subsection{Overall Budget for the Renovation Works}
+
+% table: renovation_overall_budget
+
+\begin{center}
+\begin{tabu}{|X[10]|X|} \tabucline{} \rowfont[c]\bfseries
+{{with $t := translate "en" .renovation_overall_budget}} % chktex 25
+	{{$t.Columns | column}} \\\tabucline{}
+	{{range $t.Rows}}
+	{{rowfmt $t .}} \\\tabucline{}
+	{{end}}
+
+	 \bfseries
+	{{total_excl_vat $t}} \\\tabucline{}\bfseries
+	{{vat $t}} \\\tabucline{}\bfseries
+	{{total_incl_vat $t}} \\\tabucline{}
+{{end}}
+\end{tabu}
+\end{center}
+
+\subsection{Financial plan for the Renovation Works}
+
+% table: renovation_financial_plan
+
+\begin{center}
+\begin{tabu}{|X[10]|X|} \tabucline{} \rowfont[c]\bfseries
+{{with $t := translate "en" .renovation_financial_plan}} % chktex 25
+	{{$t.Columns | column}} \\\tabucline{}
+	{{range $t.Rows}}
+	{{rowfmt $t .}} \\\tabucline{}
+	{{end}}
+{{end}}
+\end{tabu}
+\end{center}
+
+\subsection{Measures implemented as part of the Renovation Works and detailed costs estimates}
+
+[Please include the detailed project design for the planned Measures as applicable in compliance with relevant norms and regulations]
+For example:
+
+\begin{itemize}
+	\item Construction design 1 – General Section
+	\item Construction design 2 – Architecture and DOP
+	\item Construction design 3 – Engineering Networks and Heating
+	\item Construction design 4 – Engineering Networks and Lightning Protection
+	\item Construction design 5 – Scope of the Construction Work
+	\item Reconstruction of the Civil Engineering Works of the Building
+	\item Scope of the Construction Work
+	\item Etc.
+\end{itemize}
+
+[Please include the detailed cost estimates for the planned Measures according to Regulation Nr. 239 of the Cabinet of Ministries including a detailed costs breakdown of project development and management costs]

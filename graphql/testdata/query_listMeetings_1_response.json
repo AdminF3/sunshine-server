@@ -1,0 +1,10 @@
+{
+    "listMeetings": [
+        {
+            "host": {
+                "ID": "%s"
+            },
+            "name": "init meeting"
+        }
+    ]
+}
