@@ -1,0 +1,142 @@
+{{- $vt := .VAT -}}
+
+\section{PIELIKUMS Nr. 2 – BUDŽETS UN ATJAUNOŠANAS DARBU APJOMS}
+
+\subsection{Scope of Renovation works}
+2.1 Project development and management
+
+% table: project_development_renovations
+
+\begin{center}
+\begin{tabu}{|X|X[2]|X|} \tabucline{} \rowfont[c]\bfseries
+{{with $t := translate "lv" .Contract.Tables.project_development_renovations}} % chktex 25
+	{{$t.Columns | column}} \\\tabucline{}
+	{{range $t.Rows}}
+	{{rowfmt $t .}} \\\tabucline{}
+	{{end}}
+
+	 \bfseries
+	{{total_excl_vat $t}} \\\tabucline{}\bfseries
+	{{vat $t $vt}} \\\tabucline{}\bfseries
+	{{total_incl_vat $t $vt}} \\\tabucline{}
+{{end}}
+\end{tabu}
+\end{center}
+
+2.2 Construction costs
+
+% table: construction_costs_renovations
+
+\begin{center}
+\begin{tabu}{|X|X[2]|X|} \tabucline{} \rowfont[c]\bfseries
+{{with $t := translate "lv" .Contract.Tables.construction_costs_renovations}} % chktex 25
+	{{$t.Columns | column}} \\\tabucline{}
+	{{range $t.Rows}}
+	{{rowfmt $t .}} \\\tabucline{}
+	{{end}}
+
+	 \bfseries
+	{{total_excl_vat $t}} \\\tabucline{}\bfseries
+	{{vat $t $vt}} \\\tabucline{}\bfseries
+	{{total_incl_vat $t $vt}} \\\tabucline{}
+{{end}}
+\end{tabu}
+\end{center}
+
+2.3 Project supervision
+
+% table: project_supervision
+
+\begin{center}
+\begin{tabu}{|X|X[2]|X|} \tabucline{} \rowfont[c]\bfseries
+{{with $t := translate "lv" .Contract.Tables.project_supervision}} % chktex 25
+	{{$t.Columns | column}} \\\tabucline{}
+	{{range $t.Rows}}
+	{{rowfmt $t .}} \\\tabucline{}
+	{{end}}
+
+	 \bfseries
+	{{total_excl_vat $t}} \\\tabucline{}\bfseries
+	{{vat $t $vt}} \\\tabucline{}\bfseries
+	{{total_incl_vat $t $vt}} \\\tabucline{}
+{{end}}
+\end{tabu}
+\end{center}
+
+2.4 Financial charges
+
+% table: financial_charges
+
+\begin{center}
+\begin{tabu}{|X|X[2]|X|} \tabucline{} \rowfont[c]\bfseries
+{{with $t := translate "lv" .Contract.Tables.financial_charges}} % chktex 25
+	{{$t.Columns | column}} \\\tabucline{}
+	{{range $t.Rows}}
+	{{rowfmt $t .}} \\\tabucline{}
+	{{end}}
+
+	 \bfseries
+	{{total_excl_vat $t}} \\\tabucline{}\bfseries
+	{{vat $t $vt}} \\\tabucline{}\bfseries
+	{{total_incl_vat $t $vt}} \\\tabucline{}
+{{end}}
+\end{tabu}
+\end{center}
+
+\subsection{Atjaunošanas darbu kopējais budžets}
+
+% table: renovation_overall_budget
+
+\begin{center}
+\begin{tabu}{|X[10]|X|} \tabucline{} \rowfont[c]\bfseries
+{{with $t := translate "lv" .Contract.Tables.renovation_overall_budget}} % chktex 25
+	{{$t.Columns | column}} \\\tabucline{}
+	{{range $t.Rows}}
+	{{rowfmt $t .}} \\\tabucline{}
+	{{end}}
+
+	 \bfseries
+	{{total_excl_vat $t}} \\\tabucline{}\bfseries
+	{{vat $t $vt}} \\\tabucline{}\bfseries
+	{{total_incl_vat $t $vt}} \\\tabucline{}
+{{end}}
+\end{tabu}
+\end{center}
+
+\subsection{Atjaunošanas darbu finanšu plāns}
+
+% table: renovation_financial_plan
+
+\begin{center}
+\begin{tabu}{|X[10]|X|} \tabucline{} \rowfont[c]\bfseries
+{{with $t := translate "lv" .Contract.Tables.renovation_financial_plan}} % chktex 25
+	{{$t.Columns | column}} \\\tabucline{}
+	{{range $t.Rows}}
+	{{rowfmt $t .}} \\\tabucline{}
+	{{end}}
+{{end}}
+\end{tabu}
+\end{center}
+
+Kur:
+\begin{itemize}
+  \item $I_C$:    Izpildītāja nodrošinātais finanšu ieguldījums (ieskaitot piemērojamo PVN), ko izmanto Maksas par atjaunošanu aprēķiniem
+  \item $I_T$     Kopējās ieguldījumu izmaksas saistībā ar Atjaunošanas darbiem, ieskaitot PVN
+\end{itemize}
+
+Maksas par atjaunošanu aprēķināšanai šā Līguma Pielikumā Nr. 7 izmantotās ieguldījumu izmaksas tiek aprēķinātas, pamatojoties uz Izpildītāja nodrošināto Finanšu ieguldījumu, kas atbilst $I_C$.
+
+\subsection{Atjaunošanas darbu ietvaros īstenotie pasākumi un detalizētas izmaksu tāmes}
+
+Piemēram:
+
+\begin{itemize}
+	\item Būvprojekts 1 {-} Vispārīga daļa
+	\item Būvprojekts 2 {-} Arhitektūra un DOP
+	\item Būvprojekts 3 {-} Inženiertīkli un apkure
+	\item Būvprojekts 4 {-} Inženiertīkli un zibensaizsardzība
+	\item Būvprojekts 5 {-} Būvdarbu apjomi
+	\item Ēkas inženierbūvju pārbūve
+	\item Būvdarbu apjomi
+	\item U.c.
+\end{itemize}

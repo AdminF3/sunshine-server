@@ -1,0 +1,177 @@
+\section{ANEKS 6: OPŁATY ZA ENERGIĘ, CIEPŁĄ WODĘ UŻYTKOWĄ ORAZ POMIAR I WERYFIKACJĘ}
+
+\subsection{Określenie ryczałtowego zużycia energii cieplnej}
+\begin{enumerate}
+	\item Opłata za ogrzewanie musi zostać wyliczona dla Okresu rozliczeniowego i podzielona na 12 (dwanaście) równych części. Dzięki temu Klient płaci tyle samo za energię cieplną co miesiąc (w okresie 12-miesięcznym).
+	\item Miesięczna Opłata za energię cieplną musi zostać wyliczona w oparciu o Gwarancję zużycia energii, aktualną Taryfę za energię cieplną i Powierzchnię opomiarowaną Budynku w następujący sposób za każdy miesiąc Okresu rozliczeniowego:
+
+\[ Q^{m}_{Apk,cz,G} = \frac{Q_{Apk,cz,G}}{12} \]
+\[ E^{m}_{F,G} = Q^{m}_{Apk,cz,G} \times HT^m \]
+\[ Ap^m = \frac{E^{m}_{F,G} }{A_{Apk}} \]
+
+Gdzie:
+
+\begin{itemize}
+	\item $Q^{m}_{Apk,cz,G}$ Miesięczne ryczałtowe zużycie energii cieplnej w Budynku na ogrzewanie pomieszczeń i straty obiegowe w oparciu o Gwarancję zużycia energii, $MWh/miesiąc$
+	\item $Q_{Apk,cz,G}$ Gwarancja zużycia energii na ogrzewanie pomieszczeń i na straty obiegowe wyliczona w sposób opisany w Aneksie 5 do niniejszejUmowy, $MWh/rok$
+	\item $E^{m}_{F,G}$ Całkowita miesięczna Opłata za energię cieplną dla Budynku
+	\item $HT^m$ Taryfa za energię cieplną obowiązująca w danym miesiącu rozliczeniowym, $EUR/MWh$
+	\item $A_{Apk}$ Powierzchnia opomiarowana Budynku przyjęta w celach rozliczeniowych, $m^2$
+	\item $Ap^m$ Miesięczna Opłata za energię cieplną na metr kwadratowy przyjęta przez Zarządcę na potrzeby wystawiania Klientowi comiesięcznych faktur, $EUR/m^2$
+\end{itemize}
+
+	\item Wykonawca musi co miesiąc wypełnić następującą tabelę kalkulacji miesięcznej Opłaty za energię cieplną:
+
+% table: calc_energy_fee
+
+\begin{center}
+\begin{tabu}{|X|X|X|X|X|X|} \tabucline{}
+{{with translate "pl" .Contract.Tables.calc_energy_fee}} %chktex 26
+	{{.Columns | column}} \\\tabucline{}
+	{{range .Headers}} {{.|row}} \\\tabucline{} {{end}} %chktex 26
+	{{range .Rows}} {{.|row}} \\\tabucline{} {{end}} %chktex 26
+	\bfseries {{total .}} \\\tabucline{} %chktex 26
+{{end}}
+\end{tabu}
+\end{center}
+
+	\item Wykonawca musi co miesiąc wystawiać Zarządcy ze strony Klienta fakturę za całkowitą{-}miesięczną Opłatę za energię cieplną (EF, Gm). Zarządca będzie wystawiał indywidualne faktury Właścicielom mieszkań w oparciu o zajmowaną powierzchnię.
+\end{enumerate}
+
+\subsection{Bilansowanie ryczałtowego zużycia energii cieplnej na końcu Okresu rozliczeniowego}
+\begin{enumerate}
+	\item Na końcu każdego Okresu rozliczeniowego Wykonawca musi obliczyć Płatność bilansującą w celu zbilansowania 12 (dwunastu) Opłat za energię cieplną naliczonych Klientowi w oparciu o ryczałtowe zużycie energii cieplnej w stosunku do płatności należnej na podstawie zmierzonego zużycia energii cieplnej. Kwota rozliczenia jest wyliczana ze wzoru:
+\[ B_F = E_{F,S,T} - E_{F,G,T} \]
+
+Kur:
+
+\begin{itemize}
+	\item $E_{F,S,T}$ Całkowita roczna Opłata za energię oparta o pomiary, wyliczona jako suma 12 Opłat miesięcznych, $E^{m}_{F,S}$ za Okres rozliczeniowy, $EUR$
+	\item $E_{F,G,T}$ Całkowita roczna Opłata za energię za Budynek, wyliczona jako suma 12 Opłat miesięcznych, $E^{m}_{F,S}$ za Okres rozliczeniowy, $EUR$
+\end{itemize}
+
+	\item Wykonawca musi wypełnić na końcu każdego Okresu rozliczeniowego następującą tabelę kalkulacji Płatności bilansującej:
+
+% table: balancing_period_fee
+
+\begin{center}
+\begin{tabu}{|X|X|X|X|X|X|X|} \tabucline{}
+{{with translate "pl" .Contract.Tables.balancing_period_fee}} %chktex 26
+	{{.Columns | column}} \\\tabucline{}
+	{{range .Headers}} {{.|row}} \\\tabucline{} {{end}} %chktex 26
+	{{range .Rows}} {{.|row}} \\\tabucline{} {{end}} %chktex 26
+{{end}}
+\end{tabu}
+\end{center}
+
+Gdzie:
+
+\begin{itemize}
+	\item $Q^{m}_{Apk,cz,G}$ Miesięczne ryczałtowe zużycie energii cieplnej w Budynku na ogrzewanie pomieszczeń i na straty obiegowe w oparciu o Gwarancję zużycia energii, $MWh/mēnesī$
+	\item $HT^m$ Taryfa za energię cieplną obowiązująca w danym miesiącu rozliczeniowym, $EUR/MWh$
+	\item $Q^m_{Apk,cz,S}$ Miesięczne zużycie energii na ogrzewanie pomieszczeń i na straty obiegowe, podlegające Pomiarowi i weryfikacji
+	\item $E^m_{F,G}$ Całkowita miesięczna Opłata za energię dla Budynku wyliczona w każdym miesiącu jako $Q^{m}_{Apk,cz,G} \times HT^{m}$
+\end{itemize}
+
+	\item Jeśli różnica jest ujemna ($B_F$ jest liczbą ujemną), Strony rozliczą różnicę jednorazowym zapłaceniem salda Klientowi przez Wykonawcę lub odjęciem niepokrytego salda w równych kwotach od płatności należnej Wykonawcy od Klienta, rozłożonej na następny Okres rozliczeniowy. Dla Okresu rozliczeniowego, po upływie którego Umowa wygasa saldo zostanie rozliczone płatnością jednorazową.
+
+	\item Jeśli różnica jest dodatnia ($B_F$ jest liczbą dodatnią), Strony rozliczą różnicę następująco:
+	\begin{enumerate}
+		\item jednorazową zapłatą salda przez Klienta na rzecz Wykonawcy
+		\item lub równym rozłożeniem niepokrytego salda na liczbę płatności należnych w następnym Okresie rozliczeniowym z dodaniem jednego równego podziału do płatności należnej Wykonawcy od Klienta w następnym Okresie rozliczeniowym.
+		\item Ostatni Okres rozliczeniowy Umowy musi zostać rozliczony płatnością jednorazową.
+	\end{enumerate}
+
+	\item Klient potwierdza, że Opłata za energię cieplną będzie odzwierciedlać każdą zmianę w Taryfie za energię cieplną ($HT^m$), od chwili wejścia tej zmiany w życie.
+\end{enumerate}
+
+\subsection{Pomiar i weryfikacja Gwarancji oszczędności energii}
+
+\begin{enumerate}
+	\item Na końcu każdego Okresu rozliczeniowego Strony zweryfikują dotrzymanie Gwarancji oszczędności energii wynikającej z Umowy. Strony zgadzają się przeprowadzić weryfikację następująco:
+	\begin{enumerate}
+		\item W celu porównania warunków występujących podczas świadczenia Usług poprawy efektywności energetycznej z warunkami ze Stanu odniesienia wprowadzana jest korekta pogodowa. Korekta ta jest wyliczana z następującego wzoru:
+\[ Q^{Adj}_{Apk,CZ,S} = Q_{Apk,S} \times \left( \frac{GDD_{Ref}}{GDD_S}\right) + Q_{CZ,S} \]
+
+Gdzie:
+
+\begin{itemize}
+	\item $Q^{Adj}_{Apk,CZ,S}$: Skorygowane o warunki pogodowe zużycie energii na ogrzewanie pomieszczeń i na straty obiegowe w roku rozliczeniowym, MWh
+	\item $Q_{Apk,S}$: Rzeczywiste zużycie energii na ogrzewanie pomieszczeń w roku rozliczeniowym, MWh
+	\item $Q_{CZ,S}$: Rzeczywiste zużycie energii na straty obiegowe w roku rozliczeniowym, MWh
+	\item $GDD_{Ref}$:  Stopniodni ogrzewania wg Wariantu bazowego GDDSStopniodni ogrzewania w roku rozliczeniowym wyliczone w sposób opisany w Warunkach ogólnych Umowy dotyczących Pomiaru i weryfikacji
+\end{itemize}
+
+	\item Na końcu każdego Okresu rozliczeniowego Wykonawca przedstawi ocenę, czy usługi zostały wyświadczone w sposób zapewniający dotrzymanie Gwarancji oszczędności energii:
+
+\[ Q_{iet,S} = Q_{Apk,cz,ref} - Q^{Adj}_{Apk,cz,S} \]
+\[ BH_{iet} = Q_{iet,S} - Q_{iet,G} \]
+
+Gdzie:
+
+\begin{itemize}
+\item $Q_{Apk,cz,ref}$: Stan odniesienia zużycia energii na ogrzewanie pomieszczeń i na straty obiegowe, $MWh/rok $
+\item $Q^{Adj}_{Apk,cz,S}$: Skorygowane o warunki pogodowe zużycie energii na ogrzewanie pomieszczeń i na straty obiegowe w Okresie rozliczeniowym, $MWh/rok$
+\item $Q_{iet,S}$: Oszczędność energii na ogrzewanie pomieszczeń i na straty obiegowe w Okresie rozliczeniowym, $MWh/rok$
+\item $Q_{iet,G}$: Gwarancja oszczędności energii na ogrzewaniu pomieszczeń i na stratach obiegowych, $MWh$
+\item $BH_{iet}$: Saldo Oszczędności energii w Okresie rozliczeniowym, $MWh$
+\end{itemize}
+
+\vspace{1cm}
+		\begin{enumerate}
+			\item Dotrzymanie Gwarancji oszczędności energii: Jeśli $BH_{iet}=0.0 MWh$, to Wykonawca dotrzymał Gwarancji oszczędności energii w Okresie rozliczeniowym. W tym przypadku Wykonawca nie jest nic winien Klientowi.
+
+			\item Niedotrzymanie Gwarancji oszczędności energii: Jeśli saldo jest ujemne ($BH_{iet}$ jest liczbą ujemną), to Wykonawca nie dotrzymał Gwarancji oszczędności energii w Okresiea rozliczeniowym i zwróci Klientowi saldo ujemne:
+\[ C_G = B_{iet} \times HT_S \]
+
+Gdzie:
+
+\begin{itemize}
+	\item $C_G$: Rekompensata za niedotrzymanie Gwarancji oszczędności energii w Okresie rozliczeniowym, EUR (bez VAT)
+	\item $BH_{iet}$: Saldo Oszczędności energii w Okresie rozliczeniowym, $MWh$
+	\item $HT_S$: Średnia Taryfa za energię cieplną w okresie rozliczeniowym wyliczona jako suma miesięcznych Taryf za energię cieplną w okresie rozliczeniowym,podzielona przez liczbę miesięcy w Okresie rozliczeniowym, $EUR/MWh$ (bez VAT)
+\end{itemize}
+
+Strony rozliczą rekompensatę ($C_g$) jednorazową płatnością Wykonawcy na rzecz Klienta lub równomiernym potrąceniem rekompensaty od płatności należnych Wykonawcy od Klienta Wykonawca w następnym Okresie rozliczeniowym. Wykonawca może wybrać sposób, jednak ostatni Okres rozliczeniowy Umowy musi zostać rozliczony jednorazową płatnością.
+	\end{enumerate}
+
+		\item Dodatkowa oszczędność: Jeśli saldo jest dodatnie ($BH_{iet}$  jest liczbą dodatnią), to Wykonawca przekroczył Gwarancję oszczędności energii i może zachować wszelkie ekwiwalenty pieniężne za tę gwarancję płatności. Dodatkowa oszczędność:
+\[ P_G = BH_{iet} \times ET_S \]
+
+Gdzie:
+
+\begin{itemize}
+	\item $P_G$: Dodatkowa oszczędność w okresie rozliczeniowym, EUR (bez VAT)
+	\item $BH_{iet}$: Saldo Oszczędności energii w Okresie rozliczeniowym, MWh
+	\item $HT_S$: Średnia Taryfa za energię cieplną w okresie rozliczeniowym wyliczona jako suma miesięcznych Taryf za energię cieplną w okresie rozliczeniowym, podzielona przez liczbę miesięcy w Okresie rozliczeniowym, EUR/MWh (bez VAT)
+\end{itemize}
+
+Strony rozliczą dodatkową oszczędność ($P_G$) jednorazowym zapłaceniem salda Wykonawcy lub dodaniem równomiernie rozłożonego niepokrytego salda do płatności należnych Wykonawcy za następny Okres rozliczeniowy. Klient może wybrać sposób, lecz ostatni Okres rozliczeniowy Umowy musi zostać rozliczony jednorazową płatnością.
+\end{enumerate}
+
+	\item Dane wejściowe na potrzeby ustalenia Gwarancji oszczędności energii i weryfikacji dotrzymania Gwarancji oszczędności energii są przyjmowane zgodnie z Warunkami ogólnymi Umowy dotyczącymi Pomiaru i weryfikacji.
+\end{enumerate}
+
+\subsection{Opłata za ciepłą wodę użytkową}
+
+\begin{enumerate}
+	\item Płatność za ciepłą wodę użytkową zależy od rzeczywistego zużycia w mieszkaniach zarejestrowanego licznikami zainstalowanymi w każdym z Mieszkań.
+	\item Płatność za ciepłą wodę użytkową jest wyliczana co miesiąc z następującego wzoru:
+
+\[ Q^{m}_{ku} = \frac{V_m \times \rho_{ku} \times c_u \times \left(\theta_{ku} - \theta_{u,pieg}\right)}{3600} \times HT^m \]
+
+Gdzie:
+
+\begin{itemize}
+	\item $V_m$: Miesięczne zużycie objętościowe ciepłej wody użytkowej zmierzone w węźle ciepłowniczym, $m^3$
+	\item $\rho_{ku}$: Ciężar właściwy wody: $985 kg/m^3$
+	\item $c_u$: Ciepło właściwe wody: $4.1868 \times 10^{-3} J/kg^\circ C$
+	\item $\theta_{u,pieg}$: Temperatura wody zimnej od dostawcy, $^\circ C$
+	\item $\theta_{ku}$: Temperatura wody gorącej dostarczanej do węzła ciepłowniczego Budynku, $^\circ C$
+	\item $HT_m$: Taryfa za energię cieplną w miesiącu rozliczeniowym, $EUR/MWh$
+\end{itemize}
+
+	\item Pomiar i weryfikacja: Temperatury dostarczanej wody zimnej i wody gorącej są określane zgodnie z Warunki ogólnymi Umowy dotyczącymi Pomiaru i weryfikacji.
+	\item Klient potwierdza, że każda zmiana w Taryfie za energię jest uwzględniana w opłacie za wodę gorącą natychmiast po przyjęciu zmiany przez regulatora lub przez kompetentny organ i obowiązuje od daty przyjęcia lub wejścia w życie w sposób zgodny z metodą kalkulacji opłaty za ogrzewanie.
+	\item Wykonawca będzie co miesiąc wystawiał Zarządcy ze strony Klienta faktury za całkowitą miesięczną Opłatę za ciepłą wodę użytkową. Zarządca będzie wystawiał indywidualne faktury Właścicielom mieszkań w oparciu o rzeczywiste zużycie.
+\end{enumerate}

@@ -1,0 +1,5 @@
+{
+    listGDPRRequests(%s) {
+        totalCount
+    }
+}

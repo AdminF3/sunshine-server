@@ -1,0 +1,8 @@
+{
+    listAssetReports(%s) {
+        entities{
+            ... on Asset { address, residentsCount, ownerName}
+        }
+        totalCount
+    }
+}

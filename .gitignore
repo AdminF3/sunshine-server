@@ -1,0 +1,59 @@
+# ---> Go
+# Compiled Object files, Static and Dynamic libs (Shared Objects)
+*.o
+*.a
+*.so
+
+# Folders
+_obj
+_test
+vendor/
+# Default path for file uploads
+/uploads
+mocks/
+
+# Architecture specific extensions/prefixes
+*.[568vq]
+[568vq].out
+
+*.cgo1.go
+*.cgo2.c
+_cgo_defun.c
+_cgo_gotypes.go
+_cgo_export.*
+
+_testmain.go
+
+*.exe
+*.test
+*.prof
+*.out
+
+#Idea specific
+.idea
+
+# Ctags
+tags
+
+# Emacs config files
+*.el
+
+# Docker configs
+/docker/production.toml
+/docker/staging.toml
+/docker/sunshine-deployment.txt
+
+# Auto-generated OpenAPI schema
+openapi.json
+
+# generated with go generate
+*_gen.go
+
+# coverage files
+coverage.xml
+coverage.html
+
+# junit report file
+junit-report.xml
+gomock_reflect_*
+

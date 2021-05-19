@@ -1,0 +1,109 @@
+{{- $tables := .Contract.Tables -}}
+
+\section{ANNEX №4 {-} BASELINE AND GUARANTEE SAVINGS}
+
+Upon entering into this Agreement and prior to the execution of the Renovation
+Works the Parties shall calculate the average heat consumption of the Building
+during the Reference Period as follows:
+
+\subsection{Input data}
+
+% table: baseyear
+
+\begin{center}
+\begin{tabu}{|X[2]|X|X|X|X|X|X|X|X|X|X|X|X|} \tabucline{} \rowfont[c]\bfseries
+	& \multicolumn{4}{c|}{ {{baseyear "en" 2}} } & \multicolumn{4}{c|}{ {{baseyear "en" 1}} } & \multicolumn{4}{c|}{ {{baseyear "en" 0}} } \\
+	& \multicolumn{4}{c|}{ {{.Contract.Tables.baseyear_n_2.Title}} } & \multicolumn{4}{c|}{ {{.Contract.Tables.baseyear_n_1.Title}} } & \multicolumn{4}{c|}{ {{.Contract.Tables.baseyear_n.Title}} } \\\tabucline{}\rowfont[c]\bfseries
+        {{$tt := join_tables .Contract.Tables.baseyear_n_2 .Contract.Tables.baseyear_n_1 .Contract.Tables.baseyear_n }} %chktex 25
+        {{with $t := translate "en" $tt}}
+	{{$t.Columns | column_sideways}} \\\tabucline{} \rowfont[]\bfseries %chktex 25
+	{{range $t.Headers}}
+	{{.|row}} \\\tabucline{}
+	{{end}}
+	{{range $t.Rows}}
+	{{row .}} \\\tabucline{} %chktex 26
+	{{end}}
+
+	\bfseries {{average $t }} \\\tabucline{}
+	\bfseries {{total $t}} \\\tabucline{}
+{{end}}
+\end{tabu}
+\end{center}
+
+Conditions during the Baseline Period:
+
+\subsection{Input data}
+
+% table: baseconditions
+
+\begin{center}
+\begin{tabu}{|X[2]|X|X|X|X|X|X|X|X|X|X|X|X|} \tabucline{} \rowfont[c]\bfseries
+	& \multicolumn{4}{c|}{ {{baseyear "en" 2}} } & \multicolumn{4}{c|}{ {{baseyear "en" 1}} } & \multicolumn{4}{c|}{ {{baseyear "en" 0}} } \\
+	& \multicolumn{4}{c|}{ {{.Contract.Tables.baseyear_n_2.Title}} } & \multicolumn{4}{c|}{ {{.Contract.Tables.baseyear_n_1.Title}} } & \multicolumn{4}{c|}{ {{.Contract.Tables.baseyear_n.Title}} } \\\tabucline{}\rowfont[c]\bfseries
+  	{{$tt := join_tables .Contract.Tables.baseconditions_n_2 .Contract.Tables.baseconditions_n_1 .Contract.Tables.baseconditions_n }} %chktex 25
+  	{{with $t := translate "en" $tt}}
+	{{$t.Columns | column_sideways}} \\\tabucline{} \rowfont[]\bfseries %chktex 25
+	{{range $t.Headers}}
+	{{.|row}} \\\tabucline{}
+	{{end}}
+	{{range $t.Rows}}
+	{{row .}} \\\tabucline{} %chktex 26
+	{{end}}
+
+	\bfseries {{average $t }} \\\tabucline{}
+	\bfseries {{total $t}} \\\tabucline{}
+{{end}}
+\end{tabu}
+\end{center}
+
+\subsection{Baseline}
+
+The baseline is determined in accordance with the specifications listed in
+LABEEF Financial and Technical Rules and Guidelines for Energy Efficiency
+Measures:
+
+% table: baseline
+
+\begin{center}
+\begin{tabu}{|X[2]|X|X|X|X|X|X|} \tabucline{}
+{{with $t := translate "en" .Contract.Tables.baseline}}
+	{{.Columns | column}} \\\tabucline{}
+	{{range .Rows}} {{rowf $t .}} \\\tabucline{} {{end}} %chktex 26
+{{end}}
+\end{tabu}
+\end{center}
+
+\subsection{Guaranteed Energy Savings}
+
+The Contractor guarantees for the entire term of this Agreement that the
+Renovation Works will reduce the energy consumption for space heating and
+circulation losses ($Q_{Apk,cz,ref}$) per settlement period (one year) by an amount
+of:
+
+\[SAVINGS \iffalse input project.savings value="{{.Project.GuaranteedSavings}}" \fi {{.Project.GuaranteedSavings}} \%\]
+
+This Guarantee Energy Savings corresponds to:
+
+\[Q_{iet,G} = Q_{Apk, cz, ref} x SAVINGS = {{.Contract.Fields.calculations_qietg}} MWh/year\]
+
+Where:
+
+\begin{itemize}
+	\item $Q_{iet,G}$	Guaranteed Energy Savings in MWh/year
+	\item $Q_{Apk,cz,ref}$	Baseline energy consumption for space heating and cirulation losses in MWh/year
+\end{itemize}
+
+\subsection{Guaranteed Energy Consumption}
+The Guaranteed Energy Consumption is the energy consumption for space heating
+and circulation losses after implementation of the Renovation Works based on
+the given Guarantee Energy Savings and on yearly basis corresponds to:
+
+\[Q_{Apk,cz,G} = Q_{Apk,cz,ref} - Q_{iet,G} = {{.Contract.Fields.calculations_qapkczg}} MWh/year\]
+
+Where:
+
+\begin{itemize}
+	\item $QApk,cz,G$	is the Guaranteed Energy Consumption for space heating and circulation losses, MWh/year
+	\item $QApk,cz,ref$	Baseline energy consumption for space heating and circulation losses, MWh/year
+	\item $Qiet,G$	Guaranteed Energy Savings, MWh/year
+\end{itemize}

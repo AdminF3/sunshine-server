@@ -1,0 +1,22 @@
+{
+    "variables": {
+        "gdpr": {
+            "files": [
+                null,
+                null
+            ],
+            "action": "GET",
+            "requesterName":  "jesus",
+            "requesterPhone": "0888123456",
+            "requesterEmail": "jesus@christ.com",
+            "requesterAddress": "heaven",
+            "name": "john doe",
+            "phone": "0888654321",
+            "email": "abv@bva.bg",
+            "address": "middle of nowhere",
+            "reason": "because i said so",
+            "information": "about humanity"
+        }
+    },
+    "query": "mutation ($gdpr: CreateGDPRRequest!) { sendGDPRRequest(request: $gdpr) { ID } }"
+}

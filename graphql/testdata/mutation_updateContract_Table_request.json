@@ -1,0 +1,14 @@
+mutation{updateTable(projectID: "%s",tableName: "baseyear_n_1",table: {
+    rows: [
+            [
+                "January",
+                "1",
+                "2",
+                "3",
+                "4"
+            ]
+        ]
+    }) {
+    rows
+    }
+}

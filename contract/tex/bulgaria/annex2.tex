@@ -1,0 +1,130 @@
+{{- $vt := .VAT -}}
+
+\section{Приложение 2 - Обхват на мерките и КСС}
+
+\subsection{Scope of Renovation works}
+2.1 Project development and management
+
+% table: project_development_renovations
+
+\begin{center}
+\begin{tabu}{|X|X[2]|X|} \tabucline{} \rowfont[c]\bfseries
+{{with $t := translate "bg" .Contract.Tables.project_development_renovations}} % chktex 25
+	{{$t.Columns | column}} \\\tabucline{}
+	{{range $t.Rows}}
+	{{rowfmt $t .}} \\\tabucline{}
+	{{end}}
+
+	 \bfseries
+	{{total_excl_vat $t}} \\\tabucline{}\bfseries
+	{{vat $t $vt}} \\\tabucline{}\bfseries
+	{{total_incl_vat $t $vt}} \\\tabucline{}
+{{end}}
+\end{tabu}
+\end{center}
+
+2.2 Construction costs
+
+% table: construction_costs_renovations
+
+\begin{center}
+\begin{tabu}{|X|X[2]|X|} \tabucline{} \rowfont[c]\bfseries
+{{with $t := translate "bg" .Contract.Tables.construction_costs_renovations}} % chktex 25
+	{{$t.Columns | column}} \\\tabucline{}
+	{{range $t.Rows}}
+	{{rowfmt $t .}} \\\tabucline{}
+	{{end}}
+
+	 \bfseries
+	{{total_excl_vat $t}} \\\tabucline{}\bfseries
+	{{vat $t $vt}} \\\tabucline{}\bfseries
+	{{total_incl_vat $t $vt}} \\\tabucline{}
+{{end}}
+\end{tabu}
+\end{center}
+
+2.3 Project supervision
+
+% table: project_supervision
+
+\begin{center}
+\begin{tabu}{|X|X[2]|X|} \tabucline{} \rowfont[c]\bfseries
+{{with $t := translate "bg" .Contract.Tables.project_supervision}} % chktex 25
+	{{$t.Columns | column}} \\\tabucline{}
+	{{range $t.Rows}}
+	{{rowfmt $t .}} \\\tabucline{}
+	{{end}}
+
+	 \bfseries
+	{{total_excl_vat $t}} \\\tabucline{}\bfseries
+	{{vat $t $vt}} \\\tabucline{}\bfseries
+	{{total_incl_vat $t $vt}} \\\tabucline{}
+{{end}}
+\end{tabu}
+\end{center}
+
+2.4 Financial charges
+
+% table: financial_charges
+
+\begin{center}
+\begin{tabu}{|X|X[2]|X|} \tabucline{} \rowfont[c]\bfseries
+{{with $t := translate "bg" .Contract.Tables.financial_charges}} % chktex 25
+	{{$t.Columns | column}} \\\tabucline{}
+	{{range $t.Rows}}
+	{{rowfmt $t .}} \\\tabucline{}
+	{{end}}
+
+	 \bfseries
+	{{total_excl_vat $t}} \\\tabucline{}\bfseries
+	{{vat $t $vt}} \\\tabucline{}\bfseries
+	{{total_incl_vat $t $vt}} \\\tabucline{}
+{{end}}
+\end{tabu}
+\end{center}
+
+\subsection{ОБХВАТ НА ЕСМ}
+
+Предмет на договора е проектирането и изпълнението на следните енергоспестяващи мерки съгласно обследване за ЕЕ {-} Приложение 1 {} -Доклад и резюме от обследване за ЕЕ за сградата (вж. Приложение 1); към договора: \\
+
+ЕСМ 1……………………………………………… \\
+ЕСМ 2……………………………………………… \\
+ЕСМ 3……………………………………………… \\
+ЕСМ 4……………………………………………… \\
+
+\subsection{ФАЗА ПРОЕКТИРАНЕ}
+
+% table: renovation_overall_budget
+
+\begin{center}
+\begin{tabu}{|X[10]|X|} \tabucline{} \rowfont[c]\bfseries
+{{with $t := translate "bg" .Contract.Tables.renovation_overall_budget}} % chktex 25
+	{{$t.Columns | column}} \\\tabucline{}
+	{{range $t.Rows}}
+	{{rowfmt $t .}} \\\tabucline{}
+	{{end}}
+
+	 \bfseries
+	{{total_excl_vat $t}} \\\tabucline{}\bfseries
+	{{vat $t $vt}} \\\tabucline{}\bfseries
+	{{total_incl_vat $t $vt}} \\\tabucline{}
+{{end}}
+\end{tabu}
+\end{center}
+
+\subsection{КСС}
+
+% table: renovation_financial_plan
+
+\begin{center}
+\begin{tabu}{|X[10]|X|} \tabucline{} \rowfont[c]\bfseries
+{{with $t := translate "bg" .Contract.Tables.renovation_financial_plan}} % chktex 25
+	{{$t.Columns | column}} \\\tabucline{}
+	{{range $t.Rows}}
+	{{rowfmt $t .}} \\\tabucline{}
+	{{end}}
+{{end}}
+\end{tabu}
+\end{center}
+
+\subsection{Общо Инвестиционни разходи (I + II), ЦЕНА ЗА ЕСМ: [●]XXXX без ДДС [●]XXXX с ДДС}

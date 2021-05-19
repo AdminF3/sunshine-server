@@ -1,0 +1,10 @@
+mutation {
+    reviewForfaitingApplication(ID: %q, review: {
+        ID: %q,
+        approved: true,
+        comment: "Lorem Ipsum.",
+        type: FINANCIAL
+    }) {
+	  message
+  }
+}

@@ -1,0 +1,115 @@
+{{- $tables := .Contract.Tables -}}
+
+\section{ANHANG 4 – BASELINE UND ENERGIEEINSPARUNGSGARANTIE}
+
+\begin{enumerate}
+
+\item{Die Baseline-Periode umfasst monatliche Daten aus dem Jahr [ Jahrn-2, Jahrn-1 und Jahrn].}
+
+\begin{enumerate}
+\item Energiedaten für die Baseline-Periode:
+
+
+% table: baseyear
+
+\begin{center}
+\begin{tabu}{|X[2]|X|X|X|X|X|X|X|X|X|X|X|X|} \tabucline{} \rowfont[c]\bfseries
+	& \multicolumn{4}{c|}{ {{baseyear "au" 2}} } & \multicolumn{4}{c|}{ {{baseyear "au" 1}} } & \multicolumn{4}{c|}{ {{baseyear "au" 0}} } \\
+	& \multicolumn{4}{c|}{ {{.Contract.Tables.baseyear_n_2.Title}} } & \multicolumn{4}{c|}{ {{.Contract.Tables.baseyear_n_1.Title}} } & \multicolumn{4}{c|}{ {{.Contract.Tables.baseyear_n.Title}} } \\\tabucline{}\rowfont[c]\bfseries
+  	{{$tt := join_tables .Contract.Tables.baseyear_n_2 .Contract.Tables.baseyear_n_1 .Contract.Tables.baseyear_n }} %chktex 25
+  	{{with $t := translate "au" $tt}}
+	{{$t.Columns | column_sideways}} \\\tabucline{} \rowfont[]\bfseries %chktex 25
+	{{range $t.Headers}}
+	{{.|row}} \\\tabucline{}
+	{{end}}
+	{{range $t.Rows}}
+	{{row .}} \\\tabucline{} %chktex 26
+	{{end}}
+
+	\bfseries {{average $t }} \\\tabucline{}
+	\bfseries {{total $t}} \\\tabucline{}
+{{end}}
+\end{tabu}
+\end{center}
+
+\item Bedingungen während der Baseline-Periode:
+
+% table: baseconditions
+
+\begin{center}
+\begin{tabu}{|X[2]|X|X|X|X|X|X|X|X|X|X|X|X|} \tabucline{} \rowfont[c]\bfseries
+	& \multicolumn{4}{c|}{ {{baseyear "au" 2}} } & \multicolumn{4}{c|}{ {{baseyear "au" 1}} } & \multicolumn{4}{c|}{ {{baseyear "au" 0}} } \\
+	& \multicolumn{4}{c|}{ {{.Contract.Tables.baseyear_n_2.Title}} } & \multicolumn{4}{c|}{ {{.Contract.Tables.baseyear_n_1.Title}} } & \multicolumn{4}{c|}{ {{.Contract.Tables.baseyear_n.Title}} } \\\tabucline{}\rowfont[c]\bfseries
+  	{{$tt := join_tables .Contract.Tables.baseconditions_n_2 .Contract.Tables.baseconditions_n_1 .Contract.Tables.baseconditions_n }} %chktex 25
+  	{{with $t := translate "au" $tt}}
+	{{$t.Columns | column_sideways}} \\\tabucline{} \rowfont[]\bfseries %chktex 25
+	{{range $t.Headers}}
+	{{.|row}} \\\tabucline{}
+	{{end}}
+	{{range $t.Rows}}
+	{{row .}} \\\tabucline{} %chktex 26
+	{{end}}
+
+	\bfseries {{average $t }} \\\tabucline{}
+	\bfseries {{total $t}} \\\tabucline{}
+{{end}}
+\end{tabu}
+\end{center}
+
+\vspace{5mm}
+Die Anzahl der Heizgradtage wird nach folgender Formel ermittelt:\\*
+
+\[GDD = D_{Apk} x (T_1 - T_3)\]
+Dabei gilt:
+\begin{itemize}[label={}]
+	\item GDD \quad Anzahl der Heizgradtage während der Baseline-Periode
+	\item $D_{Apk}$ \quad Anzahl der Heiztage während der Baseline-Periode
+	\item $T_{1}$ \quad \quad Raumtemperatur während der Baseline-Periode ($^oC$)
+	\item $T_{3}$ \quad \quad tatsächliche durchschnittliche Außentemperatur während der Baseline-Periode ($^oC$)
+\end{itemize}
+\end{enumerate}
+
+\item{Baseline}
+	Die Baseline wird basierend auf den Energiedaten und -bedingungen während der Baseline-Periode wie folgt bestimmt:
+
+% table: baseline
+
+\begin{center}
+\begin{tabu}{|X[2]|X|X|X|X|X|X|} \tabucline{}
+{{with $t := translate "au" .Contract.Tables.baseline}}
+	{{.Columns | column}} \\\tabucline{}
+	{{range .Rows}} {{rowf $t .}} \\\tabucline{} {{end}} %chktex 26
+{{end}}
+\end{tabu}
+\end{center}
+
+\item{Energieeinsparungsgarantie und Energieverbrauchsgarantie}
+\begin{enumerate}
+	\item Der Auftragnehmer garantiert für die Leistungsperiode dieses Vertrages, dass die durchgeführten Maßnahmen und Dienstleistungen den Energieverbrauch für Raumwärme- und Zirkulationsverluste (QApk, cz, ref) pro Abrechnungsperiode (ein Jahr) um folgenden Betrag reduzieren werden:
+
+
+ \[EINSPARUNGEN_{WÄRME} \iffalse input project.savings value="{{.Project.GuaranteedSavings}}" \fi {{.Project.GuaranteedSavings}} \% des Baseline-Verbrauchs für Raumwärme- und Zirkulationsverluste (Q_{Apk, cz, ref}) \]
+
+	\item Die Energieeinsparungsgarantie entspricht:
+
+          \[Q_{iet,G} = Q_{Apk, cz, ref} x EINSPARUNGEN_{WÄRME} = {{.Contract.Fields.calculations_qietg}} MWh/jahr\]
+
+	Dabei gilt:
+
+	\begin{itemize}[label={}]
+		\item $Q_{iet,G}$	Guaranteed Energy Savings in MWh/jahr
+		\item $Q_{Apk,cz,ref}$	Baseline energy consumption for space heating and cirulation losses in MWh/jahr
+	\end{itemize}
+
+        \item Die Energieverbrauchsgarantie entspricht:
+		\[Q_{Apk,cz,G} = Q_{Apk,cz,ref} - Q_{iet,G} = {{.Contract.Fields.calculations_qapkczg}} MWh/jahr\]
+
+		Dabei gilt:
+		\begin{itemize}[label={}]
+		 	\item $QApk,cz,G$	Energieverbrauchsgarantie für Raumwärme und Zirkulationsverluste, MWh/Jahr
+			\item $QApk,cz,ref$	Baseline-Energieverbrauch für Raumwärme und Zirkulationsverluste, MWh/Jahr
+			\item $Qiet,G$	Energieeinsparungsgarantie, MWh/Jahr
+		\end{itemize}
+\end{enumerate}
+
+\end{enumerate}

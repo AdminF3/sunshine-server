@@ -1,0 +1,10 @@
+query {
+    getForfaitingApplicationByProject(project: %q) {
+        privateBond
+	bankAccount {
+		beneficiaryName
+		bankNameAddress
+		IBAN
+	}
+    }
+}

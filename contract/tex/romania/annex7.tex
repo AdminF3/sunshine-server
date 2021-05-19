@@ -1,0 +1,69 @@
+\section{ANEXA NR. 7 - TAXĂ DE RENOVARE}
+
+\textit{[ se completează numai în cazul contribuţiei financiare a contractantului  ]}
+
+\begin{enumerate}
+
+\item Clientul este de acord cu contribuția financiară a contractantului, deoarece este un serviciu necesar și indispensabil legat de:
+
+  \begin{enumerate}
+  \item implementarea și instalarea cu succes a măsurilor;
+  \item executarea garanției de economii de energie a contractantului;
+  \item furnizarea calitativă a serviciilor de eficiență energetică convenite.
+  \end{enumerate}
+
+\item Contractantul acceptă să ofere clientului o contribuție financiară, care este utilizată exclusiv pentru domeniul de aplicare al prezentului acord.
+
+\item Clientul rambursează contractantului pentru contribuția financiară decontată în baza prezentului acord cu plata unei taxe de renovare pe baza următoarelor condiții:
+
+  \begin{enumerate}
+  \item Contribuția financiară a contractantului (inclusiv TVA): \iffalse input fields.contractor_fin_contribution value="{{.Contract.Fields.contractor_fin_contribution}}" \fi {{.Contract.Fields.contractor_fin_contribution}} EUR
+    \item Rata dobânzii flotante:
+care este format din partea fixă:         \iffalse input fields.interest_rate_percent value="{{.Contract.Fields.interest_rate_percent}}" \fi {{.Contract.Fields.interest_rate_percent}} \%
+ - oferit de \iffalse input fields.interest_rate_offerter value="{{.Contract.Fields.interest_rate_offerter}}" \fi {{.Contract.Fields.interest_rate_offerter}}
+şi partea flexibilă : {{.EUROBOR}} lună EURIBOR
+  \item Termeni de rambursare corespunzători perioadei de serviciu {{mul 12 .Project.ContractTerm}} luni
+  \end{enumerate}
+
+\item Rata uniformă este o rată a dobânzii fixă ​​exprimată în rata procentuală anuală, din care părțile au ajuns la un acord.
+
+\item Rata flotantă este o rată a dobânzii flotante, care constă dintr-o parte fixă ​​și o parte flotantă:
+
+  \begin{enumerate}
+  \item Partea fixă ​​este o parte a ratei dobânzii, care este exprimată în rata procentuală anuală, din care părțile au ajuns la un acord, care poate fi modificat printr-un acord scris între părți.
+  \item Partea plutitoare este un parametru plutitor, iar EURIBOR din perioada respectivă va fi aplicat în scopul determinării acesteia. Rata EURIBOR este rata medie a dobânzii la băncile din zona euro din perioada respectivă, calculată de „Thomson Reuters” la o dată de decontare în euro, disponibilă pe site-ul web http://www.euribor-ebf.eu
+  \end{enumerate}
+
+\item Partea plătitoare a ratei dobânzii pentru prima perioadă este stabilită de contractant la data finalizării serviciului prin aplicarea ratei publicate în ziua bancară anterioară.
+
+\item Partea plătitoare a ratei dobânzii pentru perioada ulterioară este stabilită de contractant la una dintre următoarele date (ținând cont de cea mai îndepărtată dată de finalizarea serviciului, cu condiția să nu depășească 6 sau 12 luni) în consecință, după data completării serviciului): pe 15 ianuarie sau 15 aprilie sau 15 iulie sau 15 octombrie, prin aplicarea ratei publicate în ziua bancară anterioară.
+
+\item Partea plătitoare a ratei dobânzii pentru perioadele ulterioare este stabilită de către contractant la 15 ianuarie și / sau 15 aprilie și / sau 15 iulie și / sau 15 octombrie, având în vedere interesul plutitor Perioadă.
+
+\item În cazul în care partea flotantă a ratei dobânzii are o valoare negativă, atunci rata dobânzii flotante este egală cu partea fixă ​​a ratei dobânzii.
+
+\item În cazul în care data de schimb a părții variabile a ratei dobânzii scade într-o altă zi decât ziua bancară, atunci data de schimb respectivă a părții flotante a ratei dobânzii este următoarea dată bancară. După determinarea noii părți flotante a ratei dobânzii, contractantul va fi trimis managerului clientului împreună cu factura curentă, o notificare privind modificările din programul de plată. Ratele dobânzilor pentru perioada următoare și programul de plată în consecință sunt considerate modificate începând cu prima zi a noii perioade, fără a încheia un acord la acord.
+
+\item Calculul dobânzii va începe la începutul perioadei de serviciu la semnarea declarației de transport / transfer.
+
+\item În conformitate cu dispozițiile acordului, dobânda se calculează în fiecare zi calendaristică, presupunând că un an este format din 360 de zile.
+
+\item Programul de plată pentru taxa de renovare bazată pe contribuția financiară a contractantului și pe baza condițiilor aplicabile la momentul semnării prezentului acord este:
+
+% table: project_measurements_table
+
+\begin{center}
+\begin{longtabu}{|X|X|X|X|X|} \tabucline{}
+{{with $t := translate "ro" .Contract.Tables.project_measurements_table}}
+	{{.Columns | column}} \\\tabucline{}
+	{{range .Rows}} {{rowf $t .}} \\\tabucline{} {{end}} %chktex 26
+{{end}}
+\end{longtabu}
+\end{center}
+
+
+\item Contractantul va notifica managerul clientului și va furniza o planificare de plată actualizată în cazul modificărilor părții flotante a rata de dobândă flotantă.
+
+\item Contractantul va factura administratorului clientului lunar pentru taxa lunară de renovare calculată conform planului de plată. Administratorul va percepe fiecare proprietar de apartament în parte, pe bază de metru pătrat.
+
+\end{enumerate}

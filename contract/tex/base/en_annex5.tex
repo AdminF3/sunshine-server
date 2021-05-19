@@ -1,0 +1,72 @@
+\section{ANNEX №5 {-} OPERATION AND MAINTENANCE MANUAL}
+
+\subsection{Periodic maintenance activities covered by the Contractor as part of this Agreement}
+
+% table: periodic_maint_activities_covered_by_contractor
+
+\begin{center}
+\begin{tabu}{|X[3]|X|X|X|X|} \tabucline{} \rowfont[c]\bfseries
+{{with $t := translate "en" .periodic_maint_activities_covered_by_contractor}} % chktex 26
+	{{.Columns | column}} \\\tabucline{}
+	{{range .Rows}} % chktex 26
+	{{rowfmt $t .}} \\\tabucline{}
+	{{end}}
+{{end}}
+\end{tabu}
+\end{center}
+
+\subsection{Mid-term preventative maintenance activity}
+
+% table: mid_term_preventative_activity
+
+\begin{center}
+\begin{tabu}{|X[3]|X|X|X|X|} \tabucline{} \rowfont[c]\bfseries
+{{with $t := translate "en" .mid_term_preventative_activity}} % chktex 26
+	{{.Columns | column}} \\\tabucline{}
+	{{range .Rows}} % chktex 26
+	{{rowfmt $t .}} \\\tabucline{}
+	{{end}}
+{{end}}
+\end{tabu}
+\end{center}
+
+\subsection{Long term provisioned maintenance activities covered by the Contractor as part of this Agreement}
+
+% table: long_term_provisioned_activities
+
+\begin{center}
+\begin{tabu}{|X[3]|X|X|X|X|} \tabucline{} \rowfont[c]\bfseries
+{{with $t := translate "en" .long_term_provisioned_activities}} % chktex 26
+	{{.Columns | column}} \\\tabucline{}
+	{{range .Rows}} % chktex 26
+	{{rowfmt $t .}} \\\tabucline{}
+	{{end}}
+{{end}}
+\end{tabu}
+\end{center}
+
+\subsection{Operational expenses covered by the Contractor as part of this Agreement}
+\begin{enumerate}
+	\item Administration cost for organising maintenance activities and activities part of this agreement
+	\item Reply and act upon Emergency calls
+	\item Electricity consumption for new electrical loads installed as part of this agreement
+\end{enumerate}
+
+
+\subsection{Recommended maintenance activity}
+
+The Contractor recommend the Client to perform the following long term
+maintenance activities:
+
+% table: reccomended_maintanance_activity
+
+\begin{center}
+\begin{tabu}{|X[3]|X|X|X|X|} \tabucline{} \rowfont[c]\bfseries
+{{with $t := translate "en" .reccomended_maintanance_activity}} %chktex 26
+	{{.Columns | column}} \\\tabucline{}
+	{{range .Rows}} %chktex 26
+	{{rowfmt $t .}} \\\tabucline{}
+	{{end}}
+{{end}}
+\end{tabu}
+\end{center}

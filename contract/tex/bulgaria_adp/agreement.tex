@@ -1,0 +1,1867 @@
+\documentclass[a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{fontspec}
+\setmainfont{NotoSans-Regular}
+\usepackage{lmodern}
+\usepackage{textcomp}
+\usepackage{tabu}
+\usepackage{rotating}
+\usepackage{multicol}
+\usepackage{alltt}
+\usepackage{longtable}
+\usepackage[
+  margin=1.5cm,
+]{geometry}
+
+\special{papersize=210mm,297mm}
+\setlength{\parindent}{0pt}
+\tabulinesep=3pt
+\pagestyle{plain}
+
+\begin{document}
+
+% First Page
+\renewcommand\thesection{}
+\renewcommand\thesubsection{}
+\renewcommand\thesubsubsection{}
+
+\begin{center}
+
+  \topskip0pt
+  \vspace*{\fill}
+  \section{FORFAITING AGREEMENT}
+  \subsection{(Being, For the Pusposes of Latvian Law, A Cession Agreement)}
+  \vspace*{\fill}
+
+  \vspace{8cm}
+
+  \subsubsection{BY AND BETWEEN}
+
+  \vspace{1cm}
+
+  \begin{tabu}{|r|X[2]|} \tabucline{}
+
+    ASSIGNOR&{{.ESCo.Name}}\\\tabucline{}
+
+    FORFAITING ASSIGNEE&{{index .Contract.Fields "client_name"}}\\\tabucline{}
+
+  \end{tabu}
+
+  \iffalse input forfaitingFields.front_page_free_text value="{{.Contract.Agreement.front_page_free_text}}" \fi {{.Contract.Agreement.front_page_free_text}}, \iffalse input forfaitingFields.front_page_date value="{{.Contract.Agreement.front_page_date}}" type="date" \fi {{.Contract.Agreement.front_page_date}}
+
+\end{center}
+
+\pagebreak
+
+% Preample Page
+\begin{center}
+	\section{PREAMBLE}
+\end{center}
+
+\vspace{5mm}
+
+The Assignor has entered into a contract for the execution of
+Renovation Works with guaranteed results as defined in the Energy
+Performance Contract (Annex No. 3 of this Agreement), concluded on
+{{index .Contract.Fields "date"}} by and between {{index .Contract.Fields "client_name"}}
+(as \textbf{“Customer”} or \textbf{“Assignor’s
+  Client“}) and the Assignor (as \textbf{“Contractor”}), pursuant to
+which the Assignor shall assure the financing and undertake all due
+Renovation Works in consideration of regular payments and against the
+guaranteed energy savings and words and expressions defined in the
+Energy Performance Contract (unless the context otherwise requires)
+the same meaning when used in this Agreement;\par
+
+\vspace{5mm}
+
+The payment of the Assignor’s remuneration under the Energy
+Performance Contract shall be made according to an agreed monthly
+payment schedule for a period of {{date_diff .Project.ConstructionFrom .Project.ConstructionTo}}
+years comprised of the following elements as
+depicted in detail in Annex No. 5 of the Energy Performance Contract
+and namely:\par
+
+\vspace{5mm}
+
+\begin{enumerate}
+\item{\textbf{Energy fee:} the amount due at the current Energy Tariff
+    for the Guaranteed Energy Consumption and distributed in equal
+    monthly payments, subject to a settlement once per annum to
+    account for the actual weather conditions prevailing for the
+    referenced Period;}
+
+\item{\textbf{Renovation fee:} the amount due for the renovation costs
+    of the building indexed to EURIBOR;}
+
+\item{\textbf{Operation and Maintenance fee:} the amount due for the
+    Operation and Maintenance Expenses and subject to annual
+    indexation with the applicable {{.Contract.Fields.country_adj}} Consumer Price Index for
+    the respective year as published by {{.Contract.Fields.country_issuer}}.}
+
+\item{\textbf{Any taxes due} (such as VAT) in delivering the service.}
+
+\item{\textbf{Domestic hot water:} the amount due at the current
+    Energy Tariff calculated for the actual domestic hot water
+    consumption. referred to hereinafter for short as the
+    \textbf{"Receivables"}}
+\end{enumerate}
+
+The Assignor wishes to transfer its Receivables arising under the
+Energy Performance Contract in their full amount to the Forfaiting
+Assignee subject to the satisfactory performance of the executed work
+under the Energy Performance Contract and notification of the
+assignment in writing to the respective residents of the Building.\par
+
+\pagebreak
+
+% Specific Terms and Conditions of this agreement
+\renewcommand\thesection{}
+\renewcommand\thesubsection{\arabic{subsection}}
+\renewcommand\thesubsubsection{\thesubsection.\arabic{subsubsection}.}
+
+\renewcommand*{\theenumi}{\thesubsection.\arabic{enumi}}
+\renewcommand*{\theenumii}{\theenumi.\arabic{enumii}}
+
+\section{SPECIFIC TERMS AND CONDITIONS OF THIS AGREEMENT}
+\vspace{5mm}
+
+\subsection{PARTIES TO THE AGREEMENT}
+
+\textbf{The “Assignor“ (also referred to as the “ESCO”)}
+
+\vspace{2mm}
+
+\begin{tabu}{|X|X[2]|} \tabucline{}
+  Name                  &{{.ESCo.Name}}                                          \\\tabucline{}
+  Registration number   &{{.ESCo.VAT}}                                           \\\tabucline{}
+  Address               &{{.ESCo.Address}}                                       \\\tabucline{}
+  Legal representative  &{{.Contract.Fields.contractor_representative_name}}     \\\tabucline{}
+\end{tabu}
+
+\vspace{5mm}
+
+\textbf{The "Forfaiting Assignee" (also referred to as the “Facility”)}
+
+\vspace{2mm}
+
+\begin{tabu}{|X|X[2]|} \tabucline{}
+  Name                   &{{index .Contract.Fields "client_name"}}                 \\\tabucline{}
+  Registration number    &{{index .Contract.Fields "client_id"}}                   \\\tabucline{}
+  Address                &{{index .Contract.Fields "client_address"}}              \\\tabucline{}
+  Legal representative   &{{index .Contract.Fields "client_representative_name"}}  \\\tabucline{}
+\end{tabu}
+
+\vspace{5mm}
+
+\subsection{SCOPE OF THE AGREEMENT}
+
+\vspace{2mm}
+
+\begin{enumerate}
+\item{Subject to the terms and conditions of this Agreement, the
+    Assignor cedes and transfers to the Forfaiting Assignee and the
+    Forfaiting Assignee buys and receives on the basis of this
+    Agreement the total amount of all Receivables defined and payable
+    under the Energy Performance Contract from the Assignor’s Client,
+    which exist between the Assignor’s Client and the Assignor
+    pursuant to the Energy Performance Contract and which satisfy the
+    following criteria:}
+
+  \begin{enumerate}
+  \item{the Receivables have resulted from implementation of the
+      Energy Efficiency Improvement Measures carried out by Assignor
+      for the Assignor’s Client;}
+
+  \item{the Receivables exist with a defined and calculable value, are
+      subject to contractual indexation, are in a legally executable
+      and in enforceable form, according to Latvian law, are subject
+      to the jurisdiction of the courts of Latvia, and are without
+      caveat, recourse, right for appeal, counterclaim, offsetting,
+      charging or other rights of third parties;}
+
+  \item{the Energy Performance Contract and all documents evidencing
+      the Receivables and the performance thereof do not contravene
+      any applicable mandatory legal provisions and, all such
+      documents have been submitted to the Forfaiting Assignee; and}
+
+  \item{the sale, assignment and/or charging of the Receivables shall
+      not be prohibited (whether by the terms of the Energy
+      Performance Contract, any other agreement or any applicable
+      law); together with:}
+
+  \item{an assignment of any liens, pledges, energy saving guarantee,
+      other securities or sureties given to secure payment of the
+      Receivables ceded and transferred hereby; and }
+
+  \item{a pledge, to the greatest extent possible, of the equipment
+      installed by the Assignor in the Building (as contemplated by
+      the General Terms and Conditions of this Agreement) to secure
+      the Forfaiting Assignee's rights hereunder.}
+  \end{enumerate}
+
+\item{This Agreement is concluded on the basis that the assignment,
+    cession and transfer is a conditional one, being enforceable only
+    if the following specific conditions are satisfied:}
+
+  \begin{enumerate}
+  \item{the Project is developed pursuant to the Forfaiting Assignee’s
+      Energy Performance Contract template and fully satisfy {{index .Contract.Fields "client_name"}}
+      Financial and Technical Rules and Guideline for Energy
+      Efficiency Measures;}
+
+  \item{availability of at least one calendar year of continuous
+      utility bill payment history for the respective Project
+      evidencing the achievement of the Guaranteed Energy Consumption
+      being warrantied under the Energy Performance Contract;}
+
+  \item{all costs for the implementation of the Energy Efficiency
+      Improvement Measures have been fully paid to the respective
+      subcontractors (if any);}
+
+  \item{there has been duly sent notice of assignment of Receivables
+      in the format provided for in Annex 1 to this Agreement, whereby
+      the Assignor’s Client confirms to the Forfaiting Assignee
+      receipt of such notification;}
+
+  \item{there is in place a validly concluded and effective insurance
+      policy for the full value of the Building after its renovation
+      with a minimum insurance coverage against fire, earthquake,
+      flood, water damage, any other natural disasters having an
+      impact on the Building, structural damage caused by subsidence
+      and fallen trees, evidenced through the provision of a certified
+      copy of the relevant policy or other conclusive documents
+      confirming payment of the insurance premium. The insurance
+      policy should be valid for not less than 3 years following the
+      date of its execution and be concluded under terms and
+      conditions incorporating relevant industry standard provisions
+      and concluded with an insurer rated minimum A+ according to
+      relevant reputable ratings applicable to Latvia;}
+
+  \item{satisfactory results from the due diligence process that the
+      Forfaiting Assignee shall deploy to verify the quality of the
+      renovation works and implemented Energy Efficiency Improvement
+      Measures in the Building not sooner than the expiry of the first
+      heating season. The Parties acknowledge that this due diligence
+      condition is inserted for the sole benefit of the Forfaiting
+      Assignee and to allow the Forfaiting Assignee to review of the
+      quality of the work executed by the Assignor and the actual
+      amount of energy consumption achieved under the Energy
+      Performance Contract); and}
+
+  \item{there is in place a validly concluded and effective Management
+      Contract and Tripartite Agreement as defined in the General
+      Terms and Conditions of this agreement.}
+  \end{enumerate}
+
+\item{Upon signature of a “Energy Service Verification” Protocol, the assignment of
+    the Receivables shall be completed. This Agreement is legally
+    binding from the moment of its signing, but the obligations
+    arising under it, unless expressly specified otherwise, shall be
+    considered suspended until the Protocol referred to above is
+    issued in evidence of the successful satisfaction of the
+    conditions under (2.2.1) to (2.2.7) above.}
+
+\end{enumerate}
+
+\subsection{RECEIVABLES TRANSFERRED HEREBY}
+
+\begin{enumerate}
+\item{The Receivables being transferred under this Agreement to the
+    Forfaiting Assignee amount to the full amount of all receivables
+    to which the Assignor is entitled to receive from the Assignor’s
+    Client on the basis of a validly concluded Energy Performance
+    Contract (such as defined in the Preamble) and is without
+    prejudice to the Forfaiting Assignee’s right to novate of the any
+    of the Assignor’s obligations due under the Energy Performance
+    Contract. The Receivables subject to their cession to the Facility
+    arise from the payment obligations of the following: \par
+
+    \begin{tabu}{XX[2]}
+      Assignor’s Client:  & {{.BuildingOwner.Name}} \\
+      Legal Address:      & {{.BuildingOwner.Address}}
+    \end{tabu}}
+
+\item{The transfer of Receivables under this Agreement represents a
+    cession (within the meaning of Art. 1793, Chapter 9, Sub{-}Chapter
+    1 of the Civil Law of Latvia and related provisions) of rights to
+    all claims to which the Assignor is entitled against the
+    Assignor’s Client. For the avoidance of doubt, the assignment of
+    all claims which the Assignor has against the Assignor’s Client
+    entitles the Forfaiting Assignee to undertake alone or through the
+    use of third parties all due factual and legal activities for the
+    enforcement of all such claims against each of the Apartment
+    Owners separately or collectively as the Assignor’s
+    Client. Without prejudice to the above, the Assignor hereby
+    consents and unconditionally agrees to novate any of its
+    obligations due under the Energy Performance Contract to the
+    Forfaiting Assignee or any of its designees not later than within
+    5 Business days from the date of receipt of the relevant request
+    from the Forfaiting Assignee. }
+\end{enumerate}
+
+\subsection{PURCHASE PRICE FOR THE RECEIVABLES}
+
+\begin{enumerate}
+\item{The purchase price for the Receivables is in the amount of EUR
+    \iffalse input forfaitingFields.receivable_price value="{{.Contract.Agreement.receivable_price}}" type="number" \fi {{.Contract.Agreement.receivable_price}} (\iffalse input forfaitingFields.receivable_price_words value="{{.Contract.Agreement.receivable_price_words}}" \fi {{.Contract.Agreement.receivable_price_words}}) (the \textbf{"Price"}) corresponding to
+    \iffalse input forfaitingFields.receivable_price value="{{.Contract.Agreement.receivable_price_percent}}" type="number" \fi {{.Contract.Agreement.receivable_price_percent}} (\iffalse input forfaitingFields.receivable_price_percent_words value="{{.Contract.Agreement.receivable_price_percent_words}}" \fi {{.Contract.Agreement.receivable_price_percent_words}}) of the full values of the Receivables
+    linked to the fix component of the Renovation Fee of the Energy
+    Performance Contract.}
+
+\item{The payment of the purchase price shall be made in accordance
+    with Art. 6.1 after the later of}
+
+\item{receipt by the Assignor’s Client of the notice for the transfer
+    of the total amount of all Receivables from the Assignor to the
+    Forfaiting Assignee and }
+
+\item{receipt of the “Energy Service Verification” Protocol contemplated by
+    Art. 2.3 above.}
+\end{enumerate}
+
+\subsection{PERFORMANCE FEE AND OTHER FEES DUE}
+
+\begin{enumerate}
+\item{The Assignor will be entitled to a payment from the Forfaiting
+    Assignee corresponding to:}
+
+  \begin{enumerate}
+  \item{ \iffalse input forfaitingFields.forfaiting_assignee_payment value="{{.Contract.Agreement.forfaiting_assignee_payment}}" type="number" \fi {{.Contract.Agreement.forfaiting_assignee_payment}} (\iffalse input forfaitingFields.forfaiting_assignee_payment_words value="{{.Contract.Agreement.forfaiting_assignee_payment_words}}" type="number" \fi {{.Contract.Agreement.forfaiting_assignee_payment_words}}) of the fix component of the Renovation
+      Fee of the Energy Performance Contract}
+
+  \item{One hundred per cent (100\%) of the Operation and Maintenance
+      Fee of the Energy Performance Contract}
+  \end{enumerate}
+
+\item{The Assignor will additionally be entitled to a performance fee
+    in respect of each year in which the achieved energy saving under
+    the Energy Performance Contract exceeds the amount of the
+    guaranteed energy savings for that year pursuant to the Energy
+    Performance Contract (after measurement and verification according
+    to {{.Contract.Fields.client_name}} Financial and Technical Rules and Guidelines for Energy
+    Efficiency Measures). Such performance fee shall be calculated on
+    an annual basis pursuant to the following formula: \par
+
+    \begin{center}
+      \[Performance fee = \iffalse input forfaitingFields.performance_fee value="{{.Contract.Agreement.performance_fee}}" type="number" \fi {{.Contract.Agreement.performance_fee}}\% P_G\]
+    \end{center}
+
+    Where: \par
+    $P_G$: extra performance of the guarantee during the
+    settlement period, EUR (excluding VAT) calculated according to
+    Annex 5 of the Energy Performance Contract (Annex 3 of this
+    Agreement)}
+
+\item{The performance fee calculated in the aforementioned manner
+    shall become due and payable to the Forfaiting Assignee with the
+    Payment for the first quarter Period after the expiry of the year
+    in which the extra energy savings was achieved}
+
+\item{The Assignor is separately and unconditionally obliged to pay to
+    the Forfaiting Assignee the compensation for the non{-}
+    fulfillment of the Guaranteed Energy Savings during the settlement
+    period as indicated in Annex 5 of the Energy Performance
+    Contract.}
+
+\item{The compensation for the non{-} fulfillment of the Guaranteed
+    Energy Savings shall become due and payable to the Forfaiting
+    Assignee within 30 days from the date of completing the
+    calculation establishing the breach of Guaranteed Energy
+    Consumption. The Assignor shall settle its debt via a transfer to
+    a bank account designated by the Forfaiting Assignee within the
+    aforementioned term. Failure to ensure timely payment of the above
+    entitles the Forfaiting Assignee to a late payment fee in the
+    amount of \iffalse input forfaitingFields.late_payment_fee value="{{.Contract.Agreement.late_payment_fee}}" type="number" \fi {{.Contract.Agreement.late_payment_fee}} \%
+    (\iffalse input forfaitingFields.late_payment_fee_words value="{{.Contract.Agreement.late_payment_fee_words}}" \fi {{.Contract.Agreement.late_payment_fee_words}}) of the amount
+    outstanding for each day of delay, but not exceeding in total \iffalse input forfaitingFields.outstanding_amount value="{{.Contract.Agreement.outstanding_amount}}" type="number" \fi {{.Contract.Agreement.outstanding_amount}}
+    \%(\iffalse input forfaitingFields.outstanding_amount_words value="{{.Contract.Agreement.outstanding_amount_words}}" \fi {{.Contract.Agreement.outstanding_amount_words}}) of the outstanding amount.}
+
+\item{Without prejudice to the above, the Forfaiting Assignee is
+    entitled to set{-}off its claim for the compensation for the
+    non{-} fulfillment of the Guaranteed Energy Savings to the above
+    amounts against any of the performance fee payments due under
+    art. 5.1 above and/or to decrease or withhold payments (like
+    payment for building maintenance from Forfaiting Assignee to the
+    Assignor) as a defense, retention, objection, counterclaim or in
+    pursuance to any of its other rights stemming under this
+    Agreement.}
+\end{enumerate}
+
+\subsection{PAYMENT DEADLINES}
+
+\begin{enumerate}
+\item{The Assignor shall issue an invoice for each installment
+    corresponding to the Price (pursuant Art. 4.1) within 10 days
+    following the date of the “Energy Service Verification” Protocol contemplated
+    by Art. 2.3. signed between the Parties pursuant to the provisions
+    hereinabove. Payments will be made in the following
+    instalment{[}s{]}: \par
+
+    {{index .Contract.Agreement "payment_first_amount"}} EUR – due and payable not later than {{index .Contract.Agreement "payment_first_date"}}; \par
+    {{index .Contract.Agreement "payment_second_amount"}} EUR – due and payable not later than {{index .Contract.Agreement "payment_second_date"}}; and \par
+    {{index .Contract.Agreement "payment_third_amount"}} EUR – due and payable not later than {{index .Contract.Agreement "payment_third_date"}}.\par}
+
+\item{The Assignor shall issue an invoice on quarterly basis for the
+    payments corresponding to the accrued Fees pursuant Art. 5.1.}
+
+\item{The Assignor shall issue an invoice on annual basis after
+    measurement and verification as indicated in the Energy
+    Performance Contract pursuant Art. 5.2.}
+
+\item{The payments in respect of the Price or the Performance Fee and
+    Other Fees shall be made to the following bank account of the
+    Assignor (unless the Assignor changes its payment instructions
+    prior to the Forfaiting Assignee initiating the relevant payment
+    by giving a written notice, in which case payments shall be made
+    to the bank account indicated in such notice): \par
+
+    \begin{tabu}{XX[2]}
+      Beneficiary Name: 	& 	{{.FABankAcc.BeneficiaryName}} 	\\
+      Bank name and address: 	& 	{{.FABankAcc.BankNameAddress}} 	\\
+      IBAN:			& 	{{.FABankAcc.IBAN}} 		\\
+      SWIFT:			& 	{{.FABankAcc.SWIFT}} 		\\
+    \end{tabu}}
+
+\item{The Assignor shall pay any due invoice within 30 working days.}
+
+\item{The Forfaiting Assignee shall issue an invoice on annual basis
+    after Measurement and Verification as indicated in the Energy
+    Performance Contract pursuant Art. 5.5.}
+
+\item{6.7. The payments in respect of the breach of Guaranteed Energy
+    Consumption shall be made to the following bank account of the
+    Forfaiting Assignee (unless the Forfaiting Assignee changes its
+    payment instructions prior to the Assignor initiating the relevant
+    payment by giving a written notice, in which case payments shall
+    be made to the bank account indicated in such notice):
+
+    \begin{tabu}{XX[2]}
+      Beneficiary Name: 	& 	{{.FABankAcc.BeneficiaryName}} 	\\
+      Bank name and address: 	& 	{{.FABankAcc.BankNameAddress}} 	\\
+      IBAN:			& 	{{.FABankAcc.IBAN}} 		\\
+      SWIFT:			& 	{{.FABankAcc.SWIFT}} 		\\
+    \end{tabu}}
+
+\end{enumerate}
+
+{{template "sign.tex"}}
+
+% General Terms and Conditions
+\section{GENERAL TERMS AND CONDITIONS OF THIS AGREEMENT}
+
+\begin{multicols}{2}
+
+  \subsection{REQUIRED DOCUMENTS AND OTHER WARRANTIES AND CONDITIONS}
+
+  \begin{enumerate}
+  \item{Before signing of this Agreement, the Assignor shall hand{-}overed
+      the Energy Performance Contract and all documents evidencing the
+      transferred Receivables, and, not later than 5 days after the
+      receipt of the request of the Forfaiting Assignee , all
+      information necessary for the collection of the assigned
+      Receivables against the Assignor’s Client and/or against each of
+      the Apartment Owners and shall provide all information necessary
+      for enforcing all claims stemming from the Energy Performance
+      Contract. The Assignor shall confirm that the documents and
+      information supplied to the Forfaiting Assignee in respect of
+      the transferred Receivables represent all documents and
+      information in connection with the transferred Receivables or,
+      if that is not the case, supply all additional documents and
+      information as shall correct any omission. The Assignor is
+      obliged to immediately inform the Forfaiting Assignee in writing
+      about any circumstances that would indicate a worsening of the
+      credit rating or credit worthiness of the Assignor’s Client.}
+
+  \item{The Assignor shall separately provide to the Forfaiting
+      Assignee at any time information about the Assignor’s financial
+      position providing documentation like profit and loss account
+      statement, closed balance sheet, operative balance sheet.}
+
+  \item{The Assignor is obliged to immediately inform the Forfaiting
+      Assignee in writing about any dispute, appeal, warranty claim,
+      cancellation, enforcement of warranty rights by the Assignor’s
+      Client or its default, as well as to immediately comply with any
+      rightful claim of the Assignor’s Client to the Assignor to
+      replace, improve or add any missing equipment or service or to
+      rectify any non{-}performance. Without prejudice to the
+      generality of the foregoing, the above shall include without
+      limitation all warranty claims or claims of any other nature
+      arising under the Energy Performance Contract, not limited to
+      any claims arising from any defects or deficiencies in the
+      Energy Efficiency Improvement Measures installed by the Assignor
+      in the Building.}
+
+  \item{The Assignor is separately obliged to provide upon request
+      satisfactory evidence as to the authenticity of any documents
+      evidencing the transferred Receivables and demonstrating that
+      such documents create legal, valid, binding and enforceable
+      obligations and without any recourse towards the Forfaiting
+      Assignee. The Forfaiting Assignee shall examine documents
+      delivered by the Assignor within 10 Business Days of their
+      receipt and may disregard and return to the Assignor any
+      document delivered that fails to meet the criteria for
+      evidencing a valid, binding and enforceable obligation and
+      request that documents fulfilling such requirements are duly and
+      promptly submitted.}
+
+  \item{The Assignor warrants to the Forfaiting Assignee that:}
+
+    \begin{enumerate}
+
+    \item{it is duly organised, validly existing and in good standing
+        under the laws of its jurisdiction of organisation or
+        incorporation, and has full power and authority to execute,
+        deliver and perform its obligations under this Agreement;}
+
+    \item{its execution, delivery, and performance of this Agreement
+        does not result in a breach or violation of any provision of
+        (i) its organisational documents, (ii) any statute, law or
+        regulation of any governmental authority applicable to it,
+        (iii) any judgment or injunction applicable to it;}
+
+    \item{the execution, delivery and performance of this Agreement on
+        its behalf has been duly and validly authorised, and this
+        Agreement upon its signing will constitute its legal, valid
+        and binding obligations, enforceable against it in accordance
+        with its respective terms; except as provided for in this
+        Agreement, no other notice to, other than the one to the
+        Assignor’s Client communicating the transfer of Receivables
+        under this Agreement, registration with, consent or approval
+        of, or any other action by, any relevant governmental
+        authority or any other person is or will be required for the
+        execution, delivery and performance of its obligations set out
+        herein;}
+
+    \item{it is duly entitled to assign the transferred Receivables;}
+
+    \item{the transferred Receivables, in whole or in part, are legal,
+        valid and binding obligations of the Assignor’s Client, and
+        are enforceable against the latter in accordance with their
+        respective terms;}
+
+    \item{the transferred Receivables have not been otherwise
+        assigned, sold, mortgaged, pledged or burdened in any other
+        way or encumbered with any right of any third person
+        whatsoever and that none of the transferred Receivables have
+        been or are liable to, set{-}off against any payables that the
+        Assignor may be due to pay to the Assignor’s Client; and}
+
+    \item{no proceedings are (i) pending against the Assignor or (ii)
+        to the best of Assignor's knowledge, threatened against
+        Assignor before any relevant governmental authority, court or
+        arbitral tribunal that, whether individually or in the
+        aggregate, would be likely to materially and adversely affect
+        (i) any action taken or to be taken by the Assignor under this
+        Agreement or (ii) the transferred Receivables.}
+    \end{enumerate}
+  \end{enumerate}
+
+  \subsection{RIGHTS AND OBLIGATIONS OF THE ASSIGNOR}
+
+  \begin{enumerate}
+  \item{The Assignor is liable to the Forfaiting Assignee if it has
+      not disclosed on or before the date of sending the notice for
+      assignment of Receivables the existence of any payment claim or
+      other obligation that may affect the amount or validity of the
+      Receivables being transferred pursuant to this Agreement. The
+      above is without prejudice to the fact that the Assignor is not
+      liable, either severally or jointly with the Assignor‘s Client,
+      for the due and timely payment or collection of any of the
+      Receivables and the securities having been imposed in light
+      thereof transferred under this Agreement to the Forfaiting
+      Assignee. Notwithstanding anything to the contrary, the Assignor
+      shall still be liable for the authenticity and enforceability of
+      the Receivables being transferred and the securities being
+      established thereto.}
+
+
+  \item{The Assignor, together with the Forfaiting Assignee, shall
+      jointly notify the Assignor’s Client through a single
+      notification of the assignment of the transfer of the
+      Receivables on the basis of this Agreement which notification
+      shall be in the format provided for in Annex No. 1.}
+
+  \item{The Assignor warrants the amount of the Guaranteed Energy
+      Savings outlined in the Energy Performance Contract and
+      undertakes to maintain its level for the entire duration of the
+      Energy Performance Contract, committing to perform all dared
+      additional works necessary to keep the Guarantee Energy Savings
+      without the need to incur into additional expenses.}
+
+  \item{The Assignor shall ensure that all utility services from and
+      to the separate apartments of the Building from where the
+      Receivables stem are not disconnected or disrupted at any time
+      without the Assignor Client’s prior consent (including when such
+      consent is expressed verbally, in writing or communicated via
+      e{-}mail to the Manager) and are promptly reinstated in case of
+      their temporary non{-}functionality for reasons of regular
+      check{-}ups of any nature or repair or replacement in case of
+      defect or deficiency. This warranty does not cover cases when
+      such disruptions are beyond the Assignor’s control and/or are
+      due to acts or omissions by direct suppliers, the Forfaiting
+      Assignee or any third parties.}
+
+  \item{The Assignor warrants as at the delivery of the notice for the
+      transfer of the Receivables from the Assignor to the Forfaiting
+      Assignee that the execution and implementation of all Renovation
+      Works have been completed with due professional care and attain
+      high quality and ware implemented with all necessary tools,
+      materials and equipment of suitable nature, quality and
+      quantities and are without deficiencies and defects throughout
+      the validity period of the Agreement (Except as for normal wear
+      and tier). Notwithstanding the above, the Assignor is obliged to
+      maintain and ensure the Renovation Works at all times for the
+      entire duration of the Energy Performance Contract.}
+
+  \item{The Assignor warrants that all Renovation Works have been
+      developed in line with {{index .Contract.Fields "client_name"}} Financial and Technical Rules and
+      Guidelines for Energy Efficiency Measures. Additionally the
+      Assignor warrants that all Renovation Works have been developed
+      taking into account the European and national best practices
+      complying with the Investor Confidence Project Europe (ICPEU {-}
+      http://europe.eeperformance.org/) Protocols for developing,
+      documenting, implementing and measuring projects. Separately,
+      the Assignor has strictly abided by and is bound by the
+      provisions of the European Code of Conduct for Energy
+      Performance Contracting as uploaded on www.transparense.eu at
+      the time of signing of the Energy Performance Contract and shall
+      ensure its due implementation in the course of this Agreement.}
+
+  \item{The Assignor agrees to remain responsible for and undertakes
+      to perform all of its obligations and liabilities under the
+      Energy Performance Contract that are directly attributable to
+      Assignor’s actions or obligations in its capacity of Contractor
+      under the Energy Performance Contract. The foregoing is without
+      prejudice to the Assignor’s obligation in case of any defect or
+      deficiency in the implemented Renovation Works or works
+      occurring during the term of this Agreement to undertake repair
+      and/or replace at its own cost within a reasonable period of
+      time as per applicable industry standards. Failure of the
+      Assignor to comply with the above within a reasonable period of
+      time, but no longer than within 20 working days, entitles the
+      Forfaiting Assignee to execute the work at the expense of the
+      Assignor and receive a reimbursement within 20 days as of the
+      receipt of the respective invoice sent to the Assignor (which
+      may be sent via e{-}mail).}
+
+  \item{The Assignor shall immediately upon becoming aware, report to
+      the Forfaiting Assignee any damage or change made without the
+      former’s knowledge or permission, to any equipment installed by
+      the Assignor, or any circumstances that have and/or might have a
+      negative impact on the level of Energy Consumption (individually
+      or collectively in any period) by five per cent (5 \%) or more
+      of the Energy Consumption expected by the Assignor in that
+      period.}
+
+  \item{The Assignor hereby agrees that pursuant to this Agreement the
+      Forfaiting Assignee is duly assigned and entitled to collect,
+      process, store, use and transfer the personal data provided by
+      the Assignor's Client’s under the Energy Performance Contract
+      and to transfer the latter to any third party to whom the
+      Forfaiting Assignee’s rights or obligations stemming from this
+      Agreement may be assigned, including without limitation any
+      person in charge of the development, implementation, operation
+      and maintenance of an online Platform keeping track of the
+      performance of the implemented Renovation Works. The use of the
+      data by the Forfaiting Assignee for other purposes should be
+      made only after obtaining the Assignor's Client’s consent to
+      this effect. For the avoidance of doubt and notwithstanding the
+      above, any of the personal data or the data related to the
+      Building or the Facilities remain property of the Assignor's
+      Client without prejudice to the right of the Forfaiting Assignee
+      to collect, process, store, use and transfer it and shall be
+      returned to the latter (or, at the option of the Assignor's
+      Client’s, permanently destroyed) in full upon termination of
+      this Agreement.}
+
+  \item{The Forfaiting Assignee acknowledges and consents to the use,
+      by the Assignor or any third party assigned by the latter with
+      the rights and/or obligations under this Agreement, of any
+      anonymous data and information relating to the energy
+      consumption of the Building, whether provided by the Assignor's
+      Client or obtained by the Assignor, for the purposes of
+      benchmarking and compilation of a national, regional or EU wide
+      data base or for the purposes of use by the Assignor as a
+      reference or for any internal purpose agreed to by the
+      Assignor's Client.}
+  \end{enumerate}
+
+  \subsection{RIGHTS AND OBLIGATIONS OF THE FORFAITING ASSIGNEE}
+
+  \begin{enumerate}
+  \item{The Forfaiting Assignee must upon receipt of the due documents
+      from the Assignor examine the latter to determine whether they
+      constitute the required documents and promptly, but in any event
+      within 10 (ten) working days, return to the Assignor any
+      document that does not appear to be satisfactory in terms of its
+      authenticity and/or does not appear to create a valid, legal,
+      binding or enforceable obligation. If based on the above
+      factors, the Forfaiting Assignee determines that the documents
+      delivered are not satisfactory or that additional documents are
+      required, the Forfaiting Assignee shall notify the Assignor
+      thereof in writing by listing its concerns. Where the Assignor
+      does not agree with the concerns raised by the Forfaiting
+      Assignee, the dispute shall be adjudicated by a reputable
+      professional with sufficient international expertise and
+      substantial exposure in the field of finance, appointed jointly
+      by the Parties and whose decision shall be final, binding and
+      effective forthwith. Failure of the Parties to agree on a
+      professional to resolve the dispute, shall entitle each Party to
+      nominate one expert professional and both such professionals
+      shall jointly choose a third professional to chair the
+      panel. The decision of the panel shall be binding and the
+      Parties shall split the costs for administering the above
+      procedure.}
+
+  \item{Save as provided below and in art. 10 of the General Terms and
+      Conditions, the Forfaiting Assignee shall have no recourse to
+      the Assignor for the non{-}payment of the Receivables unless:}
+
+    \begin{enumerate}
+    \item{there is a breach of the Assignor's obligations under the
+        Energy Performance Contract; and/or}
+
+    \item{the action or failure to act falls within the scope of
+        obligations of the Assignor undertaken under the Energy
+        Performance Contract pertaining to the implementation of the
+        Renovation Works and their maintenance.The above is without
+        prejudice to the right of the Forfaiting Assignee to seek
+        enforcement and collection of any of the Receivables
+        transferred hereby by deploying per its discretion most
+        suitable for the purposes in and out{-}of{-}court procedures
+        against the Assignor’s Client, including without limitation to
+        each and every Apartment Owner. The Assignor shall provide all
+        necessary co{-}operation with respect to such enforcement. }
+    \end{enumerate}
+
+  \item{The Assignor shall indemnify and hold the Assignee harmless
+      from and against any liability and/or claim that the Forfaiting
+      Assignee incurs or suffers as a result of, or arising from the
+      Assignor's material breach of any of the Assignor's
+      representations, warranties or undertakings stemming from this
+      Agreement or the Energy Performance Contract.}
+
+  \item{The Forfaiting Assignee shall indemnify and hold the Assignor
+      harmless from any and against any liability and/or claim that
+      the Assignor incurs or suffers as a result of, or arising from
+      the Forfaiting Assignee’s material breach of any of the
+      Forfaiting Assignee’s representations, warranties or
+      undertakings stemming from this Agreement, provided, however,
+      that the aggregate amount that the Forfaiting Assignee shall be
+      obliged to pay to the Assignor shall be limited to the balance
+      of the payments due pursuant to the Specific Terms and
+      Conditions of this agreement }
+
+  \item{Pursuant to art. 3.3. and art. 3.4. from the above General
+      Terms and Conditions, if any third party commences any action or
+      makes any demand against the Assignor or the Forfaiting Assignee
+      (each a “Party“), for which such Party (the “Indemnified Party“)
+      is entitled to indemnity under this Agreement, such Indemnified
+      Party shall promptly notify the other Party (the “Indemnifying
+      Party“) in writing of such action or demand. The Party that has
+      assumed the defence of such action shall provide the other Party
+      with copies of all notices, pleadings and other papers filed or
+      served in such action. Neither Party shall make any settlement
+      or adjustment without the other Party's consent, which: (i) in
+      the case of the Indemnifying Party, shall not be unreasonably
+      withheld if the settlement or adjustment is limited to payment
+      of monetary damages; (ii) in the case of the Indemnified Party,
+      may be withheld for any reason if the settlement or adjustment
+      imposes performance or admission of liability by the Indemnified
+      Party.}
+
+  \item{Each indemnity in this Agreement is a continuing obligation,
+      separate and independent from the other contractual obligations
+      of the Parties and survives termination of this Agreement, and
+      it is not necessary for a Party to incur expense or make payment
+      before the enforcement of an indemnity right, stemming from this
+      Agreement. }
+
+  \item{The Forfaiting Assignee is entitled to request and receive
+      from the Assignor due and timely performance of all Assignor’s
+      obligations and liabilities under the Energy Performance
+      Contract that are directly attributable to the Assignor’s
+      actions or obligations in its capacity of a Contractor under the
+      Energy Performance Contract and/or are directly linked to the
+      maintenance of the Energy Efficiency Improvement Measures. The
+      above is notwithstanding the right of the Forfaiting Assignee to
+      request and receive novation of some of the Assignor’s
+      obligations under the Energy Performance Contract immediately
+      but not later than within five Business days from receipt of the
+      respective notification by the Assignor, receive in due time all
+      project documents and/or additional explanations and
+      clarifications regarding the Building as may be required.}
+
+  \item{The Forfaiting Assignee, as the person to whom the Receivables
+      are ceded, has the right to initiate any judicial or
+      non{-}judicial measures that are necessary for collecting,
+      enforcing and receiving the Receivables. If the Forfaiting
+      Assignee has to enforce its rights, it will inform the Assignor
+      and the Assignor will co{-}operate as necessary. The Forfaiting
+      Assignee will supply to the Assignor any written declaration of
+      intent or written statements, which will support or are
+      necessary for enforcement and the Assignor will execute the same
+      as may be required to give effect to the proposed enforcement.}
+  \end{enumerate}
+
+  \subsection{MANAGER AND MAINTENANCE OF THE BUILDING}
+
+  \begin{enumerate}
+  \item{The Assignor shall ensure that at all times there is in place,
+      in form and substance satisfactory to the Forfaiting Assignee:}
+
+    \begin{enumerate}
+    \item{a contract between the person who acts as manager (to
+        collect money from the Assignor's Client, to liaise between
+        the Assignor and the Assignor's Client and to keep the
+        Forfaiting Assignee informed of all matters relevant to the
+        Receivables) (the 'Manager'), the Assignor and the Assignor's
+        Client (the 'Management Contract'); and}
+
+    \item{a contract between the Assignor, the Forfaiting Assignee and
+        the Manager (the "Tripartite Agreement").}
+    \end{enumerate}
+  \end{enumerate}
+
+  \begin{enumerate}
+    \subsection{TERM OF THE AGREEMENT}
+
+  \item{The cession of Receivables pursuant to this Agreement and all
+      obligations of the Parties under this Agreement are conditional
+      upon the satisfaction of all condition precedents as evidenced
+      by the signing of the “Energy Service Verification” Protocol contemplated by
+      the Specific Terms and Conditions of this Agreement.}
+
+  \item{All modifications, supplements and amendments to this
+      Agreement shall be made in writing upon mutual agreement of all
+      the Parties and shall be attached to this Agreement in the form
+      of annexes, and shall take effect only after signature by the
+      Parties }
+
+  \item{The Assignor shall unilaterally terminate this Agreement by
+      notifying the Forfaiting Assignee and the Manager thereof in
+      writing at least 30 (thirty) days in advance, if the Assignor’s
+      Client has terminated the Energy Performance Contract
+      irrespective of the reason thereof. In such case, the Forfaiting
+      Assignee shall be entitled to receive as compensation from the
+      Assignor an amount equal to the sum of: }
+
+    \begin{enumerate}
+    \item{all the remaining future payments from the date of
+        termination of the Energy Performance Contract plus the
+        statutory interest that would have accrued thereon from the
+        date of payment to the Assignor; plus}
+    \end{enumerate}
+
+  \item{all of the Forfaiting Assignee’s investment costs and its cost
+      of capital, including without limitation to any commitment
+      charges, interest rates and other additional surcharges that the
+      Forfaiting Assignee may have incurred and the planned amount of
+      income which the Assignee would have received if the Energy
+      Performance Contract had not been terminated, but without double
+      counting.}
+
+  \item{The Agreement shall not be terminated before the termination
+      of the Energy Performance Contract, unless the Assignor and the
+      Forfaiting Assignee have agreed in writing on other terms or the
+      Agreement provides otherwise.  }
+
+  \item{Termination of this Agreement does not release the Parties
+      from fulfilment of their respective obligations set forth in
+      this Agreement which have become due before the time of
+      termination of this Agreement, unless the Parties have agreed in
+      writing on other provisions or this Agreement provides
+      otherwise}
+
+  \item{Where the Energy Performance Contract is terminated early due
+      to any circumstances and if the Forfaiting Assignee is not
+      compensated in accordance with the provisions of this Agreement
+      (in particular art. 5.3 of the General Terms and Conditions):}
+
+    \begin{enumerate}
+    \item{the Forfaiting Assignee shall be entitled to receive any
+        amount payable by the Assignor's Client under the terms of the
+        Energy Performance Contract as a result of such termination
+        (and such amounts shall form part of the Receivables); }
+
+    \item{subject to the terms of the Energy Performance Contract, if
+        the Building will not suffer any material damage from such
+        dismantling or absence of any of the Facilities installed by
+        the Assignor, the Forfaiting Assignee is entitled to dismantle
+        the Facilities in the Building owned by the Assignor and
+        remove them from the Building without payment to the
+        Assignor’s Client for them provided that: (i) such dismantling
+        is technically feasible without materially damaging the
+        Building; and (ii) the Assignor's Client has under the Energy
+        Performance Contract paid an amount which is less than the sum
+        of (x) the costs of providing the heat and maintenance
+        services contemplated by the Energy Performance Contract and
+        (y) 80 \% of the amount of the total cost of the investment by
+        the Assignor in the making of the Renovation Works; and/or}
+
+    \item{where the reason for the early termination is the
+        non{-}performance by the Assignor then the Assignor shall pay
+        to the Forfaiting Assignee such amount as shall, together with
+        any other amounts received under this art. 5.6, be equal to
+        the amount that the Forfaiting Assignee would be entitled to
+        receive under art. 5.3 if the Assignor had terminated this
+        Agreement. The above is without prejudice to the Assignor’s
+        obligation to novate upon request of the Forfaiting Assignees
+        to a third party designated by the latter any or all of its
+        obligations under the Energy Performance Contract, excusable
+        by the Assignor with a five Business day written notice.}
+    \end{enumerate}
+
+  \item{In addition to provisions of this Agreement the Parties may
+      terminate this Agreement at any time upon mutual agreement of
+      the conditions of termination of this Agreement. The agreement
+      of termination referred to in this article shall be executed in
+      writing and shall come into effect after it has been signed by
+      all Parties.}
+  \end{enumerate}
+
+  \subsection{INSURANCE}
+
+  \begin{enumerate}
+  \item{During the validity of the Energy Performance Contract and at
+      the expense of the Apartment Owners, the Assignor shall maintain
+      continuously an insurance policy for the Building with a minimum
+      insurance coverage against fire, earthquake, flood, water
+      damage, any other natural disasters having an impact on the
+      Building, structural damage caused by subsidence and fallen
+      trees for the amount not less than the restoration value of the
+      Building. The insurance agreement should be concluded under
+      terms and conditions incorporating relevant industry standard
+      provisions with an insurer rated minimum A+ according to
+      relevant reputable ratings applicable to Latvia. The Assignor
+      shall deliver to the Forfaiting Assignee the original of such
+      insurance policy or submit a certified copy of the policy or
+      other conclusive documents confirming currency and payment of
+      the insurance premium. Any policy naming the Assignor as a
+      beneficiary under the insurance coverage shall be duly
+      transferred in the applicable and legally binding way to the
+      Forfaiting Assignee thus rendering the latter as an ultimate
+      beneficiary under the insurance policy.}
+
+  \item{Notwithstanding anything to the contrary, the Forfaiting
+      Assignee is entitled at its own expense to additionally insure
+      the Building, the Energy Efficiency Improvement Measures, the
+      collection of the Receivables stemming from the Energy
+      Performance Contract and their collection or any other such
+      assets as deemed material for the business case of the Assignee
+      without the need to either notify or receive the Assignor’s or
+      its Client’s approval thereof.}
+  \end{enumerate}
+
+  \subsection{ASSIGNMENT OF CLAIMS }
+
+  \begin{enumerate}
+  \item{The Forfaiting Assignee is free to assign, charge, encumber or
+      transfer to third persons its rights and/or claims under this
+      Agreement (whether having occurred at the time of the assignment
+      or any future claims under) with respect to any of Receivables
+      transferred by the Assignee (which assignment or transfer may be
+      made by several assignments, each in respect of the Receivables
+      in respect of one or more Apartment Owners) and any such
+      transfer may take the form of the ceding to any third party of
+      the Receivables being forfaited under this Agreement. }
+
+  \item{The Assignor may not assign the Receivables other than
+      pursuant to this Agreement. The Assignor may not assign any of
+      its rights to receive payments for the Services.}
+  \end{enumerate}
+
+  \subsection{TITLE TO THE FACILITIES}
+
+  \begin{enumerate}
+  \item{This Agreement is without prejudice to any of the provisions
+      of {[}Section 15{]} from the General Terms and Conditions of the
+      Energy Performance Contract and the Assignor’s property title in
+      the Facilities installed in the Building for implementation of
+      the Renovation Works that can be separated from the Building
+      without causing material damage to the Building.}
+
+  \item{Subject to the above and as a security for the obligations of
+      the Assignor stemming from this Agreement, the Forfaiting
+      Assignee shall establish to its or to third parties sole benefit
+      a special pledge over the Facilities installed in the Building
+      not later than within 10 working days as of the signing of the
+      respective Delivery and Acceptance of the Facilities (all as
+      defined under the Energy Performance Contract). Within the
+      aforementioned period, the Assignor undertakes to execute all
+      due legal and factual actions necessary to effect the pledge,
+      including by due registration in the Register of Commercial
+      Pledges of Latvia following the signing of all due legal
+      documents and auxiliary agreements in their required legal
+      form.}
+  \end{enumerate}
+
+  \subsection{LIABILITY}
+
+  \begin{enumerate}
+  \item{The Assignor shall not be held responsible for any claim
+      related to the assignment of Receivables except in the following
+      cases: }
+    \begin{enumerate}
+    \item{the Assignor’s breach of its obligations under the Energy
+        Performance Contract which has led to the Forfaiting Assignee
+        suffering loss and which breach is either acknowledged in
+        writing by the Assignor or established in the course of the
+        Dispute Resolution Procedures outlined under the Energy
+        Performance Contract; and/or}
+
+    \item{the Assignor’s indemnities, in each case as expressly
+        stated in this Agreement.}
+    \end{enumerate}
+
+  \item{The Assignor shall indemnify and hold the Forfaiting Assignee
+      harmless from and against any liability and/or claim that the
+      Forfaiting Assignee incur or suffer as a result of, or arising
+      out of the Assignor’s material breach of any of Assignor’s
+      representations, warranties or undertakings in this Agreement or
+      the Energy Performance Contract, provided, however, that the
+      aggregate amount the Assignor shall be obligated to pay to
+      Forfaiting Assignee shall be limited to the outstanding amount
+      of the Receivables scheduled to be due which have not been
+      collected by the Forfaiting Assignee. This until the end of the
+      Energy Performance Contract.}
+
+  \item{The Forfaiting Assignee shall indemnify and hold Assignor
+      harmless from and against any liability and/or claim that the
+      Assignor incur or suffer as a result of, or arising out of the
+      Forfaiting Assignee’s material breach of any of Forfaiting
+      Assignee’s representations, warranties or undertakings in this
+      Agreement, provided, however, that the aggregate amount the
+      Assignee shall be obligated to pay to Assignor shall be limited
+      to one hundred per cent (100 \%) of the total value of the
+      Receivables being subjected to their transfer under this
+      Agreement.}
+
+  \item{The Forfaiting Assignee is entitled to withdraw from this
+      Agreement and enforce step{-}in rights with immediate effect for
+      any of the following important reasons:}
+
+    \begin{enumerate}
+    \item{the Assignor is bankrupt or being wound up, are having their
+        affairs administered by the courts, have suspended business
+        activities, are the subject of proceedings concerning those
+        matters, or are in any analogous situation arising from a
+        similar procedure provided for in national legislation or
+        regulations;}
+
+    \item{the Assignor has been convicted of an offence concerning
+        professional conduct by a judgment which has the force of res
+        judicata}
+
+    \item{the Assignor has not fulfilled obligations relating to the
+        payment of social security contributions or the payment of
+        taxes in accordance with the legal provisions of the country
+        in which they are established or with those of the country of
+        the contracting authority or those of the country where the
+        contract is to be performed;}
+
+    \item{the Assignor has been the subject of a judgment which has
+        the force of res judicata for fraud, corruption, involvement
+        in a criminal organisation or any other illegal activity
+        detrimental to the Forfaiting Assignee’s financial
+        interests;}
+
+    \item{the Assignor does not provide information and documents that
+        are necessary for collecting transferred Receivables within 14
+        days of any written request;}
+
+    \item{the Assignor violates any material contractual obligation of
+        this Agreement and the relative Energy Performance Contract
+        which causes loss to the Forfaiting Assignee;}
+
+    \item{the Assignor has withheld facts which were known and which
+        prevent a successful collection of the transferred
+        Receivables;}
+    \end{enumerate}
+
+  \item{Save as provided by art. 5.3 and 5.6 of this General Term and
+      Conditions, if the Forfaiting Assignee withdraws from this
+      Agreement with respect to all or any part of the transferred
+      Receivables, the Assignor has to repay any amount paid in
+      respect of the relevant Receivables under art. IV. of the
+      Special Terms and Conditions (less any amounts already received
+      by the Forfaiting Assignee in respect of such Receivables) and
+      shall cease to be entitled to any further payment from the
+      Forfaiting Assignee under such articles in respect of the
+      relevant Receivables. This amount is due within 14 days after
+      the withdrawal. The Forfaiting Assignee shall, at the cost of
+      the Assignor, re{-}transfer back to the Assignor the relevant
+      Receivables and the amounts (if any) received in respect thereof
+      net of costs and expenses.Upon termination of this Agreement,
+      the Forfaiting Assignee is entitled to claim from the Assignor
+      any legal expenses that are necessary for collecting pending
+      accounts receivable or to retain any pending payments until this
+      conflict has been settled }
+  \end{enumerate}
+
+  \subsection{FORCE MAJEURE EVENTS}
+
+  \begin{enumerate}
+  \item{Any emergency situation or event unforeseeable in advance
+      characterized by all below features shall be defined as force
+      majeure:}
+
+    \begin{enumerate}
+    \item{the Parties are not able to predict and influence it;}
+
+    \item{it interferes with the performance by the Parties of their
+        obligations;}
+
+    \item{it cannot be qualified as an error or negligence made by any
+        of the Parties; }
+
+    \item{it can be proven or recognized as insurmountable although
+        the Party/ies has/have made reasonable efforts to prevent
+        it.}
+    \end{enumerate}
+
+  \item{Force majeure events shall include but not be limited to
+      warfare, natural disaster and legal acts of state
+      administration}
+
+  \item{Are NOT Force Majeure Events: Defects of the Facilities,
+      Services lacking the agreed quality or quantity, equipment or
+      materials used, provided by or installed by the Assignor or
+      delay in operation thereof (if not caused by force majeure
+      events), Assignor's disputes, Forfaiting Assignee’s Client
+      disputes strikes, financial difficulties or such others specific
+      to the party relying on a force majeure event.}
+
+  \item{The Parties shall not be liable for complete or partial
+      non{-}performance of obligations under the Agreement if due to
+      force majeure events. The Party referring to the force majeure
+      event shall provide evidence of it to the other Party.}
+
+  \item{The Party (the “Affected Party”) prevented from carrying out
+      its obligations hereunder shall give notice immediately and no
+      later than within 3 (three) Business Day to the other Party of
+      an Event of Force Majeure upon it being foreseen by, or becoming
+      known to, the Affected Party describing the situation that will
+      occur, or has occurred providing a description of the event,
+      possible duration, expected consequences and prospective
+      solution thereof.}
+
+  \item{The Parties shall perform any necessary activities jointly or
+      severally to mitigate the impact of the force majeure event and
+      take reasonable steps to alleviate any damage caused. }
+
+  \item{If the force majeure event continues for more than 6 (six)
+      uninterrupted months and cessation thereof is not expected for
+      another 3 (three) months each the Assignor, the Forfaiting
+      Assignee has the right to unilaterally terminate the Agreement
+      and receive the compensation provided for in art. 5.3. of the
+      General Terms and Conditions above.}
+  \end{enumerate}
+
+  \subsection{CONFIDENTIALITY AND PERSONAL DATA PROTECTION}
+
+  \begin{enumerate}
+  \item{The parties hereto agree not to disclose Confidential
+      Information (where “Confidential Information” means, subject to
+      Art. 11.5 and Art. 11.6, information falling within the
+      categories set out in Art. 11.3 and Art. 11.4) of the others to third
+      parties as well as not to disclose data of the others which
+      might be used for the purpose of competition by competitors or
+      unlawful activities both while the Agreement is valid as well as
+      for three years after the Agreement terminates.}
+
+  \item{The Assignor shall not request or advise any customer,
+      potential customer or business contact of the Forfaiting
+      Assignee and/or any entities that the Assignor is aware that the
+      Forfaiting Assignee is seeking to build a relationship to
+      curtail, cancel, withdraw, limit, reduce or otherwise restrict
+      their business with the Forfaiting Assignee.}
+
+  \item{Information obtained in the course of conclusion or during
+      performance of this Agreement that is not generally available to
+      third parties and the disclosure of which the receiving person
+      is aware, or should have been aware, may damage lawful rights or
+      interests of the disclosing person, shall be deemed to be
+      confidential.}
+
+  \item{In addition to provisions of Art 11.3, the following shall be
+      confidential information:}
+
+    \begin{enumerate}
+    \item{any restricted access information about the parties to this
+        Agreement, their customers or business partners, including but
+        not limited to any information which has the status of a trade
+        secret of any of the parties hereto;}
+
+    \item{any information about the organization of work, inventory,
+        equipment and technologies used of any of the parties hereto.}
+    \end{enumerate}
+
+  \item{The list of Confidential Information provided in Clause 11.4
+      of the Agreement is not exhaustive and any information of a
+      confidential nature however disclosed shall be deemed to fall
+      within the definition of Confidential Information.}
+
+  \item{Information which has come into the public domain via third
+      parties without any of the parties hereto breaching provisions
+      of the Agreement shall not be deemed Confidential Information.}
+
+  \item{The parties hereto may disclose the Confidential Information
+      to their advisers provided that they shall bear liability if
+      such third parties use the received Confidential Information
+      unlawfully or fail to comply with confidentiality obligations
+      established by this Agreement.}
+
+  \item{If a party to this agreement receiving Confidential
+      Information is required to disclose such Confidential
+      Information in accordance with laws and regulations or
+      resolutions effective in Latvia (or any laws to which it is
+      subject) then: (i) such party shall be permitted to make such
+      disclosure; and (ii) a notice about the fact of disclosure shall
+      be promptly given to the disclosing party, unless otherwise
+      stipulated by the laws and regulations of applicable law}
+
+  \item{The Assignor and the Forfaiting Assignee for advertising
+      purposes are entitled to disclose general information about
+      mutual co{-}operation, including inter alia, divulge information
+      already in the public domain about the Parties, nature of
+      co{-}operation, achieved Energy Saving and timing of the process
+      under the Agreement, insofar it does not infringe lawful rights
+      and interests of other parties concerning protection of
+      confidential information. If a party hereto has doubts about the
+      nature of the specific information, disclosure shall be approved
+      by the party(ies) whose lawful rights and interests might be
+      infringed and if such party considers such information is within
+      the obligation of confidentiality in the Agreement.}
+
+  \item{The above provision is without prejudice to the right of the
+      Forfaiting Assignee to collect, process, store, transform and
+      disseminate all of the collected data from the Assignor for the
+      purposes of improving the quality of its services and for
+      development, operation and maintenance of an online EPC Platform
+      supporting all phases and participating parties in a typical EPC
+      Project.}
+
+  \item{Without prejudice to art. 2.10, the Assignor hereby agrees
+      that the Forfaiting Assignee is entitled to collect, process,
+      store, use and transfer the personal data provided by the
+      Assignor hereunder upon performance of its statutory
+      obligations, for the purposes of rendering its services and to
+      transfer the latter to any third party that may be assigned with
+      rights or obligations stemming from this Agreement, including
+      without limitation to any party being in charge of the
+      development, implementation, operation and maintenance of an
+      online Platform keeping track of the performance of the
+      implemented Renovation Works. The use of the data by the
+      Forfaiting Assignee for other purposes should be performed after
+      obtaining the Assignor’s or where applicable the Assignor's
+      Client’s consent to this effect. Notwithstanding the above, any
+      of the personal data or the data related to the Building or the
+      Facilities remains property of the Assignor's Client.}
+
+  \item{The Assignor acknowledges and consents to the use by the
+      Forfaiting Assignee or any person to whom the rights of the
+      Forfaiting Assignee under this Agreement are assigned of any
+      data and information relating to the energy consumption of the
+      Building, whether provided by the Assignor or obtained by the
+      Assignee, for the purposes of benchmarking and compilation of a
+      national, regional or EU wide database or for the purposes of
+      use by the Assignor's Client as a reference or for any internal
+      purpose agreed to by the Customer.}
+  \end{enumerate}
+
+  \subsection{REPRESENTATION OF THE PARTIES}
+
+  \begin{enumerate}
+  \item{In all issues associated with this Agreement each of the
+      Parties shall be represented by their legitimate representatives
+      (for legal entities) or persons duly and validly authorized to
+      with representative power to bind the respective party to this
+      Agreement.}
+
+  \item{Authorized representatives of the Parties are authorized to
+      represent the respective party with respect to settling all
+      legal affairs under this Agreement under the laws and
+      regulations effective in Latvia or, in the case of a party
+      incorporated outside of Latvia, in the jurisdiction in which
+      such party is incorporated.  }
+
+  \item{The Parties are entitled to revoke authorization of their
+      authorized representatives at any time by notifying the other
+      parties thereof in writing and concurrently authorizing another
+      representative whose written authority to represent the relevant
+      Party shall be delivered to the other parties. Upon substituting
+      its representative a party shall procure that the other Party
+      are informed about substitution of the representative no later
+      than on the day of substitution of the representative. The said
+      notification becomes part of this Agreement.}
+
+  \item{In addition to the foregoing the Assignor is entitled, subject
+      to the terms of the Energy Performance Contract, to have any
+      third party to be its subcontractor or business partner for
+      performance of certain works or implementation of services for
+      the purpose of carrying out the obligations prescribed by this
+      Agreement or the Energy Performance Contract by giving a prior
+      written notice to the Assignor's Client, communicated including
+      via e{-}mail.}
+  \end{enumerate}
+
+  \subsection{DISPUTE RESOLUTION PROCEDURE}
+
+  \begin{enumerate}
+  \item{The Parties shall resolve disagreements in respect of this
+      Agreement by way of mutual negotiations making best efforts to
+      resolve the respective disagreements. To this end the Parties
+      shall make a timely written answer to any letter from another
+      party concerning a disagreement, as well as devote reasonable
+      time to the extent possible to resolve the respective
+      disagreement in person.}
+
+  \item{If the Parties fail to reach mutual agreement and there is a
+      dispute, disagreement or claim between the parties that arises
+      out of this Agreement, concerns it or the suspension,
+      termination or invalidity thereof, it shall be resolved in a
+      mediation process according to the mediation rules of
+      Association “Ēku saglabāšanas un energotaupības birojs” (Housing
+      Conservation and Energy Saving Bureau), uniform registration
+      number 40008198558 or its legal successors, effective during the
+      validity period of this Agreement and as existing at the time of
+      the first filing of the dispute for resolution. If there is a
+      dispute between the parties regarding technical issues, any
+      party may request the dispute on established facts to be
+      resolved pursuant to the procedural rules of the fact{-}finding
+      committee of Association “Ēku saglabāšanas un energotaupības
+      birojs”, uniform registration number 40008198558.}
+
+  \item{If the Parties fail to reach mutual agreement after the
+      mediation process and/or fact{-}finding process the dispute
+      shall be resolved by a court of general jurisdiction of Latvia
+      in accordance with applicable laws and regulations effective in
+      Latvia. An application shall be lodged at the court according to
+      jurisdiction of the defendant’s place of residence or registered
+      address; however, if it is not in Latvia, then at the Riga City
+      Centre District Court or the Riga Regional Court in line with
+      rules of jurisdiction of the claim.}
+  \end{enumerate}
+
+  \subsection{OTHER PROVISIONS}
+
+  \begin{enumerate}
+  \item{Any written notification concerning this Agreement shall be
+      deemed received on the 7th (seventh) day after the posting date
+      of the notification if sent by registered mail to the address
+      most recently specified by the authorized representative of the
+      party to whom it is addressed. The posting date of the
+      notification is the day when the notification is submitted at
+      the post office and it is confirmed by a stamp of the post
+      office. Notifications sent via e{-}mail with electronic
+      signatures to the e{-}mail addressed indicated or as provided by
+      the parties shall be considered as a notification in writing
+      with all consequences stemming therefrom and shall be considered
+      received from the moment they enter the operating system of the
+      recipient irrespective of whether read or not.}
+
+  \item{Titles of sections of provisions of this Agreement shall not
+      be used for interpretation of this Agreement.}
+
+  \item{This Agreement contains all provisions, promises, conditions
+      and representations of intentions between the parties, and the
+      parties warrant that there are no oral provisions, promises,
+      agreements, conditions and representations of intentions other
+      the ones referred to in this Agreement.}
+
+  \item{If during the validity period of this Agreement, amendments to
+      the laws and regulations of Latvia come into effect that render
+      fulfilment of any obligations under this Agreement completely or
+      partially impossible or change conditions for performance of the
+      duties by any of the parties it shall not affect the validity of
+      the remaining obligations under this Agreement, and the parties
+      shall resolve on introducing necessary amendments to this
+      Agreement which shall best effect the original intent and
+      purpose and economic impact of this Agreement. }
+
+  \item{Reorganization of the parties, as well as change of
+      shareholders (owners) of the or members of management bodies
+      (directors) of the parties or the Assignor's Client (Apartment
+      Owners of the Building transferring title in the Apartments
+      and/or leasing them short{-}term or long{-}term) shall not serve
+      as grounds for termination of this Agreement or
+      non{-}performance of the obligations contained in this
+      Agreement. If any of the parties undergoes any merger or
+      acquisition, enters into liquidation or bankruptcy proceedings
+      or the Apartment Owners of the Building change, this Agreement
+      remains valid and its provisions are binding on legal successors
+      of the respective party. Each party shall immediately and not
+      later than within 5 (five) days after such change, notify the
+      other parties about change of the party’s address specified in
+      this Agreement or other changes in its legal status and
+      administration.}
+
+  \item{The Agreement is drawn up and signed in 2 (two) counterparts
+      in the {[}English{]} and {[}Latvian{]} language. In case of
+      discrepancies between the English and Latvian versions, the
+      Latvian version shall prevail. All counterparts have equal legal
+      effect. Each party shall keep 1 (one) counterpart of this
+      Agreement. The Parties certify by their signatures that they
+      understand the content, meaning and consequences of this
+      Agreement; they acknowledge this Agreement to be correct,
+      mutually beneficial and that they voluntarily wish to execute
+      it. }
+  \end{enumerate}
+
+  \subsection{ANNEXES}
+
+  \begin{enumerate}
+  \item{At the time this Agreement is executed the following
+      annexes are attached to this Agreement:ANNEX 1 NOTICE FOR
+      ASSIGNMENT OF RECEIVABLESANNEX 2 ASSIGNOR'S CLIENT /
+      CUSTOMERANNEX 3 ENERGY PERFORMANCE CONTRACTANNEX 4 AUTHORIZED
+      REPRESENTATIVESANNEX 5 DEFINITIONS}
+
+  \item{All annexes shall be deemed an integral part of this Agreement
+      and are binding on the parties. In cases of discrepancy between
+      the terms of this Agreement and any of the Annexes, the
+      provisions of this Agreement take precedence with the exception
+      of those Annexes signed after the time of signing of this
+      Agreement. Annexes signed after the time of signing of this
+      Agreement shall take precedence over the provisions of this
+      Agreement.}
+
+  \item{By signing this Agreement it is represented that the parties
+      have previously discussed provisions of the Agreement and the
+      Annexes thereto and they are clear and understandable to all
+      parties.}
+  \end{enumerate}
+
+\end{multicols}
+
+\vspace{5mm}
+
+{{template "sign.tex"}}
+
+\begin{center}
+  \section{ANNEXES}
+\end{center}
+
+\vspace{1cm}
+
+\subsection{Annex 1 – notice for assignment of receivables}
+
+\vspace{2mm}
+
+\begin{tabu}{|X|} \tabucline{}
+
+  TO: {{.Contract.Fields.client_name}} \par
+
+  \begin{flushright}
+    {{index .Contract.Agreement "place-of-forfaiting-agreement"}}, {{index .Contract.Agreement "date-of-forfaiting-agreement"}}
+  \end{flushright}
+
+  \begin{alltt}  Transfer of accounts receivables
+
+
+
+    Dear Sirs/Madams
+
+
+
+    % TODO: @edimov Fix manager-name to be input %
+    We make reference to the Energy Performance Contract signed
+    between you and us, dated  {{.Contract.Fields.date}}, and inform you that pursuant to a
+    Forfaiting Agreement, dated  {{.Contract.Agreement.front_page_date}} we have
+     transferred all Receivables from the Energy Performance
+    Contract, including the Fees calculated and due as defined in
+    Annex No. 5 from the Energy Performance Contract to the Forfaiting
+    Assignee,  {{index .Contract.Fields "client_name"}},  {{index .Contract.Fields "client_id"}}  {{index .Contract.Fields "client_address"}} (the 'Forfaiting
+    Assignee'). All payments of the Fee plus interest and penalties
+    and other amounts as provided for in the Energy Performance
+    Contract have to be paid hereinafter to the Forfaiting Assignee in
+    order to discharge your obligations under the Energy Performance
+    Contract. The Forfaiting Assignee has appointed
+    Manager,  {{index .Contract.Agreement "manager-name"}} (the 'Manager'), to collect all amounts due to it on
+    its behalf.
+
+  \end{alltt}
+
+  \vspace{5mm}
+
+  We kindly ask you take note of the Forfaiting Agreement and related
+  sale of accounts receivable and to inform the Forfaiting Assignee of
+  your recognizance by means of attached template.
+
+  \vspace{1cm}
+
+  Yours faithfully,
+
+  \vspace{1cm}
+
+   {{.ESCo.Name}}, Assignor
+
+  \vspace{1cm} \\\tabucline{}
+
+\end{tabu}
+
+\pagebreak
+
+\begin{tabu}{|X|} \tabucline{}
+
+  TO:  {{.ESCo.Name}} \par
+
+  \begin{flushright}
+     {{index .Contract.Agreement "place-of-forfaiting-agreement"}},  {{index .Contract.Agreement "date-of-forfaiting-agreement"}} \par
+  \end{flushright}
+
+\begin{alltt}
+
+ Transfer of accounts receivables
+
+
+
+Dear Sirs/Madams
+
+
+
+We,  {{index .Contract.Agreement "assignors-client-name"}}, refer to the notice above whereby we are informed and aware
+ as client of  {{index .Contract.Agreement "assignor-name"}}(the 'Assignor') that the Assignor has transferred to the
+ {{index .Contract.Agreement "forfaiting-assignee"}} (the 'Forfaiting Assignee') its rightful claim to the
+ receivables due from us with regards to the Energy Performance Contract
+between us and the Assignor dated  {{index .Contract.Agreement "date-of-energy-contract"}} (the 'Energy Performance Contract')
+(such transfer being made pursuant to the Forfaiting Agreement dated  {{index .Contract.Agreement "date-of-forfaiting-agreement"}}
+between the Assignor and the Forfaiting Assignee. By signing this notice,
+we confirm to the Assignor and the Forfaiting Assignee that we have been
+duly informed of the aforementioned transfer and cession of the Fee] and
+recognize the Forfaiting Assignee as a creditor of the Fee and all other
+ receivables due by us under the provisions of the Energy Performance Contract.
+ We will until otherwise advised by the Forfaiting Assignee pay all
+such amounts to [ ] (the 'Manager') or such other person as the
+Forfaiting Assignee shall have advised.
+\end{alltt}
+
+  \vspace{2mm}
+
+  We also acknowledge that the Forfaiting Assignee may exercise the
+  right of the Assignor under the Energy Performance Contract to
+  substitute a new contractor for the Assignor.
+
+  \vspace{2cm}
+
+  \begin{flushright}
+    {\_\_\_\_\_\_\_\_\_\_\_\_\_\_} \par
+    Name: \par
+    Authorization: \par
+  \end{flushright}
+
+  \vspace{1cm} \\\tabucline{}
+
+\end{tabu}
+
+{{template "sign.tex"}}
+
+\subsection{Annex 2 – ASSIGNOR'S CLIENT / CUSTOMER}
+
+\iffalse input forfaitingFields.annex2_tarea value="{{.Contract.Agreement.annex2_tarea}}" type="textarea" \fi {{.Contract.Agreement.annex2_tarea}}
+
+\pagebreak
+
+\subsection{Annex 3 – ENERGY PERFORMANCE CONTRACT}
+
+\iffalse input forfaitingFields.annex3_tarea value="{{.Contract.Agreement.annex3_tarea}}" type="textarea" \fi {{.Contract.Agreement.annex3_tarea}}
+
+\pagebreak
+
+\subsection{Annex 4 – AUTHORISED REPRESENTATIVE}
+
+\iffalse input forfaitingFields.annex4_tarea value="{{.Contract.Agreement.annex4_tarea}}" type="textarea" \fi {{.Contract.Agreement.annex4_tarea}}
+
+\pagebreak
+
+\subsection{Annex 5 – Definitions}
+
+
+\renewcommand*{\theenumi}{\roman{enumi}}
+
+The Parties agree for the purposes of this Agreement that the
+definitions below shall have the following meaning: \par
+
+\begin{longtabu}{|X|X[2]|} \tabucline{}
+
+  % Include `\hline` after every row to be sure that
+  % if this is the last row of the page, to ensure upper and lower
+  % bold line and remove the "empty" boxes
+
+   Agreement & This forfaiting agreement concluded by and between the
+   Assignor and the Forfaiting Assignee. \\\tabucline{}
+
+   \hline
+
+   Apartment & Every apartment property located in the Building for the
+   purpose of the laws and regulations. \\\tabucline{}
+
+   \hline
+
+   Apartment Owner & An individual or a legal entity in whose name the
+   Apartment is recorded with the Land Register, or another person who
+   pursuant to laws and regulations holds the property title over the
+   respective Apartment or to whom the property title of the respective
+   Apartment Owner is transferred to whether under the provisions of
+   the law or pursuant to a contractual arrangement. \\\tabucline{}
+
+   \hline
+
+   Assignor’s Client &  {{index .Contract.Fields "client_name"}} also referred to herein after as the
+   “Customer”, generally speaking the building where the Assignor has
+   implemented the Renovation Works under the Energy Performance
+   Contract the receivable of which are the scope of this forfaiting
+   agreement.\\\tabucline{}
+
+   \hline
+
+   Baseline & The Baseline represents the conditions of the building
+   before the implementation of Renovation Works and includes the base
+   year measured energy data and base year conditions of the building. \\\tabucline{}
+
+   \hline
+
+   Base year energy data & The measured energy consumption during the
+   years selected for the baseline and representative of the building
+   energy performance before the implementation of Renovation Works. \\\tabucline{}
+
+   \hline
+
+   Base year conditions & The set of conditions which gave rise to the
+   energy use/demand of the base year, in particular indoor air
+   temperature, outdoor air temperature, length of the heating seasons. \\\tabucline{}
+
+   \hline
+
+   Building & Multi{-}apartment residential building at  {{index .Contract.Fields "client_address"}}. \\\tabucline{}
+
+   \hline
+
+   Business day & An official working day that is not pronounced as an
+   official holiday or an official work day off as determined under
+   Latvian law. \\\tabucline{}
+
+   \hline
+
+   Comfort Standards & The required minimum level of comfort as set out
+   in Annex No 2 (“Comfort Standards”) to the Agreement \\\tabucline{}
+
+   \hline
+
+   Confidential Information & The term "Confidential Information", as
+   used in this Agreement, includes any data or information, whether in
+   tangible or intangible form, that is proprietary to a Party
+   (“Disclosing Party”) or has been acquired or disclosed by third
+   parties (whether under a non{-}disclosure agreement or otherwise)
+   whenever and however disclosed to the other Party (the “Receiving
+   Party”), including, but not limited to:
+
+   \begin{enumerate}
+   \item{any marketing strategies, plans, financial information,
+       business plans and performance results relating to the past,
+       present or future business activities of the Disclosing Party,
+       its Clients, partnering organizations, its affiliates,
+       subsidiaries or otherwise affiliated entities;}
+   \item{plans for products or services, and supplier lists;}
+   \item{any scientific or technical information, inventions, designs,
+       process, procedure, formula, improvement, technology or method
+       disclosed by the Disclosing Party, irrespective of whether
+       proprietary or not to the Disclosing Party or its partnering
+       organizations in the Project;}
+   \item{any concepts, reports, data, know{-}how,
+       works{-}in{-}progress, designs, development tools, drawings,
+       specifications, flow charts, databases, inventions, patents and
+       trade secrets; and}
+   \item{any other information that should reasonably be recognized as
+       confidential information of the Disclosing Party, its
+       partnering organizations, companies associated for the purposes
+       of this Agreement, subsidiaries, affiliates or otherwise
+       related companies, including information of personal nature or
+       information relating to the private life of any of the
+       Apartment Owners.  Confidential Information need not be novel,
+       unique, patentable, copyrightable or constitute a trade secret
+       in order to be designated as Confidential Information.}
+   \end{enumerate} \\\tabucline{}
+
+   \hline
+
+   Delivery and acceptance of the Facilities & Upon completion of the
+   implementation of the agreed hereunder Renovation Works in the
+   Building, the representative of the Client shall be invited for the
+   delivery and acceptance of the Facilities. The Client’s and the
+   Contractor’s representatives shall sign a bilateral protocol
+   evidencing the executed work and depicting in details (including via
+   photo material) the conditions in which the Facilities are being
+   handed over to the possession of the Client. If the Client has not
+   provided a representative with the corresponding power of attorney
+   within the period of 5 (five) days from the receipt of the
+   respective notice from the Contractor, it shall be held that the
+   Facilities have been delivered and accepted by the Client in the
+   manner prescribed in the protocol signed by the Contractor
+   alone. Any claims or complains against the quality or execution
+   manner for any part of the Contractor’s work shall be considered as
+   waived in case not filed via e{-}mail within 5 (five) Business days
+   as of the signing of the bilateral protocol evidencing passing over
+   of the possession of the Facilities to the Client.\\\tabucline{}
+
+   \hline
+
+   Energy &Energy means all forms of energy products, combustible
+   fuels, heat, renewable energy, electricity, or any other form of
+   energy required for heating of the Building and heating of domestic
+   hot water consumed with a view to achieving the Comfort Standards
+   established in the Agreement.\\\tabucline{}
+
+   \hline
+
+   Energy Efficiency &Means the ratio of output of performance,
+   service, goods or energy, to input of energy.\\\tabucline{}
+
+   \hline
+
+   Energy Savings &Means the amount of saved energy determined by
+   measuring and/or estimating consumption before and after
+   implementation of the Renovation Works, whilst ensuring
+   normalisation for external conditions that affect energy
+   consumption.\\\tabucline{}
+
+   \hline
+
+   Energy Tariff &Charge for Energy unit measured in MWh and as set out
+   by an Energy Supplier where the building is located, which is valid
+   during the certain period of time and which is approved by the
+   applicable Regulator/Agreement.\\\tabucline{}
+
+   \hline
+
+   Guaranteed Energy Consumption&The guaranteed amount of  {{index .Contract.Agreement "energy-saving-amount"}} MWh
+   of energy to be consumed after implementation of the Renovation
+   Works which represents a {{index .Contract.Agreement "energy-efficient-performance"}} \% increase in the energy
+   efficiency performance of the Building compared to its Baseline. For
+   the purposes of avoiding doubt, the Contractor guarantees that the
+   adjusted energy consumption of the Building after the Renovation
+   Works shall not be above its guaranteed energy consumption amounts
+   and separately undertakes to exercise additional reasonable in terms
+   of costs efforts to further decrease the energy consumption for the
+   entire duration of this Agreement.\\\tabucline{}
+
+   \hline
+
+   Guaranteed Energy Savings &Means the minimum amount of Energy
+   Savings determined by Measurement and Verification, which is
+   guaranteed in the Energy Performance Contract after the
+   implementation of the Renovation Works.\\\tabucline{}
+
+   \hline
+
+   Facilities&Material, equipment, systems, fittings and other measures
+   installed by the Contractor or otherwise invested in the Building as
+   part of the Renovation Works or for the Measurement and
+   Verification, , maintenance and repair thereof, in accordance with
+   the Agreement.\\\tabucline{}
+
+   \hline
+
+   Fee & A recurring fee paid by the Client to the Contractor for
+   rendering the services prescribed by the Agreement for the duration
+   of the Service Period which includes the Energy Fee, the Renovation
+   Fee and the Operation and Maintenance Fee, along with any taxes due
+   (such as VAT) in delivering the service and the amount due for
+   domestic hot water consumption.\\\tabucline{}
+
+   \hline
+
+   Heat Supply & Supply of thermal energy to the Building or the
+   Apartment for the needs of space heating or domestic hot water
+   preparation.\\\tabucline{}
+
+   \hline
+
+   Heating Season & Period in the year when the Contractor shall ensure
+   operation of the heating system (heat supply) in the Apartments of
+   the Building and guarantees the Comfort Standards set out in the
+   Agreement.\\\tabucline{}
+
+   \hline
+
+   LABEEF & means the Latvian Baltic Energy Efficiency Facility Jsc.,
+   operating as a joint stock company duly registered in the Commercial
+   register of Latvia under corporate No.\\\tabucline{}
+
+   \hline
+
+   Manager & An individual or a legal entity, who in line with the
+   applicable provisions of the Latvian Law on Management of
+   Residential Housing and based on a management agreement, carries out
+   managerial activities assigned by the Client in respect of the
+   Building as well as the duties established by the Agreement. The
+   management agreement pursuant to which the Manager renders its
+   services shall be attached to the current Agreement for reference
+   purposes.\\\tabucline{}
+
+   \hline
+
+   Parties & The Assignor and the Assignee each individually.\\\tabucline{}
+
+   \hline
+
+   Party & The Assignor and the Assignee collectively.\\\tabucline{}
+
+   \hline
+
+   Payment Period & A 12{-}month period between 1st July of each year
+   and 30th June of the following year. The first payment period is set
+   from the day of commencing provision of the Services until 30th of
+   June of the respective year. \\\tabucline{}
+
+   \hline
+
+   Regulator & The Public Utilities Commission or another applicable
+   authority established in the laws and regulations effective in
+   Latvia which approves tariffs for trading thermal energy in the
+   respective local government where the Building is situated.\\\tabucline{}
+
+   \hline
+
+   Renovation Works & Activities referred in the Agreement resulting in
+   achievement of verifiable and measurable or estimable energy
+   savings. Activities involve engineering, procurement, supply,
+   installation, start{-}up and commissioning for the renovation of the
+   building. All activities are implemented by the Contractor based on
+   the provisions of the Agreement.\\\tabucline{}
+
+   \hline
+
+   Service Period & The period during which the Assignor is obliged to
+   provide Services to the Client under the Energy Performance
+   Contract.\\\tabucline{}
+
+   \hline
+
+   Services & The Renovation Works, Energy Supply and operation and
+   maintenance of the Facilities performed by the Assignor under the
+   present Agreement.\\\tabucline{}
+
+   \hline
+
+   VAT & The value added tax payable in accordance with laws and
+   regulations effective in Latvia and provisions of the Agreement.\\\tabucline{}
+
+ \end{longtabu}
+
+ \vspace{5mm}
+
+ Unless the context otherwise requires, as used in this Agreement, the
+ singular number includes the plural and the plural number may include
+ the singular. The use of any gender shall be applicable to all
+ genders. Unless otherwise specified, references to Articles, Sections
+ or subsections are to the Articles, Sections and subsections in this
+ Agreement. Unless the context otherwise requires, the term “including”
+ shall mean “including, without limitation”. \par
+
+\vspace{5mm}
+
+{{ template "sign.tex"}}
+
+\end{document}

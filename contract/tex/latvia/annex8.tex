@@ -1,0 +1,54 @@
+{{- $vt := .VAT -}}
+
+\section{PIELIKUMS Nr. 8 {-} EKSPLUATĀCIJAS UN APKOPES MAKSA}
+
+\begin{enumerate}[label=\arabic*.]
+	\item Pasūtītājs maksā Izpildītājam Ekspluatācijas un apkopes maksu par šā Līguma ietvaros Pakalpojumu sniegšanas periodā sniegtajiem Pakalpojumiem.
+	\item Šā Līguma Pakalpojumu sniegšanas perioda pirmajā gadā Ekspluatācijas un apkopes maksa atbilst ikgadējai Maksai $OM_1={{.Contract.Fields.calculations_om1}}XEUR/year$, bez PVN.\@ Ekspluatācijas un apkopes izmaksu sadalījums ir šāds:
+
+% table: maintenance_budget
+
+\begin{center}
+\begin{tabu}{|X[10]|X|} \tabucline{} \rowfont[c]\bfseries
+{{with $t := translate "lv" .Contract.Tables.operation_maintenance_budget}} % chktex 25
+	{{$t.Columns | column}} \\\tabucline{}
+	{{range $t.Rows}} % chktex 26
+	{{rowfmt $t .}} \\\tabucline{}
+	{{end}}
+
+	 \bfseries
+	{{total_excl_vat $t}} \\\tabucline{}\bfseries
+	{{vat $t $vt}} \\\tabucline{}\bfseries
+	{{total_incl_vat $t $vt}} \\\tabucline{}
+{{end}}
+\end{tabu}
+\end{center}
+
+	\item Par katru Pakalpojumu sniegšanas perioda nākamo gadu Ekspluatācijas un apkopes maksa tiek pārskatīta atbilstoši Centrālās statistikas pārvaldes publicētajam Latvijas Patēriņa cenu indeksam, atspoguļojot vispārīgo principu:
+
+\[ OM_y = OM_{y-1} + (OM_{y-1} \times CPI_{y-1}) \]
+
+Kur:
+\begin{itemize}
+	\item $y$ ir gadu skaits no Pakalpojumu sniegšanas perioda sākuma, savukārt y=2 ir Pakalpojumu sniegšanas perioda otrais gads atbilstoši Līgumam, savukārt y={{div .Project.ContractTerm 12}} ir Pakalpojumu sniegšanas perioda pēdējais gads %chktex 26
+	\item $OM_y$ ir Ekspluatācijas un apkopes maksa par “y” Norēķinu gadu
+	\item $OM_{y-1}$ ir Ekspluatācijas un apkopes maksa iepriekšējā Norēķinu gadā
+\end{itemize}
+
+	\item Izpildītājs katra Norēķinu perioda beigās informē Pasūtītāja Pārvaldnieku par Ekspluatācijas un apkopes maksas aprēķinu nākamajam Norēķinu periodam, balstoties uz šādu tabulu:
+
+% table: operations_maintenance_fee
+
+\begin{center}
+\begin{tabu}{|X|X|X|X|X|X|} \tabucline{}
+{{with $t := translate "lv" .Contract.Tables.operations_maintenance_fee}} %chktex 26
+	{{$t.Columns | column}} \\\tabucline{}
+	{{range $t.Headers}} {{.|row}} \\\tabucline{} {{end}} %chktex 26
+	{{range $t.Rows}} {{.|row}} \\\tabucline{} {{end}} %chktex 26
+{{end}}
+\end{tabu}
+\end{center}
+
+	\item Izpildītājs katru mēnesi izrakstīs Pasūtītāja Pārvaldniekam rēķinus par kopējo ikmēneša Ekspluatācijas un apkopes maksu ($OM_m$). Pārvaldnieks katram atsevišķajam Dzīvokļa īpašniekam izrakstīs rēķinus par proporcionālo summu attiecībā uz katru kvadrātmetru.
+
+\end{enumerate}

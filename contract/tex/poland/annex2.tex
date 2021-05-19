@@ -1,0 +1,141 @@
+{{- $vt := .VAT -}}
+
+\section{ANEKS 2: BUDŻET I ZAKRES PRAC RENOWACYJNYCH}
+
+\subsection{Scope of Renovation works}
+2.1 Project development and management
+
+% table: project_development_renovations
+
+\begin{center}
+\begin{tabu}{|X|X[2]|X|} \tabucline{} \rowfont[c]\bfseries
+{{with $t := translate "pl" .Contract.Tables.project_development_renovations}} % chktex 25
+	{{$t.Columns | column}} \\\tabucline{}
+	{{range $t.Rows}}
+	{{rowfmt $t .}} \\\tabucline{}
+	{{end}}
+
+	 \bfseries
+	{{total_excl_vat $t}} \\\tabucline{}\bfseries
+	{{vat $t $vt}} \\\tabucline{}\bfseries
+	{{total_incl_vat $t $vt}} \\\tabucline{}
+{{end}}
+\end{tabu}
+\end{center}
+
+2.2 Construction costs
+
+% table: construction_costs_renovations
+
+\begin{center}
+\begin{tabu}{|X|X[2]|X|} \tabucline{} \rowfont[c]\bfseries
+{{with $t := translate "pl" .Contract.Tables.construction_costs_renovations}} % chktex 25
+	{{$t.Columns | column}} \\\tabucline{}
+	{{range $t.Rows}}
+	{{rowfmt $t .}} \\\tabucline{}
+	{{end}}
+
+	 \bfseries
+	{{total_excl_vat $t}} \\\tabucline{}\bfseries
+	{{vat $t $vt}} \\\tabucline{}\bfseries
+	{{total_incl_vat $t $vt}} \\\tabucline{}
+{{end}}
+\end{tabu}
+\end{center}
+
+2.3 Project supervision
+
+% table: project_supervision
+
+\begin{center}
+\begin{tabu}{|X|X[2]|X|} \tabucline{} \rowfont[c]\bfseries
+{{with $t := translate "pl" .Contract.Tables.project_supervision}} % chktex 25
+	{{$t.Columns | column}} \\\tabucline{}
+	{{range $t.Rows}}
+	{{rowfmt $t .}} \\\tabucline{}
+	{{end}}
+
+	 \bfseries
+	{{total_excl_vat $t}} \\\tabucline{}\bfseries
+	{{vat $t $vt}} \\\tabucline{}\bfseries
+	{{total_incl_vat $t $vt}} \\\tabucline{}
+{{end}}
+\end{tabu}
+\end{center}
+
+2.4 Financial charges
+
+% table: financial_charges
+
+\begin{center}
+\begin{tabu}{|X|X[2]|X|} \tabucline{} \rowfont[c]\bfseries
+{{with $t := translate "pl" .Contract.Tables.financial_charges}} % chktex 25
+	{{$t.Columns | column}} \\\tabucline{}
+	{{range $t.Rows}}
+	{{rowfmt $t .}} \\\tabucline{}
+	{{end}}
+
+	 \bfseries
+	{{total_excl_vat $t}} \\\tabucline{}\bfseries
+	{{vat $t $vt}} \\\tabucline{}\bfseries
+	{{total_incl_vat $t $vt}} \\\tabucline{}
+{{end}}
+\end{tabu}
+\end{center}
+
+\subsection{Ogólny budżet Prac renowacyjnych}
+
+% table: renovation_overall_budget
+
+\begin{center}
+\begin{tabu}{|X[10]|X|} \tabucline{} \rowfont[c]\bfseries
+{{with $t := translate "pl" .Contract.Tables.renovation_overall_budget}} % chktex 25
+	{{$t.Columns | column}} \\\tabucline{}
+	{{range $t.Rows}}
+	{{rowfmt $t .}} \\\tabucline{}
+	{{end}}
+
+	 \bfseries
+	{{total_excl_vat $t}} \\\tabucline{}\bfseries
+	{{vat $t $vt}} \\\tabucline{}\bfseries
+	{{total_incl_vat $t $vt}} \\\tabucline{}
+{{end}}
+\end{tabu}
+\end{center}
+
+% table: renovation_financial_plan
+
+\subsection{Plan finansowania Prac renowacyjnych}
+\begin{center}
+\begin{tabu}{|X[10]|X|} \tabucline{} \rowfont[c]\bfseries
+{{with $t := translate "pl" .Contract.Tables.renovation_financial_plan}} % chktex 25
+	{{$t.Columns | column}} \\\tabucline{}
+	{{range $t.Rows}}
+	{{rowfmt $t .}} \\\tabucline{}
+	{{end}}
+{{end}}
+\end{tabu}
+\end{center}
+
+Gdzie:
+\begin{itemize}
+	\item $I_C$: Wkład finansowy Wykonawcy (z VAT) przyjęty do kalkulacji Opłaty za renowację
+	\item $I_T$: Łączny koszt inwestycji w Prace renowacyjne (z VAT)
+\end{itemize}
+
+  Część kosztów inwestycji przyjęta do kalkulacji Opłaty za renowację w Aneksie 7 do niniejszej Umowy jest wyliczana w oparciu o Wkład finansowy Wykonawcy wynoszący $I_C$.
+
+\subsection{Środki wdrażane w ramach Prac renowacyjnych i szczegółowe kosztorysy}
+
+Przykład:
+
+\begin{itemize}
+	\item Projekt budowlany 1 – Przekrój ogólny
+	\item Projekt budowlany 2 – Architektura i DOP
+	\item Projekt budowlany 3 – Sieci techniczne i ogrzewanie
+	\item Projekt budowlany 4 – Sieci techniczne i ochrona odgromowa
+	\item Projekt budowlany 5 – Zakres prac budowlanych
+	\item Odbudowa infrastruktury technicznej budynku
+	\item Zakres prac budowlanych
+	\item Etc.
+\end{itemize}

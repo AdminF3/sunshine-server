@@ -1,0 +1,6 @@
+{
+    getIndoorClima(projectID:"%s") {
+        projectID
+        zones
+    }
+}

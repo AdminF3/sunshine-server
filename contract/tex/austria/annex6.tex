@@ -1,0 +1,198 @@
+\section{ANHANG 6 – GEBÜHREN FÜR ENERGIE, WARMWASSER UND MESSUNG UND VERIFIZIERUNG}
+
+\begin{enumerate}
+
+\item{Festlegung des pauschalen Wärmeenergieverbrauchs}
+
+\begin{enumerate}
+	\item Die Heizungsgebühr wird für die Abrechnungsperiode berechnet und in 12 (zwölf) gleiche Teile geteilt. Der Auftraggeber zahlt so jeden Monat (innerhalb eines Zeitraums von 12 Monaten) den gleichen Betrag für Wärmeenergie. 
+        \item Die monatliche Wärmeenergiegebühr wird auf der Grundlage der Energieverbrauchsgarantie, des aktuellen Wärmeenergiepreises und des Abrechnungsfläche des Gebäudes wie folgt für jeden Monat der Abrechnungsperiode berechnet:
+
+\[ Q^{m}_{Apk,cz,G} = \frac{Q_{Apk,cz,G}}{12} \]
+\[ E^{m}_{F,G} = Q^{m}_{Apk,cz,G} \times HT^m \]
+\[ Ap^m = \frac{E^{m}_{F,G} }{A_{Apk}} \]
+
+Dabei gilt:
+
+\begin{itemize}[label={}]
+	\item $Q^{m}_{Apk,cz,G}$ \quad monatlicher pauschale Wärmeenergieverbrauch für Raumwärme und ($E^m_{F,G}$). Zirkulationsverluste des Gebäudes basierend auf der Energieverbrauchsgarantie, $MWh/Monat$
+	\item $Q_{Apk,cz,G}$ \quad Energieverbrauchsgarantie für Raumwärme und Zirkulationsverluste, berechnet in Anhang 5 dieses Vertrages, $MWh/Jahr$
+	\item $E^{m}_{F,G}$ \quad \quad gesamte monatliche Wärmeenergiegebühr für das Gebäude
+	\item $HT^m$ \quad \quad der zum jeweiligen Abrechnungsmonat geltende Wärmeenergiepreis, EUR/MWh
+	\item $A_{Apk}$ \quad \quad Abrechnungsfläche des Gebäudes, die für Abrechnungszwecke genutzt wird, $m^2$
+	\item $Ap^m$ \quad \quad monatliche Wärmeenergiegebühr pro Quadratmeter, die der Verwalter für die Erstellung der monatlichen Rechnungen an den Auftraggeber verwendet, $EUR/m^2$ Monat
+\end{itemize}
+
+	\item Der Auftragnehmer hat jeden Monat die folgende Tabelle für die Berechnung der monatlichen Wärmeenergiegebühr auszufüllen:
+
+% table: calc_energy_fee
+
+\begin{center}
+\begin{tabu}{|X|X|X|X|X|X|} \tabucline{}
+{{with translate "au" .Contract.Tables.calc_energy_fee}} %chktex 26
+	{{.Columns | column}} \\\tabucline{}
+	{{range .Headers}} {{.|row}} \\\tabucline{} {{end}} %chktex 26
+	{{range .Rows}} {{.|row}} \\\tabucline{} {{end}} %chktex 26
+	\bfseries {{total .}} \\\tabucline{} %chktex 26
+{{end}}
+\end{tabu}
+\end{center}
+
+	\item Der Auftragnehmer hat dem Verwalter des Auftraggebers monatlich die gesamte monatliche Wärmeenergiegebühr in Rechnung ($E^m_{F,G}$). zu stellen. Der Verwalter hat sie den Wohnungseigentümern anteilig in Rechnung zu stellen.
+\end{enumerate}
+
+\item{Saldierung des pauschalen Wärmeenergieverbrauchs am Ende der Abrechnungsperiode}
+
+\begin{enumerate}
+\item Am Ende jeder Abrechnungsperiode hat der Auftragnehmer die Restzahlung für den Saldo zwischen den 12 (zwölf) Wärmeenergiegebühren, die dem Auftraggeber aufgrund des pauschalen Wärmeenergieverbrauchs in Rechnung gestellt werden, und der tatsächlichen geschuldeten Zahlung unter Berücksichtigung des gemessenen Wärmeenergieverbrauchs zu berechnen. Der Ausgleichsbetrag wird berechnet als:
+  
+\[ B_F = E_{F,S,T} - E_{F,G,T} \]
+
+Dabei gilt:
+
+\begin{itemize}[label={}]
+	\item $E_{F,S,T}$ \quad gesamte jährliche Energiegebühr basierend auf den gemessenen Energiedaten, berechnet als Summe der monatlichen $E^{m}_{F,S}$ über die 12-Monats-Abrechnungsperiode, $EUR$
+	\item $E_{F,G,T}$  \quad gesamte jährliche Energiegebühr des Gebäudes, berechnet als Summe der monatlichen $E^{m}_{F,S}$ über die 12-Monats-Abrechnungsperiode, $EUR$
+\end{itemize}
+
+\item Der Auftragnehmer hat am Ende jeder Abrechnungsperiode die folgende Tabelle für die Berechnung der Restzahlung auszufüllen:
+
+% table: balancing_period_fee
+
+\begin{center}
+\begin{tabu}{|X|X|X|X|X|X|X|} \tabucline{}
+{{with translate "au" .Contract.Tables.balancing_period_fee}} %chktex 26
+	{{.Columns | column}} \\\tabucline{}
+	{{range .Headers}} {{.|row}} \\\tabucline{} {{end}} %chktex 26
+	{{range .Rows}} {{.|row}} \\\tabucline{} {{end}} %chktex 26
+{{end}}
+\end{tabu}
+\end{center}
+
+Dabei gilt:
+
+\begin{itemize}
+	\item $Q^{m}_{Apk,cz,G}$ \quad der auf das Gebäude entfallende, monatliche pauschale Wärmeenergieverbrauch für Raumwärme und Zirkulationsverluste basierend auf der Energieverbrauchsgarantie, $MWh/mēnesī$
+	\item $HT^m$ \quad \quad der zum jeweiligen Abrechnungsmonat geltende Wärmeenergiepreis, $EUR/MWh$
+	\item $Q^m_{Apk,cz,S}$ \quad monatlicher Energieverbrauch für Raumwärme und Zirkulationsverluste, der der Messung und Verifizierung unterliegt 
+	\item $E^m_{F,G}$ \quad \quad gesamte monatliche Energiegebühr für das Gebäude, die jeden Monat berechnet wird als $Q^{m}_{Apk,cz,G} \times HT^{m}$
+\end{itemize}
+
+\item Wenn die Differenz negativ ist (BF ist eine negative Zahl), haben die Parteien die Differenz entweder durch eine einmalige Zahlung des Saldos durch den Auftragnehmer an den Auftraggeber oder durch Abzug des ausstehenden Saldos in gleicher Höhe in den Zahlungen des Auftraggebers an den Auftragnehmer, verteilt über die nächste Abrechnungsperiode, zu begleichen. Für die Abrechnungsperiode, nach deren Ablauf der Vertrag endet, wird der Saldo durch eine einmalige Zahlung ausgeglichen.
+\item Wenn die Differenz positiv ist (BF ist eine positive Zahl), gleichen die Parteien die Differenz aus entweder durch:
+
+\begin{enumerate}
+\item eine einmalige Zahlung des Restbetrags durch den Auftraggeber an den Auftragnehmer, oder
+\item durch Aufteilen des ausstehenden Saldos in gleichen Beträgen durch die Anzahl der fälligen Zahlungen während der nächsten Abrechnungsperiode und Hinzufügen eines gleichen Teils zu der vom Auftraggeber an den Auftragnehmer fälligen Zahlung während der nächsten Abrechnungsperiode. 
+\item Für die letzte Abrechnungsperiode des Vertrages müssen die Parteien den Saldo durch eine einmalige Zahlung begleichen.
+\end{enumerate}
+
+\item Der Auftraggeber erkennt an, dass die Wärmeenergiegebühr unverzüglich alle Änderungen des Wärmeenergiepreises ($HT^m$) nach dessen Inkrafttreten widerspiegelt.
+
+\end{enumerate}
+
+\item{Messung und Verifizierung der Energieeinsparungsgarantie}
+
+\begin{enumerate}
+
+\item Am Ende jeder Abrechnungsperiode überprüfen die Parteien, ob die Energieeinsparungsgarantie im Rahmen dieses Vertrages erfüllt ist. Die Parteien vereinbaren, wie folgt zu überprüfen:
+
+  \begin{enumerate}
+    \item Anpassungen aufgrund des Wetters werden vorgenommen, um die Bedingungen während der Erbringung von Energieeffizienzdienstleistungen mit den Baseline-Bedingungen zu vergleichen. Die Anpassung wird nach folgender Formel berechnet:
+
+      \[ Q^{Adj}_{Apk,CZ,S} = Q_{Apk,S} \times \left( \frac{GDD_{Ref}}{GDD_S}\right) + Q_{CZ,S} \]
+
+      Dabei gilt:
+      \begin{itemize}[label={}]
+	\item $Q^{Adj}_{Apk,CZ,S}$ \quad Witterungsbereinigter Energieverbrauch für Raumwärme und Zirkulationsverluste im Abrechnungsjahr, $MWh$
+	\item $Q_{Apk,S}$ \quad \quad Tatsächlicher Energieverbrauch für Raumwärme im Abrechnungsjahr, $MWh$
+	\item $Q_{CZ,S}$ \quad \quad Tatsächlicher Energieverbrauch für Zirkulationsverluste im Abrechnungsjahr, $MWh$
+	\item $GDD_{Ref}$ \quad  Heizgradtage in der Baseline
+	\item $GDD_S$ \quad \quad Heizgradtage im Berichtsjahr zur Abrechnung, nach den Allgemeinen Geschäftsbedingungen des Vertrages in Hinblick auf Messung und Verifizierung berechnet
+      \end{itemize}
+      \vspace{1cm}
+
+    \item Am Ende jeder Abrechnungsperiode wird der Auftragnehmer eine Bewertung abgeben darüber, ob die Leistungen so erbracht wurden, dass die Energieeinsparungsgarantie wie folgt erfüllt wird:
+      
+\[ Q_{iet,S} = Q_{Apk,cz,ref} - Q^{Adj}_{Apk,cz,S} \]
+\[ BH_{iet} = Q_{iet,S} - Q_{iet,G} \]
+
+Dabei gilt:
+\begin{itemize}[label={}]
+\item $Q_{Apk,cz,ref}$ \quad Baseline-Energieverbrauch für Raumwärme und Zirkulationsverluste, $MWh/Jahr$
+\item $Q^{Adj}_{Apk,cz,S}$ \quad Witterungsbereinigter Energieverbrauch für Raumwärme und Zirkulationsverluste in der Abrechnungsperiode, $MWh/Jahr$
+\item $Q_{iet,S}$ \quad Energieeinsparungen für Raumwärme und Zirkulationsverluste für die Abrechnungsperiode,  $MWh/Jahr$
+\item $Q_{iet,G}$ \quad Energieeinsparungsgarantie für Raumwärme und Zirkulationsverluste, $MWh$
+\item $BH_{iet}$ \quad Energieeinsparungssaldo für die Abrechnungsperiode, $MWh$
+\end{itemize}
+\vspace{1cm}
+
+\begin{enumerate}
+	\item Erfüllung der Energieeinsparungsgarantie: Wenn der Saldo $BH_{iet}=0.0 MWh$ beträgt, hat der Auftragnehmer die Energieeinsparungsgarantie für die jeweilige Abrechnungsperiode erfüllt. In diesem Fall schuldet der Auftragnehmer dem Auftraggeber keine Rückerstattung.
+
+        \item Nichterfüllung der Energieeinsparungsgarantie: Ist der Saldo negativ (BHiet ist eine negative Zahl), dann hat der Auftragnehmer seine Energieeinsparungsgarantie für die jeweilige Abrechnungsperiode nicht erfüllt und erstattet dem Auftraggeber den wie folgt berechneten negativen Saldo zurück:
+          \[ C_G = B_{iet} \times HT_S \]
+
+Dabei gilt:
+
+\begin{itemize}[label={}]
+	\item $C_G$ \quad \quad Entschädigung für die Nichterfüllung der Energieeinsparungsgarantie für den Abrechnungszeitraum, EUR (ohne Umsatzsteuer)
+	\item $BH_{iet}$ \quad Energieeinsparungssaldo für die Abrechnungsperiode, $MWh$
+	\item $HT_S$ \quad Durchschnittlicher Wärmeenergiepreis während der Abrechnungsperiode, berechnet als Summe der monatlichen Wärmeenergiepreise während der Abrechnungsperiode geteilt durch die Anzahl der Monate in der jeweiligen Abrechnungsperiode, $EUR/MWh$ (ohne Umsatzsteuer).
+\end{itemize}
+
+\vspace{1cm}
+
+Die Parteien haben die Entschädigung ($C_G$) entweder durch eine einmalige Zahlung des Auftragnehmers an den Auftraggeber zu begleichen oder durch Abzug der Entschädigung von der fälligen Zahlung des Auftraggebers an den Auftragnehmer in gleichen Teilen über die nächste Abrechnungsperiode verteilt. Der Auftragnehmer hat das Recht, die bevorzugte Option zu wählen; für die letzte Abrechnungsperiode, nach der der Vertrag endet, haben die Parteien jedoch durch eine einmalige Zahlung abzurechnen.
+
+\end{enumerate}
+
+\item Mehrleistung: Ist der Saldo positiv (BHiet ist eine positive Zahl), so hat der Auftragnehmer seine Energieeinsparungsgarantie übererfüllt und ist berechtigt, alle Zahlungen stattdessen einzubehalten. Die Mehrleistung wird wie folgt berechnet:
+
+  \[ P_G = BH_{iet} \times ET_S \]
+
+Dabei gilt:
+
+\begin{itemize}[label={}]
+	\item $P_G$ \quad \quad Mehrleistung während der Abrechnungsperiode, EUR (ohne Umsatzsteuer)
+	\item $BH_{iet}$ \quad Energieeinsparungssaldo für die Abrechnungsperiode, $MWh$
+	\item $HT_S$ \quad Durchschnittlicher Wärmeenergiepreis während der Abrechnungsperiode, berechnet als Summe der monatlichen Wärmeenergiepreise während der Abrechnungsperiode geteilt durch die Anzahl der Monate in der jeweiligen Abrechnungsperiode, $EUR/MWh$ (ohne Umsatzsteuer)
+\end{itemize}
+
+\vspace{1cm}
+
+Die Parteien haben die Zahlung für die Mehrleistung ($P_G$) entweder durch eine einmalige Zahlung des Saldos durch den Auftraggeber an den Auftragnehmer zu begleichen oder durch Hinzufügen des ausstehenden Saldos zu der fälligen Zahlung des Auftraggebers an den Auftragnehmer in gleichen Teilen über die nächste Abrechnungsperiode verteilt. Der Auftraggeber hat das Recht, die bevorzugte Option zu wählen; jedoch für die letzte Abrechnungsperiode, nach der der Vertrag endet, haben die Parteien durch eine einmalige Zahlung abzurechnen.
+
+  \end{enumerate}
+
+\item Für die Festlegung der Energieeinsparungsgarantie und die Bestimmung der Erfüllung der Energieeinsparungsgarantie werden die Eingangsdaten gemäß den Allgemeinen Geschäftsbedingungen zur Messung und Verifizierung ermittelt. 
+
+\end{enumerate}
+
+\item{Warmwassergebühr}
+
+\begin{enumerate}
+
+	\item Die Zahlung für Warmwasser erfolgt auf Grundlage des tatsächlichen Verbrauchs, der bei jedem einzelnen Wohnungseigentümer anfällt und durch separate kalibrierte Zähler, die für jede der Wohnungen installiert sind, ordnungsgemäß erfasst wird.
+	\item Die Zahlung für Warmwasser wird auf monatlicher Basis nach folgender Formel berechnet:
+
+          \[ Q^{m}_{ku} = \frac{V_m \times \rho_{ku} \times c_u \times \left(\theta_{ku} - \theta_{u,pieg}\right)}{3600} \times HT^m \]
+
+          Dabei gilt:
+
+          \begin{itemize}[label={}]
+	\item $V_m$ \quad  Monatlicher volumetrischer Warmwasserverbrauch, gemessen im Unterwerk, $m^3$
+        \item $\rho_{ku}$ \quad \quad Wasserdichte entsprechend 985 $kg/m^3$
+	\item $c_ū$ \quad \quad Spezifische Wärmekapazität des Wassers entsprechend 4.1868 x 10-3 $J/kg$ $˚C$
+	\item $θ_{ū,pieg}$ \quad Kaltwassertemperatur vom Wasserversorgungsunternehmen, $˚C$
+	\item $θ_{kū}$ \quad \quad Warmwasservorlauftemperatur im Unterwerk des Gebäudes, $˚C$
+	\item $HTm$ \quad der für den jeweiligen Abrechnungsmonat geltende Wärmeenergiepreis, $EUR/MWh$
+          \end{itemize}
+
+	\item Messung und Verifizierung: Die Kaltwasser- und Warmwasservorlauftemperatur werden gemäß den Allgemeinen Geschäftsbedingungen zur Messung und Verifizierung  bestimmt.
+        \item Der Auftraggeber erkennt ordnungsgemäß an, dass alle Änderungen des Energiepreises unmittelbar nach ihrer Annahme durch die jeweilige Regulierungsbehörde oder die für den jeweiligen Fall zuständige Behörde auf die Warmwassergebühr anwendbar sind und ab dem Datum ihrer Ratifizierung und ihres Inkrafttretens in der Weise gelten, in der die Berechnungen der Heizungsgebühr durchgeführt werden.
+        \item Der Auftragnehmer hat dem Verwalter des Auftraggebers die gesamte monatliche Warmwassergebühr auf monatlicher Basis in Rechnung zu stellen. Der Verwalter stellt jedem Wohnungseigentümer den individuellen Wasserverbrauch in Rechnung.
+
+
+\end{enumerate}
+\end{enumerate}

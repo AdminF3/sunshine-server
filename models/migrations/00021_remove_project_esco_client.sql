@@ -1,0 +1,7 @@
+-- +goose Up
+ALTER TABLE projects DROP COLUMN esco;
+ALTER TABLE projects DROP COLUMN client;
+
+-- +goose Down
+ALTER TABLE projects ADD COLUMN esco CHARACTER VARYING(36);
+ALTER TABLE projects ADD COLUMN client CHARACTER VARYING(36);

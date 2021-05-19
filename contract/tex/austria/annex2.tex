@@ -1,0 +1,153 @@
+{{- $vt := .VAT -}}
+
+\section{ANHANG 2 – BUDGET UND UMFANG DER SANIERUNGSARBEITEN}
+
+
+\subsection{Scope of Renovation works}
+2.1 Project development and management
+
+% table: project_development_renovations
+
+\begin{center}
+\begin{tabu}{|X|X[2]|X|} \tabucline{} \rowfont[c]\bfseries
+{{with $t := translate "au" .Contract.Tables.project_development_renovations}} % chktex 25
+	{{$t.Columns | column}} \\\tabucline{}
+	{{range $t.Rows}}
+	{{rowfmt $t .}} \\\tabucline{}
+	{{end}}
+
+	 \bfseries
+	{{total_excl_vat $t}} \\\tabucline{}\bfseries
+	{{vat $t $vt}} \\\tabucline{}\bfseries
+	{{total_incl_vat $t $vt}} \\\tabucline{}
+{{end}}
+\end{tabu}
+\end{center}
+
+2.2 Construction costs
+
+% table: construction_costs_renovations
+
+\begin{center}
+\begin{tabu}{|X|X[2]|X|} \tabucline{} \rowfont[c]\bfseries
+{{with $t := translate "au" .Contract.Tables.construction_costs_renovations}} % chktex 25
+	{{$t.Columns | column}} \\\tabucline{}
+	{{range $t.Rows}}
+	{{rowfmt $t .}} \\\tabucline{}
+	{{end}}
+
+	 \bfseries
+	{{total_excl_vat $t}} \\\tabucline{}\bfseries
+	{{vat $t $vt}} \\\tabucline{}\bfseries
+	{{total_incl_vat $t $vt}} \\\tabucline{}
+{{end}}
+\end{tabu}
+\end{center}
+
+2.3 Project supervision
+
+% table: project_supervision
+
+\begin{center}
+\begin{tabu}{|X|X[2]|X|} \tabucline{} \rowfont[c]\bfseries
+{{with $t := translate "au" .Contract.Tables.project_supervision}} % chktex 25
+	{{$t.Columns | column}} \\\tabucline{}
+	{{range $t.Rows}}
+	{{rowfmt $t .}} \\\tabucline{}
+	{{end}}
+
+	 \bfseries
+	{{total_excl_vat $t}} \\\tabucline{}\bfseries
+	{{vat $t $vt}} \\\tabucline{}\bfseries
+	{{total_incl_vat $t $vt}} \\\tabucline{}
+{{end}}
+\end{tabu}
+\end{center}
+
+2.4 Financial charges
+
+% table: financial_charges
+
+\begin{center}
+\begin{tabu}{|X|X[2]|X|} \tabucline{} \rowfont[c]\bfseries
+{{with $t := translate "au" .Contract.Tables.financial_charges}} % chktex 25
+	{{$t.Columns | column}} \\\tabucline{}
+	{{range $t.Rows}}
+	{{rowfmt $t .}} \\\tabucline{}
+	{{end}}
+
+	 \bfseries
+	{{total_excl_vat $t}} \\\tabucline{}\bfseries
+	{{vat $t $vt}} \\\tabucline{}\bfseries
+	{{total_incl_vat $t $vt}} \\\tabucline{}
+{{end}}
+\end{tabu}
+\end{center}
+
+\begin{enumerate}
+
+\item{Gesamtbudget für die Sanierungsarbeiten}
+
+% table: renovation_overall_budget
+
+\begin{center}
+\begin{tabu}{|X[10]|X|} \tabucline{} \rowfont[c]\bfseries
+{{with $t := translate "au" .Contract.Tables.renovation_overall_budget}} % chktex 25
+	{{$t.Columns | column}} \\\tabucline{}
+	{{range $t.Rows}}
+	{{rowfmt $t .}} \\\tabucline{}
+	{{end}}
+
+	 \bfseries
+	{{total_excl_vat $t}} \\\tabucline{}\bfseries
+	{{vat $t $vt}} \\\tabucline{}\bfseries
+	{{total_incl_vat $t $vt}} \\\tabucline{}
+{{end}}
+\end{tabu}
+\end{center}
+
+\item{Finanzierungsplan für die Sanierungsarbeiten}
+
+% table: renovation_financial_plan
+
+\begin{center}
+\begin{tabu}{|X[10]|X|} \tabucline{} \rowfont[c]\bfseries
+{{with $t := translate "au" .Contract.Tables.renovation_financial_plan}} % chktex 25
+	{{$t.Columns | column}} \\\tabucline{}
+	{{range $t.Rows}}
+	{{rowfmt $t .}} \\\tabucline{}
+	{{end}}
+{{end}}
+\end{tabu}
+\end{center}
+
+\vspace{5mm}
+Dabei gilt:\\* %% start new line
+$I_C$ \quad \quad vom Auftragnehmer bereitgestellter Finanzbeitrag einschließlich der anrechenbaren Umsatzsteuer, der für die Berechnung der Sanierungsgebühr verwendet wird\\*
+$I_T$ \quad \quad die Gesamtinvestitionskosten für die Sanierungsarbeiten einschließlich Umsatzsteuer
+
+\vspace{5mm}
+Der Anteil der Investitionskosten, der für die Berechnung der Sanierungsgebühr in Anhang dieses Vertrages verwendet wird, basiert auf dem vom Auftragnehmer geleisteten Finanzbeitrag von $I_C$.
+
+\item{Maßnahmen im Rahmen der Sanierungsarbeiten und detaillierte Kostenschätzungen}
+
+\textit{[Bitte fügen Sie die detaillierte Projektplanung für die geplanten Maßnahmen unter Beachtung der einschlägigen Normen und Vorschriften bei.]}
+\vspace{5mm}
+
+Zum Beispiel:
+
+\begin{itemize}
+	\item Bauplanung 1 - Allgemeiner Teil
+	\item Bauplanung 2 - Architektur und Leistungserklärung (DOP)
+	\item Bauplanung 3 - Technische Netze und Heizung
+	\item Bauplanung 4 - Technische Netze und Blitzschutz
+	\item Bauplanung 5 - Umfang der Bauarbeiten
+	\item Rekonstruktion der Tiefbauarbeiten des Gebäudes
+	\item Umfang der Bauarbeiten
+	\item Etc.
+\end{itemize}
+
+\vspace{5mm}
+\textit{[Bitte fügen Sie die detaillierten Kostenschätzungen für die geplanten Maßnahmen gemäß Verordnung Nr. 239 des Ministerkabinetts einschließlich einer detaillierten Aufstellung der Projektentwicklungs- und Projektmanagementkosten bei.]}
+
+\end{enumerate}

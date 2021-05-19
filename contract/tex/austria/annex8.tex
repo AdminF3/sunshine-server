@@ -1,0 +1,56 @@
+{{- $vt := .VAT -}}
+
+\section{ANHANG - BETRIEBS- UND WARTUNGSGEBÜHR}
+
+\begin{enumerate}
+
+\item{Der Auftraggeber zahlt dem Auftragnehmer die Betriebs- und Wartungsgebühr für die im Rahmen dieses Vertrages erbrachten Leistungen während der Leistungsdauer.}
+
+\item{Für das erste Jahr der Leistungsperiode dieses Vertrages entspricht die Betriebs- und Wartungsgebühr einer jährlichen Gebühr von OM1={{.Contract.Fields.calculations_om1}}EUR/Jahr ohne Umsatzsteuer. Die Betriebs- und Wartungskosten setzen sich wie folgt zusammen:}
+
+% table: operation_maintenance_budget
+
+\begin{center}
+\begin{tabu}{|X[10]|X|} \tabucline{} \rowfont[c]\bfseries
+{{with $t := .Contract.Tables.operation_maintenance_budget}} % chktex 25
+	{{.Columns | column}} \\\tabucline{}
+	{{range .Rows}} % chktex 26
+	{{.|row}} \\\tabucline{}
+	{{end}}
+
+	 \bfseries
+	{{total_excl_vat $t}} \\\tabucline{}\bfseries
+	{{vat $t $vt}} \\\tabucline{}\bfseries
+	{{total_incl_vat $t $vt}} \\\tabucline{}
+{{end}}
+\end{tabu}
+\end{center}
+
+\item{Für jedes weitere Jahr der Leistungsperiode wird die Betriebs- und Wartungsgebühr auf der Grundlage des lettischen Verbraucherpreisindex, der vom Statistischen Zentralamt (Centrala statistikas parvalde) veröffentlicht wird, überprüft, um dem folgenden allgemeinen Grundsatz Rechnung zu tragen:}
+
+\[ OM_y = OM_{y-1} + (OM_{y-1} \times CPI_{y-1}) \]
+
+Dabei gilt:
+\begin{itemize}[label={}]
+	\item $y$ \quad \quad \quad Jahr ab Beginn der Leistungsperiode, wobei y=2 das zweite Jahr der Leistungsperiode des Vertrages und y=[20] das letzte Jahr der Leistungsperiode ist
+	\item $OM_y$ \quad \quad Betriebs- und Wartungsgebühr für das "y"-Abrechnungsjahr
+	\item $OM_{y-1}$ \quad Betriebs- und Wartungsgebühr des vorherigen Abrechnungsjahres
+\end{itemize}
+
+\item{Der Auftragnehmer hat am Ende jeder Abrechnungsperiode den Verwalter des Auftraggebers über die Kalkulation der Betriebs- und Wartungsgebühr für die nächste Abrechnungsperiode anhand der folgenden Tabelle zu benachrichtigen:}
+
+% table: operations_maintenance_fee
+
+\begin{center}
+\begin{tabu}{|X|X|X|X|X|X|} \tabucline{}
+{{with .Contract.Tables.operations_maintenance_fee}} %chktex 26
+	{{.Columns | column}} \\\tabucline{}
+	{{range .Headers}} {{.|row}} \\\tabucline{} {{end}} %chktex 26
+	{{range .Rows}} {{.|row}} \\\tabucline{} {{end}} %chktex 26
+{{end}}
+\end{tabu}
+\end{center}
+
+\item{Der Auftragnehmer hat dem Verwalter des Auftraggebers auf monatlicher Basis die gesamte monatliche Betriebs- und Wartungsgebühr (OMm) in Rechnung zu stellen. Der Verwalter hat sie den Wohnungseigentümern je nach Quadratmeter anteilig in Rechnung zu stellen.}
+
+\end{enumerate}

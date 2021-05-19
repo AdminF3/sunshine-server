@@ -1,0 +1,4 @@
+{getAgreementFields(projectID: "%s") { 
+    assignorBankAccountIban
+    }
+}

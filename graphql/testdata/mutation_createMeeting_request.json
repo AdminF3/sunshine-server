@@ -1,0 +1,22 @@
+mutation {
+    createMeeting(meeting: {
+        host: "%s",
+        name: "ads",
+        date: "2018-09-01T00:00:00Z",
+        stakeholder:PUBLIC_ORGANIZATION,
+        location:"sd",
+        topic: OTHER,
+        guests: {
+            name: "Michael"
+            phone: "0888123456"
+        }
+        actions_taken:"none"
+    }) {
+        guests {
+            phone
+        }
+        name
+        topic
+       
+  }
+}

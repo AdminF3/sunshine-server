@@ -1,0 +1,10 @@
+{notificationListing(%s) {
+  pageInfo {
+    hasPreviousPage
+    hasNextPage
+  }
+  edges {
+    cursor
+  }
+  totalCount
+}}

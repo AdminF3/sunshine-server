@@ -1,0 +1,10 @@
+mutation {
+        updateForfaitingApplication(
+        id: %q,
+        fa: {
+            privateBond: true,
+        }
+    ) {
+        privateBond
+    }
+}

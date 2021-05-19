@@ -1,0 +1,5 @@
+mutation {
+    advanceToMilestone(projectID: "%s", nextMilestone: COMMITMENT_STUDY) {
+        message
+    }   
+}

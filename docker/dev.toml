@@ -1,0 +1,29 @@
+[general]
+name = "Sunshine"
+url = "https://staging-sunshine.stageai.tech"
+logo = "https://staging-sunshine.stageai.tech/static/media/Sunshine-Logo-FB1200x627.c038d9ef.png"
+allowed_origins = ["http://localhost:3000"]
+port = 8001
+
+[paths]
+uploads = "./uploads"
+latex = "./contract/tex"
+migrations = "./models/migrations"
+
+[psql]
+host = "dev-sunshine-psql"
+port = 5432
+name = "sunshine-dev"
+username = "sunshine-dev"
+password = "sunshine-dev"
+
+[session]
+auth = "pB033ukUX7v5Jf5RVHFfjC4YAbQrxhuNBlc7Yp1rLHEG7WBsmKdB+xmSkoGayr41EbKHWRuYo86eudSPg7Rf0Q=="
+encr = "/xEIvzih8WTDwQhS4EsNfP7eY4XPJvEw/HGZ43TwHAE="
+path = "/"
+http_only = false
+
+[mail]
+backend = "file"
+from = "Sunshine <admin@sunshine.stageai.tech>"
+host = "/tmp/sunshine/mails"

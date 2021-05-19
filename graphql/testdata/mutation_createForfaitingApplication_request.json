@@ -1,0 +1,15 @@
+mutation {
+    createForfaitingApplication(fa: {
+        forfaitingManager: "%s"
+  	finance: EQUITY,
+  	privateBond: true
+  	bankAccount: {
+            beneficiaryName: "Jocko Doe",
+            bankNameAddress: "End of the world",
+            IBAN: "lt11111lt1"
+        },
+  	projectID: "%s",
+    }) {
+        privateBond
+    }
+}

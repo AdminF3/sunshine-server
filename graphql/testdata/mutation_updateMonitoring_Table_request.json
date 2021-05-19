@@ -1,0 +1,18 @@
+mutation{updateTable(projectID: "%s",tableName: "monitoring_phase_table",table: {
+    rows: [
+            [
+                "1",
+                "January",
+                "10",
+                "20",
+                "30",
+                "40",
+                "ivan",
+                "2020-02-31",
+                "-50"
+            ]
+        ]
+    }) {
+    rows
+    }
+}

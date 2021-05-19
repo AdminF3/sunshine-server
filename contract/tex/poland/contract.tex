@@ -1,0 +1,134 @@
+{{template "preamble.tex"}} % chktex 18
+\begin{document}
+
+\begin{center}
+	\begin{tabu}{|X[2]|X|}\tabucline{}
+		Līgums Nr.: {{.Contract.ID}} & Datums: \iffalse input fields.date value="{{.Contract.Fields.date}}" type="date" \fi {{.Contract.Fields.date}} \\\tabucline{} %chktex 26
+	\end{tabu}
+\end{center}
+
+\section{UMOWA O POPRAWĘ EFEKTYWNOŚCI ENERGETYCZNEJ}
+
+\textbf{Klient:}
+\begin{center}
+	\begin{tabu}{|X|X[2]|}\tabucline{}
+		Nazwa / Imię i nazwisko 				& \iffalse input fields.client_name value="{{.Contract.Fields.client_name}}" \fi {{.Contract.Fields.client_name}}	\\\tabucline{}
+		Numer rejestracyjny /osobisty numer identyfikacyjny 	& \iffalse input fields.client_id value="{{.Contract.Fields.client_id}}" \fi {{.Contract.Fields.client_id}}              \\\tabucline{}
+		Adres 							& \iffalse input fields.client_address value="{{.Contract.Fields.client_address}}" \fi {{.Contract.Fields.client_address}} \\\tabucline{}
+	\end{tabu}
+\end{center}
+
+\textbf{Wykonawca:}
+\begin{center}
+	\begin{tabu}{|X|X[2]|}\tabucline{}
+		Nazwa            	& {{.ESCo.Name}} 		\\\tabucline{}
+		Numer rejestracyjny     & {{.ESCo.RegistrationNumber}} 	\\\tabucline{}
+		Nr płatnika VAT  	& {{.ESCo.VAT}} 		\\\tabucline{}
+    		Adres siedziby   	& {{.ESCo.Address}} 		\\\tabucline{}
+		Prokurent        	& \iffalse input fields.contractor_representative_name value="{{.Contract.Fields.contractor_representative_name}}" \fi {{.Contract.Fields.contractor_representative_name}} \\\tabucline{}
+	\end{tabu}
+\end{center}
+Strony zawarły niniejszą Umowę o poprawę efektywności energetycznej, zwaną dalej „Umową”.
+
+\section{WARUNKI SZCZEGÓLNE}
+\subsection{ZAKRES UMOWY}
+\begin{enumerate}
+	\item Przedmiotem Umowy jest wykonanie Prac renowacyjnych i świadczenie Usługi poprawy efektywności energetycznej, prowadzących do uzyskania Oszczędności energiia w Budynku zlokalizowanym przy {{asset_address .Asset.Address}} o numerze katastralnym {{.Asset.Cadastre}}
+	\item Opis zakresu budynkowego niniejszej Umowy i jej warunków przed wykonaniem Prac renowacyjnych przedstawiono w Aneksie 1 do Umowy.
+	\item Opis szczegółowego zakresu Prac renowacyjnych i związanych z nim Środków przedstawiono w Aneksie 2 do Umowy.
+\end{enumerate}
+
+\subsection{ŚWIADCZONE USŁUGI}
+\begin{enumerate}
+	\item Wykonawca obowiązuje się do zorganizowania zaprojektowania, zakupu, dostarczenia, zamontowania, uruchomienia, przekazania do użytkowania i sfinansowania Środków związanych z Pracami renowacyjnymi na potrzeby wdrożenia Środków w Budynku.
+	\item Wykonawca Umowy gwarantuje utrzymanie Standardów komfortu opisanych w ANEKS 2: BUDŻET I ZAKRES PRAC RENOWACYJNYCHdo Umowy w Okresie świadczenia usług.
+	\item Wykonawca Umowy udziela na Okres świadczenia usług Gwarancji oszczędności energii na poziomie {{.Project.GuaranteedSavings}}\% (tj.{{.Contract.Fields.calculations_qietg}}MWh) salīdzinājumā ar Pielikumā Nr. 4 norādīto Bāzlīniju (izejas datiem).
+	\item Wykonawca Umowy eksploatuje i utrzymuje Budynek w Okresie świadczenia usług zgodnie z postanowieniami Aneksu 5 do niniejszej Umowy.
+\end{enumerate}
+
+\subsection{OKRES OBOWIĄZYWANIA UMOWY}
+\begin{enumerate}
+	\item Okres prowadzenia prac renowacyjnych wynosi {{date_diff .Project.ConstructionFrom .Project.ConstructionTo}} dni i jest wyznaczony następującymi wstępnie przyjętymi datami:
+	\begin{enumerate}
+		\item Data rozpoczęcia prac renowacyjnych: \iffalse input project.construction_from value="{{.Project.ConstructionFrom}}" type="date" \fi {{.Project.ConstructionFrom}}
+		\item Data przekazania do użytkowania:     \iffalse input project.construction_to value="{{.Project.ConstructionTo}}" type="date" \fi {{.Project.ConstructionTo}}
+	\end{enumerate}
+	\item Okres świadczenia usług w ramach Umowy wynosi {{mul 12 .Project.ContractTerm}} miesięcy od Daty przekazania do użytkowania Środków.
+	\item Okres wnoszenia płatności przez Klienta odpowiada Okresowi świadczenia usług na mocy Umowy.
+	\end{enumerate}
+
+\subsection{WYNAGRODZENIE}
+\begin{enumerate}
+	\item Wykonawca będzie obciążał klienta w Okresie świadczenia usług wynikającym z Umowy Opłatami miesięcznymi obejmującymi następujące komponenty:
+	\begin{enumerate}
+		\item Opłata za energię cieplną i Opłata za ciepłą wodę użytkową wyliczone w sposób opisany w Aneksie 6,
+		\item Opłata za renowację wyliczona i indeksowana w sposób opisany w Aneksie 7,
+		\item Opłata za eksploatację i utrzymanie wyliczona i indeksowana w sposób opisany w Aneksie 8.
+		\item Wszystkie należne podatki (w tym VAT) związane ze świadczeniem Usług.
+	\end{enumerate}
+	\item Uzgadnia się następującą miesięczną Opłatę za renowację oraz Opłatę za eksploatację i utrzymanie w pierwszym miesiącu Okresu świadczenia usług:
+	\item Faktury dla Zarządcy ze strony Klienta będą wystawiane co miesiąc. Faktury przedłożone przez Wykonawcę Zarządcy ze strony Klienta będą płatne w terminie XXXX dni od otrzymania.
+\end{enumerate}
+
+\subsection{POZOSTAŁE POSTANOWIENIA}
+\begin{enumerate}
+	\item Umowa obejmuje Warunki ogólne, Warunki szczególne i Aneksy do Warunków szczególnych, będące integralną częścią Umowy.
+	\item Podpisując niniejsze Warunki szczególne, Strony potwierdzają, że znają, rozumieją, akceptują i mogą dotrzymać postanowień Warunków szczególnych, Aneksów do Warunków szczególnych i Warunków ogólnych niniejszej Umowy.
+
+% table: summary
+
+\begin{center}
+	\begin{tabu}{|X|X|X|X|}\tabucline{}\rowfont[c]\bfseries
+	{{with translate "pl" .Contract.Tables.summary}} % chktex 26
+	{{.Columns | column}} \\\tabucline{}
+	{{range .Rows}} % chktex 26
+	{{.|row}} \\\tabucline{}
+	{{end}}
+	\bfseries {{total .}} \\\tabucline{} % chktex 26
+	{{end}}
+	\end{tabu}
+\end{center}
+
+\item Faktury dla Zarządcy ze strony Klienta będą wystawiane co miesiąc. Faktury przedłożone przez Wykonawcę Zarządcy ze strony Klienta będą płatne w terminie \iffalse input fields.invoiced_days value="{{.Contract.Fields.invoiced_days}}" \fi {{.Contract.Fields.invoiced_days}} dni od otrzymania.
+
+\end{enumerate}
+
+\vspace{2cm}
+{{template "sign.tex"}} % chktex 18
+
+{{template "annex1.tex" .}} % chktex 18
+{{template "sign.tex"}} % chktex 18
+
+{{template "annex2.tex" .}} % chktex 18 chktex 26
+{{template "sign.tex"}} % chktex 18
+
+{{template "annex3.tex" .}} % chktex 18 chktex 26
+{{template "sign.tex"}} % chktex 18
+
+{{template "annex4.tex" .}} % chktex 18 chktex 26
+{{template "sign.tex"}} % chktex 18
+
+{{template "annex5.tex" .Contract.Tables}} % chktex 18 chktex 26
+{{template "sign.tex"}} % chktex 18
+
+{{template "annex6.tex" .}} % chktex 18 chktex 26
+{{template "sign.tex"}} % chktex 18
+
+{{template "annex7.tex" .}} % chktex 18 chktex 26
+{{template "sign.tex"}} % chktex 18
+
+{{template "annex8.tex" .}} % chktex 18 chktex 26
+{{template "sign.tex"}} % chktex 18
+
+{{template "annex9.tex" .Contract.Fields}} % chktex 18 chktex 26
+{{template "sign.tex"}} % chktex 18
+
+\pagebreak
+\section{ANEKS 10: PROTOKOŁY Z WALNYCH ZEBRAŃ WŁAŚCICIELI MIESZKAŃ W BUDYNKU}
+{{read .Markdown}} % chktex 26
+{{template "en_sign.tex"}} % chktex 18
+\FloatBarrier{}\mbox{}\vfill\pagebreak % make sure no floats (e.g. images) go past here.
+
+{{template "terms.tex"}} % chktex 18
+{{template "sign.tex"}} % chktex 18
+\end{document}

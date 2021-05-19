@@ -1,0 +1,9 @@
+mutation
+{updateAgreementFields(projectID: "%s", fields: {
+    assignorBankAccountIban: "%s"
+    }) { 
+        assignorAddress
+    assignorBankAccountIban
+    
+    }
+}

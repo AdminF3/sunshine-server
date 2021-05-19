@@ -1,0 +1,52 @@
+{{- $vt := .VAT -}}
+
+\section{ANEKS 8: OPŁATA ZA EKSPLOATACJĘ I UTRZYMANIE}
+
+\begin{enumerate}[label=\arabic*.]
+	\item Klient będzie płacił Wykonawcy Opłatę za eksploatację i utrzymanie związaną z Usługami świadczonymi na mocy niniejszej Umowy w Okresie świadczenia usług.
+	\item W pierwszym roku Okresu świadczenia usług na mocy Umowy Opłata za eksploatację i utrzymanie odpowiada rzeczywistej Opłacie w wysokości $OM_1={{.Contract.Fields.calculations_om1}}XEUR/year$, Rozbicie kosztów eksploatacji i utrzymania:
+
+% table: operation_maintenance_budget
+
+\begin{center}
+\begin{tabu}{|X[10]|X|} \tabucline{} \rowfont[c]\bfseries
+{{with $t := .Contract.Tables.operation_maintenance_budget}} % chktex 25
+	{{.Columns | column}} \\\tabucline{}
+	{{range .Rows}} % chktex 26
+	{{.|row}} \\\tabucline{}
+	{{end}}
+
+	 \bfseries
+	{{total_excl_vat $t}} \\\tabucline{}\bfseries
+	{{vat $t $vt}} \\\tabucline{}\bfseries
+	{{total_incl_vat $t $vt}} \\\tabucline{}
+{{end}}
+\end{tabu}
+\end{center}
+
+	\item Opłata za eksploatację i utrzymanie będzie dostosowywana w każdym kolejnym roku Okresu świadczenia usług w oparciu o łotewski indeks cen dóbr konsumpcyjnych publikowany przez Centralne Biuro Statystyki w celu odzwierciedlenia następującej ogólnej zasady:
+\[ OM_y = OM_{y-1} + (OM_{y-1} \times CPI_{y-1}) \]
+
+Gdzie:
+\begin{itemize}
+	\item $y$ Numer roku od początku Okresu świadczenia usług, gdzie y=2 oznacza drugi rok Okresu świadczenia usług na mocy Umowy, a y={{div .Project.ContractTerm 12}} jest ostatnim rokiem Okresu świadczenia usług %chktex 26
+	\item $OM_y$ Opłata za eksploatację i utrzymanie w Roku rozliczeniowym „y”
+	\item $OM_{y-1}$ Opłata za eksploatację i utrzymanie w poprzednim Roku rozliczeniowym
+\end{itemize}
+
+	\item Na końcu każdego Okresu rozliczeniowego Wykonawca przedstawi Zarządcy ze strony Klienta kalkulację Opłaty za eksploatację i utrzymanie na następny Okres rozliczeniowy w oparciu o następującą tabelę:
+
+% table: operations_maintenance_fee
+
+\begin{center}
+\begin{tabu}{|X|X|X|X|X|X|} \tabucline{}
+{{with .Contract.Tables.operations_maintenance_fee}} %chktex 26
+	{{.Columns | column}} \\\tabucline{}
+	{{range .Headers}} {{.|row}} \\\tabucline{} {{end}} %chktex 26
+	{{range .Rows}} {{.|row}} \\\tabucline{} {{end}} %chktex 26
+{{end}}
+\end{tabu}
+\end{center}
+
+	\item Wykonawca będzie co miesiąc wystawiał Zarządcy ze strony Klienta fakturę za całkowitą miesięczną Opłatę za eksploatację i utrzymanie ($OM_m$). Zarządca będzie wystawiał indywidualne faktury Właścicielom mieszkania w oparciu o zajmowaną powierzchnię.
+\end{enumerate}

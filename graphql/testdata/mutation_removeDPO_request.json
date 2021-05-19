@@ -1,0 +1,1 @@
+mutation {removePortfolioRole(userID: %q, country: %q, role: DPO) {message}}

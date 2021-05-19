@@ -1,0 +1,146 @@
+{{template "preamble.tex"}} % chktex 18
+\begin{document}
+
+\begin{center}
+	\begin{tabu}{|X[2]|X|}\tabucline{}
+		Nr. contract: {{.Contract.ID}} & Dată: \iffalse input fields.date value="{{.Contract.Fields.date}}" type="date" \fi {{.Contract.Fields.date}} \\\tabucline{} %chktex 26
+	\end{tabu}
+\end{center}
+
+\section{CONTRACT DE PERFORMANȚĂ ENERGETICĂ}
+
+\textbf{Clientul:}
+\begin{center}
+	\begin{tabu}{|X|X[2]|}\tabucline{}
+		Nume/ nume, prenume 	& \iffalse input fields.client_name value="{{.Contract.Fields.client_name}}" \fi {{.Contract.Fields.client_name}} 		\\\tabucline{}
+		Număr de înregistraare/ numărul de identificare personal & \iffalse input fields.client_id value="{{.Contract.Fields.client_id}}" \fi {{.Contract.Fields.client_id}}	\\\tabucline{}
+		Adresă 			& \iffalse input fields.client_address value="{{.Contract.Fields.client_address}}" \fi {{.Contract.Fields.client_address}}	\\\tabucline{}
+	\end{tabu}
+\end{center}
+
+\textbf{Contractantul:}
+\begin{center}
+	\begin{tabu}{|X|X[2]|}\tabucline{}
+		Nume            	& {{.ESCo.Name}} \\\tabucline{}
+		Număr de înregistrare 	& {{.ESCo.RegistrationNumber}} \\\tabucline{}
+		Număr TVA 		& {{.ESCo.VAT}} \\\tabucline{}
+		Adresă oficială     	& {{.ESCo.Address}} \\\tabucline{}
+                Reprezentant legal 	& \iffalse input fields.contractor_representative_name value="{{.Contract.Fields.contractor_representative_name}}" \fi {{.Contract.Fields.contractor_representative_name}} \\\tabucline{}
+	\end{tabu}
+\end{center}
+
+A încheiat acest contract de performanță energetică, denumit în continuare „acord”.
+
+\section{CONDIȚII SPECIFICE}
+\subsection{DOMENIUL ACORDULUI}
+\begin{enumerate}
+	\item Domeniul de aplicare al acordului este punerea în aplicare a lucrărilor de renovare și furnizarea de servicii de eficiență energetică care au ca rezultat economii de energie în clădirea situată la următoarea adresă: {{asset_address .Asset.Address}} cu numărul cadastral {{.Asset.Cadastre}}.
+	\item Domeniul de construcție al prezentului acord și condițiile sale înainte de lucrările de renovare sunt descrise în anexa nr. 1 la acord.
+	\item Domeniul de aplicare detaliat al lucrărilor de renovare și măsurile aferente sunt descrise în anexa nr. 2 la acord.
+\end{enumerate}
+
+\subsection{SERVICII OFERITE}
+\begin{enumerate}
+	\item Contractantul se angajează să aranjeze inginerie, achiziții, furnizare, instalare, pornire, punere în funcțiune și finanțare, menționate la lucrările de renovare, pentru implementarea măsurilor în clădire.
+	\item Contractantul pentru perioada de serviciu a acordului garantează standardele de confort descrise în anexa nr. 3 la acord.
+	\item Contractantul pentru perioada de serviciu a acordului oferă o garanție de economisire a energiei de {{.Project.GuaranteedSavings}}\%, care corespunde cu {{.Contract.Fields.calculations_qietg}}$MWh$ față de valoarea de bază inclusă în anexa nr. 4.
+	\item Contractantul pentru perioada de serviciu a contractului operează și întreține clădirea în conformitate cu prevederile detaliate în anexa nr. 5 la prezentul acord.
+\end{enumerate}
+
+\subsection{TERMENUL ACORDULUI}
+\begin{enumerate}
+	\item Perioada de construcţie este de {{date_diff .Project.ConstructionFrom .Project.ConstructionTo}} zile și a fost de acord cu următoarele date orientative supuse notificării:
+	\begin{enumerate}
+		\item Data începerii:                  \iffalse input project.construction_from value="{{.Project.ConstructionFrom}}" type="date" \fi {{.Project.ConstructionFrom}}
+		\item Data punerii în funcţiune:       \iffalse input project.construction_to value="{{.Project.ConstructionTo}}" type="date" \fi {{.Project.ConstructionTo}}
+	\end{enumerate}
+	\item Perioada de serviciu a acordului este {{mul 12 .Project.ContractTerm}} luni începând cu data punerii în funcțiune a măsurilor.
+	\item Termenul de plată al clientului corespunde perioadei de furnizare a contractului.
+\end{enumerate}
+
+\subsection{COMPENSARE}
+\begin{enumerate}
+	\item Contactantul va percepe clientul pe perioada de serviciu a prezentului contract tarifele lunare cuprinse în:
+	\begin{enumerate}
+		\item Taxa de energie termică și de apă caldă menajeră calculată conform anexei  nr. 6;
+		\item Taxa de renovare calculată și indexată conform anexei  nr. 7;
+		\item Taxa de exploatare și întreținere calculată și indexată conform anexei nr. 8;
+		\item Orice taxe datorate (cum ar fi TVA) la livrarea serviciilor.
+	\end{enumerate}
+	\item Taxa lunară de renovare și taxa de operare și întreținere pentru prima lună a perioadei de serviciu sunt convenite ca:
+
+% table: summary
+
+\begin{center}
+	\begin{tabu}{|X|X|X|X|}\tabucline{}\rowfont[c]\bfseries
+	{{with translate "ro" .Contract.Tables.summary}} % chktex 26
+	{{.Columns | column}} \\\tabucline{}
+	{{range .Rows}} % chktex 26
+	{{.|row}} \\\tabucline{}
+	{{end}}
+	\bfseries {{total .}} \\\tabucline{} % chktex 26
+	{{end}}
+	\end{tabu}
+\end{center}
+
+\item Managerul clientului va fi facturat lunar. Facturile transmise de contractant către administratorul clientului sunt datorate în termen de \iffalse input fields.invoiced_days value="{{.Contract.Fields.invoiced_days}}" \fi {{.Contract.Fields.invoiced_days}} zile de la primire.
+\end{enumerate}
+
+\subsection{ALTE DISPOZIŢII}
+\begin{enumerate}
+	\item Acordul include termenii și condițiile generale, condițiile specifice și anexele la condițiile specifice care fac parte integrantă din acord.
+	\item Prin semnarea acestor condiții specifice, părțile recunosc că au citit, înțeles și au fost de acord și pot respecta condițiile specifice, anexele condițiilor specifice și termenii și condițiile generale ale prezentului acord.
+\end{enumerate}
+
+\vspace{2cm}
+{{template "sign.tex"}} % chktex 18
+
+{{template "annex1.tex" .}} % chktex 18
+{{template "sign.tex"}} % chktex 18
+
+{{template "annex2.tex" .}} % chktex 18 chktex 26
+{{template "sign.tex"}} % chktex 18
+
+{{template "annex3.tex" .}} % chktex 18 chktex 26
+{{template "sign.tex"}} % chktex 18
+
+{{template "annex4.tex" .}} % chktex 18 chktex 26
+{{template "sign.tex"}} % chktex 18
+
+{{template "annex5.tex" .Contract.Tables}} % chktex 18 chktex 26
+{{template "sign.tex"}} % chktex 18
+
+{{template "annex6.tex" .}} % chktex 18
+{{template "sign.tex"}} % chktex 18
+
+{{template "annex7.tex" .}} % chktex 18 chktex 26
+{{template "sign.tex"}} % chktex 18
+
+{{template "annex8.tex" .}} % chktex 18 chktex 26
+{{template "sign.tex"}} % chktex 18
+
+{{template "annex9.tex" .Contract.Fields}} % chktex 18 chktex 26
+{{template "sign.tex"}} % chktex 18
+
+
+\begin{center}
+\begin{tabu}{ |X|X| }
+ \hline
+ Aquisition protocol meeting & \url{ {{.Attachments.acquisition_meeting }} } \iffalse attachment value="acquisition meeting" \fi \\
+ \hline
+ Commitment protocol meeting & \url{ {{.Attachments.commitment_meeting }} } \iffalse attachment value="commitment protocol meeting" \fi \\
+ \hline
+ Kickoff protocol meeting & \url{ {{.Attachments.kickoff_meeting }} } \iffalse attachment value="kickoff protocol meeting" \fi \\
+ \hline
+\end{tabu}
+\end{center}
+
+
+\pagebreak
+{{read .Markdown}} % chktex 26
+\FloatBarrier{}\mbox{}\vfill\pagebreak % make sure no floats (e.g. images) go past here.
+
+{{template "terms.tex"}} % chktex 18
+{{template "sign.tex"}} % chktex 18
+
+\end{document}

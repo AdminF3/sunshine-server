@@ -1,0 +1,55 @@
+{{- $vt := .VAT -}}
+
+\section{ANEXA NR. 8 - TAXĂ OPERAȚIONALĂ ȘI DE ÎNTREȚINERE}
+
+\begin{enumerate}
+\item Clientul plătește contractorului taxa de operare și întreținere pentru serviciile prestate în temeiul prezentului acord în perioada de serviciu.
+
+\item Pentru primul an din perioada de serviciu a prezentului acord, taxa de operare și întreținere corespunde unei taxe anuale de OM1={{.Contract.Fields.calculations_om1}} $EUR/an$ fără TVA. Defalcarea costurilor operaționale și de întreținere este următoarea:
+
+% table: operation_maintenance_budget
+
+\begin{center}
+\begin{tabu}{|X[10]|X|} \tabucline{} \rowfont[c]\bfseries
+{{with $t := translate "ro" .Contract.Tables.operation_maintenance_budget}} % chktex 25
+	{{.Columns | column}} \\\tabucline{}
+	{{range .Rows}} % chktex 26
+	{{.|row}} \\\tabucline{}
+	{{end}}
+
+	 \bfseries
+	{{total_excl_vat $t}} \\\tabucline{}\bfseries
+	{{vat $t $vt}} \\\tabucline{}\bfseries
+	{{total_incl_vat $t $vt}} \\\tabucline{}
+{{end}}
+\end{tabu}
+\end{center}
+
+\item Pentru fiecare an următor al perioadei de serviciu, taxa de operare și întreținere este supusă unei revizuiri bazate pe indicele leton al prețurilor de consum, publicat de Biroul Central de Statistică (Centrala statistikas parvalde) pentru a reflecta următorul principiu general:
+
+\[ OM_y = OM_{y-1} + (OM_{y-1} \times CPI_{y-1}) \]
+
+Unde:
+\begin{enumerate}
+  \item $y$ \quad \quad este numărul anului de la începutul perioadei de serviciu, întrucât y=2 este al doilea an din perioada de serviciu a acordului și $y$=[20] este ultimul an al perioadei de servicii
+  \item $OM_y$ \quad este taxa de exploatare și întreținere pentru anul de decontare „y”
+  \item $OM_{y-1}$ \quad reprezintă taxa de exploatare și întreținere din anul de decontare precedent
+\end{enumerate}
+
+\item Contractantul la sfârșitul fiecărei perioade de decontare notifică managerului clientului calculul tarifului de operare și întreținere pentru următoarea perioadă de decontare, pe baza următorului tabel:
+
+% table: operations_maintenance_fee
+
+\begin{center}
+\begin{tabu}{|X|X|X|X|X|X|} \tabucline{}
+{{with $t := translate "ro" .Contract.Tables.operations_maintenance_fee}} %chktex 26
+	{{.Columns | column}} \\\tabucline{}
+	{{range .Headers}} {{.|row}} \\\tabucline{} {{end}} %chktex 26
+	{{range .Rows}} {{.|row}} \\\tabucline{} {{end}} %chktex 26
+{{end}}
+\end{tabu}
+\end{center}
+
+\item Contractantul lunar va factura administratorului clientului pentru taxa totală lunară de operare și întreținere ($OM_m$). Administratorul va factura pe fiecare proprietar de apartamente pe o bază pro rata a unui metru pătrat.
+
+\end{enumerate}

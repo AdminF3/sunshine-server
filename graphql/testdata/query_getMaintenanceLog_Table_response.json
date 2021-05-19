@@ -1,0 +1,36 @@
+{
+    "getTable": {
+        "columns": [
+            {
+                "headers": null,
+                "kind": "String",
+                "name": "Activity"
+            },
+            {
+                "headers": null,
+                "kind": "String",
+                "name": "Company responsible for execution"
+            },
+            {
+                "headers": null,
+                "kind": "String",
+                "name": "Planned date"
+            },
+            {
+                "headers": null,
+                "kind": "String",
+                "name": "Done date"
+            },
+            {
+                "headers": null,
+                "kind": "String",
+                "name": "Status"
+            },
+            {
+                "headers": null,
+                "kind": "String",
+                "name": "Comments"
+            }
+        ]
+    }
+}

@@ -1,0 +1,42 @@
+% NOTE: This is invalid .tex file (truncated beginning of
+% tabu) in order to make pdflatex fail.
+\documentclass[a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{textcomp}
+\usepackage{tabu}
+\usepackage[
+  margin=1.5cm,
+]{geometry}
+
+\special{papersize=210mm,297mm}
+\setlength{\parindent}{0pt}
+\tabulinesep=3pt
+\pagestyle{plain}
+\begin{document}
+
+\begin{minipage}{\textwidth}
+\centering
+\begin{Large}
+\textbf{ANNEX I {-} SCOPE OF RENOVATION WORKS AND BUDGET}
+\end{Large}
+\end{minipage}
+
+\section{Scope of Renovation works}
+\subsection{Project development and management}
+
+\begin{center}
+\begin{tabu}{|X
+{{with .Contract.Tables.renovation_overall_budget }}
+	{{.Columns | column}} \\\tabucline{}
+	{{range .Rows}}
+	{{.|row}} \\\tabucline{}
+	{{end}}
+{{end}}
+\end{tabu}
+\end{center}
+
+
+
+\end{document}

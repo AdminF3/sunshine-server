@@ -1,0 +1,1 @@
+mutation { setVat(country: "Bulgaria", vat: %d) {country, vat}}

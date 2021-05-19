@@ -1,0 +1,1 @@
+mutation {addOrganizationRole(org: %q, user: %q, role: %s) {message}}

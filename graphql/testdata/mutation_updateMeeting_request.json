@@ -1,0 +1,17 @@
+mutation {
+    updateMeeting(meeting: {
+        ID: "%s",
+        name:"Final meeting",
+        guests: [
+	    {
+                name: "john1"
+                phone: "911"
+            }
+        ],
+        internalProject: "Fineergo-Dom"
+    }) {
+        name
+        attachments{name}
+        internalProject
+    }
+}

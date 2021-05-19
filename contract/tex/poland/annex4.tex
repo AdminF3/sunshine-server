@@ -1,0 +1,97 @@
+{{- $tables := .Contract.Tables -}}
+
+\section{ANEKS 4: STAN ODNIESIENIA I GWARANCJA OSZCZĘDNOŚCI ENERGII}
+
+\subsection{Okres odniesienia obejmuje dane miesięczne z lat [$gads^{n-2}$, $gads^{n-1}$ un $gads^n$]}
+Dane o energii za Okres odniesienia:
+
+% table: baseyear
+
+\begin{center}
+\begin{tabu}{|X[2]|X|X|X|X|X|X|X|X|X|X|X|X|} \tabucline{} \rowfont[c]\bfseries
+	& \multicolumn{4}{c|}{ {{baseyear "pl" 2}} } & \multicolumn{4}{c|}{ {{baseyear "pl" 1}} } & \multicolumn{4}{c|}{ {{baseyear "pl" 0}} } \\
+	& \multicolumn{4}{c|}{ {{.Contract.Tables.baseyear_n_2.Title}} } & \multicolumn{4}{c|}{ {{.Contract.Tables.baseyear_n_1.Title}} } & \multicolumn{4}{c|}{ {{.Contract.Tables.baseyear_n.Title}} } \\\tabucline{}\rowfont[c]\bfseries
+  	{{$tt := join_tables .Contract.Tables.baseyear_n_2 .Contract.Tables.baseyear_n_1 .Contract.Tables.baseyear_n }} %chktex 25
+  	{{with $t := translate "pl" $tt}}
+	{{$t.Columns | column_sideways}} \\\tabucline{} \rowfont[]\bfseries %chktex 25
+	{{range $t.Headers}}
+	{{.|row}} \\\tabucline{}
+	{{end}}
+	{{range $t.Rows}}
+	{{row .}} \\\tabucline{} %chktex 26
+	{{end}}
+
+	\bfseries {{average $t }} \\\tabucline{}
+	\bfseries {{total $t}} \\\tabucline{}
+{{end}}
+\end{tabu}
+\end{center}
+
+\subsection{Warunki w Okresie odniesienia}
+
+% table: baseconditions
+
+\begin{center}
+\begin{tabu}{|X[2]|X|X|X|X|X|X|X|X|X|X|X|X|} \tabucline{} \rowfont[c]\bfseries
+	& \multicolumn{4}{c|}{ {{baseyear "pl" 2}} } & \multicolumn{4}{c|}{ {{baseyear "pl" 1}} } & \multicolumn{4}{c|}{ {{baseyear "pl" 0}} } \\
+	& \multicolumn{4}{c|}{ {{.Contract.Tables.baseyear_n_2.Title}} } & \multicolumn{4}{c|}{ {{.Contract.Tables.baseyear_n_1.Title}} } & \multicolumn{4}{c|}{ {{.Contract.Tables.baseyear_n.Title}} } \\\tabucline{}\rowfont[c]\bfseries
+  	{{$tt := join_tables .Contract.Tables.baseconditions_n_2 .Contract.Tables.baseconditions_n_1 .Contract.Tables.baseconditions_n }} %chktex 25
+  	{{with $t := translate "pl" $tt}}
+	{{$t.Columns | column_sideways}} \\\tabucline{} \rowfont[]\bfseries %chktex 25
+	{{range $t.Headers}}
+	{{.|row}} \\\tabucline{}
+	{{end}}
+	{{range $t.Rows}}
+	{{row .}} \\\tabucline{} %chktex 26
+	{{end}}
+
+	\bfseries {{average $t }} \\\tabucline{}
+	\bfseries {{total $t}} \\\tabucline{}
+{{end}}
+\end{tabu}
+\end{center}
+
+\subsection{Wariant bazowy}
+Wariant bazowy jest ustalany w oparciu o dane o energii i warunki w Okresie odniesienia:
+
+% table: baseline
+
+\begin{center}
+\begin{tabu}{|X[2]|X|X|X|X|X|X|} \tabucline{}
+{{with $t := translate "pl" .Contract.Tables.baseline}}
+	{{.Columns | column}} \\\tabucline{}
+	{{range .Rows}} {{rowf $t .}} \\\tabucline{} {{end}} %chktex 26
+{{end}}
+\end{tabu}
+\end{center}
+
+\subsection{Gwarancja oszczędności energii i Gwarancja zużycia energii}
+
+\begin{enumerate}
+	\item Wykonawca zagwarantuje w Okresie świadczenia usług na mocy niniejszej Umowy, że wdrożone Środki i wyświadczone Usługi zmniejszą zużycie energii na ogrzewanie pomieszczeń i na straty obiegowe ($Q_{Apk,cz,ref}$) w Okresie rozliczeniowym (rocznym) o::
+
+	$SAVINGS_{HEAT}$ \iffalse input project.savings value="{{.Project.GuaranteedSavings}}" \fi {{.Project.GuaranteedSavings}} \% zużycia na ogrzewanie pomieszczeń i na straty obiegowe wg Wariantu bazowego ($Q_{Apk,cz,ref}$).
+
+	\item Gwarancja oszczędności energii:
+
+\[Q_{iet,G} = Q_{Apk, cz, ref} x SAVINGS_{HEAT}  = {{.Contract.Fields.calculations_qietg}} MWh/gadā\]
+
+Gdzie:
+\begin{itemize}
+	\item $Q_{iet,G}$	Gwarancja oszczędności energii, MWh/rok
+	\item $Q_{Apk,cz,ref}$	Zużycie energii na ogrzewanie pomieszczeń i na straty obiegowe wg Stanu odniesienia, MWh/rok
+\end{itemize}
+
+\end{enumerate}
+
+\subsection{Gwarancja zużycia energii:}
+
+\[Q_{Apk,cz,G} = Q_{Apk,cz,ref} - Q_{iet,G} = {{.Contract.Fields.calculations_qapkczg}} MWh/rok\]
+
+Kur:
+
+\begin{itemize}
+	\item $QApk,cz,G$	Gwarancja zużycia energii na ogrzewanie pomieszczeń i na straty obiegowe, MWh/rok
+	\item $QApk,cz,ref$	Wariant bazowy zużycia energii na ogrzewanie pomieszczeń i na straty obiegowe, MWh/rok
+	\item $Qiet,G$	Gwarancja oszczędności energii, MWh/rok
+\end{itemize}

@@ -1,0 +1,185 @@
+\section{PIELIKUMS Nr. 6 {-} AR ENERĢIJU, MĀJSAIMNIECĪBU KARSTO ŪDENI SAISTĪTĀS MAKSAS UN MĒRĪJUMI UN PĀRBAUDES}
+
+\subsection{Izlīdzinātā siltumenerģijas patēriņa noteikšana}
+\begin{enumerate}
+	\item Maksa par siltumenerģiju aprēķināma par Norēķinu periodu un sadalāma 12 (divpadsmit) vienādās daļās. Tādējādi Pasūtītājs katru mēnesi veic maksājumus par vienādu Siltumenerģijas daudzumu (12 mēnešu periodā).
+	\item Ikmēneša Maksa par siltumenerģiju aprēķināma, balstoties uz Garantēto enerģijas patēriņu, spēkā esošo Siltumenerģijas tarifu un Ēkas Apkurināmo platību tālāk norādītajā veidā, par katru Norēķinu perioda mēnesi:
+
+\[ Q^{m}_{Apk,cz,G} = \frac{Q_{Apk,cz,G}}{12} \]
+\[ E^{m}_{F,G} = Q^{m}_{Apk,cz,G} \times HT^m \]
+\[ Ap^m = \frac{E^{m}_{F,G} }{A_{Apk}} \]
+
+Kur
+
+\begin{itemize}
+	\item $Q^{m}_{Apk,cz,G}$ ir ikmēneša izlīdzinātais siltumenerģijas patēriņš par Ēkas telpu apkuri un cirkulācijas zudumiem, ievērojot Garantēto enerģijas patēriņu, $MWh/mēnesī$
+	\item $Q_{Apk,cz,G}$ ir Garantētais enerģijas patēriņš telpu apkurei un cirkulācijas zudumiem atbilstoši šā Līguma 5.\@ pielikumā ietvertajiem aprēķiniem, $MWh/gadā$
+	\item $E^{m}_{F,G}$ ir ikmēneša Maksas par siltumenerģiju Ēkā kopējā summa
+	\item $HT^m$ ir attiecīgajam norēķinu mēnesim piemērojamais Siltumenerģijas tarifs, $EUR/MWh$
+	\item $A_{Apk}$ ir Ēkas Apkurināmā platība, kas tiek izmantota apkures patēriņa aprēķiniem, $m^2$
+	\item $Ap^m$ ir ikmēneša Maksa par siltumenerģiju par kvadrātmetru, ko Pārvaldnieks izmanto ikmēneša rēķinu sagatavošanai Pasūtītājam, $EUR/m^2$ mēnesī
+\end{itemize}
+
+\item Izpildītājs katru mēnesi aizpilda zemāk norādīto tabulu ikmēneša Maksas par siltumenerģiju aprēķinam::
+
+% table: calc_energy_fee
+
+\begin{center}
+\begin{tabu}{|X|X|X|X|X|X|} \tabucline{}
+{{with translate "lv" .Contract.Tables.calc_energy_fee}} %chktex 26
+	{{.Columns | column}} \\\tabucline{}
+	{{range .Headers}} {{.|row}} \\\tabucline{} {{end}} %chktex 26
+	{{range .Rows}} {{.|row}} \\\tabucline{} {{end}} %chktex 26
+	\bfseries {{total .}} \\\tabucline{} %chktex 26
+{{end}}
+\end{tabu}
+\end{center}
+
+	\item Izpildītājs katru mēnesi izraksta rēķinu Pasūtītāja Pārvaldniekam par kopējo ikmēneša Maksu par siltumenerģiju (). Pārvaldnieks izrakstīs rēķinu katram atsevišķajam Dzīvokļa īpašniekam proporcionāli, par kvadrātmetru.
+\end{enumerate}
+
+
+\subsection{Izlīdzinātā siltumenerģijas patēriņa starpības aprēķins Norēķinu perioda beigās}
+\begin{enumerate}
+	\item Katra Norēķinu perioda beigās Izpildītājs aprēķina starpības (atlikuma) maksājumu saistībā ar izlīdzināto 12 (divpadsmit) mēnešu Maksu par siltumenerģiju, kuru Izpildītājs iekasē no Pasūtītāja, balstoties uz Izlīdzināto siltumenerģijas patēriņu, apmērā, kur ņemts vērā uzskaites ierīču izmērītais siltumenerģijas patēriņš. Norēķinu summa tiek aprēķināta saskaņā ar šādu formulu:
+
+\[ B_F = E_{F,S,T} - E_{F,G,T} \]
+
+Kur:
+
+\begin{itemize}
+	\item $E_{F,S,T}$ ir gada kopējā Maksa par enerģiju, kuras pamatā ir izmērītās enerģijas dati, kas aprēķināta kā ikmēneša $E^{m}_{F,S}$ summa 12 mēnešu Norēķinu periodā, $EUR$
+	\item $E_{F,G,T}$ ir kopējā gada Maksa par enerģiju par Ēku, kas aprēķināta kā ikmēneša $E^{m}_{F,S}$ summa 12 mēnešu Norēķinu periodā, $EUR$
+\end{itemize}
+
+	\item Izpildītājs katra Norēķinu perioda beigās aizpilda tālāk norādīto tabulu, lai aprēķinātu Starpības maksājumu:
+
+% table: balancing_period_fee
+
+\begin{center}
+\begin{tabu}{|X|X|X|X|X|X|X|} \tabucline{}
+{{with translate "lv" .Contract.Tables.balancing_period_fee}} %chktex 26
+	{{.Columns | column}} \\\tabucline{}
+	{{range .Headers}} {{.|row}} \\\tabucline{} {{end}} %chktex 26
+	{{range .Rows}} {{.|row}} \\\tabucline{} {{end}} %chktex 26
+{{end}}
+\end{tabu}
+\end{center}
+
+Kur:
+
+\begin{itemize}
+	\item $Q^{m}_{Apk,cz,G}$ ir ikmēneša fiksētais siltumenerģijas patēriņš Ēkā telpu apkurei un cirkulācijas zudumiem, pamatojoties uz Garantēto enerģijas patēriņu, $MWh/mēnesī$
+	\item $HT^m$ ir Siltumenerģijas tarifs, kas piemērojams attiecīgajam norēķinu mēnesim, $EUR/MWh$
+	\item $Q^m_{Apk,cz,S}$ ir ikmēneša Enerģijas patēriņš telpu apkurei un cirkulācijas zudumiem, ievērojot Mērījumus un kvalitātes pārbaudi
+	\item $E^m_{F,G}$ ir kopējā ikmēneša Maksa par enerģiju Ēkā, kas tiek aprēķināta katru mēnesi kā $Q^{m}_{Apk,cz,G} \times HT^{m}$
+\end{itemize}
+
+	\item Ja starpība ir negatīva ($B_F$ ir negatīvs skaitlis), Puses veic norēķinus par starpību vienreizēja maksājuma veidā, kur Izpildītājs apmaksā Pasūtītājam starpību, vai atskaitot atlikumu vienādās summās no maksājuma, kas Pasūtītājam ir jāmaksā Izpildītājam, sadalot visā Norēķinu periodā. Par Norēķinu periodu pēc Līguma beigām norēķini par atlikumu tiek veikti vienreizēja maksājuma veidā.
+
+	\item Ja starpība ir pozitīva ($B_F$ ir pozitīvs skaitlis), Puses veic norēķinus par starpību tālāk norādītajā veidā:
+	\begin{enumerate}
+		\item kā vienreizēju starpības maksājumu, ko PasūtītājS maksā Izpildītājam, vai
+		\item sadalot atlikumu vienādās summās, vairākos maksājumos, kas veicami nākamajā Norēķinu periodā, un pieskaitot vienu vienotu sadalījumu Pasūtītāja Izpildītājam nākamajā Norēķinu periodā veicamajam maksājumam.
+		\item Par pēdējo Līguma Norēķinu periodu Pusēm ir jāveic norēķini par atlikumu ar vienreizēju maksājumu.
+	\end{enumerate}
+
+	\item Pasūtītājs atzīst, ka Maksa par siltumenerģiju uzreiz atspoguļos jebkādas izmaiņas vai grozījumus Siltmenerģijas tarifā ($HT^m$), līdzko tie stājas spēkā.
+\end{enumerate}
+
+\subsection{Garantētā enerģijas ietaupījuma mērījumi un kvalitātes pārbaudes}
+
+\begin{enumerate}
+	\item Katra Norēķinu perioda beigās Puses pārbauda, vai ir panākts šajā Līgumā noteiktais Garantētais enerģijas ietaupījums. Puses vienojas pārbaudīt kvalitāti atbilstoši turpmāk norādītajam:
+	\begin{enumerate}
+		\item Klimata korekcijas tiek veiktas, lai salīdzinātu apstākļus Energoefektivitātes pakalpojumu sniegšanas laikā ar Bāzlīnijas apstākļiem. Korekcija tiek aprēķināta, izmantojot tālāk norādīto formulu:
+
+\[ Q^{Adj}_{Apk,CZ,S} = Q_{Apk,S} \times \left( \frac{GDD_{Ref}}{GDD_S}\right) + Q_{CZ,S} \]
+
+Where:
+
+\begin{itemize}
+	\item $Q^{Adj}_{Apk,CZ,S}$: klimatam pielāgotais enerģijas patēriņš telpu apkurei un cirkulācijas zudumiem pārskata norēķinu gadā, MWh
+	\item $Q_{Apk,S}$: faktiskais enerģijas patēriņš telpu apkurei pārskata norēķinu gadā, MWh
+	\item $Q_{CZ,S}$: faktiskais enerģijas patēriņš cirkulācijas zudumiem pārskata norēķinu gadā, MWh
+	\item $GDD_{Ref}$: apkures Grādu dienas Bāzlīnijas novērtēšanas periodā
+	\item $GDD_S$: apkures Grādu dienas pārskata gadā maksājumu aprēķiniem saskaņā ar Līguma par mērījumiem un kvalitātes pārbaudēm Vispārīgajiem noteikumiem un nosacījumiem
+\end{itemize}
+
+		\item Katra Norēķinu perioda beigās Izpildītājs sniegs novērtējumu, vai pakalpojumi ir veikti tā, lai panāktu Garantēto enerģijas ietaupījumu, atbilstoši šādām formulām:
+
+\[ Q_{iet,S} = Q_{Apk,cz,ref} - Q^{Adj}_{Apk,cz,S} \]
+\[ BH_{iet} = Q_{iet,S} - Q_{iet,G} \]
+
+Kur
+
+\begin{itemize}
+\item $Q_{Apk,cz,ref}$: Bāzlīnijas Enerģijas patēriņš telpu apkurei un cirkulācijas zudumiem, $MWh/gadā $
+\item $Q^{Adj}_{Apk,cz,S}$: klimatam pielāgotais enerģijas patēriņš telpu apkurei un cirkulācijas zudumiem Norēķinu periodā, $MWh/gadā$
+\item $Q_{iet,S}$: enerģijas ietaupījums saistībā ar telpu apkuri un cirkulācijas zudumiem Norēķinu periodā, $MWh/gadā$
+\item $Q_{iet,G}$: Garantētais enerģijas ietaupījums saistībā ar telpu apkuri un cirkulācijas zudumiem, $MWh$
+\item $BH_{iet}$: Enerģijas ietaupījuma starpība Norēķinu periodā, $MWh$
+\end{itemize}
+
+\vspace{1cm}
+		\begin{enumerate}
+			\item Garantētā enerģijas ietaupījuma izpilde: ja starpība (atlikums) ir $BH_{iet}=0.0 MWh$, tad Izpildītājs attiecīgajā Norēķinu periodā ir panācis Garantēto enerģijas ietaupījumu. Šādā gadījumā Pasūtītājam no Izpildītāja nepienākas atmaksa.
+
+			\item Garantētā enerģijas ietaupījuma neizpilde: ja starpība ir negatīva ($BH_{iet}$ ir negatīvs skaitlis) tad Izpildītājam attiecīgajā Norēķinu periodā nav izdevies panākt savu Garantēto enerģijas ietaupījumu, un tas sedz Pasūtītājam negatīvo bilanci (starpību), kas tiek aprēķināta saskaņā ar šādu formulu:
+
+\[ C_G = B_{iet} \times HT_S \]
+
+Kur:
+
+\begin{itemize}
+	\item $C_G$: kompensācija par Garantētā enerģijas ietaupījuma neizpildi Norēķinu periodā, EUR (bez PVN)
+	\item $BH_{iet}$: Enerģijas ietaupījuma starpība Norēķinu periodā, $MWh$
+	\item $HT_S$: Vidējais siltumenerģijas tarifs Norēķinu periodā, kas tiek aprēķināts kā ikmēneša Siltumenerģijas tarifu summa Norēķinu periodā, kas dalīta ar attiecīgā Norēķinu perioda mēnešu skaitu, $EUR/MWh$ (bez PVN)
+\end{itemize}
+
+Puses veic kompensācijas ($C_g$) samaksu kā vienreizēju maksājumu, ko Izpildītājs maksā Pasūtītājam, vai atskaitot kompensāciju līdzīgās daļās no Pasūtītāja Izpildītājam maksājamā maksājuma, sadalot to nākamajā Norēķinu periodā. Izpildītājam ir tiesības izvēlēties vēlamo variantu, tomēr par pēdējo Norēķinu periodu, pēc kura tiek izbeigts Līgums, Puses norēķinus veic vienreizēja maksājuma veidā.
+
+		\end{enumerate}
+
+		\item Pārsniegums: Ja starpība (atlikums) ir pozitīva ($BH_{iet}$  ir pozitīvs skaitlis), tad Izpildītājs ir pārsniedzis savu Garantēto enerģijas ietaupījumu un tiesīgs paturēt jebkādus un visus maksājumus par šādu pārsniegumu. Pārsniegums aprēķināms, izmantojot šādu formulu:
+
+\[ P_G = BH_{iet} \times ET_S \]
+
+Kur:
+
+\begin{itemize}
+	\item $P_G$: pārsniegums Norēķinu periodā, EUR (bez PVN)
+	\item $BH_{iet}$: Enerģijas ietaupījuma starpība (atlikums) Norēķinu periodā, MWh
+	\item $HT_S$: Vidējais siltumenerģijas tarifs Norēķinu periodā, kas tiek aprēķināts kā ikmēneša Siltumenerģijas tarifu summa Norēķinu periodā, kas dalīta ar attiecīgā Norēķinu perioda mēnešu skaitu, EUR/MWh (bez PVN)
+\end{itemize}
+
+Puses veic norēķinus par pārsniegumu ($P_G$) vienreizēja maksājuma veidā, kur Pasūtītājs apmaksā Izpildītājam starpību, vai sadalot atlikumu vienādās daļās un pieskaitot maksājumam, kas Pasūtītājam ir jāveic Izpildītājam, sadalot to visā nākamajā Norēķinu periodā. Pasūtītājam ir tiesības izvēlēties vēlamo variantu, tomēr par pēdējo Norēķinu periodu, pēc kura tiek izbeigts Līgums, Puses norēķinus veic vienreizēja maksājuma veidā.
+
+	\end{enumerate}
+
+	\item Lai noteiktu Garantēto enerģijas ietaupījumu un novērtētu Garantētā enerģijas ietaupījuma izpildi, tiek noteikti izejas dati atbilstoši Līguma Vispārīgajiem noteikumiem un nosacījumiem attiecībā uz Mērījumiem un kvalitātes pārbaudēm.
+\end{enumerate}
+
+\subsection{Mājsaimniecību karstais ūdens}
+
+\begin{enumerate}
+	\item Maksājuma par mājsaimniecību karsto ūdeni pamatā ir katra atsevišķā Dzīvokļa īpašnieka faktiskais patēriņš, kas ir pienācīgi reģistrēts, izmantojot atsevišķas kalibrētas uzskaites ierīces, kas uzstādītas katrā Dzīvoklī.
+	\item Samaksa par mājsaimniecību karsto ūdeni tiek aprēķināta par katru mēnesi, izmantojot zemāk norādīto formulu:
+
+\[ Q^{m}_{ku} = \frac{V_m \times \rho_{ku} \times c_u \times \left(\theta_{ku} - \theta_{u,pieg}\right)}{3600} \times HT^m \]
+
+kur:
+
+\begin{itemize}
+	\item $V_m$: patērētais mājsaimniecību karstā ūdens apjoms, kas tiek mērīts siltummezglā, $m^3$
+	\item $\rho_{ku}$: ūdens blīvums, kas atbilst $985 kg/m^3$
+	\item $c_u$: ūdens īpatnējā siltumietilpība, kas atbilst $4.1868 \times 10^{-3} J/kg^\circ C$
+	\item $\theta_{u,pieg}$: ūdensapgādes uzņēmuma piegādātā aukstā ūdens temperatūra, $^\circ C$
+	\item $\theta_{ku}$: Ēkas siltummezglā piegādātā karstā ūdens temperatūra, $^\circ C$
+	\item $HT_m$: ir attiecīgajā norēķinu mēnesī piemērojamais Siltumenerģijas tarifs, $EUR/MWh$
+\end{itemize}
+
+	\item Mērījumi un kvalitātes pārbaudes: aukstā ūdens un karstā ūdens piegādes temperatūru nosaka atbilstoši Līguma Vispārīgajiem noteikumiem un nosacījumiem attiecībā uz Mērījumiem un kvalitātes pārbaudēm.
+	\item Pasūtītājs pienācīgi atzīst, ka visas izmaiņas un grozījumi Enerģijas tarifā ir piemērojamas maksai par karsto ūdeni nekavējoties pēc to pieņemšanas no Regulatora vai atbilstošās kompetentās iestādes puses un ir piemērojamas, sākot no to apstiprināšanas un spēkā stāšanās dienas, tādā kārtībā, kādā tiek veikti apkures maksas aprēķini.
+	\item Izpildītājs katru mēnesi izraksta rēķinu Pasūtītāja Pārvaldniekam par kopējo Maksu par karsto ūdeni. Pārvaldnieks izrakstīs rēķinu katram atsevišķajam Dzīvokļa īpašniekiem atbilstoši individuālajam ūdens patēriņam.
+\end{enumerate}

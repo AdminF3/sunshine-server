@@ -1,0 +1,52 @@
+\section{ANNEX №7 {-} RENOVATION FEE}
+
+\begin{enumerate}[label=\arabic*.]
+	\item The Client agrees to the Financial Contribution of the Contractor because it is a necessary and indispensable service related to:
+	\begin{enumerate}
+		\item the successful implementation and installation of the Measures;
+		\item the enforcement of the Contractor’s Energy Savings Guarantee;
+		\item the qualitative provision of the agreed Energy Efficiency Services.
+	\end{enumerate}
+
+	\item The Contractor agrees to provide a Financial Contribution to the Client, which is exclusively used for the scope of this Agreement.
+
+	\item The Client shall reimburse the Contractor for the Financial Contribution disbursed under this Agreement with the payment of a Renovation Fee based on the following conditions:
+	  \begin{enumerate}
+		\item Contractor Financial Contribution (including VAT): \iffalse input fields.contractor_fin_contribution value="{{.Contract.Fields.contractor_fin_contribution}}" \fi {{.Contract.Fields.contractor_fin_contribution}} EUR
+		\item Floating Interest Rate:
+			\begin{itemize}
+				\item which is comprised of the fixed part: \iffalse input fields.interest_rate_percent value="{{.Contract.Fields.interest_rate_percent}}" \fi {{.Contract.Fields.interest_rate_percent}} \% {-} offered by \iffalse input fields.interest_rate_offerter value="{{.Contract.Fields.interest_rate_offerter}}" \fi {{.Contract.Fields.interest_rate_offerter}}
+				\item and the floating part: \iffalse input fields.floating_part value="{{.Contract.Fields.floating_part}}" \fi {{.Contract.Fields.floating_part}} month EURIBOR
+			\end{itemize}
+		\item Repayment terms corresponding to the Service Period: {{mul 12 .Project.ContractTerm}} months
+	\end{enumerate}
+
+	\item Uniform Rate is a fixed interest rate expressed in annual percentage rate, of which the Parties have reached an agreement.
+	\item Floating Rate is a floating interest rate, which consists of a fixed part and a floating part:
+	\begin{enumerate}
+		\item The fixed part is a part of the Interest Rate, which is expressed in annual percentage rate, of which the Parties have reached an agreement, which may be amended by written agreement between the Parties.
+		\item The floating part is a floating parameter, and the EURIBOR of the respective period will be applied for the purpose to determine it. The EURIBOR rate is the average interest rate of the Eurozone banks of the respective period calculated by “Thomson Reuters” on a EUR settlement date, which is available on website http://www.euribor-ebf.eu
+	\end{enumerate}
+	\item The floating part of the Interest Rate for the first period shall be established by the Contractor on the Service Completion Date by applying the rate published on the previous Banking Day.
+	\item The floating part of the Interest Rate for the subsequent period shall be established by the Contractor on one of the following dates (taking into account which is the furthest to the Service Completion Date provided that it shall not be later than 6 or 12 months accordingly after the Service Completion Date): on 15th of January or 15th of April, or 15th of July, or 15th of October, by applying the rate published on the previous Banking Day.
+	\item The floating part of the Interest Rate for the subsequent periods shall be established by the Contractor on 15th of January and/or 15th of April, and/or 15th of July, and/or 15th of October, in view of the Floating Interest Period.
+	\item In case the floating part of the Interest Rate is of a negative value, then the amount of the Floating Interest Rate shall be equal to the fixed part of the Interest Rate.
+	\item If the swap date of the floating part of the Interest Rate falls on a day other than the Banking Day, then the respective swap date of the floating part of the Interest Rate shall be the following Banking Date. After determining the new floating part of the Interest Rate, the Contractor shall be sent to the Manager of the Client along with the current invoice a notification about changes in the Payment Schedule. The interest rates for the subsequent period and the Payment Schedule accordingly shall be deemed amended as of the first day of the new period, without entering into an agreement to the Agreement.
+	\item Calculation of the interest shall commence in the beginning of the Service Period at the signing of statement of conveyance/transfer.
+	\item Pursuant to provisions of the Agreement, the Interest shall be calculated on each calendar day presuming that a year consists of 360 days.
+	\item The Payment Schedule for the Renovation Fee based on the Contractor Financial Contribution and based on the conditions applicable at the time of signing this Agreement is:
+
+% table: project_measurements_table
+
+\begin{center}
+\begin{longtabu}{|X|X|X|X|X|} \tabucline{}
+{{with $t := translate "en" .Contract.Tables.project_measurements_table}}
+	{{.Columns | column}} \\\tabucline{}
+	{{range .Rows}} {{rowf $t .}} \\\tabucline{} {{end}} %chktex 26
+{{end}}
+\end{longtabu}
+\end{center}
+
+	\item The Contractor shall notify the Manager of the Client and provide an updated Payment Schedule in the case of changes of the floating part of the Floating Interest Rate.
+	\item The Contractor shall invoice the Manager of the Client monthly for the monthly Renovation Fee calculated according to the Payment Schedule. The Manager will charge each individual Apartment owner on a square meter pro rata basis.
+\end{enumerate}

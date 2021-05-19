@@ -1,0 +1,188 @@
+\section{ANNEX №6 {-} FEES RELATED TO ENERGY, DOMESTIC HOT WATER AND MEASUREMENT AND VERIFICATION}
+
+\subsection{Determination of the Flat Thermal Energy Consumption}
+\begin{enumerate}
+	\item The Fee for heating shall be calculated for the Settlement Period and divided into 12 (twelve) equal parts. Thus the Client makes payments for the same amount of Thermal Energy every month (within a 12-month period).
+	\item The monthly Thermal Energy Fee shall be calculated based on the Energy Consumption Guarantee, the current Thermal Energy Tariff and the Billing Area of the Building in the following manner for each month of the Settlement Period:
+
+\[ Q^{m}_{Apk,cz,G} = \frac{Q_{Apk,cz,G}}{12} \]
+\[ E^{m}_{F,G} = Q^{m}_{Apk,cz,G} \times HT^m \]
+\[ Ap^m = \frac{E^{m}_{F,G}}{A_{Apk}} \]
+
+Where:
+
+\begin{itemize}
+	\item $Q^{m}_{Apk,cz,G}$ is the monthly flat thermal energy consumption attributable to the Building’s space heating and circulation losses based on the Energy Consumption Guarantee, $MWh/month$
+	\item $Q_{Apk,cz,G}$ is the Energy Consumption Guarantee for space heating and circulation losses as calculated in Annex No. 5 of this Agreement, $MWh/year$
+	\item $E^{m}_{F,G}$ is the total monthly Thermal Energy Fee for the Building
+	\item $HT^m$ is the Thermal Energy Tariff applicable at the relative billing month, $EUR/MWh$
+	\item $A_{Apk}$ is the Billing area of the Building used for billing purposes $m^2$
+	\item $Ap^m$ is the monthly Thermal Energy Fee per square meter used by the Manager for the preparation of the monthly invoices to the Client, $EUR/m^2$ month
+\end{itemize}
+
+	\item The Contractor each month shall fill in the following table for the calculation of the monthly Thermal Energy Fee:
+
+% table: calc_energy_fee
+
+\begin{center}
+\begin{tabu}{|X|X|X|X|X|X|} \tabucline{}
+{{with translate "en" .Contract.Tables.calc_energy_fee}} %chktex 26
+	{{.Columns | column}} \\\tabucline{}
+	{{range .Headers}} {{.|row}} \\\tabucline{} {{end}} %chktex 26
+	{{range .Rows}} {{.|row}} \\\tabucline{} {{end}} %chktex 26
+	\bfseries {{total .}} \\\tabucline{} %chktex 26
+{{end}}
+\end{tabu}
+\end{center}
+
+	\item The Contractor on a monthly basis shall invoice the Manager of the Client for the total monthly Thermal Energy Fee ($E^{m}_{F, G}$). The Manager will invoice each separate Apartment Owners on a square meter pro rata basis.
+\end{enumerate}
+
+\subsection{Balancing of the Flat Thermal Energy Consumption at the end of the Settlement period}
+\begin{enumerate}
+	\item At the end of each Settlement Period, the Contractor shall calculate the Balance Payment for balancing the 12 (twelve) Thermal Energy Fees charged to the Client based on the Flat Thermal Energy Consumption against the payment due considering the metered thermal energy consumption. The settlement amount is calculated as:
+
+\[ B_F = E_{F,S,T} - E_{F,G,T} \]
+
+Where:
+
+\begin{itemize}
+	\item $E_{F,S,T}$ is the total yearly Energy Fee based on the metered energy data, calculated as the sum of the monthly $E^{m}_{F,S}$  over the 12 months settlement period, $EUR$
+	\item $E_{F,G,T}$ is the total yearly Energy Fee for the building, calculated as the sum of the monthly $E^{m}_{F,S}$  over the 12 months settlement period, $EUR$
+\end{itemize}
+
+	\item The Contractor at the end of each Settlement Period shall fill in the following table for the calculation of the Balance payment:
+
+% table: balancing_period_fee
+
+\begin{center}
+\begin{tabu}{|X|X|X|X|X|X|X|} \tabucline{}
+{{with translate "en" .Contract.Tables.balancing_period_fee}} %chktex 26
+	{{.Columns | column}} \\\tabucline{}
+	{{range .Headers}} {{.|row}} \\\tabucline{} {{end}} %chktex 26
+	{{range .Rows}} {{.|row}} \\\tabucline{} {{end}} %chktex 26
+{{end}}
+\end{tabu}
+\end{center}
+
+Where:
+
+\begin{itemize}
+	\item $Q^{m}_{Apk,cz,G}$ is the monthly flat thermal energy consumption attributable to the Building for space heating and circulation losses based on the Energy Consumption Guarantee, $MWh/month$
+	\item $HT^m$ is the Thermal Energy Tariff applicable at the relative billing month, $EUR/MWh$
+	\item $Q^m_{Apk,cz,S}$ is the monthly Energy Consumption for space heating and circulation losses subject to Measurement and Verification
+	\item $E^m_{F,G}$ is the total monthly Energy Fee for the Building calculated each month as $Q^{m}_{Apk,cz,G} \times HT^{m}$
+\end{itemize}
+
+	\item If the difference is negative ($B_F$ is a negative number) the Parties shall settle the difference either through a one-off payment of the balance from the Contractor to the Client or subtracting the outstanding balance in equal amounts from the due payment of the Client to the Contractor distributed throughout the next Settlement Period. For the Settlement Period after which the Agreement terminates, the balance is settled through a one-off payment
+
+	\item If the difference is positive ($B_F$ is a positive number) the Parties settle the difference either through:
+	\begin{enumerate}
+	\item a one-off payment of the balance by the Client to the Contractor, or
+	\item by splitting the outstanding balance in equal amounts by the number of payments due during the next Settlement Period and adding one equal split to the payment due by the Client to the Contractor during the next Settlement Period.
+	\item for the last Settlement Period of the Agreement, the parties must settle the balance through a one-off payment.
+	\end{enumerate}
+
+	\item The Client acknowledges that the Thermal Energy Fee will reflect immediately any and all changes of, or modifications to, the Thermal Energy Tariff ($HT^m$) upon its regulatory entry into force.
+\end{enumerate}
+
+
+\subsection{Measurement and Verification of the Energy Savings Guarantee}
+
+\begin{enumerate}
+	\item At the end of each Settlement Period, the Parties shall verify that the Energy Savings Guarantee under this Agreement is fulfilled. The Parties agree to verify as follows:
+	\begin{enumerate}
+		\item Weather adjustments are made to compare the conditions during the provision of Energy Efficiency Services with the Baseline conditions. The adjustment is calculated using the following formula:
+
+\[ Q^{Adj}_{Apk,CZ,S} = Q_{Apk,S} \times \left( \frac{GDD_{Ref}}{GDD_S}\right) + Q_{CZ,S} \]
+
+Where:
+
+\begin{itemize}
+	\item $Q^{Adj}_{Apk,CZ,S}$: Weather-adjusted energy consumption for space heating and circulation losses in the accounting settlement year, MWh
+	\item $Q_{Apk,S}$: Actual energy consumption for space heating in the accounting settlement year, MWh
+	\item $Q_{CZ,S}$: Actual energy consumption for circulation losses in the accounting settlement year, MWh
+	\item $GDD_{Ref}$: Heating degree days in the reference year (baseline year)
+	\item $GDD_S$: Heating Degree Days in the year under account for settlement calculated according to the General Terms and Condition of the Agreement for Measurement and Verification
+\end{itemize}
+
+		\item At the end of each Settlement Period, the Contractor will provide an assessment as whether the services have been performed so to fulfill the Energy Savings Guarantee as follows:
+
+\[ Q_{iet,S} = Q_{Apk,cz,ref} - Q^{Adj}_{Apk,cz,S} \]
+\[ BH_{iet} = Q_{iet,S} - Q_{iet,G} \]
+
+Where:
+
+\begin{itemize}
+\item $Q_{Apk,cz,ref}$: Baseline Energy consumption for space heating and circulation losses, $MWh/year$
+\item $Q^{Adj}_{Apk,cz,S}$: Weather-adjusted energy consumption for space heating and circulation losses in the Settlement Period, $MWh/year$
+\item $Q_{iet,S}$: Energy Savings for space heating and circulation losses for the Settlement Period, $MWh/year$
+\item $Q_{iet,G}$: Energy Savings Guarantee for space heating and circulation losses, $MWh$
+\item $BH_{iet}$: Energy Savings Balance for the Settlement Period, $MWh$
+\end{itemize}
+
+\vspace{1cm}
+		\begin{enumerate}
+			\item Fulfilment of the Energy Savings Guarantee: If the balance equal $BH_{iet} = 0.0 MWh$ then the Contractor has fulfilled the Energy Savings Guarantee for the respective Settlement Period. In this case the Contractor does not own a refund to the Client.
+
+			\item Non-fulfilment of the Energy Savings Guarantee: If the balance is negative ($BH_{iet}$ is a negative number) then the Contractor has missed his Energy Savings Guarantee for the respective Settlement Period and will refund the Client the negative balance calculated as follows:
+
+\[ C_G = B_{iet} \times HT_S \]
+
+Where:
+
+\begin{itemize}
+	\item $C_G$: compensation for Non-fulfillment of the Guaranteed Energy Savings during the settlement period, EUR (excluding VAT)
+	\item $BH_{iet}$: Energy Savings Balance for the Settlement Period, $MWh$
+	\item $HT_S$: Average Thermal Energy Tariff during the Settlement Period calculated as the sum of the monthly Thermal Energy Tariffs during the Settlement Period divided by the number of months in the respective Settlement Period, $EUR/MWh$ (excluding VAT)
+\end{itemize}
+
+The Parties shall settle the payment of the compensation ($C_G$) either through a one-off payment from the Contractor to the Client or by subtracting the compensation in equal amounts from the due payment of the Client to the Contractor distributed throughout the next Settlement Period. The Contractor has the right to select the preferred option; however for the last Settlement Period, after which the Agreement terminates, the Parties shall settle through a one-off payment.
+
+		\end{enumerate}
+
+		\item Extra Performance
+
+If the balance is positive ($BH_{iet}$ is a positive number), then the Contractor has over-achieved his Energy Savings Guarantee and shall be entitled to retain any and all payments in lieu thereof. The extra performance shall be calculated as:
+
+\[ P_G = BH_{iet} \times ET_S \]
+
+Where:
+
+\begin{itemize}
+	\item $P_G$: extra performance of the guarantee during the settlement period, $EUR$ (excluding VAT)
+	\item $BH_{iet}$: Energy Savings Balance for the Settlement Period, $MWh$
+	\item $HT_S$: Average Thermal Energy Tariff during the Settlement Period calculated as the sum of the monthly Thermal Energy Tariffs during the Settlement Period divided by the number of months in the respective Settlement Period, $EUR/MWh$ (excluding VAT)
+\end{itemize}
+
+The Parties shall settle the payment for the extra performance (PG) either through a one-off payment of the balance from the Client to the Contractor or adding the outstanding balance in equal amounts to the due payment of the Client to the Contractor distributed throughout the next Settlement Period. The Client has the right to select the preferred option, however, for the last Settlement Period after which the Agreement terminates, the Parties settle through a one-off payment.
+
+	\end{enumerate}
+
+	\item or the determination of the Energy Savings Guarantee and the determination of the fulfilment of the Energy Savings Guarantee the input data are determinate according to the General Terms and Condition of the Agreement for Measurement and Verification.
+\end{enumerate}
+
+\subsection{Domestic Hot Water Fee}
+
+\begin{enumerate}
+	\item Payment for domestic hot water is based on the actual consumption incurred by each separate Apartment Owner and duly recorded by separate calibrated meters installed for each of the Apartments.
+	\item The payment for domestic hot water is calculated on monthly basis based on the following formula:
+
+\[ Q^{m}_{ku} = \frac{V_m \times \rho_{ku} \times c_u \times \left(\theta_{ku} - \theta_{u,pieg}\right)}{3600} \times HT^m \]
+
+Where:
+
+\begin{itemize}
+	\item $V_m$: Monthly domestic hot water volumetric consumption metered at the substation, $m^3$
+	\item $\rho_{ku}$: Water density corresponding to $985 kg/m^3$
+	\item $c_u$: Specific heat capacity of water corresponding to $4.1868 \times 10^{-3} J/kg^\circ C$
+	\item $\theta_{u,pieg}$: Cold water temperature from the water supply company, $^\circ C$
+	\item $\theta_{ku}$: Hot water supplied temperature at the Building heat substation, $^\circ C$
+	\item $HT_m$: Thermal Energy Tariff applicable for the relative billing month, $EUR/MWh$
+\end{itemize}
+
+	\item Measurement and Verification: Cold water and Hot water supplied temperature are determinate according to the General Terms and Condition of the Agreement for Measurement and Verification.
+	\item The Client duly acknowledges that all changes or modifications in the Energy Tariff are applicable towards the fee for hot water immediately upon their adoption by the respective Regulator or the applicable towards the case authority and shall apply from the date of their ratification and entering into force to the manner pursuant to which the calculations of the fee for heating are executed.
+	\item The Contractor shall invoice the Manager of the Client for the total monthly Domestic hot water Fee on monthly basis. The Manager will invoice each separate Apartment Owners on individual water consumption basis.
+
+\end{enumerate}

@@ -1,0 +1,2 @@
+
+mutation {removeProjectRole(project: %q, user: %q, role: %s) {message}}

@@ -1,0 +1,723 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Sunshine Organizations API",
+        "version": "1.0.0"
+    },
+    "tags": [
+        {
+            "description": "Endpoints for manipulating users and relative data.",
+            "name": "Users"
+        },
+        {
+            "description": "Endpoints for manipulating user authorization.",
+            "name": "Authorization"
+        }
+    ],
+    "components": {
+        "schemas": {
+            "ChangePassword": {
+                "properties": {
+                    "new": {
+                        "type": "string"
+                    },
+                    "old": {
+                        "type": "string"
+                    }
+                },
+                "x-go-type": {
+                    "ignore": true,
+                    "id": "ChangePassword"
+                },
+                "type": "object"
+            },
+            "UserResp": {
+                "x-go-type": {
+                    "ignore": true,
+                    "id": "UserResp"
+                },
+                "properties": {
+                    "timestamp": {
+                        "example": "2019-03-11T12:59:05.259Z",
+                        "description": "Last updated at",
+                        "format": "date-time",
+                        "type": "string"
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/User",
+                        "type": "object"
+                    },
+                    "type": {
+                        "description": "The type of the entity",
+                        "example": "asset",
+                        "type": "string"
+                    },
+                    "_id": {
+                        "description": "The ID of the user",
+                        "example": "0f465c3f-1263-47c2-a497-48978c154e0f",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "SocialProfile": {
+                "properties": {
+                    "handle": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string"
+                    },
+                    "user_id": {
+                        "description": "The ID of the user",
+                        "example": "0f465c3f-1263-47c2-a497-48978c154e0f",
+                        "type": "string"
+                    }
+                },
+                "x-go-type": {
+                    "ignore": false,
+                    "id": "stageai.tech/sunshine/sunshine/models.SocialProfile"
+                },
+                "type": "object"
+            },
+            "CountryRole": {
+                "properties": {
+                    "country": {
+                        "type": "string"
+                    },
+                    "role": {
+                        "type": "string"
+                    },
+                    "user_id": {
+                        "description": "The ID of the user",
+                        "example": "0f465c3f-1263-47c2-a497-48978c154e0f",
+                        "type": "string"
+                    }
+                },
+                "x-go-type": {
+                    "ignore": false,
+                    "id": "stageai.tech/sunshine/sunshine/models.CountryRole"
+                },
+                "type": "object"
+            },
+            "OrganizationRole": {
+                "properties": {
+                    "position": {
+                      	"type":"string"
+                    },
+                    "organization_id": {
+                        "description": "The ID of the user",
+                        "example": "0f465c3f-1263-47c2-a497-48978c154e0f",
+                        "type": "string"
+                    },
+                    "user_id": {
+                        "description": "The ID of the user",
+                        "example": "0f465c3f-1263-47c2-a497-48978c154e0f",
+                        "type": "string"
+                    }
+                },
+                "x-go-type": {
+		    "ignore": false,
+                    "id": "stageai.tech/sunshine/sunshine/models.OrganizationRole"
+                },
+		"type": "object"
+            },
+            "ProjectRole": {
+                "properties": {
+                    "position": {
+                      	"type":"string"
+                    },
+                    "project_id": {
+                        "description": "The ID of the user",
+                        "example": "0f465c3f-1263-47c2-a497-48978c154e0f",
+                        "type": "string"
+                    },
+                    "user_id": {
+                        "description": "The ID of the user",
+                        "example": "0f465c3f-1263-47c2-a497-48978c154e0f",
+                        "type": "string"
+                    }
+                },
+                "x-go-type": {
+		    "ignore": false,
+                    "id": "stageai.tech/sunshine/sunshine/models.ProjectRole"
+                },
+		"type": "object"
+            },
+            "Notification": {
+                "properties": {
+                    "action": {
+                        "enum": [
+				"create",
+				"update",
+				"upload"
+			],
+			"description": "User action for notification",
+			"example": "upload",
+			"type": "string"
+                   },
+                   "recipient_id": {
+                        "description": "The ID of the user who should recieve the notification",
+                        "example": "0f465c3f-1263-47c2-a497-48978c154e0f",
+                        "type": "string"
+                    },
+                    "user": {
+                        "description": "The ID of the user who did the action",
+                        "example": "0f465c3f-1263-47c2-a497-48978c154e0f",
+                        "type": "string"
+                    },
+		    "user_key": {
+			"type": "string"
+		    },
+		    "target": {
+ 			"description": "The ID of the non-user entity affected",
+                        "example": "0f465c3f-1263-47c2-a497-48978c154e0f",
+                        "type": "string"
+		    },
+		    "target_key": {
+			"type": "string"
+		    },
+		    "target_type": {
+                        "enum": [
+				"user",
+				"organization",
+				"asset",
+				"project",
+				"indoor_clima",
+				"meeting"
+			],
+			"description": "Target type for notification",
+			"example": "project",
+			"type": "string"
+                    },
+		    "old": {
+			"type": "string"
+		    },
+		    "new": {
+			"type": "string"
+		    },
+		    "seen": {
+			"type": "boolean"
+		    },
+		    "country": {
+                        "description": "The country of the target entity of the notification",
+                        "example": "Bulgaria",
+                        "type": "string"
+                    },
+		    "comment": {
+			"description": "Optional comment used when reviewing documents",
+			"example": "this doc is not valid",
+			"type": "string"
+		    }
+                },
+                "x-go-type": {
+                    "ignore": false,
+                    "id": "stageai.tech/sunshine/sunshine/models.Notification"
+                },
+                "type": "object"
+            },
+            "User": {
+                "required": [
+                    "name",
+                    "email",
+                    "password",
+                    "country"
+                ],
+                "properties": {
+                    "organization_roles": {
+                      	"items": {
+                            "$ref": "#/components/schemas/OrganizationRole",
+                            "type": "object"
+                        },
+                        "type": "array"
+                    },
+                    "project_roles": {
+                      	"items": {
+                            "$ref": "#/components/schemas/ProjectRole",
+                            "type": "object"
+                        },
+                        "type": "array"
+                    },
+                    "social_profiles": {
+                        "items": {
+                            "$ref": "#/components/schemas/SocialProfile",
+                            "type": "object"
+                        },
+                        "type": "array"
+                    },
+                    "country_roles": {
+                        "items": {
+                            "$ref": "#/components/schemas/CountryRole",
+                            "type": "object"
+                        },
+                        "type": "array"
+                    },
+                    "valid": {
+                        "enum": [
+                            "Pending(1)",
+                            "Declined(2)",
+                            "Pending(3)"
+                        ],
+                        "format": "int32",
+                        "description": "Valid status of the project",
+                        "example": 1,
+                        "type": "integer"
+                    },
+                    "superuser": {
+                        "type": "boolean"
+                    },
+		    "platform_manager": {
+			"type": "boolean"
+		    },
+		    "admin_nw_manager": {
+			"type": "boolean"
+		    },
+                    "is_active": {
+                        "type": "boolean"
+                    },
+                    "telephone": {
+                        "type": "string"
+                    },
+                    "identity": {
+                        "type": "string"
+                    },
+                    "avatar": {
+                        "description": "Relative path for the user avatar as image",
+                        "type": "string"
+                    },
+                    "address": {
+                        "example": "End of the world",
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "example": "john@doe.com",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "The name of the user",
+                        "example": "John Doe",
+                        "type": "string"
+                    },
+                    "country": {
+                        "description": "The country where this user resides",
+                        "example": "Bulgaria",
+                        "type": "string"
+                    }
+                },
+                "x-go-type": {
+                    "ignore": false,
+                    "id": "stageai.tech/sunshine/sunshine/models.User"
+                },
+                "type": "object"
+            },
+            "Users": {
+                "properties": {
+                    "documents": {
+                        "items": {
+                            "$ref": "#/components/schemas/User"
+                        },
+                        "type": "array"
+                    }
+                },
+                "x-go-type": {
+                    "ignore": true,
+                    "id": "Users"
+                },
+                "type": "object"
+            }
+        }
+    },
+    "paths": {
+        "/user/{uuid}/{filename}": {
+            "post": {
+                "responses": {
+                    "404": {
+                        "description": "No such user with provided id exists"
+                    },
+                    "401": {
+                        "description": "Not logged in as superuser with provided id"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "parameters": [
+                    {
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Name of the particular file",
+                        "required": true,
+                        "in": "path",
+                        "name": "filename"
+                    },
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "object"
+                        },
+                        "required": true,
+                        "description": "User ID",
+                        "in": "path",
+                        "name": "uuid"
+                    }
+                ],
+                "summary": "Download file attachment for that user",
+                "tags": [
+                    "Users"
+                ]
+            }
+        },
+        "/user/{uuid}/upload": {
+            "post": {
+                "responses": {
+                    "404": {
+                        "description": "No such user with provided id exists"
+                    },
+                    "401": {
+                        "description": "Not logged in as superuser with provided id"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "parameters": [
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "object"
+                        },
+                        "required": true,
+                        "description": "User ID",
+                        "in": "path",
+                        "name": "uuid"
+                    }
+                ],
+                "summary": "Upload file (avatar or ID attachments) for that user",
+                "tags": [
+                    "Users"
+                ]
+            }
+        },
+        "/user/{uuid}": {
+            "put": {
+                "parameters": [
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "object"
+                        },
+                        "required": true,
+                        "description": "User ID",
+                        "in": "path",
+                        "name": "uuid"
+                    }
+                ],
+                "responses": {
+                    "404": {
+                        "description": "No such user with provided id exists."
+                    },
+                    "400": {
+                        "description": "Bad request."
+                    },
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserResp"
+                                }
+                            }
+                        },
+                        "description": "successful operation"
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            }
+                        }
+                    }
+                },
+                "summary": "Update existing user",
+                "tags": [
+                    "Users"
+                ]
+            },
+            "get": {
+                "parameters": [
+                    {
+                        "schema": {
+                            "format": "uuid",
+                            "type": "object"
+                        },
+                        "required": true,
+                        "description": "User ID",
+                        "in": "path",
+                        "name": "uuid"
+                    }
+                ],
+                "responses": {
+                    "404": {
+                        "description": "No such user with provided id exists"
+                    },
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserResp"
+                                }
+                            }
+                        },
+                        "description": "successful operation"
+                    }
+                },
+                "summary": "Get existing user",
+                "tags": [
+                    "Users"
+                ]
+            }
+        },
+        "/user": {
+            "post": {
+                "responses": {
+                    "400": {
+                        "description": "Bad request or user already exists"
+                    },
+                    "200": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserResp"
+                                }
+                            }
+                        },
+                        "description": "successful operation"
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "description": "Creates new user according the passed values",
+                "summary": "Create new user",
+                "tags": [
+                    "Users"
+                ]
+            },
+            "get": {
+                "responses": {
+                    "200": {
+                        "headers": {
+                            "X-Document-Count": {
+                                "description": "Numbers of all documents exists in the DB after filter",
+                                "schema": {
+                                    "format": "int32",
+                                    "type": "integer"
+                                }
+                            }
+                        },
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Users"
+                                }
+                            }
+                        },
+                        "description": "successful operation"
+                    }
+                },
+                "parameters": [
+                    {
+                        "description": "Number of records to be listed in total",
+                        "schema": {
+                            "default": 25,
+                            "format": "int32",
+                            "type": "integer"
+                        },
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "description": "From which record to start listing starting from 0",
+                        "schema": {
+                            "default": 0,
+                            "format": "int32",
+                            "type": "integer"
+                        },
+                        "name": "offset",
+                        "in": "query"
+                    },
+                    {
+                        "description": "Boolean value for listing records in ascending chronological order",
+                        "schema": {
+                            "enum": [
+                                true,
+                                false
+                            ],
+                            "default": false,
+                            "type": "string"
+                        },
+                        "name": "asc",
+                        "in": "query"
+                    },
+                    {
+                        "description": "String parameter for name. Expects one or more words divided with spaces",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "name": "search",
+                        "in": "query"
+                    },
+                    {
+                        "schema": {
+                            "type": "string"
+                        },
+                        "name": "country",
+                        "in": "query"
+                    },
+                    {
+                        "description": "User status",
+                        "schema": {
+                            "enum": [
+                                "Registered(1)",
+                                "Valid(2)",
+                                "Declined(3)",
+                                "Pending(4)"
+                            ],
+                            "format": "int32",
+                            "type": "integer"
+                        },
+                        "name": "status",
+                        "in": "query"
+                    }
+                ],
+                "description": "Returns list of users. By default at most 25 results are being served in reversed chronological order. Query values can be used in order to get next pages.",
+                "summary": "List all existing users",
+                "tags": [
+                    "Users"
+                ]
+            }
+        },
+        "/auth/change_password": {
+            "post": {
+                "responses": {
+                    "401": {
+                        "description": "Not logged in"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ChangePassword"
+                            }
+                        }
+                    }
+                },
+                "summary": "Change the password of logged in User",
+                "tags": [
+                    "Authorization"
+                ]
+            }
+        },
+        "/auth/logout": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "summary": "Logout",
+                "tags": [
+                    "Authorization"
+                ]
+            }
+        },
+        "/confirm_user/{uuid}": {
+            "post": {
+                "tags": [
+		    "Authorization"
+                ],
+                "summary": "Confirm registration of an user",
+                "description": "Confirm newly registered users and make it active. Usually this happened after of sent token via email",
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "in": "path",
+                        "description": "Token ID",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "format": "uuid"
+                        }
+                    }
+                ],
+                "responses": {
+		    "200": {
+                        "description": "successful operation"
+                    },
+                    "401": {
+                        "description": "unauthorized"
+                    }
+                }
+            }
+        },
+        "/auth/login": {
+            "post": {
+                "responses": {
+                    "401": {
+                        "description": "Incorrect email and/or password"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "200": {
+                        "headers": {
+                            "Set-Cookie": {
+                                "description": "Valid session cookie",
+                                "schema": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserResp"
+                                }
+                            }
+                        },
+                        "description": "successful operation"
+                    }
+                },
+                "summary": "Login",
+                "tags": [
+                    "Authorization"
+                ]
+            }
+        }
+    }
+}

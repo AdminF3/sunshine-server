@@ -1,0 +1,144 @@
+{{- $tables := .Contract.Tables -}}
+
+\section{Annex 4 {-} Method of guaranteed result determination}
+
+\subsection{BASELINE ANNUAL ENERGY CONSUMPTION (BAEC) {-} (1)}
+Means the determined annual energy consumption, in line with Building
+EE audit of energy consumption before the implementation of the
+prescribed ESM. \\
+
+BAEC (1) – [●] kWh/year.
+
+\subsection{GUARANTEED ANNUAL ENERGY CONSUMPTION (GAEC) {-} (2)}
+The guaranteed annual energy consumption means the guaranteed yearly energy consumption for the Building by the Contractor, after implementation of the prescribed ESM: \\
+
+GAEC (2) – [●] kWh/year.
+
+\subsection{VALUE OF THE GUARANTEED ANNUAL ENERGY CONSUMPTION (VGATEC)
+  {-} [(2)* (5)]}
+The value of the guaranteed annual energy consumption in BGN means the
+sum of the products of the guaranteed annual thermal energy
+consumption (GATEC) at a price determined in the contract for thermal
+energy consumption for the Building and the guaranteed annual electric
+energy consumption (GAEEC) at a price determined in the contract for
+the Building:
+
+VGAEC = GATEC* [●] BGN/kWh + GAEEC* [●] BGN/kWh = = [●] kWh/year* [●] BGN/kWh + [●] kWh/year* [●] BGN/kWh \\
+
+XXX[●] BGN/year, VAT excluded \\
+XXX[●] BGN/year, VA included
+
+\subsection{GUARANTEED ANNUAL ENERGY-SAVING (GAES) {-} (3)}
+The guaranteed annual energy-saving means the difference between the
+necessary yearly energy consumption and the guaranteed yearly energy
+consumption for the Building. \\
+
+GAES = BAEC {-} GAEC = [●] – [●] = [●] kWh/year
+
+\subsection{ACCOUNTING THE GUARANTEED RESULT}
+The accounting the guaranteed result is made with the help of the
+following table:
+
+% table: baseline
+
+\begin{center}
+\begin{tabu}{|X[2]|X|X|X|X|X|X|} \tabucline{}
+{{with $t := .Contract.Tables.baseline}}
+	{{.Columns | column}} \\\tabucline{}
+	{{range .Rows}} {{rowf $t .}} \\\tabucline{} {{end}} %chktex 26
+{{end}}
+\end{tabu}
+\end{center}
+
+\subsection{ACHIEVED ANNUAL ENERGY CONSUPTION (AAEC) {-} (12)}
+The achieved annual energy consumption by the Building is the sum of the energy consumed in the Building by all energy carriers, in kWh, for one calendar year, after the implementation of the ESM. \\
+
+When determining the achieved annual consumption of thermal and electric energy, there has to be specified the quantity of thermal energy consumed and the quantity of electric energy consumed, in kWh, for one calendar year. The achieved annual energy consumption (12) is the sum of the yearly energy consumption of all energy resources. \\
+
+In column (1) shall be written the normalised baseline energy consumption set out in the contract. \\
+
+In column (12) shall be written the quality of energy consumed by the supplied energy resource, invoiced by a Supplier. In the case that the supplied energy resource is not fully consumed for the respective accounting period, the rest has to be transferred to the next accounting period at purchase price levels. An invoice shall not be required at energy cost of 0 BGN/kWh. \\
+
+\subsection{ACHIEVED ANNUAL ENERGY SAVING (AAES) {-} (13)}
+The achieved annual energy saving for the Building means the
+difference between the Baseline yearly energy consumption and the
+achieved annual energy consumption.
+
+\subsection{CALCULATION OF THE EFFICIENCY COEFFICIENT (EC)}
+The Efficiency coefficient is equal to the ratio between the achieved annual energy saving (13) and the guaranteed annual energy saving (9) for the Building: \\
+
+EC = (13) / (9) = [●] kWh/ [●] kWh = [●] kWh \\
+
+The guaranteed result is achieved at the calculated value of EC equal to or more than 1. \\
+
+The Efficiency coefficient shall be calculated annually, and its base determines the need for balance payment.\\
+
+\subsection{CALIBRATION}
+The calibration of the baseline (7) and the guaranteed (8) annual energy consumption takes into account the influence of climate conditions on the energy consumption in the Building. \\
+
+For this purpose, it is necessary to be determined the entire annual degree days (DDC) for the Building, using data for the real temperatures of the environment and the premises registered by the monitoring system. \\
+
+% table: baseyear
+
+\begin{center}
+\begin{tabu}{|X[2]|X|X|X|X|X|X|X|X|X|X|X|X|} \tabucline{} \rowfont[c]\bfseries
+	& \multicolumn{4}{c|}{ {{baseyear "bg" 2}} } & \multicolumn{4}{c|}{ {{baseyear "bg" 1}} } & \multicolumn{4}{c|}{ {{baseyear "bg" 0}} } \\
+	& \multicolumn{4}{c|}{ {{.Contract.Tables.baseyear_n_2.Title}} } & \multicolumn{4}{c|}{ {{.Contract.Tables.baseyear_n_1.Title}} } & \multicolumn{4}{c|}{ {{.Contract.Tables.baseyear_n.Title}} } \\\tabucline{}\rowfont[c]\bfseries
+	{{with $t := join_tables .Contract.Tables.baseyear_n_2 .Contract.Tables.baseyear_n_1 .Contract.Tables.baseyear_n }} %chktex 25
+	{{$t.Columns | column_sideways}} \\\tabucline{} \rowfont[]\bfseries %chktex 25
+	{{range $t.Headers}}
+	{{.|row}} \\\tabucline{}
+	{{end}}
+	{{range $t.Rows}}
+	{{row .}} \\\tabucline{} %chktex 26
+	{{end}}
+
+	\bfseries {{average $t }} \\\tabucline{}
+	\bfseries {{total $t}} \\\tabucline{}
+{{end}}
+\end{tabu}
+\end{center}
+
+\iffalse
+%% TODO make nice legend.
+%% comment region.
+where:
+nB – number of days for the baseline period
+ϴiB – the average volumetric temperature of the premises for the baseline period, ˚С
+ϴmB – the average temperature of the outdoor air for the baseline period, ˚С
+DDB – degree days of the baseline year
+nC – number of days for the current period
+ϴiC – the average volumetric temperature of the premises for the current period, ˚С
+ϴmC – average temperature of the outdoor air for the current period, ˚С
+DDC – degree days of the new year
+DDB/DDC – the coefficient of consumption correction
+
+Calibration of the energies (1,2) shall be carried out, multiplying their basic equivalent (X, kWh) by the correction coefficient of the respective year:
+
+%% TODO Add correction definition formula
+\fi
+
+% table: baseconditions
+
+\begin{center}
+\begin{tabu}{|X[2]|X|X|X|X|X|X|X|X|X|X|X|X|} \tabucline{} \rowfont[c]\bfseries
+	& \multicolumn{4}{c|}{ {{baseyear "bg" 2}} } & \multicolumn{4}{c|}{ {{baseyear "bg" 1}} } & \multicolumn{4}{c|}{ {{baseyear "bg" 0}} } \\
+	& \multicolumn{4}{c|}{ {{.Contract.Tables.baseyear_n_2.Title}} } & \multicolumn{4}{c|}{ {{.Contract.Tables.baseyear_n_1.Title}} } & \multicolumn{4}{c|}{ {{.Contract.Tables.baseyear_n.Title}} } \\\tabucline{}\rowfont[c]\bfseries
+	{{with $t := join_tables .Contract.Tables.baseconditions_n_2 .Contract.Tables.baseconditions_n_1 .Contract.Tables.baseconditions_n }} %chktex 25
+	{{$t.Columns | column_sideways}} \\\tabucline{} \rowfont[]\bfseries %chktex 25
+	{{range $t.Headers}}
+	{{.|row}} \\\tabucline{}
+	{{end}}
+	{{range $t.Rows}}
+	{{row .}} \\\tabucline{} %chktex 26
+	{{end}}
+
+	\bfseries {{average $t }} \\\tabucline{}
+	\bfseries {{total $t}} \\\tabucline{}
+{{end}}
+\end{tabu}
+\end{center}
+
+\subsection{The described Method shall be applied for a purpose and an operation of the Building, in line with the Energy Efficiency Audit Annex 1 {-} Report and Summary on Building EE Audit (see Annex 1) of the contract.}
+
+\subsection{In case of proved indisputable non-compliance with the instructions for maintenance and operation of the Building from the site, shall be accepted that the Efficiency Coefficient is equal to 1 /one/ and that the guaranteed result for the respective monitoring year is achieved.}

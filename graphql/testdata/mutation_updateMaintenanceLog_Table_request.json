@@ -1,0 +1,15 @@
+mutation{updateTable(projectID: "%s",annexN: 0,tableName: "maitenance_log",table: {
+    rows: [
+            [
+                "Some activity",
+                "1",
+                "2",
+                "3",
+                "4",
+                "5"
+            ]
+        ]
+    }) {
+    rows
+    }
+}
