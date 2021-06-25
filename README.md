@@ -2,7 +2,7 @@
 
 Backend server for the Sunshine platform.
 
-[*API docs*](./doc/README.md)
+[*API docs*](https://staging-sunshine.stageai.tech/openapi)
 
 ## Requirements
 
